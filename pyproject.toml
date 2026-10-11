@@ -1,0 +1,18 @@
+[project]
+name = "arc-prize-2026"
+version = "0.1.0"
+description = "ARC Prize 2026 Paper Track workspace"
+authors = [
+    { name = "Carson Rodrigues", email = "rodriguescarson@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.4.6",
+]
+
+[project.scripts]
+arc = "arc_prize_2026.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"

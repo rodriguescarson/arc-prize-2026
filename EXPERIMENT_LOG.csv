@@ -1,0 +1,3 @@
+run_id,timestamp_ist,hypothesis,method,commit,config,dataset_split,n_tasks,score,tasks_solved,runtime_s,outcome,interpretation
+trivial__ARC-AGI-2-evaluation,2026-10-12 04:32,pipeline-validation baseline,trivial,nogit-dirty,{},ARC-AGI-2/evaluation,120,0.000000,0,0.0,baseline,
+trivial__ARC-AGI-2-training,2026-10-12 04:32,pipeline-validation baseline,trivial,nogit-dirty,{},ARC-AGI-2/training,200,0.002500,0,0.0,baseline,

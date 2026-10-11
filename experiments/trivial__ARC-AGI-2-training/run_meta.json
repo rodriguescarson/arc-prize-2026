@@ -1,0 +1,16 @@
+{
+ "solver": "trivial",
+ "solver_kwargs": {},
+ "n_tasks": 200,
+ "runtime_s": 0.0,
+ "errors": 0,
+ "summary": {
+  "score": 0.0025,
+  "tasks": 200,
+  "tasks_fully_solved": 0,
+  "test_outputs": 216,
+  "test_output_rate": 0.00463,
+  "attempt1_hits": 0,
+  "attempt2_hits": 1
+ }
+}

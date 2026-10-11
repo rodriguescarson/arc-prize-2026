@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# datasets are cloned, not committed
+data/
+# secrets
+.env
+.env.*
+!.env.example
+# experiment artefacts that are large
+experiments/**/predictions*.json
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
