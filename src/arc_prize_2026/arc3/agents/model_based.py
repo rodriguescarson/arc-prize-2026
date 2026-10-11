@@ -28,19 +28,28 @@ class ModelBasedAgent(BaseAgent):
         self.pred_by_source = {"memo": [0, 0], "model": [0, 0]}
         self.row_changes = np.zeros(64, dtype=np.int32); self.row_steps = 0; self.prev_grid: np.ndarray | None = None
         self.volatile_rows: np.ndarray = np.zeros(64, dtype=bool)
+        self.terrain_colours: set[int] = set()
 
     def _update_volatility(self, grid: np.ndarray, after_reset: bool) -> None:
         if self.prev_grid is not None and not after_reset:
             self.row_changes += (grid != self.prev_grid).any(axis=1); self.row_steps += 1
-            if self.row_steps >= 20:
+            if self.row_steps >= 10:
                 self.volatile_rows = (self.row_changes / self.row_steps) > 0.8
         self.prev_grid = grid
 
+    TERRAIN_FRAC = 0.20  # a colour covering >= 20% of the frame is terrain (background, floor): kept in the grid for
+                         # blocking checks but its objects are excluded from the state key
+
     def perceive(self, grid: np.ndarray) -> list[Obj]:
-        objs = segment(grid)
+        objs = segment(grid, drop_background=False)
+        counts = np.bincount(grid.ravel(), minlength=16)
+        terrain = {int(c) for c in np.where(counts >= self.TERRAIN_FRAC * grid.size)[0]}
+        if not terrain:
+            terrain = {int(counts.argmax())}
+        self.terrain_colours = terrain
         if self.volatile_rows.any():
             objs = [o for o in objs if not self.volatile_rows[o.y0:o.y1].all()]
-        return objs
+        return [o for o in objs if o.colour not in terrain]
 
     # ---- candidate actions ---------------------------------------------------------------------
     def _keys_for(self, latest: FrameData):
@@ -93,7 +102,7 @@ class ModelBasedAgent(BaseAgent):
                 src = self._pred_src
                 self.pred_by_source[src][0] += 1
                 self.pred_by_source[src][1] += int(self.predicted_next == sk)
-                self.model.record_prediction(self.predicted_next, sk)
+                self.model.record_prediction(self.predicted_next, sk, p_ckey if src == "model" else None)
                 if self.predicted_next != sk:
                     self.plan = []; self.n_replans_on_error += 1
             self.predicted_next = None
@@ -137,5 +146,6 @@ class ModelBasedAgent(BaseAgent):
                 "pred_total": self.model.n_pred, "pred_acc": None if self.model.accuracy is None else round(self.model.accuracy, 3),
                 "pred_by_source": {k: (v[0], round(v[1] / v[0], 3) if v[0] else None) for k, v in self.pred_by_source.items()},
                 "movers": {str(k): [sorted(map(str, g[0])), list(g[1])] for k in self.model.moves if (g := self.model.modal_group(k))},
-                "volatile_rows": [int(i) for i in np.where(self.volatile_rows)[0]],
-                "known_noops": [str(k) for k in self.model.effects if self.model.is_known_noop(k)]}
+                "volatile_rows": [int(i) for i in np.where(self.volatile_rows)[0]], "terrain_colours": sorted(self.terrain_colours),
+                "known_noops": [str(k) for k in self.model.effects if self.model.is_known_noop(k)],
+                "key_reliability": {str(k): [v[0], round(v[1] / v[0], 2)] for k, v in self.model.key_pred.items() if v[0]}}

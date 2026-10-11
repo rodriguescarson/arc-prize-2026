@@ -26,20 +26,26 @@ Key = object  # action key: int action id, or ("click", y//4, x//4)
 
 
 def _ahead_cells(o: Obj, dy: int, dx: int, grid: np.ndarray, members: list[Obj] | None = None) -> list[int]:
-    """Colours of the cells the object would newly cover if displaced by (dy, dx), excluding cells
-    currently occupied by any member of its rigid group."""
-    cells = []
+    """Colours of every cell the object sweeps through when displaced by (dy, dx) in unit steps,
+    excluding cells currently occupied by any member of its rigid group. [-1] marks the world edge."""
     H, W = grid.shape
-    ny0, nx0, ny1, nx1 = o.y0 + dy, o.x0 + dx, o.y1 + dy, o.x1 + dx
-    if ny0 < 0 or nx0 < 0 or ny1 > H or nx1 > W:
-        return [-1]  # wall of the world
     occupied = members or [o]
-    for y in range(ny0, ny1):
-        for x in range(nx0, nx1):
-            if any(m.y0 <= y < m.y1 and m.x0 <= x < m.x1 for m in occupied):
-                continue
-            cells.append(int(grid[y, x]))
-    return cells or [int(grid[ny0, nx0])]
+    steps = max(abs(dy), abs(dx))
+    if steps == 0:
+        return []
+    sy, sx = (dy > 0) - (dy < 0), (dx > 0) - (dx < 0)
+    cells: list[int] = []
+    for k in range(1, steps + 1):
+        ty0, tx0 = o.y0 + sy * k, o.x0 + sx * k
+        ty1, tx1 = ty0 + o.h, tx0 + o.w
+        if ty0 < 0 or tx0 < 0 or ty1 > H or tx1 > W:
+            return [-1]
+        for y in range(ty0, ty1):
+            for x in range(tx0, tx1):
+                if any(m.y0 <= y < m.y1 and m.x0 <= x < m.x1 for m in occupied):
+                    continue
+                cells.append(int(grid[y, x]))
+    return cells
 
 
 class EffectModel:
@@ -52,6 +58,8 @@ class EffectModel:
         self.n_obs: Counter = Counter()
         self.n_pred = 0
         self.n_pred_correct = 0
+        self.key_pred: dict[Key, list[int]] = defaultdict(lambda: [0, 0])  # key -> [n, correct] for generative predictions
+        self.min_reliability = 0.5
 
     # ---- learning -------------------------------------------------------------------------------
     def observe(self, before: list[Obj], grid_before: np.ndarray, key: Key, after: list[Obj]) -> dict:
@@ -100,6 +108,9 @@ class EffectModel:
         group = self.modal_group(key)
         if group is None:
             return None, "unknown"
+        n, c = self.key_pred[key]
+        if n >= 10 and c / n < self.min_reliability:
+            return None, "unreliable"  # this key's mechanic is not a rigid move; memo-only from here on
         idents, (dy, dx) = group
         members = [o for o in objs if ident(o) in idents]
         if not members:
@@ -120,11 +131,14 @@ class EffectModel:
     def next_key(self, sk: int, key: Key) -> int | None:
         return self.transitions.get((sk, key))
 
-    def record_prediction(self, predicted_key: int | None, observed_key: int) -> None:
+    def record_prediction(self, predicted_key: int | None, observed_key: int, key: Key | None = None) -> None:
         if predicted_key is None:
             return
         self.n_pred += 1
-        self.n_pred_correct += int(predicted_key == observed_key)
+        ok = int(predicted_key == observed_key)
+        self.n_pred_correct += ok
+        if key is not None:
+            self.key_pred[key][0] += 1; self.key_pred[key][1] += ok
 
     @property
     def accuracy(self) -> float | None:

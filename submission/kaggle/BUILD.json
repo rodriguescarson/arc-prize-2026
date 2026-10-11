@@ -1,0 +1,8 @@
+{
+ "my_agent_sha256": "624a864116a890143b5f4bff833a1005a48f98c4cadea705ff1f8e77789a23df",
+ "git_commit": "3f976ec4bcae9a344f5551d54e4f1d00f6452910",
+ "memory": true,
+ "max_actions": 1500,
+ "budget_h": 8.5,
+ "kernel_id": "carsonrodrigues/arc3-model-based-explorer-mem1"
+}
