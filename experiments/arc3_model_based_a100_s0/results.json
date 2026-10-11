@@ -1,0 +1,99 @@
+{
+ "agent": "ModelBasedAgent",
+ "agent_kwargs": {
+  "contact": false
+ },
+ "seed": 0,
+ "max_actions": 100,
+ "time_budget_s": 300.0,
+ "n_games": 1,
+ "total_score": 1.142308,
+ "levels_completed": 2,
+ "total_levels": 7,
+ "games_won": 0,
+ "wall_s": 0.3,
+ "games": [
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": false,
+    "plans": 93,
+    "plan_steps": 99,
+    "replans_on_error": 6,
+    "fallback_steps": 0,
+    "pred_total": 18,
+    "pred_acc": 0.667,
+    "pred_by_source": {
+     "memo": [
+      6,
+      1.0
+     ],
+     "model": [
+      12,
+      0.5
+     ]
+    },
+    "movers": {
+     "('click', 9, 4, 4)": [
+      [
+       "(14, 6, 2)",
+       "(4, 6, 4)"
+      ],
+      [
+       0,
+       4
+      ]
+     ]
+    },
+    "volatile_rows": [
+     0
+    ],
+    "terrain_colours": [
+     3,
+     4
+    ],
+    "known_noops": [
+     "('click', 5, 4, 18)",
+     "('click', 11, 4, 2)",
+     "('click', 5, 4, 24)",
+     "('click', 4, 6, 4)",
+     "('click', 11, 6, 2)",
+     "('click', 'lattice')",
+     "('click', 5, 4, 56)",
+     "('click', 5, 4, 28)",
+     "('click', 14, 4, 2)",
+     "('click', 5, 4, 14)",
+     "('click', 14, 6, 2)"
+    ],
+    "key_reliability": {
+     "('click', 9, 4, 4)": [
+      12,
+      0.5
+     ]
+    }
+   },
+   "game_id": "vc33-5430563c",
+   "levels_completed": 2,
+   "win_levels": 7,
+   "level_actions": [
+    43,
+    47
+   ],
+   "actions": 100,
+   "resets": 1,
+   "distinct_frames": 101,
+   "final_state": "NOT_FINISHED",
+   "seconds": 0.24,
+   "baseline_actions": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ],
+   "score": 1.1423079157501077
+  }
+ ]
+}

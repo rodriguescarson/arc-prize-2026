@@ -13,9 +13,10 @@ from .base import ACTION_BY_ID, BaseAgent
 
 class ModelBasedAgent(BaseAgent):
     def __init__(self, game_id: str, seed: int = 0, memory: bool = True, max_depth: int = 12, max_nodes: int = 1500,
-                 click_lattice: int = 8, **kwargs):
+                 click_lattice: int = 8, contact: bool = True, **kwargs):
         super().__init__(game_id, seed)
         self.memory = memory
+        self.contact = contact
         self.max_depth, self.max_nodes, self.click_lattice = max_depth, max_nodes, click_lattice
         self.model = EffectModel()
         self.tried: dict[int, set] = {}
@@ -27,15 +28,31 @@ class ModelBasedAgent(BaseAgent):
         self.n_plans = 0; self.n_plan_steps = 0; self.n_replans_on_error = 0; self.n_fallback = 0
         self.pred_by_source = {"memo": [0, 0], "model": [0, 0]}
         self.row_changes = np.zeros(64, dtype=np.int32); self.row_steps = 0; self.prev_grid: np.ndarray | None = None
+        self.row_px = np.zeros(64, dtype=np.int64); self.mover_rows = np.zeros(64, dtype=bool)
         self.volatile_rows: np.ndarray = np.zeros(64, dtype=bool)
         self.terrain_colours: set[int] = set()
         self.contacted: dict = {}  # object class -> number of steps the mover group has touched it
 
     def _update_volatility(self, grid: np.ndarray, after_reset: bool) -> None:
+        """Two HUD detectors feed `volatile_rows`:
+        (a) rows changing on >80% of effective steps (step counters, animations);
+        (b) thin progress bars: rows whose changes are tiny (<= 1 px per changing step, averaged), have
+            occurred on >= 4 steps, and are never rows where the learned mover group has been seen.
+        Both are measured, not assumed; `stats()` reports which rows were masked."""
         if self.prev_grid is not None and not after_reset:
-            self.row_changes += (grid != self.prev_grid).any(axis=1); self.row_steps += 1
+            d = grid != self.prev_grid
+            changed_rows = d.any(axis=1)
+            if changed_rows.any():
+                self.row_changes += changed_rows; self.row_steps += 1
+                self.row_px += d.sum(axis=1)
             if self.row_steps >= 10:
-                self.volatile_rows = (self.row_changes / self.row_steps) > 0.8
+                rate_rows = (self.row_changes / self.row_steps) > 0.8
+            else:
+                rate_rows = np.zeros(64, dtype=bool)
+            with np.errstate(divide="ignore", invalid="ignore"):
+                mean_px = np.where(self.row_changes > 0, self.row_px / np.maximum(self.row_changes, 1), 0.0)
+            bar_rows = (self.row_changes >= 4) & (mean_px <= 1.0) & ~self.mover_rows
+            self.volatile_rows = rate_rows | bar_rows
         self.prev_grid = grid
 
     TERRAIN_FRAC = 0.20  # a colour covering >= 20% of the frame is terrain (background, floor): kept in the grid for
@@ -111,6 +128,8 @@ class ModelBasedAgent(BaseAgent):
         mover_idents = frozenset().union(*[g[0] for k in self.model.moves if (g := self.model.modal_group(k))]) if self.model.moves else frozenset()
         if mover_idents:
             members = [o for o in objs if ident(o) in mover_idents]
+            for m in members:
+                self.mover_rows[m.y0:m.y1] = True
             for c in adjacent_classes(members, objs):
                 self.contacted[c] = self.contacted.get(c, 0) + 1
             for o in objs:
@@ -118,7 +137,8 @@ class ModelBasedAgent(BaseAgent):
         keys_for = self._keys_for(latest)
         if not self.plan:
             path, final = plan_to_information(self.model, objs, grid, keys_for, self.tried, self.objs_cache,
-                                              self.max_depth, self.max_nodes, mover_idents or None, self.contacted if mover_idents else None)
+                                              self.max_depth, self.max_nodes, mover_idents or None,
+                                              self.contacted if (mover_idents and self.contact) else None)
             if path is not None:
                 self.plan = list(path) + [final[:1] + (final[2], final[3])] if final else list(path)
                 # normalise entries to (key, action, data)
@@ -149,7 +169,7 @@ class ModelBasedAgent(BaseAgent):
         return action
 
     def stats(self) -> dict:
-        return {"memory": self.memory, "plans": self.n_plans, "plan_steps": self.n_plan_steps,
+        return {"memory": self.memory, "contact": self.contact, "plans": self.n_plans, "plan_steps": self.n_plan_steps,
                 "replans_on_error": self.n_replans_on_error, "fallback_steps": self.n_fallback,
                 "pred_total": self.model.n_pred, "pred_acc": None if self.model.accuracy is None else round(self.model.accuracy, 3),
                 "pred_by_source": {k: (v[0], round(v[1] / v[0], 3) if v[0] else None) for k, v in self.pred_by_source.items()},
