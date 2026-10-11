@@ -5,13 +5,16 @@ description = "ARC Prize 2026 Paper Track workspace"
 authors = [
     { name = "Carson Rodrigues", email = "rodriguescarson@gmail.com" }
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = [
+    "arc-agi>=0.9.9",
+    "arcengine>=0.9.3",
     "numpy>=2.4.6",
 ]
 
 [project.scripts]
 arc = "arc_prize_2026.cli:main"
+arc3 = "arc_prize_2026.arc3.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]

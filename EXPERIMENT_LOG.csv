@@ -4,3 +4,7 @@ trivial__ARC-AGI-2-training,2026-10-12 04:32,pipeline-validation baseline,trivia
 dsl_search__ARC-AGI-2-evaluation,2026-10-12 04:36,CPU DSL-search floor baseline,dsl_search,2028c3e-dirty,{},ARC-AGI-2/evaluation,120,0.000000,0,3.8,baseline,
 dsl_search__ARC-AGI-evaluation,2026-10-12 04:36,CPU DSL-search floor baseline,dsl_search,2028c3e-dirty,{},ARC-AGI/evaluation,400,0.012500,5,11.2,baseline,
 dsl_search__ARC-AGI-2-training,2026-10-12 04:36,CPU DSL-search floor baseline,dsl_search,2028c3e-dirty,{},ARC-AGI-2/training,1000,0.037500,37,21.0,baseline,
+arc3_random_a500_s0,2026-10-12 04:44,ARC-AGI-3 random floor,arc3/random,232452d-dirty,"{""max_actions"": 500, ""seed"": 0}",ARC-AGI-3/public-25,25,0.001923,0,9.1,baseline,levels 2/183
+arc3_explorer_a500_s0,2026-10-12 04:45,novelty-seeking exploration beats random on ARC-AGI-3 public games,arc3/explorer,232452d-dirty,"{""max_actions"": 500, ""seed"": 0}",ARC-AGI-3/public-25,25,0.000380,0,28.8,measured,levels 4/183
+arc3_explorer_a2000_s0,2026-10-12 04:47,novelty-seeking exploration beats random on ARC-AGI-3 public games,arc3/explorer,232452d-dirty,"{""max_actions"": 2000, ""seed"": 0}",ARC-AGI-3/public-25,25,0.000383,0,113.3,measured,levels 5/183
+arc3_random_a2000_s0,2026-10-12 04:48,ARC-AGI-3 random floor,arc3/random,232452d-dirty,"{""max_actions"": 2000, ""seed"": 0}",ARC-AGI-3/public-25,25,0.001924,0,33.7,baseline,levels 3/183

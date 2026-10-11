@@ -2,7 +2,7 @@
  "solver": "trivial",
  "solver_kwargs": {},
  "n_tasks": 120,
- "runtime_s": 0.01,
+ "runtime_s": 0.0,
  "errors": 0,
  "summary": {
   "score": 0.0,

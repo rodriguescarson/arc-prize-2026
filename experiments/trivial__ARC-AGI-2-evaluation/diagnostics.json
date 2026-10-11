@@ -1,0 +1,1753 @@
+{
+ "counts": {
+  "colours_wrong": 41,
+  "content_wrong": 44,
+  "near_miss": 39,
+  "shape_wrong": 43
+ },
+ "per_task": {
+  "0934a4d8": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     9,
+     3
+    ]
+   }
+  ],
+  "135a2760": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9893,
+    "truth_shape": [
+     29,
+     29
+    ]
+   }
+  ],
+  "136b0064": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     19,
+     7
+    ]
+   }
+  ],
+  "13e47133": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.1367,
+    "truth_shape": [
+     30,
+     30
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.1156,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "142ca369": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.4568,
+    "truth_shape": [
+     18,
+     18
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8632,
+    "truth_shape": [
+     20,
+     19
+    ]
+   }
+  ],
+  "16b78196": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8922,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "16de56c4": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.7196,
+    "truth_shape": [
+     9,
+     21
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8413,
+    "truth_shape": [
+     9,
+     21
+    ]
+   }
+  ],
+  "1818057f": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.938,
+    "truth_shape": [
+     22,
+     22
+    ]
+   }
+  ],
+  "195c6913": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8967,
+    "truth_shape": [
+     30,
+     30
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8822,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "1ae2feb7": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.76,
+    "truth_shape": [
+     10,
+     20
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.95,
+    "truth_shape": [
+     8,
+     15
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.7,
+    "truth_shape": [
+     8,
+     15
+    ]
+   }
+  ],
+  "20270e3b": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     5,
+     10
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     8,
+     8
+    ]
+   }
+  ],
+  "20a9e565": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     2,
+     21
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     8,
+     17
+    ]
+   }
+  ],
+  "21897d95": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     30,
+     30
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.4583,
+    "truth_shape": [
+     24,
+     24
+    ]
+   }
+  ],
+  "221dfab4": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.7296,
+    "truth_shape": [
+     25,
+     25
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8444,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "247ef758": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8767,
+    "truth_shape": [
+     15,
+     20
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8472,
+    "truth_shape": [
+     12,
+     18
+    ]
+   }
+  ],
+  "269e22fb": [
+   {
+    "best_attempt": "attempt_2",
+    "category": "colours_wrong",
+    "cell_acc": 0.4225,
+    "truth_shape": [
+     20,
+     20
+    ]
+   },
+   {
+    "best_attempt": "attempt_2",
+    "category": "colours_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     20,
+     20
+    ]
+   }
+  ],
+  "271d71e2": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.6391,
+    "truth_shape": [
+     26,
+     26
+    ]
+   }
+  ],
+  "28a6681f": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9,
+    "truth_shape": [
+     10,
+     10
+    ]
+   }
+  ],
+  "291dc1e1": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     18,
+     8
+    ]
+   }
+  ],
+  "2b83f449": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.808,
+    "truth_shape": [
+     19,
+     17
+    ]
+   }
+  ],
+  "2ba387bc": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     16,
+     8
+    ]
+   }
+  ],
+  "2c181942": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8766,
+    "truth_shape": [
+     24,
+     26
+    ]
+   }
+  ],
+  "2d0172a1": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     9,
+     13
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     14,
+     11
+    ]
+   }
+  ],
+  "31f7f899": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8962,
+    "truth_shape": [
+     17,
+     17
+    ]
+   }
+  ],
+  "332f06d7": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.92,
+    "truth_shape": [
+     20,
+     20
+    ]
+   }
+  ],
+  "35ab12c3": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8367,
+    "truth_shape": [
+     21,
+     21
+    ]
+   }
+  ],
+  "36a08778": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.7031,
+    "truth_shape": [
+     16,
+     16
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.7944,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "38007db0": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     29,
+     8
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     25,
+     7
+    ]
+   }
+  ],
+  "3a25b0d8": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     18,
+     13
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     14,
+     11
+    ]
+   }
+  ],
+  "3dc255db": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8974,
+    "truth_shape": [
+     12,
+     13
+    ]
+   }
+  ],
+  "3e6067c3": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9679,
+    "truth_shape": [
+     29,
+     29
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9578,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "409aa875": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9648,
+    "truth_shape": [
+     16,
+     16
+    ]
+   }
+  ],
+  "446ef5d2": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.5414,
+    "truth_shape": [
+     26,
+     26
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.6225,
+    "truth_shape": [
+     20,
+     20
+    ]
+   }
+  ],
+  "45a5af55": [
+   {
+    "best_attempt": "attempt_2",
+    "category": "colours_wrong",
+    "cell_acc": 0.0888,
+    "truth_shape": [
+     26,
+     26
+    ]
+   }
+  ],
+  "4a21e3da": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8225,
+    "truth_shape": [
+     20,
+     20
+    ]
+   }
+  ],
+  "4c3d4a41": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.7937,
+    "truth_shape": [
+     8,
+     20
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8562,
+    "truth_shape": [
+     8,
+     20
+    ]
+   }
+  ],
+  "4c416de3": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9402,
+    "truth_shape": [
+     19,
+     22
+    ]
+   }
+  ],
+  "4c7dc4dd": [
+   {
+    "best_attempt": "attempt_2",
+    "category": "colours_wrong",
+    "cell_acc": 0.2,
+    "truth_shape": [
+     5,
+     5
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     6,
+     6
+    ]
+   }
+  ],
+  "4e34c42c": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     14,
+     19
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     9,
+     19
+    ]
+   }
+  ],
+  "53fb4810": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9378,
+    "truth_shape": [
+     25,
+     18
+    ]
+   }
+  ],
+  "5545f144": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9111,
+    "truth_shape": [
+     15,
+     15
+    ]
+   }
+  ],
+  "581f7754": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.7107,
+    "truth_shape": [
+     14,
+     20
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.7645,
+    "truth_shape": [
+     11,
+     22
+    ]
+   }
+  ],
+  "58490d8a": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     9,
+     11
+    ]
+   }
+  ],
+  "58f5dbd5": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     19,
+     13
+    ]
+   }
+  ],
+  "5961cc34": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8217,
+    "truth_shape": [
+     27,
+     27
+    ]
+   }
+  ],
+  "5dbc8537": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     10,
+     25
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     20,
+     8
+    ]
+   }
+  ],
+  "62593bfd": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8672,
+    "truth_shape": [
+     25,
+     25
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8947,
+    "truth_shape": [
+     19,
+     28
+    ]
+   }
+  ],
+  "64efde09": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8573,
+    "truth_shape": [
+     29,
+     29
+    ]
+   }
+  ],
+  "65b59efc": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     25,
+     25
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     16,
+     16
+    ]
+   }
+  ],
+  "67e490f4": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     7,
+     30
+    ]
+   }
+  ],
+  "6e453dd6": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.7733,
+    "truth_shape": [
+     25,
+     12
+    ]
+   }
+  ],
+  "6e4f6532": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8821,
+    "truth_shape": [
+     30,
+     28
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8229,
+    "truth_shape": [
+     30,
+     16
+    ]
+   }
+  ],
+  "6ffbe589": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     13,
+     13
+    ]
+   }
+  ],
+  "71e489b6": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8164,
+    "truth_shape": [
+     16,
+     16
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8041,
+    "truth_shape": [
+     18,
+     19
+    ]
+   }
+  ],
+  "7491f3cf": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9314,
+    "truth_shape": [
+     7,
+     25
+    ]
+   }
+  ],
+  "7666fa5d": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.793,
+    "truth_shape": [
+     16,
+     16
+    ]
+   }
+  ],
+  "78332cb0": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     5,
+     23
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8957,
+    "truth_shape": [
+     23,
+     5
+    ]
+   }
+  ],
+  "7b0280bc": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9378,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "7b3084d4": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     14,
+     14
+    ]
+   }
+  ],
+  "7b5033c1": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     25,
+     1
+    ]
+   }
+  ],
+  "7b80bb43": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9716,
+    "truth_shape": [
+     29,
+     17
+    ]
+   }
+  ],
+  "7c66cb00": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8833,
+    "truth_shape": [
+     30,
+     24
+    ]
+   }
+  ],
+  "7ed72f31": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9228,
+    "truth_shape": [
+     18,
+     18
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9426,
+    "truth_shape": [
+     28,
+     28
+    ]
+   }
+  ],
+  "800d221b": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.84,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "80a900e0": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9026,
+    "truth_shape": [
+     22,
+     21
+    ]
+   }
+  ],
+  "8698868d": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     14,
+     21
+    ]
+   }
+  ],
+  "88bcf3b4": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9504,
+    "truth_shape": [
+     22,
+     22
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9506,
+    "truth_shape": [
+     27,
+     27
+    ]
+   }
+  ],
+  "88e364bc": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.975,
+    "truth_shape": [
+     20,
+     20
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.97,
+    "truth_shape": [
+     20,
+     20
+    ]
+   }
+  ],
+  "89565ca0": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     5,
+     6
+    ]
+   }
+  ],
+  "898e7135": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.1189,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "8b7bacbf": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9467,
+    "truth_shape": [
+     30,
+     30
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9318,
+    "truth_shape": [
+     22,
+     26
+    ]
+   }
+  ],
+  "8b9c3697": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8953,
+    "truth_shape": [
+     23,
+     27
+    ]
+   }
+  ],
+  "8e5c0c38": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9649,
+    "truth_shape": [
+     22,
+     22
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9773,
+    "truth_shape": [
+     22,
+     22
+    ]
+   }
+  ],
+  "8f215267": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9211,
+    "truth_shape": [
+     27,
+     23
+    ]
+   }
+  ],
+  "8f3a5a89": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.6736,
+    "truth_shape": [
+     12,
+     12
+    ]
+   }
+  ],
+  "9385bd28": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.7328,
+    "truth_shape": [
+     19,
+     13
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8421,
+    "truth_shape": [
+     13,
+     19
+    ]
+   }
+  ],
+  "97d7923e": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.94,
+    "truth_shape": [
+     10,
+     20
+    ]
+   }
+  ],
+  "981571dc": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9667,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "9aaea919": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9344,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "9bbf930d": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9752,
+    "truth_shape": [
+     23,
+     21
+    ]
+   }
+  ],
+  "a251c730": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     9,
+     14
+    ]
+   }
+  ],
+  "a25697e4": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.94,
+    "truth_shape": [
+     30,
+     30
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9387,
+    "truth_shape": [
+     30,
+     25
+    ]
+   }
+  ],
+  "a32d8b75": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     30,
+     20
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     30,
+     22
+    ]
+   }
+  ],
+  "a395ee82": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.876,
+    "truth_shape": [
+     22,
+     22
+    ]
+   }
+  ],
+  "a47bf94d": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9349,
+    "truth_shape": [
+     26,
+     26
+    ]
+   }
+  ],
+  "a6f40cea": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     8,
+     10
+    ]
+   }
+  ],
+  "aa4ec2a5": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.6553,
+    "truth_shape": [
+     26,
+     27
+    ]
+   }
+  ],
+  "abc82100": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.815,
+    "truth_shape": [
+     20,
+     20
+    ]
+   }
+  ],
+  "b0039139": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     19,
+     5
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     5,
+     29
+    ]
+   }
+  ],
+  "b10624e5": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8422,
+    "truth_shape": [
+     27,
+     27
+    ]
+   }
+  ],
+  "b5ca7ac4": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.3781,
+    "truth_shape": [
+     22,
+     22
+    ]
+   }
+  ],
+  "b6f77b65": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9444,
+    "truth_shape": [
+     12,
+     12
+    ]
+   },
+   {
+    "best_attempt": "attempt_2",
+    "category": "colours_wrong",
+    "cell_acc": 0.7361,
+    "truth_shape": [
+     12,
+     12
+    ]
+   }
+  ],
+  "b99e7126": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.975,
+    "truth_shape": [
+     29,
+     29
+    ]
+   }
+  ],
+  "b9e38dc0": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.6807,
+    "truth_shape": [
+     15,
+     19
+    ]
+   }
+  ],
+  "bf45cf4b": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     25,
+     25
+    ]
+   }
+  ],
+  "c4d067a0": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8244,
+    "truth_shape": [
+     27,
+     27
+    ]
+   }
+  ],
+  "c7f57c3e": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9082,
+    "truth_shape": [
+     28,
+     28
+    ]
+   }
+  ],
+  "cb2d8a2c": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8516,
+    "truth_shape": [
+     14,
+     26
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8513,
+    "truth_shape": [
+     29,
+     16
+    ]
+   }
+  ],
+  "cbebaa4b": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8018,
+    "truth_shape": [
+     26,
+     26
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.7766,
+    "truth_shape": [
+     26,
+     26
+    ]
+   }
+  ],
+  "d35bdbdc": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.84,
+    "truth_shape": [
+     10,
+     10
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.71,
+    "truth_shape": [
+     10,
+     10
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.71,
+    "truth_shape": [
+     10,
+     10
+    ]
+   }
+  ],
+  "d59b0160": [
+   {
+    "best_attempt": "attempt_2",
+    "category": "colours_wrong",
+    "cell_acc": 0.7578,
+    "truth_shape": [
+     16,
+     16
+    ]
+   }
+  ],
+  "d8e07eb2": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.7061,
+    "truth_shape": [
+     30,
+     22
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8136,
+    "truth_shape": [
+     30,
+     22
+    ]
+   }
+  ],
+  "da515329": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.5251,
+    "truth_shape": [
+     26,
+     26
+    ]
+   }
+  ],
+  "db0c5428": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.7197,
+    "truth_shape": [
+     17,
+     17
+    ]
+   }
+  ],
+  "db695cfb": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8533,
+    "truth_shape": [
+     25,
+     21
+    ]
+   }
+  ],
+  "dbff022c": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9349,
+    "truth_shape": [
+     13,
+     13
+    ]
+   }
+  ],
+  "dd6b8c4b": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9008,
+    "truth_shape": [
+     11,
+     11
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8512,
+    "truth_shape": [
+     11,
+     11
+    ]
+   }
+  ],
+  "de809cff": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.7644,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "dfadab01": [
+   {
+    "best_attempt": "attempt_2",
+    "category": "colours_wrong",
+    "cell_acc": 0.685,
+    "truth_shape": [
+     20,
+     20
+    ]
+   }
+  ],
+  "e12f9a14": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8511,
+    "truth_shape": [
+     30,
+     30
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "content_wrong",
+    "cell_acc": 0.8544,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "e3721c99": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.6844,
+    "truth_shape": [
+     30,
+     30
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.69,
+    "truth_shape": [
+     30,
+     30
+    ]
+   }
+  ],
+  "e376de54": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "near_miss",
+    "cell_acc": 0.9883,
+    "truth_shape": [
+     16,
+     16
+    ]
+   }
+  ],
+  "e8686506": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     8,
+     5
+    ]
+   }
+  ],
+  "e87109e9": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     24,
+     24
+    ]
+   }
+  ],
+  "edb79dae": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     21,
+     21
+    ]
+   }
+  ],
+  "eee78d87": [
+   {
+    "best_attempt": "attempt_2",
+    "category": "colours_wrong",
+    "cell_acc": 0.3281,
+    "truth_shape": [
+     16,
+     16
+    ]
+   }
+  ],
+  "f560132c": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     12,
+     12
+    ]
+   }
+  ],
+  "f931b4a8": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     10,
+     8
+    ]
+   },
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.25,
+    "truth_shape": [
+     4,
+     4
+    ]
+   }
+  ],
+  "faa9f03d": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "colours_wrong",
+    "cell_acc": 0.8264,
+    "truth_shape": [
+     12,
+     12
+    ]
+   }
+  ],
+  "fc7cae8d": [
+   {
+    "best_attempt": "attempt_1",
+    "category": "shape_wrong",
+    "cell_acc": 0.0,
+    "truth_shape": [
+     20,
+     12
+    ]
+   }
+  ]
+ }
+}
