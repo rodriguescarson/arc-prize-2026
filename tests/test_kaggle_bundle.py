@@ -12,7 +12,7 @@ class Agent:
 agent_mod.Agent = Agent; agents.agent = agent_mod
 sys.modules["agents"] = agents; sys.modules["agents.agent"] = agent_mod
 spec = importlib.util.spec_from_file_location("my_agent", ROOT / "submission/kaggle/my_agent.py")
-m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+m = importlib.util.module_from_spec(spec); sys.modules["my_agent"] = m; spec.loader.exec_module(m)
 from arc_prize_2026.arc3.runner import run
 class Wrapped(m.MyAgent):
     def __init__(self, game_id, seed=0, **kw):

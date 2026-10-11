@@ -13,12 +13,29 @@ from collections import deque
 import numpy as np
 
 from .effects import EffectModel
-from .perception import Obj, background_colour, moved, render_move, state_key
+from .perception import Obj, background_colour, ident, moved, render_move, state_key
+
+
+def adjacent_classes(members: list[Obj], objs: list[Obj]) -> set:
+    """Classes of non-member objects whose bbox touches (8-neighbourhood) any member's bbox."""
+    out = set()
+    for m in members:
+        for o in objs:
+            if o in members:
+                continue
+            if o.y0 <= m.y1 and m.y0 <= o.y1 and o.x0 <= m.x1 and m.x0 <= o.x1:
+                out.add(ident(o))
+    return out
 
 
 def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, keys_for, tried: dict[int, set],
-                        objs_cache: dict[int, tuple[list[Obj], np.ndarray]], max_depth: int = 12, max_nodes: int = 1500):
-    """keys_for(objs) -> list of (key, class_key, action, data). Returns (path_keys, final_key) or (None, None)."""
+                        objs_cache: dict[int, tuple[list[Obj], np.ndarray]], max_depth: int = 12, max_nodes: int = 1500,
+                        mover_idents: frozenset | None = None, contacted: dict | None = None):
+    """keys_for(objs) -> list of (key, class_key, action, data). Returns (path_keys, final_key) or (None, None).
+
+    Target priority: (1) a reachable state where the mover group touches an object class contacted fewer
+    times than any other (contact-driven curiosity), taking an untried key there; (2) the nearest state with
+    an untried, non-no-op key, preferring keys with the fewest observations."""
     bg = background_colour(grid)
     start = state_key(objs)
     objs_cache.setdefault(start, (objs, grid))
@@ -26,6 +43,8 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
     seen = {start}
     nodes = 0
     best = None
+    contact_best = None  # (contact_count, depth, path, key)
+    min_contact = min(contacted.values()) if contacted else 0
     while q and nodes < max_nodes:
         sk, path = q.popleft()
         nodes += 1
@@ -33,13 +52,23 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
             continue
         o_list, g = objs_cache[sk]
         cands = keys_for(o_list)
-        # exploratory keys available here?
         untried = [c for c in cands if c[0] not in tried.get(sk, set()) and not model.is_known_noop(c[1])]
-        if untried and path:  # don't count the start node unless nothing else exists
+        if untried:
             untried.sort(key=lambda c: (model.n_obs[c[1]], ))
-            return path, untried[0]
+        # contact-driven target: mover touches a rarely-contacted class
+        if mover_idents and contacted is not None and untried:
+            members = [o for o in o_list if ident(o) in mover_idents]
+            if members:
+                adj = adjacent_classes(members, o_list)
+                if adj:
+                    cc = min(contacted.get(c, 0) for c in adj)
+                    if contact_best is None or cc < contact_best[0]:
+                        contact_best = (cc, len(path), path, untried[0])
+                        if cc <= min_contact and path:
+                            return path, untried[0]
+        if untried and path and contact_best is None and best is None:
+            best = (path, untried[0])
         if untried and not path and best is None:
-            untried.sort(key=lambda c: (model.n_obs[c[1]], ))
             best = ([], untried[0])
         if len(path) >= max_depth:
             continue
@@ -62,4 +91,6 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
                     g2 = render_move(g2, a, b, bg)
             objs_cache.setdefault(nk, (pred, g2))
             seen.add(nk); q.append((nk, path + [(key, action, data)]))
+    if contact_best is not None and contact_best[2]:
+        return contact_best[2], contact_best[3]
     return best if best else (None, None)

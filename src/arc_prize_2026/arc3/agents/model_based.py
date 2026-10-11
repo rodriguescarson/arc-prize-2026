@@ -7,7 +7,7 @@ from arcengine import FrameData, GameAction, GameState
 
 from ..effects import EffectModel
 from ..perception import Obj, ident, segment, state_key
-from ..planner import plan_to_information
+from ..planner import adjacent_classes, plan_to_information
 from .base import ACTION_BY_ID, BaseAgent
 
 
@@ -29,6 +29,7 @@ class ModelBasedAgent(BaseAgent):
         self.row_changes = np.zeros(64, dtype=np.int32); self.row_steps = 0; self.prev_grid: np.ndarray | None = None
         self.volatile_rows: np.ndarray = np.zeros(64, dtype=bool)
         self.terrain_colours: set[int] = set()
+        self.contacted: dict = {}  # object class -> number of steps the mover group has touched it
 
     def _update_volatility(self, grid: np.ndarray, after_reset: bool) -> None:
         if self.prev_grid is not None and not after_reset:
@@ -88,7 +89,7 @@ class ModelBasedAgent(BaseAgent):
         # level transition bookkeeping
         if latest.levels_completed > self.levels_seen:
             self.levels_seen = latest.levels_completed
-            self.tried = {}; self.plan = []; self.predicted_next = None
+            self.tried = {}; self.plan = []; self.predicted_next = None; self.contacted = {}
             if not self.memory:
                 self.model = EffectModel(); self.objs_cache = {sk: (objs, grid)}
             self.prev = None
@@ -107,10 +108,17 @@ class ModelBasedAgent(BaseAgent):
                     self.plan = []; self.n_replans_on_error += 1
             self.predicted_next = None
 
+        mover_idents = frozenset().union(*[g[0] for k in self.model.moves if (g := self.model.modal_group(k))]) if self.model.moves else frozenset()
+        if mover_idents:
+            members = [o for o in objs if ident(o) in mover_idents]
+            for c in adjacent_classes(members, objs):
+                self.contacted[c] = self.contacted.get(c, 0) + 1
+            for o in objs:
+                self.contacted.setdefault(ident(o), 0)
         keys_for = self._keys_for(latest)
         if not self.plan:
             path, final = plan_to_information(self.model, objs, grid, keys_for, self.tried, self.objs_cache,
-                                              self.max_depth, self.max_nodes)
+                                              self.max_depth, self.max_nodes, mover_idents or None, self.contacted if mover_idents else None)
             if path is not None:
                 self.plan = list(path) + [final[:1] + (final[2], final[3])] if final else list(path)
                 # normalise entries to (key, action, data)
