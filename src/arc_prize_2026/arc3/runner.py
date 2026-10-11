@@ -15,6 +15,7 @@ from arc_agi import Arcade, OperationMode
 from arcengine import FrameData, GameAction, GameState
 
 from ..arc3_score import game_score, total_score
+from .perception import segment, state_key, frame_key
 
 ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_ENVS = ROOT / "data" / "kaggle" / "arc-prize-2026-arc-agi-3" / "environment_files"
@@ -66,7 +67,11 @@ def play_game(arc: Arcade, game_id: str, agent, max_actions: int, time_budget_s:
         prev_levels = latest.levels_completed
         frames.append(fd)
         if log is not None:
-            log.append({"a": action.name, "state": fd.state.value, "lv": fd.levels_completed})
+            g = fd.frame[-1] if fd.frame else None
+            akey = state_key(segment(np.asarray(g))) if g is not None else 0
+            cd = data if action.is_complex() else {}
+            log.append({"a": action.name, "x": cd.get("x"), "y": cd.get("y"), "state": fd.state.value,
+                        "lv": fd.levels_completed, "fk": frame_key(g) if g is not None else 0, "ak": akey})
         if fd.levels_completed > prev_levels:
             # may jump by more than one in principle; charge all actions to the first completed level
             level_actions.append(actions_this_level)
@@ -76,7 +81,8 @@ def play_game(arc: Arcade, game_id: str, agent, max_actions: int, time_budget_s:
         if fd.state is GameState.WIN:
             break
     win_levels = frames[-1].win_levels
-    return {
+    stats = agent.stats() if hasattr(agent, "stats") else None
+    return {"agent_stats": stats,
         "game_id": game_id, "levels_completed": frames[-1].levels_completed, "win_levels": win_levels,
         "level_actions": level_actions, "actions": n_actions, "resets": n_resets,
         "distinct_frames": len(frame_hashes), "final_state": frames[-1].state.value,

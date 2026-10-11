@@ -1,0 +1,577 @@
+[
+ {
+  "game": "ar25",
+  "steps": 1977,
+  "levels": 1,
+  "total_levels": 8,
+  "distinct_frames": 1451,
+  "distinct_abstract": 1451,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.223,
+  "noop_by_action": {
+   "ACTION1": 0.12,
+   "ACTION2": 0.08,
+   "ACTION3": 0.01,
+   "ACTION4": 0.02,
+   "ACTION5": 0.0,
+   "ACTION6": 0.93,
+   "ACTION7": 0.57
+  },
+  "mean_branching": 1.16,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION5",
+   "ACTION6",
+   "ACTION7"
+  ]
+ },
+ {
+  "game": "bp35",
+  "steps": 1969,
+  "levels": 0,
+  "total_levels": 9,
+  "distinct_frames": 1662,
+  "distinct_abstract": 1662,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.0,
+  "noop_by_action": {
+   "ACTION3": 0.0,
+   "ACTION4": 0.0,
+   "ACTION6": 0.0,
+   "ACTION7": 0.0
+  },
+  "mean_branching": 1.04,
+  "actions_available": [
+   "ACTION3",
+   "ACTION4",
+   "ACTION6",
+   "ACTION7"
+  ]
+ },
+ {
+  "game": "cd82",
+  "steps": 1980,
+  "levels": 1,
+  "total_levels": 6,
+  "distinct_frames": 1039,
+  "distinct_abstract": 1039,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.336,
+  "noop_by_action": {
+   "ACTION1": 0.42,
+   "ACTION2": 0.17,
+   "ACTION3": 0.12,
+   "ACTION4": 0.12,
+   "ACTION5": 0.13,
+   "ACTION6": 0.36
+  },
+  "mean_branching": 1.56,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION5",
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "cn04",
+  "steps": 1973,
+  "levels": 0,
+  "total_levels": 6,
+  "distinct_frames": 735,
+  "distinct_abstract": 735,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.194,
+  "noop_by_action": {
+   "ACTION1": 0.19,
+   "ACTION2": 0.24,
+   "ACTION3": 0.15,
+   "ACTION4": 0.25,
+   "ACTION5": 0.25,
+   "ACTION6": 0.19
+  },
+  "mean_branching": 2.04,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION5",
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "dc22",
+  "steps": 1972,
+  "levels": 0,
+  "total_levels": 6,
+  "distinct_frames": 983,
+  "distinct_abstract": 983,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.091,
+  "noop_by_action": {
+   "ACTION1": 0.11,
+   "ACTION2": 0.14,
+   "ACTION3": 0.11,
+   "ACTION4": 0.07,
+   "ACTION6": 0.09
+  },
+  "mean_branching": 1.52,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "ft09",
+  "steps": 1947,
+  "levels": 1,
+  "total_levels": 6,
+  "distinct_frames": 1642,
+  "distinct_abstract": 1642,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.122,
+  "noop_by_action": {
+   "ACTION6": 0.12
+  },
+  "mean_branching": 1.12,
+  "actions_available": [
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "g50t",
+  "steps": 1984,
+  "levels": 0,
+  "total_levels": 7,
+  "distinct_frames": 897,
+  "distinct_abstract": 897,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.208,
+  "noop_by_action": {
+   "ACTION1": 0.33,
+   "ACTION2": 0.16,
+   "ACTION3": 0.37,
+   "ACTION4": 0.16,
+   "ACTION5": 0.17
+  },
+  "mean_branching": 1.99,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION5"
+  ]
+ },
+ {
+  "game": "ka59",
+  "steps": 1980,
+  "levels": 0,
+  "total_levels": 7,
+  "distinct_frames": 1112,
+  "distinct_abstract": 1112,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.287,
+  "noop_by_action": {
+   "ACTION1": 0.04,
+   "ACTION2": 0.05,
+   "ACTION3": 0.05,
+   "ACTION4": 0.06,
+   "ACTION6": 0.36
+  },
+  "mean_branching": 1.57,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "lf52",
+  "steps": 1969,
+  "levels": 0,
+  "total_levels": 10,
+  "distinct_frames": 178,
+  "distinct_abstract": 178,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.0,
+  "noop_by_action": {
+   "ACTION1": 0.0,
+   "ACTION2": 0.0,
+   "ACTION3": 0.0,
+   "ACTION4": 0.0,
+   "ACTION6": 0.0,
+   "ACTION7": 0.0
+  },
+  "mean_branching": 1.13,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION6",
+   "ACTION7"
+  ]
+ },
+ {
+  "game": "lp85",
+  "steps": 1973,
+  "levels": 1,
+  "total_levels": 8,
+  "distinct_frames": 1482,
+  "distinct_abstract": 1482,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.203,
+  "noop_by_action": {
+   "ACTION6": 0.2
+  },
+  "mean_branching": 1.14,
+  "actions_available": [
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "ls20",
+  "steps": 1984,
+  "levels": 0,
+  "total_levels": 7,
+  "distinct_frames": 1109,
+  "distinct_abstract": 1109,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.001,
+  "noop_by_action": {
+   "ACTION1": 0.01,
+   "ACTION2": 0.0,
+   "ACTION3": 0.0,
+   "ACTION4": 0.0
+  },
+  "mean_branching": 1.68,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4"
+  ]
+ },
+ {
+  "game": "m0r0",
+  "steps": 1986,
+  "levels": 0,
+  "total_levels": 6,
+  "distinct_frames": 633,
+  "distinct_abstract": 633,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.534,
+  "noop_by_action": {
+   "ACTION1": 0.12,
+   "ACTION2": 0.18,
+   "ACTION3": 0.13,
+   "ACTION4": 0.18,
+   "ACTION5": 0.56,
+   "ACTION6": 0.58
+  },
+  "mean_branching": 2.0,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION5",
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "r11l",
+  "steps": 1917,
+  "levels": 1,
+  "total_levels": 6,
+  "distinct_frames": 1655,
+  "distinct_abstract": 1655,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.0,
+  "noop_by_action": {
+   "ACTION6": 0.0
+  },
+  "mean_branching": 1.15,
+  "actions_available": [
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "re86",
+  "steps": 1980,
+  "levels": 0,
+  "total_levels": 8,
+  "distinct_frames": 1947,
+  "distinct_abstract": 1947,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.001,
+  "noop_by_action": {
+   "ACTION1": 0.02,
+   "ACTION2": 0.02,
+   "ACTION3": 0.0,
+   "ACTION4": 0.0,
+   "ACTION5": 0.0
+  },
+  "mean_branching": 1.02,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION5"
+  ]
+ },
+ {
+  "game": "s5i5",
+  "steps": 1960,
+  "levels": 0,
+  "total_levels": 8,
+  "distinct_frames": 709,
+  "distinct_abstract": 709,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.0,
+  "noop_by_action": {
+   "ACTION6": 0.0
+  },
+  "mean_branching": 1.25,
+  "actions_available": [
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "sb26",
+  "steps": 1994,
+  "levels": 0,
+  "total_levels": 8,
+  "distinct_frames": 644,
+  "distinct_abstract": 644,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.273,
+  "noop_by_action": {
+   "ACTION5": 0.0,
+   "ACTION6": 0.32,
+   "ACTION7": 1.0
+  },
+  "mean_branching": 2.1,
+  "actions_available": [
+   "ACTION5",
+   "ACTION6",
+   "ACTION7"
+  ]
+ },
+ {
+  "game": "sc25",
+  "steps": 1967,
+  "levels": 0,
+  "total_levels": 6,
+  "distinct_frames": 1487,
+  "distinct_abstract": 1487,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.16,
+  "noop_by_action": {
+   "ACTION1": 0.15,
+   "ACTION2": 0.27,
+   "ACTION3": 0.13,
+   "ACTION4": 0.17,
+   "ACTION6": 0.16
+  },
+  "mean_branching": 1.19,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "sk48",
+  "steps": 1997,
+  "levels": 0,
+  "total_levels": 8,
+  "distinct_frames": 494,
+  "distinct_abstract": 494,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.637,
+  "noop_by_action": {
+   "ACTION1": 0.18,
+   "ACTION2": 0.15,
+   "ACTION3": 0.08,
+   "ACTION4": 0.08,
+   "ACTION6": 1.0,
+   "ACTION7": 0.03
+  },
+  "mean_branching": 1.88,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION6",
+   "ACTION7"
+  ]
+ },
+ {
+  "game": "sp80",
+  "steps": 1935,
+  "levels": 0,
+  "total_levels": 6,
+  "distinct_frames": 287,
+  "distinct_abstract": 287,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.0,
+  "noop_by_action": {
+   "ACTION1": 0.0,
+   "ACTION2": 0.0,
+   "ACTION3": 0.0,
+   "ACTION4": 0.0,
+   "ACTION5": 0.0,
+   "ACTION6": 0.0
+  },
+  "mean_branching": 1.3,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION5",
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "su15",
+  "steps": 1940,
+  "levels": 0,
+  "total_levels": 9,
+  "distinct_frames": 220,
+  "distinct_abstract": 220,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.02,
+  "noop_by_action": {
+   "ACTION6": 0.02,
+   "ACTION7": 1.0
+  },
+  "mean_branching": 1.41,
+  "actions_available": [
+   "ACTION6",
+   "ACTION7"
+  ]
+ },
+ {
+  "game": "tn36",
+  "steps": 1967,
+  "levels": 0,
+  "total_levels": 7,
+  "distinct_frames": 355,
+  "distinct_abstract": 355,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.0,
+  "noop_by_action": {
+   "ACTION6": 0.0
+  },
+  "mean_branching": 1.2,
+  "actions_available": [
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "tr87",
+  "steps": 1984,
+  "levels": 0,
+  "total_levels": 6,
+  "distinct_frames": 1963,
+  "distinct_abstract": 1963,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.0,
+  "noop_by_action": {
+   "ACTION1": 0.0,
+   "ACTION2": 0.0,
+   "ACTION3": 0.0,
+   "ACTION4": 0.0
+  },
+  "mean_branching": 1.01,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4"
+  ]
+ },
+ {
+  "game": "tu93",
+  "steps": 1960,
+  "levels": 0,
+  "total_levels": 9,
+  "distinct_frames": 783,
+  "distinct_abstract": 783,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.0,
+  "noop_by_action": {
+   "ACTION1": 0.0,
+   "ACTION2": 0.0,
+   "ACTION3": 0.0,
+   "ACTION4": 0.0
+  },
+  "mean_branching": 1.83,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4"
+  ]
+ },
+ {
+  "game": "vc33",
+  "steps": 1960,
+  "levels": 0,
+  "total_levels": 7,
+  "distinct_frames": 214,
+  "distinct_abstract": 214,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.0,
+  "noop_by_action": {
+   "ACTION6": 0.0
+  },
+  "mean_branching": 1.22,
+  "actions_available": [
+   "ACTION6"
+  ]
+ },
+ {
+  "game": "wa30",
+  "steps": 1990,
+  "levels": 0,
+  "total_levels": 9,
+  "distinct_frames": 1819,
+  "distinct_abstract": 1819,
+  "abstraction_ratio": 1.0,
+  "noop_frac": 0.041,
+  "noop_by_action": {
+   "ACTION1": 0.03,
+   "ACTION2": 0.03,
+   "ACTION3": 0.03,
+   "ACTION4": 0.03,
+   "ACTION5": 0.64
+  },
+  "mean_branching": 1.1,
+  "actions_available": [
+   "ACTION1",
+   "ACTION2",
+   "ACTION3",
+   "ACTION4",
+   "ACTION5"
+  ]
+ }
+]

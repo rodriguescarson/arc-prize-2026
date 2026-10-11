@@ -1,0 +1,402 @@
+{
+ "agent": "ModelBasedAgent",
+ "agent_kwargs": {},
+ "seed": 0,
+ "max_actions": 300,
+ "time_budget_s": 300.0,
+ "n_games": 5,
+ "total_score": 0.007797,
+ "levels_completed": 1,
+ "total_levels": 35,
+ "games_won": 0,
+ "wall_s": 20.4,
+ "games": [
+  {
+   "agent_stats": {
+    "memory": true,
+    "plans": 178,
+    "plan_steps": 178,
+    "replans_on_error": 0,
+    "fallback_steps": 121,
+    "pred_total": 0,
+    "pred_acc": null,
+    "pred_by_source": {
+     "memo": [
+      0,
+      null
+     ],
+     "model": [
+      0,
+      null
+     ]
+    },
+    "movers": {},
+    "volatile_rows": [],
+    "known_noops": [
+     "('click', 8, 6, 6)",
+     "('click', 2, 2, 2)",
+     "('click', 0, 2, 2)",
+     "('click', 2, 4, 2)",
+     "('click', 8, 2, 2)",
+     "('click', 0, 2, 4)",
+     "('click', 2, 6, 6)",
+     "('click', 4, 30, 30)",
+     "('click', 0, 4, 2)",
+     "('click', 2, 2, 4)",
+     "('click', 0, 6, 2)",
+     "('click', 'lattice')"
+    ]
+   },
+   "game_id": "ft09-0d8bbf25",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 300,
+   "resets": 1,
+   "distinct_frames": 40,
+   "final_state": "NOT_FINISHED",
+   "seconds": 5.22,
+   "baseline_actions": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "plans": 178,
+    "plan_steps": 297,
+    "replans_on_error": 90,
+    "fallback_steps": 0,
+    "pred_total": 290,
+    "pred_acc": 0.69,
+    "pred_by_source": {
+     "memo": [
+      99,
+      1.0
+     ],
+     "model": [
+      191,
+      0.529
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       -5,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       5,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       0,
+       -5
+      ]
+     ],
+     "4": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       0,
+       5
+      ]
+     ]
+    },
+    "volatile_rows": [
+     61,
+     62
+    ],
+    "known_noops": []
+   },
+   "game_id": "ls20-9607627b",
+   "levels_completed": 0,
+   "win_levels": 7,
+   "level_actions": [],
+   "actions": 300,
+   "resets": 3,
+   "distinct_frames": 299,
+   "final_state": "NOT_FINISHED",
+   "seconds": 2.98,
+   "baseline_actions": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "plans": 264,
+    "plan_steps": 297,
+    "replans_on_error": 237,
+    "fallback_steps": 0,
+    "pred_total": 270,
+    "pred_acc": 0.122,
+    "pred_by_source": {
+     "memo": [
+      1,
+      1.0
+     ],
+     "model": [
+      269,
+      0.119
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(7, 1, 1)"
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "2": [
+      [
+       "(7, 1, 1)"
+      ],
+      [
+       1,
+       2
+      ]
+     ],
+     "3": [
+      [
+       "(0, 2, 5)"
+      ],
+      [
+       0,
+       28
+      ]
+     ],
+     "4": [
+      [
+       "(0, 2, 5)"
+      ],
+      [
+       0,
+       -28
+      ]
+     ]
+    },
+    "volatile_rows": [],
+    "known_noops": []
+   },
+   "game_id": "tr87-cd924810",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 300,
+   "resets": 3,
+   "distinct_frames": 297,
+   "final_state": "NOT_FINISHED",
+   "seconds": 3.01,
+   "baseline_actions": [
+    54,
+    58,
+    40,
+    45,
+    71,
+    146
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "plans": 179,
+    "plan_steps": 294,
+    "replans_on_error": 130,
+    "fallback_steps": 0,
+    "pred_total": 278,
+    "pred_acc": 0.532,
+    "pred_by_source": {
+     "memo": [
+      115,
+      1.0
+     ],
+     "model": [
+      163,
+      0.202
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(9, 3, 3)"
+      ],
+      [
+       -6,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(9, 3, 3)"
+      ],
+      [
+       6,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(9, 3, 3)"
+      ],
+      [
+       0,
+       -6
+      ]
+     ],
+     "4": [
+      [
+       "(9, 3, 3)"
+      ],
+      [
+       0,
+       6
+      ]
+     ]
+    },
+    "volatile_rows": [
+     63
+    ],
+    "known_noops": []
+   },
+   "game_id": "tu93-0768757b",
+   "levels_completed": 0,
+   "win_levels": 9,
+   "level_actions": [],
+   "actions": 300,
+   "resets": 6,
+   "distinct_frames": 1246,
+   "final_state": "NOT_FINISHED",
+   "seconds": 3.86,
+   "baseline_actions": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "plans": 207,
+    "plan_steps": 294,
+    "replans_on_error": 28,
+    "fallback_steps": 0,
+    "pred_total": 119,
+    "pred_acc": 0.765,
+    "pred_by_source": {
+     "memo": [
+      87,
+      1.0
+     ],
+     "model": [
+      32,
+      0.125
+     ]
+    },
+    "movers": {
+     "('click', 9, 4, 4)": [
+      [
+       "(14, 6, 2)",
+       "(4, 6, 4)"
+      ],
+      [
+       0,
+       -4
+      ]
+     ]
+    },
+    "volatile_rows": [
+     0
+    ],
+    "known_noops": [
+     "('click', 5, 4, 18)",
+     "('click', 11, 4, 2)",
+     "('click', 5, 4, 24)",
+     "('click', 4, 6, 4)",
+     "('click', 11, 6, 2)",
+     "('click', 'lattice')",
+     "('click', 0, 19, 52)",
+     "('click', 5, 4, 56)",
+     "('click', 0, 16, 12)",
+     "('click', 5, 4, 28)",
+     "('click', 14, 4, 2)",
+     "('click', 5, 4, 14)",
+     "('click', 0, 20, 8)",
+     "('click', 14, 6, 2)",
+     "('click', 0, 19, 56)",
+     "('click', 0, 16, 8)",
+     "('click', 0, 16, 4)",
+     "('click', 0, 16, 16)",
+     "('click', 0, 19, 48)",
+     "('click', 0, 8, 4)",
+     "('click', 0, 20, 12)",
+     "('click', 0, 20, 16)",
+     "('click', 0, 19, 44)"
+    ]
+   },
+   "game_id": "vc33-5430563c",
+   "levels_completed": 1,
+   "win_levels": 7,
+   "level_actions": [
+    67
+   ],
+   "actions": 300,
+   "resets": 6,
+   "distinct_frames": 277,
+   "final_state": "NOT_FINISHED",
+   "seconds": 4.85,
+   "baseline_actions": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ],
+   "score": 0.03898418355981287
+  }
+ ]
+}

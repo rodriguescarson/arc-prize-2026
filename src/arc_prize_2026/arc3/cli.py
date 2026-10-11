@@ -10,7 +10,8 @@ from .runner import ROOT, run, print_summary
 from ..registry import log_run
 
 AGENTS = {"random": ("arc_prize_2026.arc3.agents.random_agent", "RandomAgent"),
-          "explorer": ("arc_prize_2026.arc3.agents.explorer", "ExplorerAgent")}
+          "explorer": ("arc_prize_2026.arc3.agents.explorer", "ExplorerAgent"),
+          "model_based": ("arc_prize_2026.arc3.agents.model_based", "ModelBasedAgent")}
 
 
 def main(argv=None):
