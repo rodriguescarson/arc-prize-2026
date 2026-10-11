@@ -1,0 +1,3221 @@
+{
+ "00576224": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.007
+ },
+ "009d5c81": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.034
+ },
+ "00dbd492": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "03560426": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "05a7bcf2": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.042
+ },
+ "0607ce86": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.048
+ },
+ "0692e18c": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "070dd51e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "08573cc6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "0934a4d8": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.193
+ },
+ "09c534e7": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.041
+ },
+ "0a1d4ef5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.101
+ },
+ "0a2355a6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "0b17323b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "0bb8deee": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.044
+ },
+ "0becf7df": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "0c786b71": {
+  "attempt_hits": [
+   1
+  ],
+  "error": null,
+  "score": 1.0,
+  "seconds": 0.012
+ },
+ "0c9aba6e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "0d87d2a6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "0e671a1a": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "0f63c0b9": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "103eff5b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "11e1fe23": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.009
+ },
+ "12422b43": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "12997ef3": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "12eac192": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "136b0064": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "13713586": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "137f0df0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "140c817e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "14754a24": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.046
+ },
+ "15113be4": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.065
+ },
+ "15663ba9": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "15696249": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "16b78196": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.034
+ },
+ "17b80ad2": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "17cae0c1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "18419cfa": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "184a9768": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.035
+ },
+ "195ba7dc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "1990f7a8": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "19bb5feb": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "1a2e2828": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.031
+ },
+ "1a6449f1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.046
+ },
+ "1acc24af": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "1c02dbbe": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.028
+ },
+ "1c0d0a4b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "1c56ad9f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.028
+ },
+ "1d0a4b61": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.082
+ },
+ "1d398264": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "1da012fc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "1e81d6f9": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "1e97544e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.067
+ },
+ "2037f2c7": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.038
+ },
+ "2072aba6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "20818e16": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "20981f0e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "212895b5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "21f83797": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.01
+ },
+ "22a4bbc2": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "25094a63": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.088
+ },
+ "2546ccf6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "256b0a75": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "2685904e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.031
+ },
+ "2697da3f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "2753e76c": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "27a77e38": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "27f8ce4f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "281123b4": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.032
+ },
+ "292dd178": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "29700607": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "2a5f8217": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "2b01abd0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "2c0b0aff": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.061
+ },
+ "2c737e39": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "2f0c5170": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "310f3251": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "3194b014": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.052
+ },
+ "319f2597": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.078
+ },
+ "31adaf00": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "31d5ba1a": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "32e9702f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.01
+ },
+ "332efdb3": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.009
+ },
+ "3391f8c0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "33b52de3": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "3490cc26": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.034
+ },
+ "34b99a2b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "351d6448": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "358ba94e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.035
+ },
+ "37d3e8b2": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "3979b1a8": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.009
+ },
+ "3a301edc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "3b4c2228": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "3d31c5b3": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.033
+ },
+ "3ed85e70": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.058
+ },
+ "3ee1011a": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "3f23242b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.009
+ },
+ "40f6cd08": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.057
+ },
+ "414297c0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.027
+ },
+ "423a55dc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "42918530": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.045
+ },
+ "42a15761": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "4364c1c4": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "456873bc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "45737921": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "45bbe264": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "477d2879": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "47996f11": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.182
+ },
+ "48131b3c": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.011
+ },
+ "4852f2fa": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "48f8583b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "4aab4007": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.137
+ },
+ "4acc7107": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "4b6b68e5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "4c177718": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.03
+ },
+ "4cd1b7b2": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.011
+ },
+ "4e45f183": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.037
+ },
+ "4e469f39": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "4f537728": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.027
+ },
+ "4ff4c9da": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.048
+ },
+ "505fff84": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.03
+ },
+ "506d28a5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "50a16a69": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.028
+ },
+ "50aad11f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "50f325b5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.061
+ },
+ "516b51b7": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "5207a7b5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "5289ad53": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "52fd389e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.054
+ },
+ "54db823b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.084
+ },
+ "55059096": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "551d5bf1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.038
+ },
+ "55783887": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.028
+ },
+ "575b1a71": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "5783df64": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "5833af48": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "58743b76": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "58e15b12": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "59341089": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.011
+ },
+ "5a5a2103": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "5af49b42": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "5b526a93": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "5b692c0f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "5b6cbef5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "5d2a5c43": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "5ffb2104": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "604001fa": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "60a26a3e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "60c09cac": {
+  "attempt_hits": [
+   1
+  ],
+  "error": null,
+  "score": 1.0,
+  "seconds": 0.008
+ },
+ "626c0bcc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "62ab2642": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "62b74c02": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.011
+ },
+ "639f5a19": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "642248e4": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "642d658d": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.051
+ },
+ "64a7c07e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "66e6c45b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.006
+ },
+ "66f2d22f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "67636eac": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "67b4a34d": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.046
+ },
+ "67c52801": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "68b67ca3": {
+  "attempt_hits": [
+   1
+  ],
+  "error": null,
+  "score": 1.0,
+  "seconds": 0.011
+ },
+ "692cd3b6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "695367ec": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.007
+ },
+ "696d4842": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "69889d6e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "6a11f6da": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.028
+ },
+ "6ad5bdfd": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "6df30ad6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "6ea4a07e": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "6f473927": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "7039b2d7": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.031
+ },
+ "705a3229": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "712bf12e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "72207abc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.011
+ },
+ "72a961c9": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "73182012": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "73c3b0d8": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "73ccf9c2": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "759f3fd3": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "762cd429": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "770cc55f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "782b5218": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "79369cc6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.041
+ },
+ "7953d61e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "79fb03f4": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.032
+ },
+ "7bb29440": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.054
+ },
+ "7c8af763": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "7c9b52a0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "7d18a6fb": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "7d1f7ee8": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.037
+ },
+ "7d419a02": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "7e02026e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "7ee1c6ea": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "817e6c09": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "81c0276b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "833dafe3": {
+  "attempt_hits": [
+   1
+  ],
+  "error": null,
+  "score": 1.0,
+  "seconds": 0.008
+ },
+ "845d6e51": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "84db8fc4": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.031
+ },
+ "84f2aca1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "8597cfd7": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "85b81ff1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.033
+ },
+ "85fa5666": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "8719f442": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "88207623": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "891232d6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.039
+ },
+ "896d5239": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.03
+ },
+ "8a371977": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.045
+ },
+ "8b28cd80": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "8ba14f53": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "8cb8642d": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "8dae5dfc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.041
+ },
+ "8e2edd66": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.011
+ },
+ "8ee62060": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "8fbca751": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "90347967": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.011
+ },
+ "903d1b4a": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.054
+ },
+ "9110e3c5": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.033
+ },
+ "917bccba": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "929ab4e9": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.116
+ },
+ "92e50de0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.051
+ },
+ "9356391f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "93b4f4b3": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "93c31fbe": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "94133066": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.03
+ },
+ "94414823": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "94be5b80": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "95a58926": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.038
+ },
+ "963f59bc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "96a8c0cd": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "97239e3d": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.03
+ },
+ "9772c176": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "981571dc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.18
+ },
+ "992798f6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "99306f82": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "9a4bb226": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "9b2a60aa": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "9b365c51": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "9b4c17c4": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.032
+ },
+ "9bebae7a": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "9c1e755f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "9c56f360": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "9caba7c3": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.038
+ },
+ "9ddd00f0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.01
+ },
+ "9def23fe": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "9f27f097": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "a04b2602": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.031
+ },
+ "a096bf4d": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.044
+ },
+ "a3f84088": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "a406ac07": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "a57f2f04": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "a59b95c0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "a680ac02": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "a8610ef7": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "a934301b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "aa18de87": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "aa300dc3": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "aa4ec2a5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.032
+ },
+ "aab50785": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.052
+ },
+ "ac0c5833": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "ac2e8ecf": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "ac3e2b04": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "ac605cbb": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "ad7e01d0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.011
+ },
+ "ae58858e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "aee291af": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.027
+ },
+ "af22c60d": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.157
+ },
+ "af24b4cc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "b0722778": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "b0f4d537": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.027
+ },
+ "b15fca0b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "b1fc8b8e": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "b20f7c8b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.039
+ },
+ "b457fec5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "b4a43f3b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "b7999b51": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "b7cb93ac": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "b7f8a4d8": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.056
+ },
+ "b7fb29bc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "b942fd60": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "b9630600": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.045
+ },
+ "ba9d41b8": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "baf41dbf": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "bb52a14b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.033
+ },
+ "bbb1b8b6": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.027
+ },
+ "bc4146bd": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "bcb3040b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "bd14c3bf": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "be03b35f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.01
+ },
+ "bf32578f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "bf699163": {
+  "attempt_hits": [
+   1
+  ],
+  "error": null,
+  "score": 1.0,
+  "seconds": 0.015
+ },
+ "bf89d739": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "c074846d": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "c1990cce": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.008
+ },
+ "c3202e5a": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.056
+ },
+ "c35c1b4c": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "c48954c1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "c62e2108": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "c64f1187": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "c658a4bd": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "c663677b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.106
+ },
+ "c6e1b8da": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.031
+ },
+ "c7d4e6ad": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.01
+ },
+ "c87289bb": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "c8b7cc0f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "c92b942c": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "c97c0139": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "ca8de6ea": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.01
+ },
+ "ca8f78db": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.095
+ },
+ "cad67732": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "cb227835": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "ccd554ac": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "cd3c21df": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "ce039d91": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "ce8d95cc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "cf133acc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "cfb2ce5a": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "d017b73f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "d19f7514": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "d282b262": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "d2acf2cb": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "d304284e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "d37a1ef5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "d47aa2ff": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "d492a647": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "d4b1c2b1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "d4c90558": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.035
+ },
+ "d56f2372": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "d5c634a2": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "d931c21c": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "d94c3b52": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.037
+ },
+ "da2b0fe3": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "da515329": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "dc2aa30b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "dc2e9a9d": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "dd2401ed": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "de493100": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.17
+ },
+ "df8cc377": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "e0fb7511": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "e133d23d": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "e1baa8a4": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.039
+ },
+ "e1d2900e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.029
+ },
+ "e2092e0c": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.038
+ },
+ "e21a174a": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "e345f17b": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "e4075551": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "e41c6fd3": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "e57337a4": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ },
+ "e5790162": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "e5c44e8f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "e619ca6e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.027
+ },
+ "e633a9e5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.008
+ },
+ "e66aafb8": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.153
+ },
+ "e681b708": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.037
+ },
+ "e69241bd": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "e6de6e8f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.01
+ },
+ "e74e1818": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "e760a62e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.047
+ },
+ "e7639916": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "e78887d1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "e7a25a18": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "e7b06bea": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.023
+ },
+ "e7dd8335": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.014
+ },
+ "e872b94a": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "e88171ec": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.034
+ },
+ "e95e3d8e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.072
+ },
+ "e99362f0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.041
+ },
+ "e9ac8c9e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "e9b4f6fc": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.026
+ },
+ "e9bb6954": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.031
+ },
+ "e9c9d9a1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.025
+ },
+ "ea959feb": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.101
+ },
+ "ea9794b1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.041
+ },
+ "ecaa0ec1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "ed74f2f2": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.022
+ },
+ "ed98d772": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "ef26cbf6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "f0afb749": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.011
+ },
+ "f0df5ff0": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.038
+ },
+ "f21745ec": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.031
+ },
+ "f3b10344": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.046
+ },
+ "f3cdc58f": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "f3e62deb": {
+  "attempt_hits": [
+   0,
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.024
+ },
+ "f4081712": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.13
+ },
+ "f45f5ca7": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.013
+ },
+ "f5aa3634": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "f5c89df1": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "f823c43c": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "f83cb3f6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.019
+ },
+ "f8be4b64": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.028
+ },
+ "f9a67cb5": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.018
+ },
+ "f9d67f8b": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.196
+ },
+ "fafd9572": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "fb791726": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.012
+ },
+ "fc754716": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.015
+ },
+ "fd096ab6": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.017
+ },
+ "fd4b2b02": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.02
+ },
+ "fe9372f3": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.008
+ },
+ "fea12743": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.021
+ },
+ "ff72ca3e": {
+  "attempt_hits": [
+   0
+  ],
+  "error": null,
+  "score": 0.0,
+  "seconds": 0.016
+ }
+}

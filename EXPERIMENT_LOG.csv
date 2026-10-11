@@ -1,3 +1,6 @@
 run_id,timestamp_ist,hypothesis,method,commit,config,dataset_split,n_tasks,score,tasks_solved,runtime_s,outcome,interpretation
 trivial__ARC-AGI-2-evaluation,2026-10-12 04:32,pipeline-validation baseline,trivial,nogit-dirty,{},ARC-AGI-2/evaluation,120,0.000000,0,0.0,baseline,
 trivial__ARC-AGI-2-training,2026-10-12 04:32,pipeline-validation baseline,trivial,nogit-dirty,{},ARC-AGI-2/training,200,0.002500,0,0.0,baseline,
+dsl_search__ARC-AGI-2-evaluation,2026-10-12 04:36,CPU DSL-search floor baseline,dsl_search,2028c3e-dirty,{},ARC-AGI-2/evaluation,120,0.000000,0,3.8,baseline,
+dsl_search__ARC-AGI-evaluation,2026-10-12 04:36,CPU DSL-search floor baseline,dsl_search,2028c3e-dirty,{},ARC-AGI/evaluation,400,0.012500,5,11.2,baseline,
+dsl_search__ARC-AGI-2-training,2026-10-12 04:36,CPU DSL-search floor baseline,dsl_search,2028c3e-dirty,{},ARC-AGI-2/training,1000,0.037500,37,21.0,baseline,

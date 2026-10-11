@@ -8,6 +8,7 @@ from pathlib import Path
 from .data import load_task_dir, load_kaggle_split
 from .registry import log_run
 from .runner import run_solver
+from .diagnostics import diagnose_run
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -41,6 +42,8 @@ def main(argv=None):
     out_dir = ROOT / "experiments" / run_id
     sub, report, meta = run_solver(a.solver, tasks, out_dir, solver_kwargs=kwargs)
     print(json.dumps(meta, indent=1))
+    if report:
+        print('diagnostics:', json.dumps(diagnose_run(out_dir, tasks)))
     if report and not a.no_log:
         log_run(
             run_id=run_id, hypothesis=a.hypothesis, method=a.solver, config=kwargs,

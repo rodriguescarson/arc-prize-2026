@@ -21,3 +21,5 @@ experiments/**/predictions*.json
 __pycache__/
 *.pyc
 .DS_Store
+.venv-arc3/
+data/arc3_recordings/

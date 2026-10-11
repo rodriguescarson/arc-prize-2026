@@ -1,0 +1,16 @@
+{
+ "solver": "dsl_search",
+ "solver_kwargs": {},
+ "n_tasks": 400,
+ "runtime_s": 11.15,
+ "errors": 0,
+ "summary": {
+  "score": 0.0125,
+  "tasks": 400,
+  "tasks_fully_solved": 5,
+  "test_outputs": 419,
+  "test_output_rate": 0.011933,
+  "attempt1_hits": 5,
+  "attempt2_hits": 0
+ }
+}
