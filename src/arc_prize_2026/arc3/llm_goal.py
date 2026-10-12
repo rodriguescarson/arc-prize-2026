@@ -187,7 +187,10 @@ class ChatProposer:
 
 
 class JevProposer:
-    """OpenRouter Decisions API ('choice' question): per-option probabilities, pick the arg-max; cached."""
+    """OpenRouter Decisions API (schema read from the Jev tutorial, 2026-10-12): body = {model, state: {...},
+    questions: {name: {type: "choice", instructions, criteria: {key: description}}}}; answer at
+    answers[name] with `choice`, `probabilities` {key: p}, `confidence`; `usage.cost` in USD. Picks the arg-max;
+    'explore' is one of the criteria so the model can decline a goal. Cached on disk."""
 
     def __init__(self, model: str = "typesafe/jev-1.13", timeout: float = 90.0, min_prob: float = 0.0):
         import requests
@@ -197,7 +200,12 @@ class JevProposer:
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
     def choose(self, prompt: str, options: list[str]) -> tuple[int | None, dict]:
-        body = {"model": self.model, "input": prompt, "question": {"type": "choice", "options": options}}
+        summary = prompt.split("\n\nWhich single goal")[0]
+        criteria = {f"g{i + 1}": o for i, o in enumerate(options)}
+        body = {"model": self.model, "state": {"level": summary},
+                "questions": {"goal": {"type": "choice",
+                                       "instructions": "Which single goal is most likely what this level asks the player to achieve? Choose 'explore' only if none of the goals is plausible.",
+                                       "criteria": criteria}}}
         cp = _cache_path({"kind": "decision", **body})
         if cp.exists():
             data = json.loads(cp.read_text()); self.cache_hits += 1
@@ -208,23 +216,27 @@ class JevProposer:
                     r = self._requests.post("https://openrouter.ai/api/alpha/decisions", json=body, timeout=self.timeout,
                                             headers={"Authorization": f"Bearer {_api_key()}", "Content-Type": "application/json"})
                     data = r.json()
-                    if "error" not in data:
+                    if "answers" in data:
                         break
                 except Exception as e:  # noqa: BLE001
                     data = {"error": str(e)}
                 time.sleep(3 * (attempt + 1))
             self.calls += 1
-            if data is None or "error" in data:
+            if data is None or "answers" not in data:
                 self.failures += 1
                 return None, {"error": (data or {}).get("error")}
             cp.write_text(json.dumps(data))
-        probs = _extract_probs(data, options)
+        ans = data["answers"].get("goal", {})
+        self.cost_usd += float((data.get("usage") or {}).get("cost", 0) or 0)
+        probs = ans.get("probabilities") or {}
+        keys = list(criteria)
         if not probs:
-            return None, {"raw": str(data)[:300]}
-        best = max(range(len(options)), key=lambda i: probs[i])
-        if probs[best] < self.min_prob or best == len(options) - 1:
-            return None, {"probs": probs}
-        return best, {"probs": probs}
+            return None, {"raw": str(ans)[:300]}
+        best_key = max(keys, key=lambda k: float(probs.get(k, 0.0)))
+        best = keys.index(best_key)
+        if float(probs.get(best_key, 0.0)) < self.min_prob or best == len(options) - 1:
+            return None, {"probs": probs, "confidence": ans.get("confidence")}
+        return best, {"probs": probs, "confidence": ans.get("confidence"), "choice": ans.get("choice")}
 
 
 def _extract_probs(data: dict, options: list[str]) -> list[float] | None:

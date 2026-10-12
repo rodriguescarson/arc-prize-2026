@@ -1,0 +1,6 @@
+INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and max_open_for=3 days, 0:00:00
+2026-10-12 17:49:50 | INFO | Created new scorecard: 56a1d36b-a85a-4e0a-aa23-69542b1c3e8f
+2026-10-12 17:49:50 | INFO | Successfully loaded game class Ar25 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/ar25/0c556536/ar25.py
+2026-10-12 17:50:14 | INFO | Closed scorecard: 56a1d36b-a85a-4e0a-aa23-69542b1c3e8f
+2026-10-12 17:50:14 | INFO | Created new scorecard: 7c79c7f2-b700-45c1-a813-2421b0d1b3e6
+2026-10-12 17:50:14 | INFO | Successfully loaded game class Bp35 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/bp35/0a0ad940/bp35.py
