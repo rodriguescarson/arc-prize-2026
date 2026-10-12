@@ -15,7 +15,7 @@ from .base import ACTION_BY_ID, BaseAgent
 class ModelBasedAgent(BaseAgent):
     def __init__(self, game_id: str, seed: int = 0, memory: bool = True, max_depth: int = 12, max_nodes: int = 1500,
                  click_lattice: int = 8, contact: bool = True, goals: bool = True, click_model: bool = False,
-                 llm_goals: str | None = None, llm_every: int = 300, llm_patience: int = 50, greedy: bool = False, **kwargs):
+                 llm_goals: str | None = None, llm_every: int = 300, llm_patience: int = 50, greedy: bool = False, greedy_cap: int = 0, **kwargs):
         super().__init__(game_id, seed)
         self.memory = memory
         self.contact = contact
@@ -48,6 +48,7 @@ class ModelBasedAgent(BaseAgent):
         self._plan_is_goal = False      # the current plan reaches a goal predicate (vs a curiosity target)
         self.level_actions_n = 0        # actions taken on the current level
         self.greedy = greedy; self.n_greedy = 0   # E20: step toward a touch-goal target when no plan exists
+        self.greedy_cap = greedy_cap; self.n_greedy_goal = 0  # E20b: greedy steps spent on the current proposed goal (0 = no cap)
         self.transition_note = None     # text describing what the last transition changed
         self.plan: list = []
         self.predicted_next: int | None = None
@@ -262,6 +263,8 @@ class ModelBasedAgent(BaseAgent):
                 g = self._greedy_step(objs, grid, sk, mover_idents, safe)
                 if g is not None:  # a touch goal is active and one learned move brings the mover closer: take it
                     self.plan = [(g[0], g[2], g[3])]; self.n_greedy += 1
+                    if self.llm_goal is not None:
+                        self.n_greedy_goal += 1
         if self.plan:
             key, action, data = self.plan.pop(0)
             self.n_plan_steps += 1
@@ -343,6 +346,11 @@ class ModelBasedAgent(BaseAgent):
         from ..llm_goal import build_prompt, goal_menu, summarise_level
         if self.goals and self.goal_memory.active(objs):
             return  # an inferred goal exists: the proposer is not consulted
+        if self.llm_goal is not None and self.greedy_cap and self.n_greedy_goal >= self.greedy_cap and not self.llm_goal.holds(objs, mover_idents):
+            # E20b: walked toward it for `greedy_cap` steps without reaching it: not reachable by walking; ask again
+            self.llm_excluded.add(str(self.llm_goal)); self.llm_rejected += 1
+            self.llm_log.append({"level": self.levels_seen, "n": self.level_actions_n, "rejected": str(self.llm_goal), "why": "greedy_cap"})
+            self.llm_goal = None; self.llm_goal_reached_at = None; self.n_greedy_goal = 0
         if self.llm_goal is not None:
             if self.llm_goal.holds(objs, mover_idents):
                 if self.llm_goal_reached_at is None:
@@ -369,7 +377,7 @@ class ModelBasedAgent(BaseAgent):
         self.llm_asks += 1
         entry = {"level": self.levels_seen, "n": self.level_actions_n, "n_options": len(options), "chosen": None}
         if idx is not None and 0 <= idx < len(menu):
-            self.llm_goal = menu[idx][0]; self.llm_goal_reached_at = None; self.llm_accepted += 1
+            self.llm_goal = menu[idx][0]; self.llm_goal_reached_at = None; self.llm_accepted += 1; self.n_greedy_goal = 0
             entry["chosen"] = str(self.llm_goal); entry["desc"] = menu[idx][1]
             self.plan = []  # replan toward the new goal
         self.llm_log.append(entry)
@@ -378,7 +386,7 @@ class ModelBasedAgent(BaseAgent):
         return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "click_model": self.click_model, "sequences": self.sequences, "seq_steps": self.n_seq_steps,
                 "llm": (None if self.proposer is None else {"model": self.proposer.name, "asks": self.llm_asks, "accepted": self.llm_accepted, "rejected": self.llm_rejected,
                                                             "calls": getattr(self.proposer, "calls", 0), "cache_hits": getattr(self.proposer, "cache_hits", 0), "cost_usd": round(getattr(self.proposer, "cost_usd", 0.0), 5), "log": self.llm_log[-12:]}),
-                "greedy_steps": self.n_greedy, "learned_seq": [str(c) for c in (self.learned_seq or [])], "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
+                "greedy_steps": self.n_greedy, "greedy_cap": self.greedy_cap, "learned_seq": [str(c) for c in (self.learned_seq or [])], "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
                 "surviving_goals": sorted(map(str, self.goal_memory.surviving)) if self.goal_memory.surviving else None, "plan_steps": self.n_plan_steps,
                 "replans_on_error": self.n_replans_on_error, "fallback_steps": self.n_fallback,
                 "pred_total": self.model.n_pred, "pred_acc": None if self.model.accuracy is None else round(self.model.accuracy, 3),
