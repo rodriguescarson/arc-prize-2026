@@ -84,6 +84,37 @@ def fig_learning(run: dict, out: Path):
     fig.tight_layout(); fig.savefig(out / "fig4_learning_curve.png", dpi=160); plt.close(fig)
 
 
+def fig_budget(run4000: dict, out: Path, kaggle_speed: float = 4.5, n_hidden: int = 110, budget_s: float = 30600.0):
+    """E17: levels completed as a function of the per-game action budget (cumulative level-action counts of one
+    4,000-action run) with the rerun's extrapolated CPU use (110 games x mean seconds x Kaggle slowdown)."""
+    budgets = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000]
+    levels, cpu = [], []
+    for b in budgets:
+        n = 0; secs = 0.0
+        for g in run4000["games"]:
+            c = 0
+            for x in g["level_actions"]:
+                if x is None:
+                    break
+                c += x
+                n += int(c <= b)
+            secs += g["seconds"] / max(1, g["actions"]) * min(b, g["actions"])
+        levels.append(n); cpu.append(100 * secs / len(run4000["games"]) * n_hidden * kaggle_speed / budget_s)
+    fig, ax = plt.subplots(figsize=(6, 4))
+    ax.plot(budgets, levels, marker="o", color=C1, label="levels completed (public 25)")
+    ax.set_xlabel("actions per game (cap)"); ax.set_ylabel("levels completed", color=C1)
+    ax.set_ylim(0, max(levels) + 3)
+    ax2 = ax.twinx()
+    ax2.plot(budgets, cpu, marker="s", ls="--", color=ACC, label="extrapolated rerun CPU (% of 8.5 h, upper bound)")
+    ax2.axhline(60, color=C3, ls=":", lw=1); ax2.set_ylabel("% of rerun budget", color=ACC)
+    ax2.set_ylim(0, max(cpu) * 1.15)
+    ax.axvline(3000, color=C2, lw=1, ls="-.")
+    ax.set_title("E17: coverage vs action budget; cap set to 3,000")
+    h1, l1 = ax.get_legend_handles_labels(); h2, l2 = ax2.get_legend_handles_labels()
+    ax.legend(h1 + h2, l1 + l2, loc="lower right", fontsize=8)
+    fig.tight_layout(); fig.savefig(out / "fig5_budget.png", dpi=160); plt.close(fig)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--ladder", nargs="+", required=True, help="name=path/to/results.json ...")
