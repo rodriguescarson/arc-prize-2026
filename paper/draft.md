@@ -53,18 +53,17 @@ exactly 1.0 on 9 [measured: v4 agent_stats, atlas table]; the rest expose hidden
 on a hidden modulo) or animation-length state, where A1 fails and our two detectors recover it.
 **Assumption A2 (factored, rigid dynamics).** Simple actions displace a rigid group of objects by a fixed
 vector unless blocked by a colour in the swept path. Measured: the generative model is ≥ 0.9 accurate on
-sp80 and su15 and ≥ 0.6 on dc22, g50t, m0r0, ls20 [measured: fig3]; it fails on click-driven games where
+sp80 and su15 and ≥ 0.6 on dc22, g50t, m0r0, ls20 [measured: fig3]; it fails on click-driven games whose
 effects are not displacements (ft09, r11l, s5i5, tn36, vc33 rely on memoisation).
 **Bound.** Under A1 a model-free explorer pays again for every revisited transition; a planner pays at
 most once per unknown (state, action) pair, so real actions ≤ |S_reach|·|A|. The explorer reaches a
 median 983 abstract states in 2000 actions with |A| = 5 [measured: atlas], so a blind sweep cannot cover a
-level inside the budget; the planner resolves only the pairs it chooses, and contact-driven targets cut
+level in budget; the planner resolves only the pairs it chooses, and contact-driven targets cut
 that further.
 **Transfer.** Levels share dynamics and goal by design and the score weights level k by k, so learning
 pays on later levels: memory ON vs OFF leaves level-1 cost identical (same code path) and lowers
-later-level cost [measured: E3, tu93 10.4→4.8, vc33 6.1→2.6 actions/human]. How often a transferable goal exists at
-all is measurable in the 340 released human replays: a template-class predicate consistent across levels
-exists on 6 of 25 games and in 27.9% of multi-level sessions [measured: E11, 73/262], which bounds the
+later-level cost [measured: E3, tu93 10.4→4.8, vc33 6.1→2.6 actions/human]. In the 340 released human replays, a
+template-class predicate consistent across levels exists on 6 of 25 games and in 27.9% of multi-level sessions [measured: E11, 73/262], which bounds the
 transfer term. Where A2 fails or the goal lies outside the template class, the agent degrades to
 memoised exploration, which we report.
 
@@ -89,16 +88,16 @@ The explorer and the model-based agent share perception, so the table isolates t
 planning. Contact-driven curiosity raises coverage and efficiency (11 vs 10 games; median level-1 cost
 8.6× vs 21.2× human). Memory changes nothing on level 1 by construction and is the only setting that
 reaches a second level, at falling per-level cost; fig. 3 gives per-game prediction accuracy. Three seeds
-of the final configuration score 0.280, 0.276 and 0.278 and differ on 4 of 25 games [measured: E6], so
+of the final configuration score 0.280, 0.276 and 0.278 and differ on 4 of 25 games [measured: E6];
 differences under 2 games or 0.02 points are noise. On the hidden public half (55 unseen games) the
 memory-on agent scores **0.15** [measured: submission 57095368, kernel arc3-model-based-explorer-mem1-c1
 v3]; the leading LLM harness scores 62.96 and most entries 0. The memory-off twin follows for the paired
-hidden-set test (P5).
+hidden-set test.
 
 ## 6. Failure analysis
-Per game [measured: `failure_table.py` on arc3_E3_v7_bars_mem1_a2000_s0]: no game dies in a loop (at most
-4.3% of actions end in a reset, tu93) or revisits a few states (every game sees ≥ 16% distinct frames),
-so exploration itself is not what stalls. Five games are *model-blind* (generative accuracy < 0.3: bp35,
+Per game [measured: `failure_table.py` on arc3_E3_v7_bars_mem1_a2000_s0]: no game dies in a loop (resets
+≤ 4.3% of actions) or cycles through a few states (≥ 16% distinct frames), so exploration itself is not
+what stalls. Five games are *model-blind* (generative accuracy < 0.3: bp35,
 cd82, ka59, sk48, tn36), where effects are memorised but never predicted; the other 20 are *no-progress*:
 the planner keeps finding untried transitions (median 1,973 of 2,000 steps planned) without crossing a
 level boundary, which is a goal problem, not a search problem. Where a first level is reached its cost
@@ -116,10 +115,9 @@ pre-registered extensions failed their gates: a human-habit exploration prior (p
 and class-level click-effect prediction (≥ 0.6 accuracy on 6 of 13 click games, coverage unchanged, lp85
 slowed from 15 to 774 actions): click effects are learnable, but those games' goals are click sequences
 outside our template class.
-**Reproducibility.** CPU only, no training set, no per-game code. `uv sync && uv run arc3 --agent
-model_based --max-actions 2000` reproduces every public-25 number from `experiments/`; each run row in
-`EXPERIMENT_LOG.csv` carries its commit; the submitted notebook embeds `my_agent.py` whose sha256 and
-commit are in `submission/kaggle/BUILD.json`.
+**Reproducibility.** CPU only, no training set, no per-game code. One command (`uv run arc3 --agent
+model_based --max-actions 2000`) reproduces every public-25 number; each `EXPERIMENT_LOG.csv` row carries
+its commit; the submitted notebook embeds `my_agent.py` with its sha256 and commit in `BUILD.json`.
 **Conclusion.** Learning what actions do, planning in that model and keeping it across levels turns a
 blind explorer into an agent that clears first levels on 12 of 25 public games and plays later levels
 several times more efficiently, with no language model. The measured failures (hidden counters, non-rigid
