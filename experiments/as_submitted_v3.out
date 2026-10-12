@@ -61,3 +61,23 @@ s5i5-18d95033    levels 0 la [] exceptions  1465/1500 score 0.000 3.6s
 2026-10-12 15:15:37 | INFO | Closed scorecard: b9a97dbe-2f1c-41e5-9b7d-bae07d737921
 2026-10-12 15:15:37 | INFO | Created new scorecard: e93a89e1-4622-446d-9de3-4b1b1cf01db4
 2026-10-12 15:15:37 | INFO | Successfully loaded game class Sb26 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sb26/7fbdac44/sb26.py
+sb26-7fbdac44    levels 0 la [] exceptions  1236/1500 score 0.000 7.4s
+2026-10-12 15:15:44 | INFO | Closed scorecard: e93a89e1-4622-446d-9de3-4b1b1cf01db4
+2026-10-12 15:15:44 | INFO | Created new scorecard: 40a72a7c-565e-47ed-a0fa-a08087a5b5ee
+2026-10-12 15:15:44 | INFO | Successfully loaded game class Sc25 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sc25/635fd71a/sc25.py
+sc25-635fd71a    levels 0 la [] exceptions  1338/1500 score 0.000 3.9s
+2026-10-12 15:15:48 | INFO | Closed scorecard: 40a72a7c-565e-47ed-a0fa-a08087a5b5ee
+2026-10-12 15:15:48 | INFO | Created new scorecard: a30356a3-f579-4dbe-a6af-35474f3cf186
+2026-10-12 15:15:48 | INFO | Successfully loaded game class Sk48 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sk48/d8078629/sk48.py
+sk48-d8078629    levels 0 la [] exceptions  1493/1500 score 0.000 3.7s
+2026-10-12 15:15:52 | INFO | Closed scorecard: a30356a3-f579-4dbe-a6af-35474f3cf186
+2026-10-12 15:15:52 | INFO | Created new scorecard: 4d0a9bba-3821-431c-a2f9-2ba4e4284885
+2026-10-12 15:15:52 | INFO | Successfully loaded game class Sp80 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sp80/589a99af/sp80.py
+sp80-589a99af    levels 0 la [] exceptions  1448/1500 score 0.000 3.4s
+2026-10-12 15:15:55 | INFO | Closed scorecard: 4d0a9bba-3821-431c-a2f9-2ba4e4284885
+2026-10-12 15:15:55 | INFO | Created new scorecard: e46d842f-4573-488e-b9e0-cfe550afcb04
+2026-10-12 15:15:55 | INFO | Successfully loaded game class Su15 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/su15/1944f8ab/su15.py
+su15-1944f8ab    levels 0 la [] exceptions  1430/1500 score 0.000 5.1s
+2026-10-12 15:16:00 | INFO | Closed scorecard: e46d842f-4573-488e-b9e0-cfe550afcb04
+2026-10-12 15:16:00 | INFO | Created new scorecard: 0a8fe6c5-4f17-4326-9057-c8f28cdf07e3
+2026-10-12 15:16:00 | INFO | Successfully loaded game class Tn36 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/tn36/ef4dde99/tn36.py
