@@ -1,0 +1,894 @@
+{
+ "sk48": {
+  "sessions": 14,
+  "won": 7,
+  "transitions": 81,
+  "covered": 81,
+  "kinds": {
+   "aligned": 81,
+   "appeared": 81,
+   "count": 43,
+   "inside": 81,
+   "overlap": 81,
+   "touch2": 81,
+   "gone": 27,
+   "same_colour_all": 31,
+   "count_colour": 10,
+   "touch": 38
+  },
+  "first_actions": {
+   "4": 34,
+   "1": 26,
+   "6": 7,
+   "3": 3
+  },
+  "multi": 13,
+  "consistent": 13,
+  "surv_sizes": [
+   3,
+   7,
+   10,
+   3,
+   7,
+   3,
+   3,
+   3,
+   3,
+   3,
+   11,
+   3,
+   11
+  ],
+  "surv_examples": {
+   "inside((0, 2, 2), (8, 4, 4))": 10,
+   "overlap((0, 2, 2), (8, 4, 4))": 8,
+   "touch2((0, 2, 2), (8, 4, 4))": 8,
+   "aligned((0, 2, 2), (14, 4, 4))": 5,
+   "aligned((0, 2, 2), (8, 4, 4))": 3,
+   "aligned((0, 2, 2), (9, 4, 4))": 2,
+   "appeared((0, 2, 2))": 2,
+   "aligned((0, 2, 2), (0, 4, 4))": 3,
+   "aligned((0, 2, 2), (6, 2, 2))": 3,
+   "aligned((0, 2, 2), (6, 6, 6))": 3,
+   "aligned((0, 2, 2), (1, 1, 1))": 2
+  }
+ },
+ "tn36": {
+  "sessions": 14,
+  "won": 6,
+  "transitions": 61,
+  "covered": 61,
+  "kinds": {
+   "gone": 16,
+   "gone_colour": 10,
+   "aligned": 36,
+   "count": 51,
+   "count_colour": 51,
+   "inside": 35,
+   "overlap": 35,
+   "touch2": 39,
+   "appeared": 18,
+   "appeared_colour": 4
+  },
+  "first_actions": {
+   "6": 70
+  },
+  "multi": 9,
+  "consistent": 0,
+  "surv_sizes": [],
+  "surv_examples": {}
+ },
+ "m0r0": {
+  "sessions": 11,
+  "won": 7,
+  "transitions": 53,
+  "covered": 42,
+  "kinds": {
+   "appeared": 42,
+   "appeared_colour": 18,
+   "gone": 20,
+   "same_colour_all": 18,
+   "aligned": 20,
+   "touch2": 7,
+   "count": 7,
+   "count_colour": 14,
+   "touch": 1
+  },
+  "first_actions": {
+   "1": 13,
+   "3": 11,
+   "2": 3,
+   "5": 4,
+   "4": 6,
+   "-1": 15,
+   "6": 3
+  },
+  "multi": 9,
+  "consistent": 1,
+  "surv_sizes": [
+   1
+  ],
+  "surv_examples": {
+   "count_colour(10, 1)": 1
+  }
+ },
+ "bp35": {
+  "sessions": 14,
+  "won": 2,
+  "transitions": 82,
+  "covered": 82,
+  "kinds": {
+   "aligned": 82,
+   "appeared": 82,
+   "appeared_colour": 82,
+   "count": 42,
+   "count_colour": 69,
+   "touch": 80,
+   "gone": 58,
+   "gone_colour": 37,
+   "same_colour_all": 38,
+   "touch2": 21,
+   "inside": 12,
+   "overlap": 12
+  },
+  "first_actions": {
+   "4": 30,
+   "6": 27,
+   "3": 6
+  },
+  "multi": 11,
+  "consistent": 5,
+  "surv_sizes": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "surv_examples": {
+   "aligned((7, 3, 3), (9, 4, 2))": 5
+  }
+ },
+ "cn04": {
+  "sessions": 12,
+  "won": 6,
+  "transitions": 46,
+  "covered": 46,
+  "kinds": {
+   "aligned": 37,
+   "appeared": 46,
+   "appeared_colour": 41,
+   "count_colour": 32,
+   "gone": 46,
+   "gone_colour": 36,
+   "same_colour_all": 21,
+   "touch2": 46,
+   "inside": 19,
+   "overlap": 19,
+   "count": 13
+  },
+  "first_actions": {
+   "-1": 55
+  },
+  "multi": 9,
+  "consistent": 1,
+  "surv_sizes": [
+   2
+  ],
+  "surv_examples": {
+   "count_colour(8, 2)": 1,
+   "gone((8, 3, 3))": 1
+  }
+ },
+ "dc22": {
+  "sessions": 11,
+  "won": 4,
+  "transitions": 49,
+  "covered": 49,
+  "kinds": {
+   "aligned": 49,
+   "appeared": 49,
+   "gone": 41,
+   "touch": 41,
+   "touch2": 49,
+   "count": 23,
+   "count_colour": 34,
+   "inside": 10,
+   "overlap": 10,
+   "same_colour_all": 11,
+   "gone_colour": 1,
+   "appeared_colour": 2
+  },
+  "first_actions": {
+   "4": 7,
+   "3": 8,
+   "1": 11,
+   "6": 17,
+   "2": 2,
+   "-1": 10
+  },
+  "multi": 10,
+  "consistent": 10,
+  "surv_sizes": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   2,
+   1,
+   2,
+   1
+  ],
+  "surv_examples": {
+   "touch((11, 2, 2))": 8,
+   "aligned((11, 2, 2), (14, 2, 2))": 2,
+   "touch2((11, 2, 2), (14, 2, 2))": 2
+  }
+ },
+ "tu93": {
+  "sessions": 13,
+  "won": 9,
+  "transitions": 95,
+  "covered": 95,
+  "kinds": {
+   "aligned": 81,
+   "overlap": 91,
+   "touch2": 91,
+   "appeared": 53,
+   "gone": 73,
+   "gone_colour": 73,
+   "appeared_colour": 40,
+   "inside": 53,
+   "count": 11,
+   "count_colour": 11,
+   "touch": 7
+  },
+  "first_actions": {
+   "4": 27,
+   "2": 25,
+   "1": 12,
+   "3": 1
+  },
+  "multi": 13,
+  "consistent": 12,
+  "surv_sizes": [
+   2,
+   2,
+   1,
+   2,
+   1,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2
+  ],
+  "surv_examples": {
+   "overlap((9, 3, 3), (14, 3, 3))": 10,
+   "touch2((9, 3, 3), (14, 3, 3))": 10,
+   "touch((14, 3, 3))": 2
+  }
+ },
+ "lp85": {
+  "sessions": 54,
+  "won": 15,
+  "transitions": 204,
+  "covered": 204,
+  "kinds": {
+   "aligned": 190,
+   "touch2": 192,
+   "appeared": 86
+  },
+  "first_actions": {
+   "6": 266
+  },
+  "multi": 32,
+  "consistent": 0,
+  "surv_sizes": [],
+  "surv_examples": {}
+ },
+ "ka59": {
+  "sessions": 10,
+  "won": 3,
+  "transitions": 34,
+  "covered": 34,
+  "kinds": {
+   "aligned": 30,
+   "appeared": 31,
+   "count": 7,
+   "count_colour": 8,
+   "gone": 29,
+   "gone_colour": 20,
+   "inside": 32,
+   "overlap": 32,
+   "touch": 27,
+   "touch2": 34,
+   "appeared_colour": 7,
+   "same_colour_all": 6
+  },
+  "first_actions": {
+   "6": 8,
+   "2": 7,
+   "1": 5,
+   "3": 5,
+   "4": 25
+  },
+  "multi": 5,
+  "consistent": 2,
+  "surv_sizes": [
+   1,
+   1
+  ],
+  "surv_examples": {
+   "touch((4, 5, 5))": 2
+  }
+ },
+ "wa30": {
+  "sessions": 14,
+  "won": 5,
+  "transitions": 84,
+  "covered": 84,
+  "kinds": {
+   "aligned": 84,
+   "appeared": 84,
+   "count_colour": 83,
+   "gone": 84,
+   "gone_colour": 46,
+   "touch": 76,
+   "touch2": 84,
+   "appeared_colour": 59,
+   "inside": 53,
+   "overlap": 59,
+   "count": 42,
+   "same_colour_all": 15
+  },
+  "first_actions": {
+   "1": 41,
+   "2": 3,
+   "5": 7,
+   "0": 1,
+   "3": 11,
+   "4": 7
+  },
+  "multi": 11,
+  "consistent": 2,
+  "surv_sizes": [
+   8,
+   1
+  ],
+  "surv_examples": {
+   "aligned((0, 4, 5), (14, 4, 3))": 1,
+   "appeared((0, 4, 5))": 1,
+   "appeared((14, 4, 3))": 1,
+   "count_colour(4, 1)": 1,
+   "gone((0, 1, 4))": 1,
+   "appeared_colour(7)": 1
+  }
+ },
+ "vc33": {
+  "sessions": 10,
+  "won": 6,
+  "transitions": 53,
+  "covered": 50,
+  "kinds": {
+   "aligned": 44,
+   "appeared": 37,
+   "appeared_colour": 16,
+   "count_colour": 19,
+   "gone": 21,
+   "inside": 21,
+   "overlap": 21,
+   "touch2": 21,
+   "same_colour_all": 4
+  },
+  "first_actions": {
+   "6": 50
+  },
+  "multi": 9,
+  "consistent": 0,
+  "surv_sizes": [],
+  "surv_examples": {}
+ },
+ "lf52": {
+  "sessions": 11,
+  "won": 4,
+  "transitions": 79,
+  "covered": 79,
+  "kinds": {
+   "aligned": 79,
+   "appeared": 79,
+   "appeared_colour": 78,
+   "count": 66,
+   "count_colour": 58,
+   "inside": 78,
+   "overlap": 78,
+   "same_colour_all": 73,
+   "touch2": 78,
+   "gone": 68,
+   "touch": 48,
+   "gone_colour": 8
+  },
+  "first_actions": {
+   "2": 4,
+   "4": 8,
+   "6": 20,
+   "1": 8,
+   "3": 4,
+   "-1": 10,
+   "0": 1
+  },
+  "multi": 8,
+  "consistent": 8,
+  "surv_sizes": [
+   12,
+   10,
+   12,
+   24,
+   12,
+   12,
+   12,
+   12
+  ],
+  "surv_examples": {
+   "aligned((1, 1, 1), (2, 2, 1))": 7,
+   "aligned((1, 4, 4), (3, 6, 6))": 6,
+   "aligned((3, 6, 6), (14, 4, 4))": 7,
+   "appeared((2, 1, 2))": 7,
+   "appeared((2, 2, 1))": 7,
+   "appeared((3, 6, 6))": 1,
+   "appeared_colour(2)": 1,
+   "aligned((1, 1, 1), (2, 1, 2))": 1,
+   "aligned((1, 2, 2), (1, 4, 4))": 1,
+   "aligned((1, 2, 2), (14, 4, 4))": 1,
+   "aligned((1, 2, 2), (2, 1, 2))": 1
+  }
+ },
+ "r11l": {
+  "sessions": 10,
+  "won": 10,
+  "transitions": 60,
+  "covered": 60,
+  "kinds": {
+   "aligned": 60,
+   "appeared": 58,
+   "count": 57,
+   "count_colour": 58,
+   "inside": 55,
+   "overlap": 57,
+   "touch2": 60,
+   "gone": 58,
+   "same_colour_all": 46,
+   "gone_colour": 5
+  },
+  "first_actions": {
+   "6": 50
+  },
+  "multi": 10,
+  "consistent": 0,
+  "surv_sizes": [],
+  "surv_examples": {}
+ },
+ "sc25": {
+  "sessions": 15,
+  "won": 10,
+  "transitions": 73,
+  "covered": 73,
+  "kinds": {
+   "aligned": 52,
+   "appeared": 67,
+   "gone": 73,
+   "gone_colour": 59,
+   "same_colour_all": 38,
+   "touch": 23,
+   "count_colour": 61,
+   "inside": 46,
+   "overlap": 46,
+   "touch2": 51,
+   "appeared_colour": 10
+  },
+  "first_actions": {
+   "3": 24,
+   "6": 26,
+   "4": 10,
+   "2": 8,
+   "1": 7
+  },
+  "multi": 13,
+  "consistent": 0,
+  "surv_sizes": [],
+  "surv_examples": {}
+ },
+ "sp80": {
+  "sessions": 12,
+  "won": 2,
+  "transitions": 33,
+  "covered": 26,
+  "kinds": {
+   "aligned": 19,
+   "appeared": 21,
+   "appeared_colour": 16,
+   "count": 6,
+   "gone": 11,
+   "same_colour_all": 4,
+   "touch2": 5,
+   "count_colour": 2,
+   "touch": 2,
+   "gone_colour": 1
+  },
+  "first_actions": {
+   "4": 16,
+   "2": 9,
+   "1": 16,
+   "6": 12,
+   "5": 6,
+   "3": 1
+  },
+  "multi": 7,
+  "consistent": 0,
+  "surv_sizes": [],
+  "surv_examples": {}
+ },
+ "ar25": {
+  "sessions": 10,
+  "won": 5,
+  "transitions": 64,
+  "covered": 64,
+  "kinds": {
+   "aligned": 60,
+   "appeared": 64,
+   "gone": 64,
+   "inside": 42,
+   "overlap": 55,
+   "touch": 57,
+   "touch2": 64,
+   "appeared_colour": 25,
+   "count_colour": 16,
+   "same_colour_all": 21,
+   "count": 21,
+   "gone_colour": 12
+  },
+  "first_actions": {
+   "3": 14,
+   "4": 8,
+   "2": 23,
+   "5": 2,
+   "1": 3
+  },
+  "multi": 9,
+  "consistent": 1,
+  "surv_sizes": [
+   1
+  ],
+  "surv_examples": {
+   "appeared((11, 1, 1))": 1
+  }
+ },
+ "sb26": {
+  "sessions": 12,
+  "won": 5,
+  "transitions": 66,
+  "covered": 66,
+  "kinds": {
+   "aligned": 66,
+   "appeared": 60,
+   "appeared_colour": 54,
+   "inside": 66,
+   "overlap": 66,
+   "touch2": 66,
+   "touch": 10
+  },
+  "first_actions": {
+   "5": 11,
+   "0": 1,
+   "6": 48
+  },
+  "multi": 10,
+  "consistent": 6,
+  "surv_sizes": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "surv_examples": {
+   "appeared_colour(3)": 6
+  }
+ },
+ "cd82": {
+  "sessions": 11,
+  "won": 8,
+  "transitions": 52,
+  "covered": 45,
+  "kinds": {
+   "aligned": 45,
+   "appeared": 45,
+   "gone": 45,
+   "inside": 45,
+   "overlap": 45,
+   "touch2": 45,
+   "count_colour": 28,
+   "same_colour_all": 33
+  },
+  "first_actions": {
+   "1": 8,
+   "2": 8,
+   "4": 10,
+   "6": 15,
+   "5": 6,
+   "3": 8
+  },
+  "multi": 10,
+  "consistent": 3,
+  "surv_sizes": [
+   2,
+   1,
+   2
+  ],
+  "surv_examples": {
+   "gone((0, 10, 10))": 3,
+   "gone((15, 7, 12))": 2
+  }
+ },
+ "re86": {
+  "sessions": 11,
+  "won": 5,
+  "transitions": 64,
+  "covered": 64,
+  "kinds": {
+   "aligned": 62,
+   "appeared": 64,
+   "count": 64,
+   "gone": 57,
+   "gone_colour": 21,
+   "inside": 35,
+   "overlap": 36,
+   "same_colour_all": 62,
+   "touch2": 51,
+   "count_colour": 43,
+   "appeared_colour": 23,
+   "touch": 21
+  },
+  "first_actions": {
+   "1": 15,
+   "4": 15,
+   "5": 16,
+   "3": 2,
+   "2": 7
+  },
+  "multi": 11,
+  "consistent": 3,
+  "surv_sizes": [
+   2,
+   6,
+   2
+  ],
+  "surv_examples": {
+   "appeared((4, 3, 1))": 2,
+   "same_colour_all((3, 1))": 1,
+   "appeared((4, 1, 3))": 2,
+   "gone((9, 1, 1))": 1,
+   "gone_colour(9)": 1,
+   "same_colour_all((1, 3))": 2
+  }
+ },
+ "s5i5": {
+  "sessions": 11,
+  "won": 4,
+  "transitions": 54,
+  "covered": 54,
+  "kinds": {
+   "aligned": 54,
+   "appeared": 54,
+   "count": 54,
+   "count_colour": 54,
+   "gone": 54,
+   "touch2": 54,
+   "inside": 7,
+   "overlap": 12,
+   "same_colour_all": 10
+  },
+  "first_actions": {
+   "6": 54,
+   "0": 1
+  },
+  "multi": 10,
+  "consistent": 10,
+  "surv_sizes": [
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2
+  ],
+  "surv_examples": {
+   "count((13, 1, 1), 4)": 10,
+   "count_colour(13, 4)": 10
+  }
+ },
+ "ls20": {
+  "sessions": 13,
+  "won": 6,
+  "transitions": 56,
+  "covered": 56,
+  "kinds": {
+   "touch": 56,
+   "count": 18,
+   "count_colour": 35,
+   "gone": 45,
+   "gone_colour": 23,
+   "aligned": 39,
+   "appeared": 37,
+   "inside": 39,
+   "overlap": 39,
+   "touch2": 39,
+   "appeared_colour": 7
+  },
+  "first_actions": {
+   "4": 5,
+   "3": 20,
+   "1": 39,
+   "2": 1
+  },
+  "multi": 9,
+  "consistent": 3,
+  "surv_sizes": [
+   1,
+   3,
+   4
+  ],
+  "surv_examples": {
+   "touch((5, 7, 7))": 3,
+   "touch((9, 1, 1))": 1,
+   "touch((9, 3, 3))": 1,
+   "inside((9, 3, 5), (5, 7, 7))": 1,
+   "overlap((5, 7, 7), (9, 3, 5))": 1,
+   "touch2((5, 7, 7), (9, 3, 5))": 1
+  }
+ },
+ "ft09": {
+  "sessions": 10,
+  "won": 4,
+  "transitions": 32,
+  "covered": 32,
+  "kinds": {
+   "appeared": 28,
+   "appeared_colour": 19,
+   "count": 23,
+   "count_colour": 23,
+   "overlap": 16,
+   "touch2": 21,
+   "aligned": 24,
+   "inside": 8
+  },
+  "first_actions": {
+   "6": 10,
+   "3": 8,
+   "1": 12,
+   "4": 7,
+   "5": 8,
+   "2": 5
+  },
+  "multi": 7,
+  "consistent": 1,
+  "surv_sizes": [
+   1
+  ],
+  "surv_examples": {
+   "appeared_colour(11)": 1
+  }
+ },
+ "su15": {
+  "sessions": 13,
+  "won": 3,
+  "transitions": 50,
+  "covered": 50,
+  "kinds": {
+   "count": 21,
+   "count_colour": 38,
+   "gone": 49,
+   "gone_colour": 13,
+   "overlap": 27,
+   "touch2": 39,
+   "appeared": 18,
+   "appeared_colour": 11,
+   "same_colour_all": 31,
+   "aligned": 28,
+   "inside": 21
+  },
+  "first_actions": {
+   "6": 65
+  },
+  "multi": 8,
+  "consistent": 0,
+  "surv_sizes": [],
+  "surv_examples": {}
+ },
+ "tr87": {
+  "sessions": 12,
+  "won": 6,
+  "transitions": 58,
+  "covered": 56,
+  "kinds": {
+   "aligned": 51,
+   "appeared": 35,
+   "count": 37,
+   "gone": 38,
+   "inside": 25,
+   "overlap": 25,
+   "touch2": 25,
+   "touch": 25,
+   "appeared_colour": 23,
+   "same_colour_all": 29,
+   "count_colour": 6
+  },
+  "first_actions": {
+   "4": 14,
+   "3": 10,
+   "1": 12,
+   "2": 4,
+   "-1": 20
+  },
+  "multi": 11,
+  "consistent": 0,
+  "surv_sizes": [],
+  "surv_examples": {}
+ },
+ "g50t": {
+  "sessions": 12,
+  "won": 2,
+  "transitions": 31,
+  "covered": 31,
+  "kinds": {
+   "aligned": 29,
+   "appeared": 31,
+   "gone": 31,
+   "touch": 31,
+   "gone_colour": 21,
+   "same_colour_all": 7,
+   "count_colour": 3,
+   "appeared_colour": 3,
+   "touch2": 1
+  },
+  "first_actions": {
+   "1": 7,
+   "4": 19,
+   "2": 25,
+   "3": 2,
+   "5": 6,
+   "0": 1
+  },
+  "multi": 8,
+  "consistent": 8,
+  "surv_sizes": [
+   5,
+   5,
+   6,
+   2,
+   5,
+   5,
+   6,
+   6
+  ],
+  "surv_examples": {
+   "aligned((2, 3, 3), (9, 3, 3))": 6,
+   "appeared((2, 3, 3))": 7,
+   "gone((1, 3, 3))": 7,
+   "touch((9, 1, 1))": 8,
+   "touch((9, 7, 7))": 5,
+   "appeared((2, 5, 5))": 1,
+   "appeared_colour(2)": 1,
+   "gone_colour(1)": 2
+  }
+ }
+}

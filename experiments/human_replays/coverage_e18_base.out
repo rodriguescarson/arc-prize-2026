@@ -1,0 +1,29 @@
+config: family=base null=False tag=e18_base
+env   sess  won trans multi consist median|surv|  most common surviving predicate
+ar25    10    5    64     9       1            1  appeared((11, 1, 1)) ×1
+bp35    14    2    82    11       0          nan  — ×0
+cd82    11    8    52    10       3            2  gone((0, 10, 10)) ×3
+cn04    12    6    46     9       1            1  gone((8, 3, 3)) ×1
+dc22    11    4    49    10       8            1  touch((11, 2, 2)) ×8
+ft09    10    4    32     7       0          nan  — ×0
+g50t    12    2    31     8       8            4  touch((9, 1, 1)) ×8
+ka59    10    3    34     5       2            1  touch((4, 5, 5)) ×2
+lf52    11    4    79     8       8            4  appeared((2, 1, 2)) ×8
+lp85    54   15   204    32       0          nan  — ×0
+ls20    13    6    56     9       3            2  touch((5, 7, 7)) ×3
+m0r0    11    7    53     9       0          nan  — ×0
+r11l    10   10    60    10       0          nan  — ×0
+re86    11    5    64    11       3            1  appeared((4, 3, 1)) ×2
+s5i5    11    4    54    10      10            1  count((13, 1, 1), 4) ×10
+sb26    12    5    66    10       0          nan  — ×0
+sc25    15   10    73    13       0          nan  — ×0
+sk48    14    7    81    13      13            1  overlap((0, 2, 2), (8, 4, 4)) ×13
+sp80    12    2    33     7       0          nan  — ×0
+su15    13    3    50     8       0          nan  — ×0
+tn36    14    6    61     9       0          nan  — ×0
+tr87    12    6    58    11       0          nan  — ×0
+tu93    13    9    95    13      12            1  overlap((9, 3, 3), (14, 3, 3)) ×10
+vc33    10    6    53     9       0          nan  — ×0
+wa30    14    5    84    11       1            5  appeared((0, 4, 5)) ×1
+TOTAL sessions with >=2 transitions 262; with a non-empty cross-level intersection 73 (27.9%)
+-> /Users/carson/Projects/arc_prize_2026/experiments/human_replays/template_coverage_e18_base.json
