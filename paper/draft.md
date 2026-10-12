@@ -19,16 +19,27 @@ formula, and two diagnostics that we found necessary and that others can reuse: 
 for state representations and a hidden-counter detector.
 
 ## 1. Problem and question
-[Why ARC-AGI-3 differs from ARC-AGI-2; scoring = efficiency relative to human actions, level-index
-weighted (toolkit formula); the organisers' failure taxonomy; "goal inference is the hard part".
-Question: how much of the gap is representation (what is the state?), dynamics (what do actions do?),
-and goal (what counts as done?), and can each be learned from interaction alone, without a language model?]
+ARC-AGI-3 replaces ARC-AGI-2's single input-output guess with an interactive game: the agent sees a 64×64
+frame, chooses among up to seven actions (four directions, two buttons, a click), and must discover the
+rules, the controls and the goal from scratch across several levels of increasing difficulty. The score is
+efficiency: a completed level earns 100·(human actions / agent actions)², capped at 115, and a game's score
+weights level k by k, so later levels dominate. The organisers' own failure taxonomy for frontier models
+names "local effect / false world model", "wrong training analogy" and "solved the level, didn't learn
+the game"; the strongest public-set paper concludes that "goal inference is the hard part". We separate
+three things an agent must learn from interaction alone: what the *state* is (which pixels matter), what
+each *action does*, and what counts as *done*, and we ask how far an agent that learns all three online,
+with no language model and no training set, gets on the hidden Kaggle set.
 
 ## 2. Prior work and gap
-[LLM-in-REPL harnesses (Duck, Franzen); learned action-effect CNN (Stochastic Goose) that resets per level;
-white-box search that imports game source (dead on hidden games); executable world models with frontier
-APIs (Twin, Tycho, PRO-LONG) on the public set only; AERA on public-set saturation. Gap: a learned,
-non-LLM model used for planning, with memory across levels, evaluated on the hidden set.]
+Kaggle entries fall into three families (survey in `LITERATURE_MAP.md` §7 and `data/kaggle/reference/`):
+(i) LLM-in-REPL harnesses (Tufa Labs' Duck, Franzen's Milestone-2 solution) in which a 27B model writes
+Python that inspects frames and emits actions on a 96 GB GPU; (ii) a learned "will the frame change"
+CNN (Stochastic Goose, the official sample) that re-initialises at every level; (iii) white-box search
+that imports the public games' source code and therefore cannot run on hidden games. Research papers
+(Twin, Tycho, PRO-LONG) build executable world models with frontier APIs and report 88–100% on the 25
+public games only, which AERA shows even null strategies partly solve. No public agent learns a
+non-LLM model of action effects, plans in it, and keeps it across levels; none evaluates that mechanism
+on the hidden set. That is the gap this submission fills.
 
 ## 3. Method
 3.1 State: objects (colour, bbox, mask), terrain colours (≥20% coverage) kept for collision but not identity,
@@ -39,11 +50,26 @@ Gone/Count/Touch/Overlap/Appeared, positive = model-predicted post-action state 
 = level start, intersection across transitions. 3.5 Memory: model and goals persist across levels.
 
 ## 4. Why it should work (theory)
-Deterministic factored dynamics: each real action resolves one unknown (state, action) pair; planning in
-the model is free. Object identity by bbox collapses position-only differences into one mover state space.
-Level-index weighting means later levels carry most of the score, so cross-level transfer, not level-1
-speed, is where efficiency pays. [State the assumptions and where they fail: non-rigid effects, hidden
-counters, goals outside the template class.]
+**Assumption A1 (determinism).** ARC-AGI-3 games are deterministic given a correct state representation.
+Measured: with memoised transitions, next-state prediction is ≥ 0.95 accurate on 14 of 25 games and
+exactly 1.0 on 9 [measured: v4 agent_stats, atlas table]; the remaining games expose hidden counters
+(progress bars that advance on a hidden modulo) or animation-length state, which is where A1 fails and
+where our two detectors recover it.
+**Assumption A2 (factored, rigid dynamics).** Simple actions displace a rigid group of objects by a fixed
+vector unless blocked by a colour in the swept path. Measured: the generative model is ≥ 0.9 accurate on
+sp80 and su15 and ≥ 0.6 on dc22, g50t, m0r0, ls20 [measured: fig3]; it fails on click-driven games where
+effects are not displacements (ft09, r11l, s5i5, tn36, vc33 rely on memoisation).
+**Bound.** Under A1, a model-free explorer that revisits known transitions pays again for each revisit;
+a model-based planner pays at most once per unknown (state, action) pair, so the real actions needed to
+learn a level's dynamics are ≤ |S_reach|·|A|, with planning free. Median reachable abstract states in
+2000 explorer actions is 983 with median |A| = 5 [measured: atlas], so a model-free sweep cannot finish
+even the reachable part of one level inside the budget, while the planner's cost is bounded by the number
+of *distinct* pairs it chooses to resolve (contact-driven targets cut that further).
+**Transfer.** Levels of a game share dynamics and goal (the organisers' design); the score weights level
+k by k. So the gain from learning is realised on later levels: memory ON vs OFF leaves level-1 cost
+identical (same code path) and lowers later-level cost [measured: E3, tu93 10.4→4.8, vc33 6.1→2.6
+actions/human]. Where A2 fails (non-rigid effects), or the goal lies outside the template class, the agent
+degrades to memoised exploration, which we report rather than hide.
 
 ## 5. Experiments
 Protocol: 25 public games, 2000 actions/game, fixed seeds, toolkit-exact scorer, paired per game. Public
