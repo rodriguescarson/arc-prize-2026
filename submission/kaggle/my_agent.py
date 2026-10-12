@@ -213,6 +213,11 @@ class EffectModel:
         self.transitions: dict[tuple[int, Key], int] = {}
         self.effects: dict[Key, Counter] = defaultdict(Counter)
         self.deaths: Counter = Counter()
+        # click effects by clicked class: ckey -> Counter[signature]; signature in
+        #   ("none",) | ("recolour", new_colour) | ("vanish",) | ("other",)
+        self.click_effects: dict[Key, Counter] = defaultdict(Counter)
+        # side effects on other classes when clicking ckey: ckey -> Counter[(other_ident, "recolour", new_colour)]
+        self.click_side: dict[Key, Counter] = defaultdict(Counter)
         self.n_obs: Counter = Counter()
         self.n_pred = 0
         self.n_pred_correct = 0
@@ -220,8 +225,10 @@ class EffectModel:
         self.min_reliability = 0.5
 
     # ---- learning -------------------------------------------------------------------------------
-    def observe(self, before: list[Obj], grid_before: np.ndarray, key: Key, after: list[Obj]) -> dict:
+    def observe(self, before: list[Obj], grid_before: np.ndarray, key: Key, after: list[Obj], clicked: Obj | None = None) -> dict:
         d = diff(before, after)
+        if clicked is not None and isinstance(key, tuple) and key[0] == "click":
+            self._observe_click(key, clicked, d, before, after)
         sk_b, sk_a = state_key(before), state_key(after)
         self.transitions[(sk_b, key)] = sk_a
         self.n_obs[key] += 1
@@ -239,6 +246,62 @@ class EffectModel:
                 for o in members:
                     self.blocked[key].update(_ahead_cells(o, dy, dx, grid_before, members))
         return d
+
+    def _observe_click(self, ckey: Key, clicked: Obj, d: dict, before: list[Obj], after: list[Obj]) -> None:
+        same_pos = lambda a, b: (a.y0, a.x0, a.y1, a.x1) == (b.y0, b.x0, b.y1, b.x1)
+        sig = ("none",)
+        if any(same_pos(o, clicked) for o in d["same"]) and not (d["moved"] or d["recoloured"] or d["vanished"] or d["appeared"]):
+            sig = ("none",)
+        else:
+            rec = [(o, p) for o, p in d["recoloured"] if same_pos(o, clicked)]
+            if rec:
+                sig = ("recolour", rec[0][1].colour)
+            elif any(same_pos(o, clicked) for o in d["vanished"]):
+                sig = ("vanish",)
+            elif any(same_pos(o, clicked) for o in d["same"]):
+                sig = ("other",)  # clicked object unchanged, something else changed
+            else:
+                sig = ("other",)
+        self.click_effects[ckey][sig] += 1
+        for o, p in d["recoloured"]:
+            if not same_pos(o, clicked):
+                self.click_side[ckey][(ident(o), "recolour", p.colour)] += 1
+
+    def modal_click(self, ckey: Key):
+        c = self.click_effects.get(ckey)
+        if not c:
+            return None
+        sig, n = c.most_common(1)[0]
+        return sig if n / sum(c.values()) >= 0.6 and sum(c.values()) >= 2 else None
+
+    def predict_click(self, objs: list[Obj], ckey: Key, clicked: Obj) -> tuple[list[Obj] | None, str]:
+        """Generative prediction for a click on `clicked` (class ckey) from its modal signature."""
+        sig = self.modal_click(ckey)
+        if sig is None:
+            return None, "unknown"
+        hist = self.key_pred[ckey]
+        src = "unreliable" if (len(hist) >= 10 and sum(hist) / len(hist) < self.min_reliability) else "model"
+        if sig[0] == "none":
+            return list(objs), src
+        out = []
+        for o in objs:
+            if o is clicked:
+                if sig[0] == "recolour":
+                    out.append(Obj(sig[1], o.y0, o.x0, o.y1, o.x1, o.area, o.shape, o.mask))
+                elif sig[0] == "vanish":
+                    continue
+                else:
+                    out.append(o)
+            else:
+                out.append(o)
+        if sig[0] == "other":
+            # consistent side effects (>= 80% of clicks on this class) are applied; else unknown
+            total = sum(self.click_effects[ckey].values())
+            side = {k[0]: k[2] for k, n in self.click_side[ckey].items() if n >= 0.8 * total and k[1] == "recolour"}
+            if not side:
+                return None, "unknown"
+            out = [Obj(side[ident(o)], o.y0, o.x0, o.y1, o.x1, o.area, o.shape, o.mask) if ident(o) in side else o for o in out]
+        return out, src
 
     def modal_group(self, key: Key):
         """(set of idents that move together, modal displacement) or None."""
@@ -471,7 +534,8 @@ def adjacent_classes(members: list[Obj], objs: list[Obj]) -> set:
 
 def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, keys_for, tried: dict[int, set],
                         objs_cache: dict[int, tuple[list[Obj], np.ndarray]], max_depth: int = 12, max_nodes: int = 1500,
-                        mover_idents: frozenset | None = None, contacted: dict | None = None, goal_test=None):
+                        mover_idents: frozenset | None = None, contacted: dict | None = None, goal_test=None,
+                        click_model: bool = False):
     """keys_for(objs) -> list of (key, class_key, action, data). Returns (path_keys, final_key) or (None, None).
 
     Target priority: (1) a reachable state where the mover group touches an object class contacted fewer
@@ -484,6 +548,7 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
     seen = {start}
     nodes = 0
     best = None
+    pred_cache: dict[tuple, tuple] = {}
     contact_best = None  # (contact_count, depth, path, key)
     min_contact = min(contacted.values()) if contacted else 0
     while q and nodes < max_nodes:
@@ -494,7 +559,7 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
         o_list, g = objs_cache[sk]
         if goal_test is not None and path and goal_test(o_list):
             return path, None  # goal state reached in the model: execute the path, no exploratory key needed
-        cands = keys_for(o_list)
+        cands = keys_for(o_list, len(path))
         untried = [c for c in cands if c[0] not in tried.get(sk, set()) and not model.is_known_noop(c[1]) and not model.is_deadly(sk, c[0])]
         if untried:
             untried.sort(key=lambda c: (model.n_obs[c[1]], ))
@@ -523,17 +588,34 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
                 if nk not in seen:
                     seen.add(nk); q.append((nk, path + [(key, action, data)]))
                 continue
-            pred, src = model.predict(o_list, g, ckey)
+            ck = (sk, key)
+            if ck in pred_cache:
+                pred, src = pred_cache[ck]
+            elif click_model and isinstance(key, tuple) and key[0] == "click" and key[1] != "lattice":
+                clicked = next((o for o in o_list if (o.colour, o.h, o.w, o.y0, o.x0) == (key[1], key[2], key[3], key[4], key[5])), None)
+                pred, src = model.predict_click(o_list, ckey, clicked) if clicked is not None else (None, "unknown")
+                pred_cache[ck] = (pred, src)
+            else:
+                pred, src = model.predict(o_list, g, ckey)
+                pred_cache[ck] = (pred, src)
             if pred is None or src == "unreliable":
                 continue
             nk = state_key(pred)
             if nk == sk or nk in seen:
                 continue
-            # render the predicted grid for the moved objects
+            # render the predicted grid: moved objects for movement predictions; recolour/erase for clicks
             g2 = g
-            for a, b in zip(o_list, pred):
-                if (a.y0, a.x0) != (b.y0, b.x0):
-                    g2 = render_move(g2, a, b, bg)
+            if len(pred) == len(o_list):
+                for a, b in zip(o_list, pred):
+                    if (a.y0, a.x0) != (b.y0, b.x0):
+                        g2 = render_move(g2, a, b, bg)
+                    elif a.colour != b.colour:
+                        g2 = g2.copy(); sub = g2[a.y0:a.y1, a.x0:a.x1]; m = np.frombuffer(a.mask, dtype=bool).reshape(a.h, a.w) if a.mask else np.ones((a.h, a.w), bool); sub[m] = b.colour
+            else:
+                g2 = g2.copy()
+                gone = [a for a in o_list if a not in pred]
+                for a in gone:
+                    sub = g2[a.y0:a.y1, a.x0:a.x1]; m = np.frombuffer(a.mask, dtype=bool).reshape(a.h, a.w) if a.mask else np.ones((a.h, a.w), bool); sub[m] = bg
             objs_cache.setdefault(nk, (pred, g2))
             seen.add(nk); q.append((nk, path + [(key, action, data)]))
     if contact_best is not None and contact_best[2]:
@@ -583,11 +665,12 @@ model across levels (memory=True) or reset it at each level (memory=False)."""
 
 class ModelBasedAgent(BaseAgent):
     def __init__(self, game_id: str, seed: int = 0, memory: bool = True, max_depth: int = 12, max_nodes: int = 1500,
-                 click_lattice: int = 8, contact: bool = True, goals: bool = True, **kwargs):
+                 click_lattice: int = 8, contact: bool = True, goals: bool = True, click_model: bool = False, **kwargs):
         super().__init__(game_id, seed)
         self.memory = memory
         self.contact = contact
         self.goals = goals
+        self.click_model = click_model  # E12: generative click effects in planning (failed its gate; off by default)
         self.goal_memory = GoalMemory()
         self.level_init_objs: list[Obj] | None = None
         self.level_init_grid: np.ndarray | None = None
@@ -659,23 +742,25 @@ class ModelBasedAgent(BaseAgent):
         return [o for o in objs if o.colour not in terrain]
 
     # ---- candidate actions ---------------------------------------------------------------------
+    MAX_CLICK_OBJECTS = 16  # per node: clicks on at most this many objects (largest first), lattice only if no objects
+
     def _keys_for(self, latest: FrameData):
         legal = self.legal_actions(latest)
 
-        def keys(objs: list[Obj]):
+        def keys(objs: list[Obj], depth: int = 0):
             out = []
             for a in legal:
                 if a.is_complex():
-                    seen_cls = set()
-                    for o in objs:
+                    # v7 behaviour (click_model off): every object at every depth; E12: cap look-ahead nodes for speed
+                    cands = list(objs) if (depth == 0 or not self.click_model) else sorted(objs, key=lambda o: -o.area)[: self.MAX_CLICK_OBJECTS]
+                    for o in cands:
                         cy, cx = o.centre
-                        cls = ("click",) + ident(o)
-                        out.append((("click",) + ident(o) + (o.y0, o.x0), cls, a, {"x": int(cx), "y": int(cy)}))
-                        seen_cls.add(cls)
-                    step = 64 // self.click_lattice
-                    for y in range(step // 2, 64, step):
-                        for x in range(step // 2, 64, step):
-                            out.append((("click", "lattice", y, x), ("click", "lattice"), a, {"x": x, "y": y}))
+                        out.append((("click",) + ident(o) + (o.y0, o.x0), ("click",) + ident(o), a, {"x": int(cx), "y": int(cy)}))
+                    if not cands or depth == 0 or not self.click_model:
+                        step = 64 // self.click_lattice
+                        for y in range(step // 2, 64, step):
+                            for x in range(step // 2, 64, step):
+                                out.append((("click", "lattice", y, x), ("click", "lattice"), a, {"x": x, "y": y}))
                 else:
                     out.append((a.value, a.value, a, {}))
             return out
@@ -728,7 +813,10 @@ class ModelBasedAgent(BaseAgent):
         # learn from the last transition
         if self.prev is not None:
             p_objs, p_grid, p_key, p_ckey = self.prev
-            self.model.observe(p_objs, p_grid, p_ckey, objs)
+            clicked = None
+            if isinstance(p_key, tuple) and p_key[0] == "click" and p_key[1] != "lattice":
+                clicked = next((o for o in p_objs if (o.colour, o.h, o.w, o.y0, o.x0) == (p_key[1], p_key[2], p_key[3], p_key[4], p_key[5])), None)
+            self.model.observe(p_objs, p_grid, p_ckey, objs, clicked=clicked)
             self.model.transitions[(state_key(p_objs), p_key)] = sk
             if self.predicted_next is not None:
                 src = self._pred_src
@@ -758,7 +846,8 @@ class ModelBasedAgent(BaseAgent):
                     goal_test = lambda o, _a=active, _m=mi: any(p.holds(o, _m) for p in _a)
             path, final = plan_to_information(self.model, objs, grid, keys_for, self.tried, self.objs_cache,
                                               self.max_depth, self.max_nodes, mover_idents or None,
-                                              self.contacted if (mover_idents and self.contact) else None, goal_test)
+                                              self.contacted if (mover_idents and self.contact) else None, goal_test,
+                                              click_model=self.click_model)
             if path is not None:
                 if final is None:
                     self.n_goal_plans += 1
@@ -783,7 +872,11 @@ class ModelBasedAgent(BaseAgent):
         if nk is not None:
             self.predicted_next, self._pred_src = nk, "memo"
         else:
-            pred, src = self.model.predict(objs, grid, ckey)
+            if self.click_model and isinstance(key, tuple) and key[0] == "click" and key[1] != "lattice":
+                clicked = next((o for o in objs if (o.colour, o.h, o.w, o.y0, o.x0) == (key[1], key[2], key[3], key[4], key[5])), None)
+                pred, src = self.model.predict_click(objs, ckey, clicked) if clicked is not None else (None, "unknown")
+            else:
+                pred, src = self.model.predict(objs, grid, ckey)  # v7 path: clicks may move objects (displacement model)
             if pred is not None:
                 self.predicted_next, self._pred_src = state_key(pred), src
         self.prev = (objs, grid, key, ckey)
@@ -792,7 +885,7 @@ class ModelBasedAgent(BaseAgent):
         return action
 
     def stats(self) -> dict:
-        return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
+        return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "click_model": self.click_model, "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
                 "surviving_goals": sorted(map(str, self.goal_memory.surviving)) if self.goal_memory.surviving else None, "plan_steps": self.n_plan_steps,
                 "replans_on_error": self.n_replans_on_error, "fallback_steps": self.n_fallback,
                 "pred_total": self.model.n_pred, "pred_acc": None if self.model.accuracy is None else round(self.model.accuracy, 3),
@@ -800,6 +893,7 @@ class ModelBasedAgent(BaseAgent):
                 "movers": {str(k): [sorted(map(str, g[0])), list(g[1])] for k in self.model.moves if (g := self.model.modal_group(k))},
                 "volatile_rows": [int(i) for i in np.where(self.volatile_rows)[0]], "terrain_colours": sorted(self.terrain_colours),
                 "known_noops": [str(k) for k in self.model.effects if self.model.is_known_noop(k)],
+                "click_classes_modelled": sum(1 for k in self.model.click_effects if self.model.modal_click(k) is not None),
                 "key_reliability": {str(k): [len(v), round(sum(v) / len(v), 2)] for k, v in self.model.key_pred.items() if len(v)}}
 
 # ======================================================================================
