@@ -62,7 +62,7 @@ memoised exploration, which we report.
 
 ## 5. Experiments
 Protocol: 25 public games, 2000 actions per game, fixed seeds, toolkit-exact scorer, paired per game;
-public numbers are development, the hidden set is evaluation.
+public numbers are development; hidden is evaluation.
 
 | agent | score (0–100) | levels | games ≥1 level | games ≥2 levels | median L1 actions/human | levels ≤ human | wall s |
 |---|---|---|---|---|---|---|---|
