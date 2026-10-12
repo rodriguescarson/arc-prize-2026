@@ -29,8 +29,8 @@ alone: what the *state* is, what each *action does*, and what counts as *done*. 
 learns all three online, with no language model and no training set, gets on the hidden Kaggle set.
 
 ## 2. Prior work and gap
-Kaggle entries fall into three families: LLM-in-REPL harnesses (Tufa Labs' Duck, Franzen's Milestone-2)
-where a 27–75B model writes Python against the frames on a 96 GB GPU; a "will the frame change" CNN
+Kaggle entries fall into three families: LLM-in-REPL harnesses (Tufa Labs' Duck, Franzen's Milestone-2),
+a 27–75B model writing Python against the frames on a 96 GB GPU; a "will the frame change" CNN
 (Stochastic Goose) that re-initialises at every level; and white-box search that imports the public games'
 source and cannot run on hidden games. Research papers (Twin, Tycho, PRO-LONG) build executable world
 models with frontier APIs and report 88–100% on the 25 public games only, which AERA shows null strategies
@@ -62,8 +62,9 @@ that further.
 **Transfer.** Levels share dynamics and goal by design and the score weights level k by k, so learning
 pays on later levels: memory ON vs OFF leaves level-1 cost identical (same code path) and lowers
 later-level cost [measured: E3, tu93 10.4→4.8, vc33 6.1→2.6 actions/human]. In the 340 released human replays, a
-template-class predicate consistent across levels exists on 6 of 25 games and in 27.9% of multi-level sessions [measured: E11, 73/262], which bounds the
-transfer term. Where A2 fails or the goal lies outside the template class, the agent degrades to
+template-class predicate consistent across levels exists on 6 of 25 games and in 27.9% of multi-level
+sessions [measured: E11, 73/262]; seven further predicate families lift this only to 34% against a 10%
+null [measured: E18], so the bound on the transfer term is the object vocabulary, not the template list. Where A2 fails or the goal lies outside the template class, the agent degrades to
 memoised exploration, which we report.
 
 ## 5. Experiments
@@ -85,8 +86,8 @@ public numbers are development, the hidden set is evaluation. [measured: `paper/
 
 The explorer and the model-based agent share perception, so the table isolates the learned model and
 planning. Contact-driven curiosity raises coverage and efficiency (11 vs 10 games; median level-1 cost
-8.6× vs 21.2× human). Memory changes nothing on level 1 by construction and is the only setting that
-reaches a second level, at falling per-level cost; fig. 3 gives per-game prediction accuracy. Three seeds
+8.6× vs 21.2× human). Memory changes nothing on level 1 by construction and alone reaches a second level, at
+falling per-level cost (per-game prediction accuracy: fig. 3). Three seeds
 of the final configuration score 0.280, 0.276 and 0.278 and differ on 4 of 25 games [measured: E6];
 differences under 2 games or 0.02 points are noise. On the hidden public half (55 unseen games) the
 memory-on agent scores **0.15** [measured: submission 57095368, kernel arc3-model-based-explorer-mem1-c1
@@ -97,7 +98,7 @@ hidden-set test.
 Per game [measured: `failure_table.py` on arc3_E3_v7_bars_mem1_a2000_s0]: no game dies in a loop (resets
 ≤ 4.3% of actions) or cycles through a few states (≥ 16% distinct frames), so exploration itself is not
 what stalls. Five games are *model-blind* (generative accuracy < 0.3: bp35,
-cd82, ka59, sk48, tn36), where effects are memorised but never predicted; the other 20 are *no-progress*:
+cd82, ka59, sk48, tn36), effects memorised but never predicted; the other 20 are *no-progress*:
 the planner keeps finding untried transitions (median 1,973 of 2,000 steps planned) without crossing a
 level boundary, which is a goal problem, not a search problem. A reached first level costs 0.9× (lp85) to
 58× (m0r0) the human count. A published 100-trajectory audit of the 75B-parameter
