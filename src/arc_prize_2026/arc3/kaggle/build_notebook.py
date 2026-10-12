@@ -74,6 +74,11 @@ class MyAgent(_FrameworkAgent):
         self._n += 1
         if self._c0 is None:
             self._c0 = _time.thread_time()
+        # The framework keeps every frame of every game in RAM and only reads frames[-1]; the recorder has
+        # already streamed each frame to disk by the time we see it. 110 games x 3,000 frames x ~40 KB would
+        # be ~13 GB, so keep only the last two frames (the agent itself reads latest_frame only).
+        if len(frames) > 2:
+            del frames[:-2]
         try:
             return self.impl.choose_action(frames, latest_frame)
         except Exception as e:  # never crash the swarm thread
