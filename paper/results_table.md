@@ -1,7 +1,7 @@
 | agent | score (0–100) | levels | games ≥1 level | games ≥2 levels | median L1 actions/human | levels ≤ human | wall s |
 |---|---|---|---|---|---|---|---|
-| random | 0.002 | 3/183 | 3 | 0 | 10.3× | 1 | 34 |
-| explorer | 0.000 | 5/183 | 5 | 0 | 6.4× | 0 | 113 |
+| random | 0.192 | 3/183 | 3 | 0 | 10.3× | 1 | 34 |
+| explorer | 0.038 | 5/183 | 5 | 0 | 6.4× | 0 | 113 |
 | v4_contact_on | 0.284 | 15/183 | 11 | 3 | 8.6× | 1 | 1293 |
 | v4_contact_off | 0.204 | 13/183 | 10 | 2 | 21.2× | 0 | 1811 |
 | v5_memory_on | 0.277 | 13/183 | 11 | 2 | 10.4× | 1 | 2172 |

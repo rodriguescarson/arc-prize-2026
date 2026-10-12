@@ -40,7 +40,7 @@ Before any claim, two seeds of the same agent must be compared to establish per-
 replicate SD (the Franzen audit found 1.87-point spans on whole-run means, 40-point spans per game).
 A difference smaller than 2× the replicate SD is reported as "within noise".
 
-## Outcomes so far (appended 2026-10-12 11:40 IST; details in RESEARCH_LOG.md and EXPERIMENT_LOG.csv)
+## Outcomes so far (appended 2026-10-12 06:56 IST; details in RESEARCH_LOG.md and EXPERIMENT_LOG.csv)
 | ID | Outcome |
 |---|---|
 | E0 | done: atlas (`experiments/arc3_E0_explorer_a2000_s0_logged/atlas.json`); median 983 distinct states in 2000 actions, median |A| 5 |

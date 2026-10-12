@@ -10,10 +10,14 @@ import statistics
 import sys
 from pathlib import Path
 
+from ..arc3_score import game_score, total_score
+
 
 def summarise(name: str, path: Path) -> tuple[str, dict]:
     s = json.loads(Path(path).read_text())
     g = s["games"]
+    # recompute with the toolkit-exact scorer so files written before the scorer rewrite are comparable
+    s["total_score"] = total_score({r["game_id"]: game_score(r["baseline_actions"], r.get("level_actions", [])) for r in g})
     l1 = [r for r in g if r["levels_completed"] >= 1]
     l2 = [r for r in g if r["levels_completed"] >= 2]
     ratios_l1 = [r["level_actions"][0] / r["baseline_actions"][0] for r in l1]

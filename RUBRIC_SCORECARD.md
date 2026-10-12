@@ -1,4 +1,4 @@
-# RUBRIC_SCORECARD — internal evidence matrix (not a prediction of the judges' scores) — updated 2026-10-12 11:00 IST
+# RUBRIC_SCORECARD — internal evidence matrix (not a prediction of the judges' scores) — updated 2026-10-12 06:50 IST
 
 Rubric verbatim from https://www.kaggle.com/competitions/arc-prize-2026-paper-track/overview
 (read 2026-10-12): "Submissions for Paper Awards are evaluated equally across the following six

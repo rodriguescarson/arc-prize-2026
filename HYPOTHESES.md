@@ -1,4 +1,4 @@
-# HYPOTHESES — competing ideas, predictions, selection (pre-registered 2026-10-12, 05:20 IST)
+# HYPOTHESES — competing ideas, predictions, selection (pre-registered 2026-10-12, 04:54 IST)
 
 Written BEFORE any mechanism was implemented. Numbers below are predictions; the outcomes are
 appended in dated sections at the bottom, never edited in place.
