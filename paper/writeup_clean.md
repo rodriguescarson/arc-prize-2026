@@ -34,9 +34,8 @@ untried (state, action), rarely-contacted object classes, or goal predicates. 3.
 Gone/Count/Touch/Overlap/Appeared, positive = model-predicted post-action state at the transition, negative
 = level start, intersection across transitions. 3.5 Memory: model and goals persist across levels. 3.6 Goal proposer (development only): a decision model
 reads a ~350-word summary of the level (object classes with colour, size, count, positions; the mover and its
-learned displacements) and picks one currently-false goal from the template menu or "explore"; with no plan to
-it, the agent walks toward a touch target along learned displacements, dropping a goal after 50 actions held
-without a transition or 80 steps without reaching it.
+learned displacements) and picks one currently-false goal from the template menu or "explore"; with no plan to it, the agent walks toward a touch target along learned displacements, dropping a goal after
+50 actions held without a transition or 80 steps without reaching it.
 
 ## 4. Why it should work (theory)
 **A1 (determinism).** Games are deterministic given a correct state representation. Measured: memoised
@@ -72,14 +71,17 @@ public numbers are development; hidden is evaluation.
 | final_v7 | 0.280 | 15/183 | 12 | 2 | 11.0× | 1 | 1372 |
 | greedy walk, no proposer | 0.280 | 15/183 | 12 | 2 | 11.0× | 1 | 926 |
 | + Jev 1.13 proposer (not in the submission) | **0.296** | **16/183** | **13** | 2 | 7.1× | 1 | 2463 |
+| + Nemotron-3 Super proposer, open-weight | 0.295 | 16/183 | 13 | 2 | 7.1× | 1 | 1011 |
 
 
 Explorer and model-based agent share perception, so the table isolates the learned model and planning.
 Contact curiosity raises coverage and efficiency (11 vs 10 games; median level-1 cost 8.6× vs 21.2× human).
 Memory alone reaches a second level, at falling per-level cost (per-game prediction accuracy: fig. 3). Three seeds score 0.280, 0.276 and 0.278 and differ on 4 of 25 games;
-differences under 2 games or 0.02 points are noise. The proposer is the one addition that passes its
-pre-registered gate: +0.015 to +0.016 over the greedy-only control on all three seeds, no game lost, g50t's
-first level in 240 actions instead of 1,159 and r11l's first level reached; two chat models in the same role (Phi-4, Nemotron) lose tu93, so the choice of model matters. Our first hidden-set submission scored **0.15**; its bundle later proved to
+differences under 2 games or 0.02 points are noise. The proposer is the one addition that passes its pre-registered gate: +0.015 to +0.016 over the greedy-only
+control on all three seeds with no game lost, g50t's first level in 240 actions instead of 1,159, r11l's first
+level reached; with an open-weight model (Nemotron-3 Super) and a
+guard that makes a goal a target only until first reached, the same +0.015 holds on three seeds. Chat models without that guard (Phi-4, Gemma 4 31B, Qwen3 32B) lose games, and further
+bounding hurt (E20d), so the design is frozen there. Our first hidden-set submission scored **0.15**; its bundle later proved to
 raise an exception in the movement-prediction path and fall back to cyclic actions, so it measures a crippled
 agent. Fixed-bundle submissions follow; the leading LLM harness scores 62.96.
 
