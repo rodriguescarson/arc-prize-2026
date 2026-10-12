@@ -4,7 +4,7 @@
   "contact": true,
   "memory": true,
   "goals": true,
-  "llm_goals": "google/gemma-4-31b-it",
+  "llm_goals": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
   "greedy": true,
   "greedy_cap": 80
  },
@@ -12,11 +12,11 @@
  "max_actions": 2000,
  "time_budget_s": 900.0,
  "n_games": 25,
- "total_score": 0.280293,
- "levels_completed": 15,
+ "total_score": 0.261739,
+ "levels_completed": 12,
  "total_levels": 183,
  "games_won": 0,
- "wall_s": 5210.4,
+ "wall_s": 7013.3,
  "games": [
   {
    "agent_stats": {
@@ -27,11 +27,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 7,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 3,
+     "accepted": 3,
+     "rejected": 2,
+     "calls": 3,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -39,70 +39,59 @@
        "level": 0,
        "n": 1,
        "n_options": 13,
-       "chosen": null
+       "chosen": "touch((10, 63, 3))",
+       "desc": "move the player (black, yellow, grey) onto/against 1\u00d7 white 63x3 at (0,30)"
       },
       {
        "level": 0,
-       "n": 301,
-       "n_options": 7,
-       "chosen": null
+       "n": 55,
+       "rejected": "touch((10, 63, 3))"
       },
       {
        "level": 0,
-       "n": 601,
-       "n_options": 21,
-       "chosen": null
+       "n": 55,
+       "n_options": 12,
+       "chosen": "touch((11, 9, 9))",
+       "desc": "move the player (black, yellow, grey) onto/against 1\u00d7 light-grey 9x9 at (45,51)"
       },
       {
        "level": 0,
-       "n": 901,
-       "n_options": 7,
-       "chosen": null
+       "n": 243,
+       "rejected": "touch((11, 9, 9))"
       },
       {
        "level": 0,
-       "n": 1201,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 18,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 21,
-       "chosen": null
+       "n": 243,
+       "n_options": 5,
+       "chosen": "aligned((10, 63, 3), (11, 9, 9))",
+       "desc": "line up a white 63x3 with a light-grey 9x9 (same row or column)"
       }
      ]
     },
-    "greedy_steps": 0,
+    "greedy_steps": 32,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1487,
-    "goal_plans": 0,
-    "deaths": 20,
+    "plans": 1570,
+    "goal_plans": 40,
+    "deaths": 19,
     "surviving_goals": null,
-    "plan_steps": 1979,
-    "replans_on_error": 62,
+    "plan_steps": 1980,
+    "replans_on_error": 96,
     "fallback_steps": 0,
-    "pred_total": 1306,
-    "pred_acc": 0.383,
+    "pred_total": 1320,
+    "pred_acc": 0.357,
     "pred_by_source": {
      "memo": [
-      504,
-      0.976
+      429,
+      0.956
      ],
      "model": [
-      50,
-      0.0
+      111,
+      0.306
      ],
      "unreliable": [
-      752,
-      0.011
+      780,
+      0.035
      ]
     },
     "movers": {
@@ -147,12 +136,11 @@
      ],
      "7": [
       [
-       "(4, 9, 9)",
-       "(5, 9, 9)"
+       "(0, 1, 1)"
       ],
       [
-       0,
-       3
+       3,
+       -3
       ]
      ]
     },
@@ -168,13 +156,12 @@
      "('click', 11, 9, 9)",
      "('click', 5, 1, 63)",
      "('click', 'lattice')",
-     "('click', 10, 15, 3)",
-     "('click', 4, 3, 6)",
-     "('click', 10, 39, 3)",
-     "('click', 10, 45, 3)",
+     "('click', 5, 6, 1)",
+     "('click', 11, 58, 1)",
+     "('click', 5, 7, 1)",
+     "('click', 11, 57, 1)",
      "('click', 5, 8, 1)",
      "('click', 11, 56, 1)",
-     "('click', 4, 9, 6)",
      "('click', 5, 9, 1)",
      "('click', 11, 55, 1)",
      "('click', 5, 10, 1)",
@@ -273,36 +260,37 @@
      "('click', 11, 8, 1)",
      "('click', 5, 57, 1)",
      "('click', 11, 7, 1)",
-     "('click', 10, 21, 3)",
      "('click', 5, 58, 1)",
      "('click', 11, 6, 1)",
      "('click', 5, 59, 1)",
      "('click', 11, 5, 1)",
      "('click', 5, 60, 1)",
      "('click', 11, 4, 1)",
-     "('click', 10, 18, 3)",
      "('click', 5, 61, 1)",
-     "('click', 10, 42, 3)",
      "('click', 11, 3, 1)",
      "('click', 5, 62, 1)",
      "('click', 11, 2, 1)",
      "('click', 5, 63, 1)",
      "('click', 11, 1, 1)",
-     "('click', 10, 12, 3)",
-     "('click', 10, 48, 3)",
+     "('click', 10, 15, 3)",
+     "('click', 4, 3, 6)",
+     "('click', 10, 39, 3)",
+     "('click', 10, 18, 3)",
      "('click', 10, 36, 3)",
+     "('click', 10, 45, 3)",
+     "('click', 10, 12, 3)",
+     "('click', 10, 42, 3)",
      "('click', 10, 9, 3)",
-     "('click', 10, 51, 3)",
-     "('click', 10, 6, 3)",
-     "('click', 10, 54, 3)",
+     "('click', 10, 48, 3)",
+     "('click', 10, 21, 3)",
      "('click', 10, 33, 3)",
-     "('click', 10, 3, 3)",
-     "('click', 10, 57, 3)",
+     "('click', 10, 51, 3)",
+     "('click', 4, 9, 6)",
      "('click', 10, 24, 3)",
      "('click', 10, 30, 3)",
      "('click', 10, 27, 3)"
     ],
-    "click_classes_modelled": 142,
+    "click_classes_modelled": 141,
     "key_reliability": {
      "1": [
       20,
@@ -314,7 +302,7 @@
      ],
      "3": [
       20,
-      0.05
+      0.0
      ],
      "4": [
       20,
@@ -333,10 +321,10 @@
    "win_levels": 8,
    "level_actions": [],
    "actions": 2000,
-   "resets": 21,
-   "distinct_frames": 835,
+   "resets": 20,
+   "distinct_frames": 927,
    "final_state": "NOT_FINISHED",
-   "seconds": 223.12,
+   "seconds": 269.15,
    "baseline_actions": [
     32,
     50,
@@ -358,11 +346,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 3,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 3,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 2,
+     "accepted": 2,
+     "rejected": 1,
+     "calls": 2,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -370,50 +358,51 @@
        "level": 0,
        "n": 1,
        "n_options": 8,
-       "chosen": null
+       "chosen": "touch((3, 1, 1))",
+       "desc": "move the player (brown) onto/against 178\u00d7 green 1x1 at (1,2), (1,8), (1,13), \u2026"
       },
       {
        "level": 0,
-       "n": 301,
-       "n_options": 4,
-       "chosen": null
+       "n": 212,
+       "rejected": "touch((3, 1, 1))"
       },
       {
        "level": 0,
-       "n": 601,
-       "n_options": 4,
-       "chosen": null
+       "n": 212,
+       "n_options": 6,
+       "chosen": "touch((7, 3, 3))",
+       "desc": "move the player (green, brown, light-grey) onto/against 1\u00d7 orange 3x3 at (37,20)"
       }
      ]
     },
-    "greedy_steps": 0,
+    "greedy_steps": 7,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1724,
-    "goal_plans": 0,
-    "deaths": 74,
+    "plans": 1705,
+    "goal_plans": 19,
+    "deaths": 82,
     "surviving_goals": [
      "appeared((7, 3, 3))",
-     "gone((14, 5, 5))",
+     "count((14, 5, 5), 2)",
      "touch((7, 3, 3))"
     ],
-    "plan_steps": 1796,
-    "replans_on_error": 35,
-    "fallback_steps": 129,
-    "pred_total": 1335,
-    "pred_acc": 0.075,
+    "plan_steps": 1917,
+    "replans_on_error": 84,
+    "fallback_steps": 0,
+    "pred_total": 1563,
+    "pred_acc": 0.187,
     "pred_by_source": {
      "memo": [
-      78,
-      0.91
+      256,
+      0.809
      ],
      "model": [
-      30,
-      0.067
+      43,
+      0.186
      ],
      "unreliable": [
-      1227,
-      0.022
+      1264,
+      0.062
      ]
     },
     "movers": {
@@ -464,14 +453,14 @@
      "('click', 9, 2, 2)",
      "('click', 11, 1, 1)",
      "('click', 15, 17, 64)",
-     "('click', 14, 3, 5)",
      "('click', 7, 3, 3)",
      "('click', 15, 4, 3)",
      "('click', 0, 1, 1)",
-     "('click', 10, 30, 17)",
-     "('click', 10, 23, 17)"
+     "('click', 14, 3, 5)",
+     "('click', 10, 23, 17)",
+     "('click', 10, 3, 18)"
     ],
-    "click_classes_modelled": 19,
+    "click_classes_modelled": 17,
     "key_reliability": {
      "3": [
       20,
@@ -479,7 +468,7 @@
      ],
      "4": [
       20,
-      0.05
+      0.1
      ],
      "('click', 14, 5, 5)": [
       20,
@@ -493,13 +482,13 @@
    "levels_completed": 1,
    "win_levels": 9,
    "level_actions": [
-    646
+    223
    ],
    "actions": 2000,
-   "resets": 75,
-   "distinct_frames": 7168,
+   "resets": 83,
+   "distinct_frames": 7587,
    "final_state": "NOT_FINISHED",
-   "seconds": 563.91,
+   "seconds": 397.04,
    "baseline_actions": [
     21,
     48,
@@ -511,7 +500,7 @@
     131,
     163
    ],
-   "score": 0.0023483403464041636
+   "score": 0.019706810915160165
   },
   {
    "agent_stats": {
@@ -522,11 +511,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 8,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 2,
+     "accepted": 2,
      "rejected": 0,
-     "calls": 8,
+     "calls": 2,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -534,49 +523,15 @@
        "level": 0,
        "n": 8,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 308,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 608,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((0, 3, 3))",
+       "desc": "move the player (black) onto/against 1\u00d7 black 3x3 at (3,36)"
       },
       {
        "level": 1,
        "n": 0,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 300,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 600,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 900,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1200,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((0, 3, 3))",
+       "desc": "move the player (black) onto/against 1\u00d7 black 3x3 at (3,33)"
       }
      ]
     },
@@ -727,7 +682,7 @@
    "resets": 20,
    "distinct_frames": 3249,
    "final_state": "NOT_FINISHED",
-   "seconds": 256.52,
+   "seconds": 215.77,
    "baseline_actions": [
     55,
     8,
@@ -747,11 +702,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 7,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 3,
+     "accepted": 3,
+     "rejected": 2,
+     "calls": 3,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -759,70 +714,59 @@
        "level": 0,
        "n": 1,
        "n_options": 2,
-       "chosen": null
+       "chosen": "gone((14, 21, 9))",
+       "desc": "make every 1\u00d7 dark-blue 21x9 at (29,41) disappear"
       },
       {
        "level": 0,
-       "n": 301,
-       "n_options": 2,
-       "chosen": null
+       "n": 82,
+       "rejected": "gone((14, 21, 9))"
       },
       {
        "level": 0,
-       "n": 601,
+       "n": 82,
        "n_options": 2,
-       "chosen": null
+       "chosen": "gone((12, 15, 15))",
+       "desc": "make every 1\u00d7 dark-red 15x15 at (11,14) disappear"
       },
       {
        "level": 0,
-       "n": 901,
-       "n_options": 2,
-       "chosen": null
+       "n": 156,
+       "rejected": "gone((12, 15, 15))"
       },
       {
        "level": 0,
-       "n": 1201,
-       "n_options": 2,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 2,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 2,
-       "chosen": null
+       "n": 456,
+       "n_options": 4,
+       "chosen": "aligned((12, 15, 15), (0, 9, 21))",
+       "desc": "line up a dark-red 15x15 with a black 9x21 (same row or column)"
       }
      ]
     },
     "greedy_steps": 0,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1535,
-    "goal_plans": 0,
+    "plans": 1575,
+    "goal_plans": 97,
     "deaths": 26,
     "surviving_goals": null,
     "plan_steps": 1973,
-    "replans_on_error": 46,
+    "replans_on_error": 51,
     "fallback_steps": 0,
-    "pred_total": 1697,
-    "pred_acc": 0.318,
+    "pred_total": 1680,
+    "pred_acc": 0.332,
     "pred_by_source": {
      "memo": [
-      438,
-      1.0
+      471,
+      0.996
      ],
      "model": [
       50,
-      0.08
+      0.02
      ],
      "unreliable": [
-      1209,
-      0.08
+      1159,
+      0.075
      ]
     },
     "movers": {
@@ -892,23 +836,23 @@
     "key_reliability": {
      "1": [
       20,
-      0.05
+      0.1
      ],
      "2": [
       20,
-      0.1
+      0.0
      ],
      "3": [
       20,
-      0.05
+      0.0
      ],
      "4": [
       20,
-      0.2
+      0.05
      ],
      "5": [
       20,
-      0.2
+      0.05
      ]
     }
    },
@@ -920,9 +864,9 @@
    "level_actions": [],
    "actions": 2000,
    "resets": 27,
-   "distinct_frames": 1542,
+   "distinct_frames": 1549,
    "final_state": "NOT_FINISHED",
-   "seconds": 237.48,
+   "seconds": 53.67,
    "baseline_actions": [
     29,
     54,
@@ -942,11 +886,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
+     "calls": 1,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -954,43 +898,8 @@
        "level": 0,
        "n": 1,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 301,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "overlap((8, 5, 13), (11, 2, 2))",
+       "desc": "bring a cyan 5x13 onto a light-grey 2x2"
       }
      ]
     },
@@ -1149,7 +1058,7 @@
    "resets": 20,
    "distinct_frames": 1042,
    "final_state": "NOT_FINISHED",
-   "seconds": 242.25,
+   "seconds": 129.18,
    "baseline_actions": [
     59,
     102,
@@ -1169,11 +1078,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 2,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
+     "calls": 2,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -1187,37 +1096,8 @@
        "level": 0,
        "n": 400,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 700,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1000,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1300,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1600,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1900,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "overlap((2, 4, 2), (8, 2, 2))",
+       "desc": "bring a red 4x2 onto a cyan 2x2"
       }
      ]
     },
@@ -1282,7 +1162,7 @@
    "resets": 6,
    "distinct_frames": 318,
    "final_state": "NOT_FINISHED",
-   "seconds": 230.71,
+   "seconds": 523.85,
    "baseline_actions": [
     43,
     12,
@@ -1302,11 +1182,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 4,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 4,
+     "calls": 1,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -1314,33 +1194,16 @@
        "level": 0,
        "n": 2,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 302,
-       "n_options": 19,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 602,
-       "n_options": 19,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 902,
-       "n_options": 19,
-       "chosen": null
+       "chosen": "overlap((9, 3, 3), (1, 3, 3))",
+       "desc": "bring a brown 3x3 onto a blue 3x3"
       }
      ]
     },
-    "greedy_steps": 108,
+    "greedy_steps": 128,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1057,
-    "goal_plans": 432,
+    "plans": 1015,
+    "goal_plans": 445,
     "deaths": 14,
     "surviving_goals": [
      "appeared((2, 3, 3))",
@@ -1351,22 +1214,22 @@
      "touch((9, 7, 7))"
     ],
     "plan_steps": 1464,
-    "replans_on_error": 320,
+    "replans_on_error": 301,
     "fallback_steps": 521,
     "pred_total": 1954,
-    "pred_acc": 0.711,
+    "pred_acc": 0.735,
     "pred_by_source": {
      "memo": [
-      1368,
-      0.86
+      1444,
+      0.873
      ],
      "model": [
-      303,
-      0.574
+      271,
+      0.565
      ],
      "unreliable": [
-      283,
-      0.134
+      239,
+      0.092
      ]
     },
     "movers": {
@@ -1439,11 +1302,11 @@
      ],
      "4": [
       20,
-      0.1
+      0.15
      ],
      "3": [
       20,
-      0.05
+      0.0
      ]
     }
    },
@@ -1457,9 +1320,9 @@
    ],
    "actions": 2000,
    "resets": 15,
-   "distinct_frames": 6808,
+   "distinct_frames": 6118,
    "final_state": "NOT_FINISHED",
-   "seconds": 150.69,
+   "seconds": 171.8,
    "baseline_actions": [
     78,
     175,
@@ -1480,11 +1343,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 7,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 3,
+     "accepted": 2,
+     "rejected": 1,
+     "calls": 3,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -1498,64 +1361,47 @@
        "level": 0,
        "n": 301,
        "n_options": 8,
-       "chosen": null
+       "chosen": "touch((15, 21, 6))",
+       "desc": "move the player (black, dark-blue) onto/against 1\u00d7 pink 21x6 at (21,33)"
       },
       {
        "level": 0,
-       "n": 601,
-       "n_options": 9,
-       "chosen": null
+       "n": 766,
+       "rejected": "touch((15, 21, 6))"
       },
       {
        "level": 0,
-       "n": 901,
-       "n_options": 9,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 9,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 9,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 9,
-       "chosen": null
+       "n": 766,
+       "n_options": 8,
+       "chosen": "gone((1, 3, 3))",
+       "desc": "make every 3\u00d7 blue 3x3 at (27,45), (30,27), (33,12) disappear"
       }
      ]
     },
-    "greedy_steps": 0,
+    "greedy_steps": 43,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1903,
-    "goal_plans": 0,
+    "plans": 1918,
+    "goal_plans": 8,
     "deaths": 19,
     "surviving_goals": null,
     "plan_steps": 1980,
-    "replans_on_error": 282,
+    "replans_on_error": 226,
     "fallback_steps": 0,
-    "pred_total": 756,
-    "pred_acc": 0.198,
+    "pred_total": 783,
+    "pred_acc": 0.208,
     "pred_by_source": {
      "memo": [
-      315,
-      0.244
+      230,
+      0.274
      ],
      "model": [
-      57,
-      0.228
+      85,
+      0.306
      ],
      "unreliable": [
-      384,
-      0.156
+      468,
+      0.158
      ]
     },
     "movers": {
@@ -1609,7 +1455,9 @@
       ]
      ]
     },
-    "volatile_rows": [],
+    "volatile_rows": [
+     63
+    ],
     "terrain_colours": [
      2
     ],
@@ -1621,35 +1469,42 @@
      "('click', 1, 3, 3)",
      "('click', 0, 1, 1)",
      "('click', 'lattice')",
+     "('click', 4, 1, 58)",
+     "('click', 4, 1, 54)",
      "('click', 4, 1, 51)",
+     "('click', 4, 1, 44)",
+     "('click', 4, 1, 40)",
      "('click', 4, 1, 35)",
-     "('click', 4, 1, 33)",
      "('click', 4, 1, 26)",
      "('click', 1, 21, 21)",
+     "('click', 4, 1, 1)",
+     "('click', 0, 1, 63)",
+     "('click', 4, 1, 22)",
      "('click', 1, 3, 6)",
+     "('click', 1, 3, 9)",
      "('click', 1, 21, 24)"
     ],
-    "click_classes_modelled": 125,
+    "click_classes_modelled": 119,
     "key_reliability": {
      "1": [
       20,
-      0.1
+      0.3
      ],
      "2": [
       20,
-      0.2
+      0.3
      ],
      "3": [
       20,
-      0.0
+      0.2
      ],
      "4": [
       20,
-      0.35
+      0.2
      ],
      "('click', 14, 3, 3)": [
       20,
-      0.05
+      0.4
      ]
     }
    },
@@ -1661,9 +1516,9 @@
    "level_actions": [],
    "actions": 2000,
    "resets": 20,
-   "distinct_frames": 1394,
+   "distinct_frames": 1447,
    "final_state": "NOT_FINISHED",
-   "seconds": 230.31,
+   "seconds": 146.06,
    "baseline_actions": [
     28,
     109,
@@ -1684,11 +1539,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 1,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 1,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 2,
+     "accepted": 2,
+     "rejected": 1,
+     "calls": 2,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -1696,70 +1551,58 @@
        "level": 0,
        "n": 11,
        "n_options": 16,
-       "chosen": null
+       "chosen": "touch((3, 6, 6))",
+       "desc": "move the player (blue) onto/against 1\u00d7 green 6x6 at (17,16)"
+      },
+      {
+       "level": 0,
+       "n": 98,
+       "rejected": "touch((3, 6, 6))"
+      },
+      {
+       "level": 0,
+       "n": 98,
+       "n_options": 5,
+       "chosen": "touch((1, 4, 4))",
+       "desc": "move the player (blue, blue, red, dark-blue) onto/against 27\u00d7 blue 4x4 at (12,11), (12,17), (12,23), \u2026"
       }
      ]
     },
     "greedy_steps": 0,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 970,
-    "goal_plans": 716,
-    "deaths": 1,
+    "plans": 996,
+    "goal_plans": 810,
+    "deaths": 0,
     "surviving_goals": [
      "appeared((1, 2, 2))",
      "appeared((2, 1, 2))",
      "appeared((2, 2, 1))",
      "appeared((3, 6, 6))",
      "touch((1, 2, 2))",
-     "touch((1, 4, 4))",
      "touch((2, 1, 2))",
      "touch((2, 2, 1))"
     ],
-    "plan_steps": 1998,
-    "replans_on_error": 48,
+    "plan_steps": 1999,
+    "replans_on_error": 218,
     "fallback_steps": 0,
-    "pred_total": 1761,
-    "pred_acc": 0.972,
+    "pred_total": 1846,
+    "pred_acc": 0.88,
     "pred_by_source": {
      "memo": [
-      1705,
-      1.0
+      1770,
+      0.911
      ],
      "model": [
-      55,
-      0.127
+      73,
+      0.178
      ],
      "unreliable": [
-      1,
+      3,
       0.0
      ]
     },
     "movers": {
-     "1": [
-      [
-       "(11, 6, 6)",
-       "(12, 4, 4)",
-       "(9, 1, 2)",
-       "(9, 8, 4)"
-      ],
-      [
-       -6,
-       0
-      ]
-     ],
-     "2": [
-      [
-       "(11, 6, 6)",
-       "(12, 4, 4)",
-       "(9, 1, 2)",
-       "(9, 8, 4)"
-      ],
-      [
-       6,
-       0
-      ]
-     ],
      "3": [
       [
        "(11, 6, 6)",
@@ -1784,13 +1627,22 @@
        6
       ]
      ],
+     "('click', 0, 42, 42)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       -9
+      ]
+     ],
      "('click', 9, 44, 20)": [
       [
        "(1, 1, 1)"
       ],
       [
-       12,
-       0
+       0,
+       -9
       ]
      ],
      "('click', 1, 1, 1)": [
@@ -1811,6 +1663,15 @@
        12
       ]
      ],
+     "('click', 2, 1, 2)": [
+      [
+       "(14, 4, 4)"
+      ],
+      [
+       0,
+       12
+      ]
+     ],
      "('click', 2, 2, 1)": [
       [
        "(14, 4, 4)"
@@ -1825,13 +1686,17 @@
        "(14, 4, 4)"
       ],
       [
-       12,
-       0
+       0,
+       12
       ]
      ],
      "('click', 5, 13, 10)": [
       [
-       "(1, 1, 1)"
+       "(1, 1, 1)",
+       "(11, 6, 6)",
+       "(12, 4, 4)",
+       "(9, 2, 1)",
+       "(9, 4, 8)"
       ],
       [
        0,
@@ -1880,11 +1745,14 @@
      10
     ],
     "known_noops": [
+     "1",
+     "2",
      "('click', 5, 44, 44)",
-     "('click', 0, 42, 42)",
      "('click', 1, 4, 4)",
+     "('click', 9, 1, 23)",
      "('click', 'lattice')",
      "7",
+     "('click', 2, 4, 4)",
      "('click', 5, 50, 53)",
      "('click', 0, 18, 42)",
      "('click', 9, 8, 1)",
@@ -1899,19 +1767,19 @@
     "click_classes_modelled": 25,
     "key_reliability": {
      "('click', 1, 1, 1)": [
-      6,
+      11,
       0.0
      ],
      "('click', 2, 2, 1)": [
-      8,
+      6,
       0.0
      ],
      "('click', 5, 13, 10)": [
-      2,
+      6,
       0.0
      ],
      "('click', 15, 12, 8)": [
-      1,
+      2,
       0.0
      ],
      "('click', 9, 11, 4)": [
@@ -1923,11 +1791,23 @@
       0.0
      ],
      "('click', 0, 2, 2)": [
-      1,
+      2,
       0.0
      ],
      "('click', 14, 4, 4)": [
-      8,
+      5,
+      0.2
+     ],
+     "('click', 1, 2, 2)": [
+      7,
+      0.0
+     ],
+     "('click', 2, 1, 2)": [
+      5,
+      0.0
+     ],
+     "('click', 0, 42, 42)": [
+      1,
       0.0
      ],
      "('click', 9, 44, 20)": [
@@ -1935,20 +1815,12 @@
       0.0
      ],
      "3": [
-      10,
-      0.3
+      14,
+      0.43
      ],
      "4": [
-      11,
-      0.27
-     ],
-     "2": [
-      3,
-      0.0
-     ],
-     "1": [
-      3,
-      0.33
+      14,
+      0.43
      ]
     }
    },
@@ -1958,13 +1830,13 @@
    "levels_completed": 1,
    "win_levels": 10,
    "level_actions": [
-    79
+    301
    ],
    "actions": 2000,
-   "resets": 2,
-   "distinct_frames": 2385,
+   "resets": 1,
+   "distinct_frames": 4317,
    "final_state": "NOT_FINISHED",
-   "seconds": 45.94,
+   "seconds": 55.62,
    "baseline_actions": [
     32,
     81,
@@ -1977,7 +1849,7 @@
     164,
     225
    ],
-   "score": 0.2983204905973693
+   "score": 0.020549642739243295
   },
   {
    "agent_stats": {
@@ -1988,11 +1860,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 8,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 2,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 8,
+     "calls": 2,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -2006,43 +1878,8 @@
        "level": 1,
        "n": 0,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 300,
-       "n_options": 14,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 600,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 900,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1200,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1500,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1800,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((14, 1, 4))",
+       "desc": "move the player (red, brown, light-grey, pink) onto/against 1\u00d7 dark-blue 1x4 at (1,10)"
       }
      ]
     },
@@ -2291,7 +2128,7 @@
    "resets": 27,
    "distinct_frames": 1407,
    "final_state": "NOT_FINISHED",
-   "seconds": 259.72,
+   "seconds": 124.78,
    "baseline_actions": [
     17,
     38,
@@ -2313,11 +2150,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 2,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 2,
+     "calls": 1,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -2325,44 +2162,39 @@
        "level": 0,
        "n": 1,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 301,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "overlap((5, 52, 4), (5, 7, 7))",
+       "desc": "bring a grey 52x4 onto a grey 7x7"
       }
      ]
     },
-    "greedy_steps": 77,
+    "greedy_steps": 65,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 500,
-    "goal_plans": 23,
+    "plans": 501,
+    "goal_plans": 21,
     "deaths": 25,
     "surviving_goals": [
      "touch((5, 7, 7))",
      "touch((9, 1, 1))",
      "touch((9, 3, 3))"
     ],
-    "plan_steps": 1081,
-    "replans_on_error": 156,
-    "fallback_steps": 893,
+    "plan_steps": 1047,
+    "replans_on_error": 183,
+    "fallback_steps": 927,
     "pred_total": 1943,
-    "pred_acc": 0.908,
+    "pred_acc": 0.894,
     "pred_by_source": {
      "memo": [
-      1450,
-      0.964
+      1444,
+      0.956
      ],
      "model": [
       426,
-      0.756
+      0.718
      ],
      "unreliable": [
-      67,
-      0.657
+      73,
+      0.685
      ]
     },
     "movers": {
@@ -2420,19 +2252,19 @@
     "key_reliability": {
      "1": [
       20,
-      0.85
+      0.8
      ],
      "2": [
       20,
-      0.85
+      0.75
      ],
      "3": [
       20,
-      0.95
+      1.0
      ],
      "4": [
       20,
-      0.85
+      0.95
      ]
     }
    },
@@ -2446,9 +2278,9 @@
    ],
    "actions": 2000,
    "resets": 26,
-   "distinct_frames": 1155,
+   "distinct_frames": 1050,
    "final_state": "NOT_FINISHED",
-   "seconds": 69.63,
+   "seconds": 622.97,
    "baseline_actions": [
     22,
     123,
@@ -2469,9 +2301,9 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
      "asks": 1,
-     "accepted": 0,
+     "accepted": 1,
      "rejected": 0,
      "calls": 1,
      "cache_hits": 0,
@@ -2481,7 +2313,8 @@
        "level": 1,
        "n": 0,
        "n_options": 4,
-       "chosen": null
+       "chosen": "touch((10, 4, 4))",
+       "desc": "move the player (white) onto/against 2\u00d7 white 4x4 at (10,22), (10,38)"
       }
      ]
     },
@@ -2593,7 +2426,7 @@
    "resets": 13,
    "distinct_frames": 1568,
    "final_state": "NOT_FINISHED",
-   "seconds": 60.38,
+   "seconds": 37.9,
    "baseline_actions": [
     30,
     111,
@@ -2613,11 +2446,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
+     "calls": 1,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -2625,43 +2458,8 @@
        "level": 0,
        "n": 1,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 301,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((2, 18, 10))",
+       "desc": "move the player (blue) onto/against 1\u00d7 red 18x10 at (0,54)"
       }
      ]
     },
@@ -2669,7 +2467,7 @@
     "greedy_cap": 80,
     "learned_seq": [],
     "plans": 1149,
-    "goal_plans": 0,
+    "goal_plans": 2,
     "deaths": 32,
     "surviving_goals": null,
     "plan_steps": 1967,
@@ -3697,7 +3495,7 @@
    "resets": 33,
    "distinct_frames": 1056,
    "final_state": "NOT_FINISHED",
-   "seconds": 254.04,
+   "seconds": 308.62,
    "baseline_actions": [
     22,
     33,
@@ -3717,11 +3515,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
+     "calls": 1,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -3729,43 +3527,8 @@
        "level": 0,
        "n": 1,
        "n_options": 14,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 301,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 12,
-       "chosen": null
+       "chosen": "touch((1, 1, 1))",
+       "desc": "move the player (black, brown, brown) onto/against 1\u00d7 blue 1x1 at (63,63)"
       }
      ]
     },
@@ -3892,7 +3655,7 @@
    "resets": 20,
    "distinct_frames": 1711,
    "final_state": "NOT_FINISHED",
-   "seconds": 234.47,
+   "seconds": 75.83,
    "baseline_actions": [
     26,
     42,
@@ -3914,11 +3677,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 2,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 2,
+     "calls": 1,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -3926,13 +3689,8 @@
        "level": 0,
        "n": 5,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 305,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((3, 5, 1))",
+       "desc": "move the player (dark-green) onto/against 1\u00d7 green 5x1 at (19,42)"
       }
      ]
     },
@@ -4183,7 +3941,7 @@
    "resets": 19,
    "distinct_frames": 1072,
    "final_state": "NOT_FINISHED",
-   "seconds": 80.53,
+   "seconds": 192.17,
    "baseline_actions": [
     20,
     89,
@@ -4205,11 +3963,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 2,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
+     "calls": 2,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -4223,37 +3981,8 @@
        "level": 0,
        "n": 316,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 616,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 916,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1216,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1516,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1816,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((15, 6, 6))",
+       "desc": "move the player (black, pink) onto/against 1\u00d7 pink 6x6 at (1,39)"
       }
      ]
     },
@@ -4387,7 +4116,7 @@
    "resets": 10,
    "distinct_frames": 4911,
    "final_state": "NOT_FINISHED",
-   "seconds": 248.53,
+   "seconds": 834.08,
    "baseline_actions": [
     18,
     28,
@@ -4409,11 +4138,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 7,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 2,
+     "accepted": 2,
+     "rejected": 1,
+     "calls": 2,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -4421,77 +4150,54 @@
        "level": 0,
        "n": 4,
        "n_options": 21,
-       "chosen": null
+       "chosen": "touch((3, 17, 17))",
+       "desc": "move the player (brown) onto/against 1\u00d7 green 17x17 at (47,22)"
       },
       {
        "level": 0,
-       "n": 304,
-       "n_options": 21,
-       "chosen": null
+       "n": 1841,
+       "rejected": "touch((3, 17, 17))",
+       "why": "greedy_cap"
       },
       {
        "level": 0,
-       "n": 604,
+       "n": 1841,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 904,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1204,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1504,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1804,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((10, 4, 4))",
+       "desc": "move the player (brown, brown, white, white) onto/against 1\u00d7 white 4x4 at (18,13)"
       }
      ]
     },
-    "greedy_steps": 0,
+    "greedy_steps": 94,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1568,
-    "goal_plans": 0,
+    "plans": 1542,
+    "goal_plans": 1,
     "deaths": 30,
     "surviving_goals": null,
     "plan_steps": 1833,
-    "replans_on_error": 134,
+    "replans_on_error": 122,
     "fallback_steps": 136,
-    "pred_total": 570,
-    "pred_acc": 0.547,
+    "pred_total": 623,
+    "pred_acc": 0.544,
     "pred_by_source": {
      "memo": [
-      412,
-      0.757
+      424,
+      0.797
      ],
      "model": [
-      34,
+      36,
       0.0
      ],
      "unreliable": [
-      124,
-      0.0
+      163,
+      0.006
      ]
     },
     "movers": {
      "1": [
       [
-       "(10, 1, 2)",
-       "(9, 1, 2)"
+       "(10, 1, 2)"
       ],
       [
        -1,
@@ -4584,15 +4290,13 @@
      "('click', 14, 28, 2)",
      "('click', 0, 38, 2)",
      "('click', 14, 26, 2)",
-     "('click', 0, 40, 2)",
+     "('click', 0, 42, 2)",
      "('click', 2, 4, 26)",
      "('click', 10, 2, 1)",
      "('click', 9, 2, 1)",
-     "('click', 14, 24, 2)",
-     "('click', 0, 42, 2)",
+     "('click', 14, 22, 2)",
      "('click', 9, 1, 2)",
      "('click', 10, 1, 2)",
-     "('click', 14, 22, 2)",
      "('click', 0, 44, 2)",
      "('click', 14, 20, 2)",
      "('click', 0, 46, 2)",
@@ -4614,14 +4318,15 @@
      "('click', 0, 62, 2)",
      "('click', 14, 2, 2)",
      "('click', 0, 64, 2)",
+     "('click', 0, 40, 2)",
+     "('click', 14, 24, 2)",
      "('click', 2, 4, 14)",
      "('click', 2, 4, 8)",
-     "('click', 2, 4, 10)",
-     "('click', 2, 4, 12)",
      "('click', 2, 2, 6)",
+     "('click', 2, 4, 16)",
      "('click', 2, 4, 20)"
     ],
-    "click_classes_modelled": 91,
+    "click_classes_modelled": 92,
     "key_reliability": {
      "4": [
       20,
@@ -4632,11 +4337,11 @@
       0.0
      ],
      "3": [
-      10,
+      20,
       0.0
      ],
      "1": [
-      4,
+      6,
       0.0
      ]
     }
@@ -4649,9 +4354,9 @@
    "level_actions": [],
    "actions": 2000,
    "resets": 31,
-   "distinct_frames": 1199,
+   "distinct_frames": 1238,
    "final_state": "NOT_FINISHED",
-   "seconds": 243.69,
+   "seconds": 181.54,
    "baseline_actions": [
     36,
     6,
@@ -4671,11 +4376,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
+     "calls": 1,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -4683,43 +4388,8 @@
        "level": 0,
        "n": 1,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 301,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "overlap((2, 2, 2), (3, 2, 2))",
+       "desc": "bring a red 2x2 onto a green 2x2"
       }
      ]
     },
@@ -4854,7 +4524,7 @@
    "resets": 9,
    "distinct_frames": 2565,
    "final_state": "NOT_FINISHED",
-   "seconds": 247.09,
+   "seconds": 294.19,
    "baseline_actions": [
     61,
     177,
@@ -4876,11 +4546,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 7,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 3,
+     "accepted": 2,
+     "rejected": 1,
+     "calls": 3,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -4888,70 +4558,54 @@
        "level": 0,
        "n": 1,
        "n_options": 21,
+       "chosen": "touch((1, 4, 64))",
+       "desc": "move the player (brown) onto/against 1\u00d7 blue 4x64 at (60,0)"
+      },
+      {
+       "level": 0,
+       "n": 195,
+       "rejected": "touch((1, 4, 64))",
+       "why": "greedy_cap"
+      },
+      {
+       "level": 0,
+       "n": 195,
+       "n_options": 19,
        "chosen": null
       },
       {
        "level": 0,
-       "n": 301,
-       "n_options": 20,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 20,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 20,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 20,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 20,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 20,
-       "chosen": null
+       "n": 495,
+       "n_options": 19,
+       "chosen": "touch((6, 4, 4))",
+       "desc": "move the player (brown) onto/against 1\u00d7 magenta 4x4 at (4,36)"
       }
      ]
     },
-    "greedy_steps": 0,
+    "greedy_steps": 109,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 439,
+    "plans": 409,
     "goal_plans": 0,
     "deaths": 64,
     "surviving_goals": null,
-    "plan_steps": 630,
-    "replans_on_error": 35,
-    "fallback_steps": 1305,
-    "pred_total": 1395,
-    "pred_acc": 0.973,
+    "plan_steps": 660,
+    "replans_on_error": 32,
+    "fallback_steps": 1275,
+    "pred_total": 1536,
+    "pred_acc": 0.979,
     "pred_by_source": {
      "memo": [
-      973,
+      1116,
       1.0
      ],
      "model": [
-      400,
-      0.912
+      410,
+      0.922
      ],
      "unreliable": [
-      22,
-      0.909
+      10,
+      1.0
      ]
     },
     "movers": {
@@ -5035,9 +4689,9 @@
    "level_actions": [],
    "actions": 2000,
    "resets": 65,
-   "distinct_frames": 887,
+   "distinct_frames": 1016,
    "final_state": "NOT_FINISHED",
-   "seconds": 246.46,
+   "seconds": 319.95,
    "baseline_actions": [
     39,
     58,
@@ -5057,11 +4711,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 7,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 3,
+     "accepted": 3,
+     "rejected": 1,
+     "calls": 3,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -5069,72 +4723,56 @@
        "level": 0,
        "n": 6,
        "n_options": 5,
-       "chosen": null
+       "chosen": "touch((9, 9, 9))",
+       "desc": "move the player (pink) onto/against 1\u00d7 brown 9x9 at (11,44)"
+      },
+      {
+       "level": 0,
+       "n": 96,
+       "rejected": "touch((9, 9, 9))"
+      },
+      {
+       "level": 0,
+       "n": 96,
+       "n_options": 3,
+       "chosen": "gone((9, 9, 9))",
+       "desc": "make every 1\u00d7 brown 9x9 at (11,44) disappear"
       },
       {
        "level": 1,
        "n": 0,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 300,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 600,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 900,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1200,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1500,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((15, 2, 2))",
+       "desc": "move the player (green, pink) onto/against 1\u00d7 pink 2x2 at (1,9)"
       }
      ]
     },
     "greedy_steps": 0,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1883,
-    "goal_plans": 0,
-    "deaths": 26,
+    "plans": 1656,
+    "goal_plans": 5,
+    "deaths": 37,
     "surviving_goals": [
      "gone((0, 3, 3))"
     ],
-    "plan_steps": 1928,
-    "replans_on_error": 140,
-    "fallback_steps": 45,
-    "pred_total": 969,
-    "pred_acc": 0.57,
+    "plan_steps": 1947,
+    "replans_on_error": 4,
+    "fallback_steps": 15,
+    "pred_total": 1011,
+    "pred_acc": 0.996,
     "pred_by_source": {
      "memo": [
-      47,
-      0.957
+      296,
+      1.0
      ],
      "model": [
-      612,
-      0.775
+      715,
+      0.994
      ],
      "unreliable": [
-      310,
-      0.106
+      0,
+      null
      ]
     },
     "movers": {
@@ -5161,17 +4799,8 @@
        "(6, 2, 2)"
       ],
       [
-       6,
-       -5
-      ]
-     ],
-     "7": [
-      [
-       "(6, 2, 2)"
-      ],
-      [
-       1,
-       1
+       7,
+       3
       ]
      ],
      "('click', 6, 2, 2)": [
@@ -5184,7 +4813,9 @@
       ]
      ]
     },
-    "volatile_rows": [],
+    "volatile_rows": [
+     63
+    ],
     "terrain_colours": [
      5
     ],
@@ -5193,59 +4824,25 @@
      "('click', 15, 3, 3)",
      "('click', 9, 9, 9)",
      "('click', 'lattice')",
-     "('click', 0, 1, 62)",
-     "('click', 0, 1, 60)",
-     "('click', 0, 1, 58)",
-     "('click', 0, 1, 56)",
-     "('click', 0, 1, 54)",
-     "('click', 0, 1, 52)",
-     "('click', 0, 1, 50)",
-     "('click', 0, 1, 48)",
-     "('click', 0, 1, 46)",
+     "7",
      "('click', 10, 2, 2)",
      "('click', 15, 2, 2)",
      "('click', 11, 2, 2)",
-     "('click', 11, 4, 4)",
-     "('click', 0, 1, 4)",
-     "('click', 0, 1, 42)",
-     "('click', 0, 1, 26)",
-     "('click', 0, 1, 24)",
-     "('click', 0, 1, 22)",
-     "('click', 0, 1, 20)",
-     "('click', 0, 1, 18)",
-     "('click', 0, 1, 16)",
-     "('click', 0, 1, 14)",
-     "('click', 0, 1, 12)",
-     "('click', 0, 1, 10)",
-     "('click', 0, 1, 8)",
-     "('click', 0, 1, 6)",
-     "('click', 0, 1, 2)",
-     "('click', 0, 1, 44)",
-     "('click', 0, 1, 40)",
-     "('click', 0, 1, 38)",
-     "('click', 0, 1, 36)",
-     "('click', 0, 1, 34)",
-     "('click', 0, 1, 32)",
-     "('click', 0, 1, 30)",
-     "('click', 0, 1, 28)"
+     "('click', 11, 4, 4)"
     ],
-    "click_classes_modelled": 42,
+    "click_classes_modelled": 11,
     "key_reliability": {
      "('click', 3, 1, 1)": [
-      10,
-      0.9
+      4,
+      0.75
      ],
      "('click', 0, 3, 3)": [
       1,
       0.0
      ],
      "('click', 'lattice')": [
-      5,
-      1.0
-     ],
-     "7": [
-      20,
-      0.05
+      2,
+      0.5
      ],
      "('click', 6, 2, 2)": [
       20,
@@ -5259,13 +4856,13 @@
    "levels_completed": 1,
    "win_levels": 9,
    "level_actions": [
-    189
+    100
    ],
    "actions": 2000,
-   "resets": 27,
-   "distinct_frames": 4167,
+   "resets": 38,
+   "distinct_frames": 4471,
    "final_state": "NOT_FINISHED",
-   "seconds": 242.08,
+   "seconds": 200.48,
    "baseline_actions": [
     22,
     42,
@@ -5277,7 +4874,7 @@
     40,
     41
    ],
-   "score": 0.03010989489531523
+   "score": 0.10755555555555556
   },
   {
    "agent_stats": {
@@ -5288,7 +4885,7 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
      "asks": 0,
      "accepted": 0,
      "rejected": 0,
@@ -5404,7 +5001,7 @@
    "resets": 32,
    "distinct_frames": 6116,
    "final_state": "NOT_FINISHED",
-   "seconds": 20.92,
+   "seconds": 20.32,
    "baseline_actions": [
     32,
     72,
@@ -5425,11 +5022,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 2,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
+     "calls": 2,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -5443,37 +5040,8 @@
        "level": 0,
        "n": 303,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 603,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 903,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1203,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1503,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1803,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((10, 7, 35))",
+       "desc": "move the player (black, orange) onto/against 1\u00d7 white 7x35 at (40,14)"
       }
      ]
     },
@@ -5579,7 +5147,7 @@
    "resets": 16,
    "distinct_frames": 1964,
    "final_state": "NOT_FINISHED",
-   "seconds": 256.7,
+   "seconds": 454.61,
    "baseline_actions": [
     54,
     58,
@@ -5599,11 +5167,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 1,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 1,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 2,
+     "accepted": 2,
+     "rejected": 1,
+     "calls": 2,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -5611,45 +5179,56 @@
        "level": 0,
        "n": 4,
        "n_options": 8,
-       "chosen": null
+       "chosen": "touch((0, 3, 3))",
+       "desc": "move the player (yellow, brown) onto/against 29\u00d7 black 3x3 at (15,15), (15,27), (15,33), \u2026"
+      },
+      {
+       "level": 0,
+       "n": 61,
+       "rejected": "touch((0, 3, 3))"
+      },
+      {
+       "level": 0,
+       "n": 61,
+       "n_options": 3,
+       "chosen": "touch((14, 3, 3))",
+       "desc": "move the player (black, brown) onto/against 1\u00d7 dark-blue 3x3 at (45,45)"
       }
      ]
     },
-    "greedy_steps": 31,
+    "greedy_steps": 0,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 462,
-    "goal_plans": 1,
-    "deaths": 85,
-    "surviving_goals": [
-     "touch((14, 3, 3))"
-    ],
-    "plan_steps": 806,
-    "replans_on_error": 114,
-    "fallback_steps": 1108,
-    "pred_total": 1814,
-    "pred_acc": 0.858,
+    "plans": 144,
+    "goal_plans": 43,
+    "deaths": 39,
+    "surviving_goals": null,
+    "plan_steps": 200,
+    "replans_on_error": 53,
+    "fallback_steps": 1760,
+    "pred_total": 1909,
+    "pred_acc": 0.954,
     "pred_by_source": {
      "memo": [
-      1396,
-      0.989
+      1796,
+      0.99
      ],
      "model": [
-      176,
-      0.443
+      46,
+      0.239
      ],
      "unreliable": [
-      242,
-      0.405
+      67,
+      0.478
      ]
     },
     "movers": {
      "1": [
       [
-       "(0, 3, 3)"
+       "(9, 3, 3)"
       ],
       [
-       6,
+       -6,
        0
       ]
      ],
@@ -5664,22 +5243,20 @@
      ],
      "3": [
       [
-       "(9, 3, 3)"
+       "(0, 3, 3)"
       ],
       [
        0,
-       -6
+       6
       ]
      ],
      "4": [
       [
-       "(0, 3, 3)",
-       "(12, 3, 3)",
-       "(15, 1, 1)"
+       "(9, 3, 3)"
       ],
       [
-       -6,
-       0
+       0,
+       6
       ]
      ]
     },
@@ -5694,7 +5271,7 @@
     "key_reliability": {
      "4": [
       20,
-      0.5
+      0.4
      ],
      "2": [
       20,
@@ -5706,25 +5283,21 @@
      ],
      "3": [
       20,
-      0.45
+      0.35
      ]
     }
    },
    "agent_errors": 0,
    "agent_error_sample": [],
    "game_id": "tu93-0768757b",
-   "levels_completed": 3,
+   "levels_completed": 0,
    "win_levels": 9,
-   "level_actions": [
-    193,
-    77,
-    338
-   ],
+   "level_actions": [],
    "actions": 2000,
-   "resets": 86,
-   "distinct_frames": 6175,
+   "resets": 40,
+   "distinct_frames": 3115,
    "final_state": "NOT_FINISHED",
-   "seconds": 39.23,
+   "seconds": 53.95,
    "baseline_actions": [
     19,
     16,
@@ -5736,7 +5309,7 @@
     23,
     111
    ],
-   "score": 0.28089515233497686
+   "score": 0.0
   },
   {
    "agent_stats": {
@@ -5747,11 +5320,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 9,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 3,
+     "accepted": 3,
      "rejected": 0,
-     "calls": 9,
+     "calls": 3,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -5759,82 +5332,49 @@
        "level": 0,
        "n": 11,
        "n_options": 18,
-       "chosen": null
+       "chosen": "touch((5, 4, 24))",
+       "desc": "move the player (yellow, light-grey) onto/against 1\u00d7 grey 4x24 at (28,40)"
       },
       {
        "level": 1,
        "n": 0,
        "n_options": 21,
-       "chosen": null
+       "chosen": "overlap((9, 4, 4), (5, 4, 56))",
+       "desc": "bring a brown 4x4 onto a grey 4x56"
       },
       {
        "level": 2,
        "n": 0,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 2,
-       "n": 300,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 2,
-       "n": 600,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 2,
-       "n": 900,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 2,
-       "n": 1200,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 2,
-       "n": 1500,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 2,
-       "n": 1800,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((15, 1, 2))",
+       "desc": "move the player (yellow, dark-blue) onto/against 1\u00d7 pink 1x2 at (39,36)"
       }
      ]
     },
     "greedy_steps": 0,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1039,
+    "plans": 84,
     "goal_plans": 0,
-    "deaths": 25,
+    "deaths": 0,
     "surviving_goals": null,
-    "plan_steps": 1974,
-    "replans_on_error": 16,
+    "plan_steps": 90,
+    "replans_on_error": 6,
     "fallback_steps": 0,
-    "pred_total": 1216,
-    "pred_acc": 0.798,
+    "pred_total": 18,
+    "pred_acc": 0.667,
     "pred_by_source": {
      "memo": [
-      935,
+      6,
       1.0
      ],
      "model": [
-      22,
-      0.273
+      12,
+      0.5
      ],
      "unreliable": [
-      259,
-      0.112
+      0,
+      null
      ]
     },
     "movers": {
@@ -5847,23 +5387,14 @@
        0,
        4
       ]
-     ],
-     "('click', 9, 2, 2)": [
-      [
-       "(14, 1, 3)"
-      ],
-      [
-       -2,
-       0
-      ]
      ]
     },
     "volatile_rows": [
      0
     ],
     "terrain_colours": [
-     3,
-     4
+     0,
+     3
     ],
     "known_noops": [
      "('click', 5, 4, 18)",
@@ -5876,48 +5407,13 @@
      "('click', 5, 4, 28)",
      "('click', 14, 4, 2)",
      "('click', 5, 4, 14)",
-     "('click', 14, 6, 2)",
-     "('click', 11, 1, 3)",
-     "('click', 5, 17, 2)",
-     "('click', 0, 28, 8)",
-     "('click', 5, 3, 2)",
-     "('click', 15, 1, 2)",
-     "('click', 5, 18, 2)",
-     "('click', 14, 1, 2)",
-     "('click', 5, 16, 2)",
-     "('click', 11, 1, 2)",
-     "('click', 5, 10, 2)",
-     "('click', 15, 1, 3)",
-     "('click', 5, 6, 2)",
-     "('click', 0, 6, 10)",
-     "('click', 14, 1, 3)",
-     "('click', 0, 4, 8)",
-     "('click', 0, 2, 6)",
-     "('click', 0, 6, 8)",
-     "('click', 0, 4, 10)",
-     "('click', 0, 2, 4)",
-     "('click', 0, 8, 8)",
-     "('click', 0, 10, 8)",
-     "('click', 0, 12, 8)",
-     "('click', 0, 14, 8)",
-     "('click', 0, 16, 8)",
-     "('click', 0, 26, 8)",
-     "('click', 0, 24, 8)",
-     "('click', 0, 18, 8)",
-     "('click', 0, 20, 8)",
-     "('click', 0, 22, 8)",
-     "('click', 0, 8, 10)",
-     "('click', 0, 10, 10)"
+     "('click', 14, 6, 2)"
     ],
-    "click_classes_modelled": 43,
+    "click_classes_modelled": 11,
     "key_reliability": {
      "('click', 9, 4, 4)": [
       12,
       0.5
-     ],
-     "('click', 9, 2, 2)": [
-      20,
-      0.0
      ]
     }
    },
@@ -5930,11 +5426,11 @@
     43,
     47
    ],
-   "actions": 2000,
-   "resets": 26,
-   "distinct_frames": 1689,
+   "actions": 91,
+   "resets": 1,
+   "distinct_frames": 93,
    "final_state": "NOT_FINISHED",
-   "seconds": 293.72,
+   "seconds": 1252.77,
    "baseline_actions": [
     7,
     18,
@@ -5955,11 +5451,11 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "google/gemma-4-31b-it",
-     "asks": 7,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 7,
+     "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+     "asks": 2,
+     "accepted": 2,
+     "rejected": 1,
+     "calls": 2,
      "cache_hits": 0,
      "cost_usd": 0.0,
      "log": [
@@ -5967,70 +5463,47 @@
        "level": 0,
        "n": 1,
        "n_options": 13,
-       "chosen": null
+       "chosen": "touch((9, 4, 12))",
+       "desc": "move the player (black, dark-blue) onto/against 1\u00d7 brown 4x12 at (28,28)"
       },
       {
        "level": 0,
-       "n": 301,
-       "n_options": 8,
-       "chosen": null
+       "n": 79,
+       "rejected": "touch((9, 4, 12))"
       },
       {
        "level": 0,
-       "n": 601,
-       "n_options": 13,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 15,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 15,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 13,
-       "chosen": null
+       "n": 79,
+       "n_options": 12,
+       "chosen": "gone((4, 4, 4))",
+       "desc": "make every 3\u00d7 yellow 4x4 at (24,44), (28,16), (36,32) disappear"
       }
      ]
     },
-    "greedy_steps": 0,
+    "greedy_steps": 8,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1589,
-    "goal_plans": 0,
+    "plans": 1675,
+    "goal_plans": 50,
     "deaths": 9,
     "surviving_goals": null,
     "plan_steps": 1990,
-    "replans_on_error": 57,
+    "replans_on_error": 52,
     "fallback_steps": 0,
-    "pred_total": 1051,
-    "pred_acc": 0.485,
+    "pred_total": 1194,
+    "pred_acc": 0.35,
     "pred_by_source": {
      "memo": [
-      399,
-      0.995
+      356,
+      0.992
      ],
      "model": [
-      61,
-      0.098
+      57,
+      0.14
      ],
      "unreliable": [
-      591,
-      0.181
+      781,
+      0.073
      ]
     },
     "movers": {
@@ -6047,7 +5520,8 @@
      "2": [
       [
        "(0, 1, 4)",
-       "(14, 3, 4)"
+       "(14, 3, 4)",
+       "(9, 2, 2)"
       ],
       [
        4,
@@ -6057,7 +5531,8 @@
      "3": [
       [
        "(0, 4, 1)",
-       "(14, 4, 3)"
+       "(14, 4, 3)",
+       "(9, 2, 2)"
       ],
       [
        0,
@@ -6067,7 +5542,8 @@
      "4": [
       [
        "(0, 4, 1)",
-       "(14, 4, 3)"
+       "(14, 4, 3)",
+       "(9, 2, 2)"
       ],
       [
        0,
@@ -6086,19 +5562,19 @@
     "key_reliability": {
      "1": [
       20,
-      0.4
+      0.3
      ],
      "2": [
       20,
-      0.3
+      0.0
      ],
      "4": [
       20,
-      0.3
+      0.0
      ],
      "3": [
       20,
-      0.3
+      0.0
      ]
     }
    },
@@ -6110,9 +5586,9 @@
    "level_actions": [],
    "actions": 2000,
    "resets": 10,
-   "distinct_frames": 1692,
+   "distinct_frames": 1661,
    "final_state": "NOT_FINISHED",
-   "seconds": 230.35,
+   "seconds": 75.48,
    "baseline_actions": [
     71,
     119,

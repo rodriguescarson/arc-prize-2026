@@ -4,7 +4,7 @@
   "contact": true,
   "memory": true,
   "goals": true,
-  "llm_goals": "qwen/qwen3-32b",
+  "llm_goals": "nvidia/nemotron-3-super-120b-a12b:free",
   "greedy": true,
   "greedy_cap": 80
  },
@@ -12,11 +12,11 @@
  "max_actions": 2000,
  "time_budget_s": 900.0,
  "n_games": 25,
- "total_score": 0.280293,
- "levels_completed": 15,
+ "total_score": 0.283536,
+ "levels_completed": 13,
  "total_levels": 183,
  "games_won": 0,
- "wall_s": 5226.2,
+ "wall_s": 807.4,
  "games": [
   {
    "agent_stats": {
@@ -27,55 +27,20 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 1,
        "n_options": 13,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 301,
-       "n_options": 7,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 7,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 18,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "overlap((5, 1, 1), (11, 9, 9))",
+       "desc": "bring a grey 1x1 onto a light-grey 9x9"
       }
      ]
     },
@@ -336,7 +301,7 @@
    "resets": 21,
    "distinct_frames": 835,
    "final_state": "NOT_FINISHED",
-   "seconds": 225.24,
+   "seconds": 7.83,
    "baseline_actions": [
     32,
     50,
@@ -358,12 +323,12 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
      "asks": 3,
      "accepted": 0,
      "rejected": 0,
-     "calls": 3,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 3,
      "cost_usd": 0.0,
      "log": [
       {
@@ -499,7 +464,7 @@
    "resets": 75,
    "distinct_frames": 7168,
    "final_state": "NOT_FINISHED",
-   "seconds": 561.08,
+   "seconds": 411.4,
    "baseline_actions": [
     21,
     48,
@@ -522,31 +487,20 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 8,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 4,
+     "accepted": 2,
      "rejected": 0,
-     "calls": 8,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 4,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 8,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 308,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 608,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "overlap((4, 5, 5), (0, 7, 12))",
+       "desc": "bring a yellow 5x5 onto a black 7x12"
       },
       {
        "level": 1,
@@ -564,19 +518,8 @@
        "level": 1,
        "n": 600,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 900,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1200,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((0, 3, 3))",
+       "desc": "move the player (black) onto/against 1\u00d7 black 3x3 at (3,33)"
       }
      ]
     },
@@ -727,7 +670,7 @@
    "resets": 20,
    "distinct_frames": 3249,
    "final_state": "NOT_FINISHED",
-   "seconds": 256.23,
+   "seconds": 8.98,
    "baseline_actions": [
     55,
     8,
@@ -747,82 +690,107 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
      "asks": 7,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "accepted": 5,
+     "rejected": 4,
+     "calls": 0,
+     "cache_hits": 7,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 1,
        "n_options": 2,
-       "chosen": null
+       "chosen": "gone((14, 21, 9))",
+       "desc": "make every 1\u00d7 dark-blue 21x9 at (29,41) disappear"
       },
       {
        "level": 0,
-       "n": 301,
+       "n": 82,
+       "rejected": "gone((14, 21, 9))"
+      },
+      {
+       "level": 0,
+       "n": 82,
        "n_options": 2,
        "chosen": null
       },
       {
        "level": 0,
-       "n": 601,
-       "n_options": 2,
+       "n": 382,
+       "n_options": 5,
+       "chosen": "gone((0, 21, 9))",
+       "desc": "make every 1\u00d7 black 21x9 at (32,41) disappear"
+      },
+      {
+       "level": 0,
+       "n": 433,
+       "rejected": "gone((0, 21, 9))"
+      },
+      {
+       "level": 0,
+       "n": 433,
+       "n_options": 5,
+       "chosen": "gone((0, 9, 21))",
+       "desc": "make every 1\u00d7 black 9x21 at (29,38) disappear"
+      },
+      {
+       "level": 0,
+       "n": 484,
+       "rejected": "gone((0, 9, 21))"
+      },
+      {
+       "level": 0,
+       "n": 784,
+       "n_options": 4,
+       "chosen": "aligned((12, 15, 15), (0, 21, 9))",
+       "desc": "line up a dark-red 15x15 with a black 21x9 (same row or column)"
+      },
+      {
+       "level": 0,
+       "n": 851,
+       "rejected": "aligned((12, 15, 15), (0, 21, 9))"
+      },
+      {
+       "level": 0,
+       "n": 851,
+       "n_options": 3,
        "chosen": null
       },
       {
        "level": 0,
-       "n": 901,
-       "n_options": 2,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 2,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 2,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 2,
-       "chosen": null
+       "n": 1151,
+       "n_options": 5,
+       "chosen": "aligned((12, 15, 15), (14, 9, 21))",
+       "desc": "line up a dark-red 15x15 with a dark-blue 9x21 (same row or column)"
       }
      ]
     },
     "greedy_steps": 0,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1535,
-    "goal_plans": 0,
+    "plans": 1667,
+    "goal_plans": 181,
     "deaths": 26,
     "surviving_goals": null,
     "plan_steps": 1973,
-    "replans_on_error": 46,
+    "replans_on_error": 51,
     "fallback_steps": 0,
-    "pred_total": 1697,
-    "pred_acc": 0.318,
+    "pred_total": 1671,
+    "pred_acc": 0.356,
     "pred_by_source": {
      "memo": [
-      438,
-      1.0
+      473,
+      0.996
      ],
      "model": [
-      50,
-      0.08
+      51,
+      0.039
      ],
      "unreliable": [
-      1209,
-      0.08
+      1147,
+      0.106
      ]
     },
     "movers": {
@@ -892,7 +860,7 @@
     "key_reliability": {
      "1": [
       20,
-      0.05
+      0.15
      ],
      "2": [
       20,
@@ -900,11 +868,11 @@
      ],
      "3": [
       20,
-      0.05
+      0.0
      ],
      "4": [
       20,
-      0.2
+      0.05
      ],
      "5": [
       20,
@@ -920,9 +888,9 @@
    "level_actions": [],
    "actions": 2000,
    "resets": 27,
-   "distinct_frames": 1542,
+   "distinct_frames": 1530,
    "final_state": "NOT_FINISHED",
-   "seconds": 236.14,
+   "seconds": 18.48,
    "baseline_actions": [
     29,
     54,
@@ -942,82 +910,47 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 1,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 301,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((0, 2, 2))",
+       "desc": "move the player (dark-blue) onto/against 11\u00d7 black 2x2 at (10,32), (14,32), (18,32), \u2026"
       }
      ]
     },
-    "greedy_steps": 0,
+    "greedy_steps": 21,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1644,
-    "goal_plans": 0,
-    "deaths": 19,
+    "plans": 1663,
+    "goal_plans": 1,
+    "deaths": 18,
     "surviving_goals": null,
-    "plan_steps": 1980,
-    "replans_on_error": 194,
+    "plan_steps": 1981,
+    "replans_on_error": 267,
     "fallback_steps": 0,
-    "pred_total": 1211,
-    "pred_acc": 0.386,
+    "pred_total": 1116,
+    "pred_acc": 0.397,
     "pred_by_source": {
      "memo": [
-      439,
-      0.706
+      438,
+      0.63
      ],
      "model": [
-      122,
-      0.467
+      183,
+      0.426
      ],
      "unreliable": [
-      650,
-      0.154
+      495,
+      0.18
      ]
     },
     "movers": {
@@ -1093,41 +1026,33 @@
      "('click', 9, 1, 1)",
      "('click', 14, 2, 2)",
      "('click', 'lattice')",
-     "('click', 8, 6, 4)",
-     "('click', 0, 1, 37)",
-     "('click', 0, 1, 36)",
-     "('click', 0, 1, 33)",
-     "('click', 0, 1, 20)",
-     "('click', 0, 1, 17)",
-     "('click', 0, 1, 15)",
-     "('click', 0, 1, 1)",
+     "('click', 0, 1, 58)",
      "('click', 0, 1, 56)",
      "('click', 0, 1, 54)",
-     "('click', 0, 1, 53)",
-     "('click', 0, 1, 51)",
+     "('click', 0, 1, 52)",
      "('click', 0, 1, 48)",
      "('click', 0, 1, 46)",
-     "('click', 0, 1, 41)",
-     "('click', 0, 1, 30)",
-     "('click', 0, 1, 23)",
-     "('click', 0, 1, 13)",
-     "('click', 0, 1, 11)",
-     "('click', 0, 1, 10)",
-     "('click', 0, 1, 8)"
+     "('click', 0, 1, 44)",
+     "('click', 0, 1, 42)",
+     "('click', 0, 1, 37)",
+     "('click', 0, 1, 28)",
+     "('click', 0, 1, 19)",
+     "('click', 0, 1, 7)",
+     "('click', 0, 1, 4)"
     ],
-    "click_classes_modelled": 55,
+    "click_classes_modelled": 59,
     "key_reliability": {
      "1": [
       20,
-      0.15
+      0.05
      ],
      "2": [
       20,
-      0.2
+      0.1
      ],
      "3": [
       20,
-      0.4
+      0.2
      ],
      "4": [
       20,
@@ -1135,6 +1060,10 @@
      ],
      "('click', 9, 5, 13)": [
       20,
+      0.0
+     ],
+     "('click', 0, 7, 15)": [
+      4,
       0.0
      ]
     }
@@ -1146,10 +1075,10 @@
    "win_levels": 6,
    "level_actions": [],
    "actions": 2000,
-   "resets": 20,
-   "distinct_frames": 1042,
+   "resets": 19,
+   "distinct_frames": 1056,
    "final_state": "NOT_FINISHED",
-   "seconds": 243.35,
+   "seconds": 52.25,
    "baseline_actions": [
     59,
     102,
@@ -1169,55 +1098,20 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 100,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 400,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 700,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1000,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1300,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1600,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1900,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "overlap((2, 4, 2), (0, 4, 2))",
+       "desc": "bring a red 4x2 onto a black 4x2"
       }
      ]
     },
@@ -1282,7 +1176,7 @@
    "resets": 6,
    "distinct_frames": 318,
    "final_state": "NOT_FINISHED",
-   "seconds": 231.02,
+   "seconds": 11.37,
    "baseline_actions": [
     43,
     12,
@@ -1302,71 +1196,54 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 4,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 4,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 2,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 302,
-       "n_options": 19,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 602,
-       "n_options": 19,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 902,
-       "n_options": 19,
-       "chosen": null
+       "chosen": "touch((9, 1, 1))",
+       "desc": "move the player (brown) onto/against 1\u00d7 brown 1x1 at (52,46)"
       }
      ]
     },
-    "greedy_steps": 128,
+    "greedy_steps": 329,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1015,
-    "goal_plans": 440,
+    "plans": 1840,
+    "goal_plans": 1368,
     "deaths": 14,
     "surviving_goals": [
      "appeared((2, 3, 3))",
      "appeared((2, 5, 5))",
-     "appeared((9, 1, 10))",
+     "appeared((9, 1, 11))",
      "gone((1, 3, 3))",
      "touch((9, 1, 1))",
      "touch((9, 7, 7))"
     ],
-    "plan_steps": 1464,
-    "replans_on_error": 301,
-    "fallback_steps": 521,
-    "pred_total": 1954,
-    "pred_acc": 0.735,
+    "plan_steps": 1984,
+    "replans_on_error": 239,
+    "fallback_steps": 1,
+    "pred_total": 1960,
+    "pred_acc": 0.718,
     "pred_by_source": {
      "memo": [
-      1444,
-      0.873
+      1395,
+      0.895
      ],
      "model": [
-      271,
-      0.565
+      236,
+      0.606
      ],
      "unreliable": [
-      239,
-      0.092
+      329,
+      0.046
      ]
     },
     "movers": {
@@ -1427,7 +1304,7 @@
     "key_reliability": {
      "2": [
       20,
-      0.35
+      0.1
      ],
      "5": [
       20,
@@ -1439,7 +1316,7 @@
      ],
      "4": [
       20,
-      0.15
+      0.45
      ],
      "3": [
       20,
@@ -1453,13 +1330,13 @@
    "levels_completed": 1,
    "win_levels": 7,
    "level_actions": [
-    1159
+    240
    ],
    "actions": 2000,
    "resets": 15,
-   "distinct_frames": 6118,
+   "distinct_frames": 4576,
    "final_state": "NOT_FINISHED",
-   "seconds": 148.09,
+   "seconds": 9.21,
    "baseline_actions": [
     78,
     175,
@@ -1469,7 +1346,7 @@
     54,
     67
    ],
-   "score": 0.016175745379091517
+   "score": 0.3772321428571429
   },
   {
    "agent_stats": {
@@ -1480,12 +1357,12 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 3,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 3,
      "cost_usd": 0.0,
      "log": [
       {
@@ -1504,58 +1381,41 @@
        "level": 0,
        "n": 601,
        "n_options": 9,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 9,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 9,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 9,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 9,
-       "chosen": null
+       "chosen": "touch((15, 21, 6))",
+       "desc": "move the player (black, dark-blue) onto/against 1\u00d7 pink 21x6 at (21,33)"
       }
      ]
     },
-    "greedy_steps": 0,
+    "greedy_steps": 272,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1903,
-    "goal_plans": 0,
-    "deaths": 19,
-    "surviving_goals": null,
-    "plan_steps": 1980,
-    "replans_on_error": 282,
+    "plans": 1955,
+    "goal_plans": 165,
+    "deaths": 17,
+    "surviving_goals": [
+     "appeared((4, 1, 1))",
+     "count((1, 3, 3), 1)",
+     "gone((5, 1, 1))",
+     "overlap((4, 1, 1), (4, 5, 5))",
+     "touch((4, 5, 5))"
+    ],
+    "plan_steps": 1982,
+    "replans_on_error": 202,
     "fallback_steps": 0,
-    "pred_total": 756,
-    "pred_acc": 0.198,
+    "pred_total": 826,
+    "pred_acc": 0.178,
     "pred_by_source": {
      "memo": [
-      315,
-      0.244
+      257,
+      0.385
      ],
      "model": [
       57,
       0.228
      ],
      "unreliable": [
-      384,
-      0.156
+      512,
+      0.068
      ]
     },
     "movers": {
@@ -1601,17 +1461,18 @@
      ],
      "('click', 14, 3, 3)": [
       [
-       "(14, 3, 2)"
+       "(0, 1, 1)"
       ],
       [
-       0,
-       4
+       -3,
+       12
       ]
      ]
     },
     "volatile_rows": [],
     "terrain_colours": [
-     2
+     1,
+     15
     ],
     "known_noops": [
      "('click', 1, 21, 18)",
@@ -1621,49 +1482,55 @@
      "('click', 1, 3, 3)",
      "('click', 0, 1, 1)",
      "('click', 'lattice')",
+     "('click', 0, 1, 8)",
      "('click', 4, 1, 51)",
+     "('click', 0, 1, 15)",
+     "('click', 0, 1, 19)",
      "('click', 4, 1, 35)",
      "('click', 4, 1, 33)",
      "('click', 4, 1, 26)",
      "('click', 1, 21, 21)",
-     "('click', 1, 3, 6)",
+     "('click', 4, 1, 1)",
+     "('click', 0, 1, 45)",
      "('click', 1, 21, 24)"
     ],
-    "click_classes_modelled": 125,
+    "click_classes_modelled": 136,
     "key_reliability": {
      "1": [
       20,
-      0.1
+      0.0
      ],
      "2": [
       20,
-      0.2
+      0.0
      ],
      "3": [
       20,
-      0.0
+      0.05
      ],
      "4": [
       20,
-      0.35
+      0.0
      ],
      "('click', 14, 3, 3)": [
       20,
-      0.05
+      0.35
      ]
     }
    },
    "agent_errors": 0,
    "agent_error_sample": [],
    "game_id": "ka59-38d34dbb",
-   "levels_completed": 0,
+   "levels_completed": 1,
    "win_levels": 7,
-   "level_actions": [],
+   "level_actions": [
+    1104
+   ],
    "actions": 2000,
-   "resets": 20,
-   "distinct_frames": 1394,
+   "resets": 18,
+   "distinct_frames": 1254,
    "final_state": "NOT_FINISHED",
-   "seconds": 233.88,
+   "seconds": 6.72,
    "baseline_actions": [
     28,
     109,
@@ -1673,7 +1540,7 @@
     132,
     326
    ],
-   "score": 0.0
+   "score": 0.002297311489182945
   },
   {
    "agent_stats": {
@@ -1684,12 +1551,12 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
      "asks": 1,
      "accepted": 0,
      "rejected": 0,
-     "calls": 1,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
@@ -1964,7 +1831,7 @@
    "resets": 2,
    "distinct_frames": 2385,
    "final_state": "NOT_FINISHED",
-   "seconds": 45.79,
+   "seconds": 14.3,
    "baseline_actions": [
     32,
     81,
@@ -1988,61 +1855,27 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 8,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 2,
+     "accepted": 2,
      "rejected": 0,
-     "calls": 8,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 2,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 10,
        "n_options": 21,
-       "chosen": null
+       "chosen": "overlap((5, 5, 1), (11, 2, 2))",
+       "desc": "bring a grey 5x1 onto a light-grey 2x2"
       },
       {
        "level": 1,
        "n": 0,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 300,
-       "n_options": 14,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 600,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 900,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1200,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1500,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1800,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((5, 1, 4))",
+       "desc": "move the player (red, brown, light-grey, pink) onto/against 7\u00d7 grey 1x4 at (1,15), (1,20), (1,25), \u2026"
       }
      ]
     },
@@ -2050,7 +1883,7 @@
     "greedy_cap": 80,
     "learned_seq": [],
     "plans": 1710,
-    "goal_plans": 0,
+    "goal_plans": 2,
     "deaths": 26,
     "surviving_goals": [
      "touch((1, 4, 4))",
@@ -2291,7 +2124,7 @@
    "resets": 27,
    "distinct_frames": 1407,
    "final_state": "NOT_FINISHED",
-   "seconds": 259.82,
+   "seconds": 10.08,
    "baseline_actions": [
     17,
     38,
@@ -2313,56 +2146,51 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 2,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 2,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 1,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 301,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((5, 52, 4))",
+       "desc": "move the player (brown, dark-red) onto/against 1\u00d7 grey 52x4 at (0,0)"
       }
      ]
     },
-    "greedy_steps": 65,
+    "greedy_steps": 109,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 501,
-    "goal_plans": 21,
+    "plans": 454,
+    "goal_plans": 15,
     "deaths": 25,
     "surviving_goals": [
      "touch((5, 7, 7))",
      "touch((9, 1, 1))",
      "touch((9, 3, 3))"
     ],
-    "plan_steps": 1047,
-    "replans_on_error": 183,
-    "fallback_steps": 927,
+    "plan_steps": 888,
+    "replans_on_error": 161,
+    "fallback_steps": 1086,
     "pred_total": 1943,
-    "pred_acc": 0.894,
+    "pred_acc": 0.905,
     "pred_by_source": {
      "memo": [
-      1444,
-      0.956
+      1473,
+      0.963
      ],
      "model": [
-      426,
-      0.718
+      409,
+      0.741
      ],
      "unreliable": [
-      73,
-      0.685
+      61,
+      0.623
      ]
     },
     "movers": {
@@ -2420,7 +2248,7 @@
     "key_reliability": {
      "1": [
       20,
-      0.8
+      0.7
      ],
      "2": [
       20,
@@ -2442,13 +2270,13 @@
    "levels_completed": 1,
    "win_levels": 7,
    "level_actions": [
-    353
+    372
    ],
    "actions": 2000,
    "resets": 26,
-   "distinct_frames": 1050,
+   "distinct_frames": 1104,
    "final_state": "NOT_FINISHED",
-   "seconds": 70.42,
+   "seconds": 7.24,
    "baseline_actions": [
     22,
     123,
@@ -2458,7 +2286,7 @@
     192,
     186
    ],
-   "score": 0.013871962928612128
+   "score": 0.01249112201245396
   },
   {
    "agent_stats": {
@@ -2469,12 +2297,12 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
      "asks": 1,
      "accepted": 0,
      "rejected": 0,
-     "calls": 1,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
@@ -2593,7 +2421,7 @@
    "resets": 13,
    "distinct_frames": 1568,
    "final_state": "NOT_FINISHED",
-   "seconds": 60.45,
+   "seconds": 29.65,
    "baseline_actions": [
     30,
     111,
@@ -2613,55 +2441,20 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 1,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 301,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "overlap((2, 18, 10), (0, 63, 3))",
+       "desc": "bring a red 18x10 onto a black 63x3"
       }
      ]
     },
@@ -3697,7 +3490,7 @@
    "resets": 33,
    "distinct_frames": 1056,
    "final_state": "NOT_FINISHED",
-   "seconds": 251.1,
+   "seconds": 33.17,
    "baseline_actions": [
     22,
     33,
@@ -3717,12 +3510,12 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 2,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 2,
      "cost_usd": 0.0,
      "log": [
       {
@@ -3735,55 +3528,26 @@
        "level": 0,
        "n": 301,
        "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 12,
-       "chosen": null
+       "chosen": "overlap((11, 1, 1), (9, 1, 1))",
+       "desc": "bring a light-grey 1x1 onto a brown 1x1"
       }
      ]
     },
     "greedy_steps": 0,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1109,
+    "plans": 1091,
     "goal_plans": 0,
     "deaths": 19,
     "surviving_goals": null,
     "plan_steps": 1980,
     "replans_on_error": 48,
     "fallback_steps": 0,
-    "pred_total": 1936,
-    "pred_acc": 0.472,
+    "pred_total": 1934,
+    "pred_acc": 0.49,
     "pred_by_source": {
      "memo": [
-      869,
+      888,
       1.0
      ],
      "model": [
@@ -3791,8 +3555,8 @@
       0.04
      ],
      "unreliable": [
-      1017,
-      0.042
+      996,
+      0.058
      ]
     },
     "movers": {
@@ -3810,7 +3574,6 @@
      "2": [
       [
        "(0, 1, 1)",
-       "(11, 11, 1)",
        "(9, 1, 13)",
        "(9, 13, 1)"
       ],
@@ -3846,8 +3609,8 @@
        "(0, 1, 1)"
       ],
       [
-       -15,
-       -9
+       9,
+       9
       ]
      ]
     },
@@ -3870,11 +3633,11 @@
      ],
      "3": [
       20,
-      0.0
+      0.1
      ],
      "4": [
       20,
-      0.0
+      0.25
      ],
      "5": [
       20,
@@ -3890,9 +3653,9 @@
    "level_actions": [],
    "actions": 2000,
    "resets": 20,
-   "distinct_frames": 1711,
+   "distinct_frames": 1704,
    "final_state": "NOT_FINISHED",
-   "seconds": 236.4,
+   "seconds": 7.14,
    "baseline_actions": [
     26,
     42,
@@ -3914,25 +3677,20 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 2,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 2,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 5,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 305,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((3, 5, 1))",
+       "desc": "move the player (dark-green) onto/against 1\u00d7 green 5x1 at (19,42)"
       }
      ]
     },
@@ -4183,7 +3941,7 @@
    "resets": 19,
    "distinct_frames": 1072,
    "final_state": "NOT_FINISHED",
-   "seconds": 80.41,
+   "seconds": 12.85,
    "baseline_actions": [
     20,
     89,
@@ -4205,12 +3963,12 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 2,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 2,
      "cost_usd": 0.0,
      "log": [
       {
@@ -4223,37 +3981,8 @@
        "level": 0,
        "n": 316,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 616,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 916,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1216,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1516,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1816,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((5, 4, 4))",
+       "desc": "move the player (black, pink) onto/against 4\u00d7 grey 4x4 at (2,19), (2,26), (2,33), \u2026"
       }
      ]
     },
@@ -4387,7 +4116,7 @@
    "resets": 10,
    "distinct_frames": 4911,
    "final_state": "NOT_FINISHED",
-   "seconds": 258.17,
+   "seconds": 18.95,
    "baseline_actions": [
     18,
     28,
@@ -4409,12 +4138,12 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 3,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 3,
      "cost_usd": 0.0,
      "log": [
       {
@@ -4433,65 +4162,41 @@
        "level": 0,
        "n": 604,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 904,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1204,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1504,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1804,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((3, 17, 17))",
+       "desc": "move the player (brown, brown, brown, white, white) onto/against 1\u00d7 green 17x17 at (47,22)"
       }
      ]
     },
-    "greedy_steps": 0,
+    "greedy_steps": 67,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1568,
+    "plans": 1579,
     "goal_plans": 0,
     "deaths": 30,
     "surviving_goals": null,
     "plan_steps": 1833,
-    "replans_on_error": 134,
+    "replans_on_error": 120,
     "fallback_steps": 136,
-    "pred_total": 570,
-    "pred_acc": 0.547,
+    "pred_total": 576,
+    "pred_acc": 0.523,
     "pred_by_source": {
      "memo": [
-      412,
-      0.757
+      389,
+      0.774
      ],
      "model": [
-      34,
+      32,
       0.0
      ],
      "unreliable": [
-      124,
+      155,
       0.0
      ]
     },
     "movers": {
      "1": [
       [
-       "(10, 1, 2)",
-       "(9, 1, 2)"
+       "(10, 1, 2)"
       ],
       [
        -1,
@@ -4519,11 +4224,11 @@
      ],
      "4": [
       [
-       "(10, 4, 2)"
+       "(9, 2, 1)"
       ],
       [
        0,
-       2
+       3
       ]
      ]
     },
@@ -4632,7 +4337,7 @@
       0.0
      ],
      "3": [
-      10,
+      8,
       0.0
      ],
      "1": [
@@ -4649,9 +4354,9 @@
    "level_actions": [],
    "actions": 2000,
    "resets": 31,
-   "distinct_frames": 1199,
+   "distinct_frames": 1206,
    "final_state": "NOT_FINISHED",
-   "seconds": 243.47,
+   "seconds": 11.33,
    "baseline_actions": [
     36,
     6,
@@ -4671,82 +4376,91 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 5,
+     "accepted": 3,
+     "rejected": 3,
+     "calls": 4,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 1,
        "n_options": 21,
-       "chosen": null
+       "chosen": "touch((3, 4, 2))",
+       "desc": "move the player (red) onto/against 2\u00d7 green 4x2 at (16,13), (22,13)"
       },
       {
        "level": 0,
-       "n": 301,
+       "n": 595,
+       "rejected": "touch((3, 4, 2))",
+       "why": "greedy_cap"
+      },
+      {
+       "level": 0,
+       "n": 595,
        "n_options": 21,
        "chosen": null
       },
       {
        "level": 0,
-       "n": 601,
+       "n": 895,
        "n_options": 21,
-       "chosen": null
+       "chosen": "touch((2, 2, 2))",
+       "desc": "move the player (blue, red, cyan, brown) onto/against 4\u00d7 red 2x2 at (14,13), (20,13), (26,13), \u2026"
       },
       {
        "level": 0,
-       "n": 901,
-       "n_options": 21,
-       "chosen": null
+       "n": 1318,
+       "rejected": "touch((2, 2, 2))",
+       "why": "greedy_cap"
       },
       {
        "level": 0,
-       "n": 1201,
+       "n": 1318,
        "n_options": 21,
-       "chosen": null
+       "chosen": "touch((3, 2, 2))",
+       "desc": "move the player (blue, red, cyan, brown) onto/against 1\u00d7 green 2x2 at (18,13)"
       },
       {
        "level": 0,
-       "n": 1501,
-       "n_options": 21,
-       "chosen": null
+       "n": 1692,
+       "rejected": "touch((3, 2, 2))",
+       "why": "greedy_cap"
       },
       {
        "level": 0,
-       "n": 1801,
+       "n": 1692,
        "n_options": 21,
        "chosen": null
       }
      ]
     },
-    "greedy_steps": 0,
+    "greedy_steps": 240,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 1645,
+    "plans": 1663,
     "goal_plans": 0,
-    "deaths": 8,
+    "deaths": 7,
     "surviving_goals": null,
-    "plan_steps": 1991,
-    "replans_on_error": 70,
+    "plan_steps": 1992,
+    "replans_on_error": 67,
     "fallback_steps": 0,
-    "pred_total": 1878,
-    "pred_acc": 0.243,
+    "pred_total": 1854,
+    "pred_acc": 0.219,
     "pred_by_source": {
      "memo": [
-      357,
-      0.969
+      348,
+      0.948
      ],
      "model": [
-      61,
-      0.033
+      50,
+      0.02
      ],
      "unreliable": [
-      1460,
-      0.074
+      1456,
+      0.052
      ]
     },
     "movers": {
@@ -4792,7 +4506,7 @@
        "(2, 1, 1)"
       ],
       [
-       -6,
+       6,
        0
       ]
      ]
@@ -4828,7 +4542,7 @@
      ],
      "2": [
       20,
-      0.25
+      0.3
      ],
      "7": [
       20,
@@ -4840,7 +4554,7 @@
      ],
      "4": [
       20,
-      0.15
+      0.05
      ]
     }
    },
@@ -4851,10 +4565,10 @@
    "win_levels": 8,
    "level_actions": [],
    "actions": 2000,
-   "resets": 9,
-   "distinct_frames": 2565,
+   "resets": 8,
+   "distinct_frames": 2647,
    "final_state": "NOT_FINISHED",
-   "seconds": 252.97,
+   "seconds": 31.9,
    "baseline_actions": [
     61,
     177,
@@ -4876,55 +4590,20 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 1,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 1,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 1,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 301,
-       "n_options": 20,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 20,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 20,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 20,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 20,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 20,
-       "chosen": null
+       "chosen": "overlap((4, 3, 4), (1, 4, 64))",
+       "desc": "bring a yellow 3x4 onto a blue 4x64"
       }
      ]
     },
@@ -5037,7 +4716,7 @@
    "resets": 65,
    "distinct_frames": 887,
    "final_state": "NOT_FINISHED",
-   "seconds": 241.95,
+   "seconds": 18.64,
    "baseline_actions": [
     39,
     58,
@@ -5057,12 +4736,12 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 2,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 2,
      "cost_usd": 0.0,
      "log": [
       {
@@ -5075,37 +4754,8 @@
        "level": 1,
        "n": 0,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 300,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 600,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 900,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1200,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 1,
-       "n": 1500,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((15, 2, 2))",
+       "desc": "move the player (green, pink) onto/against 1\u00d7 pink 2x2 at (1,9)"
       }
      ]
     },
@@ -5265,7 +4915,7 @@
    "resets": 27,
    "distinct_frames": 4167,
    "final_state": "NOT_FINISHED",
-   "seconds": 240.94,
+   "seconds": 12.59,
    "baseline_actions": [
     22,
     42,
@@ -5288,7 +4938,7 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
      "asks": 0,
      "accepted": 0,
      "rejected": 0,
@@ -5404,7 +5054,7 @@
    "resets": 32,
    "distinct_frames": 6116,
    "final_state": "NOT_FINISHED",
-   "seconds": 20.88,
+   "seconds": 19.0,
    "baseline_actions": [
     32,
     72,
@@ -5425,12 +5075,12 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 2,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 2,
      "cost_usd": 0.0,
      "log": [
       {
@@ -5443,37 +5093,8 @@
        "level": 0,
        "n": 303,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 603,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 903,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1203,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1503,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1803,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((10, 7, 7))",
+       "desc": "move the player (black, orange) onto/against 6\u00d7 white 7x7 at (4,12), (4,35), (13,12), \u2026"
       }
      ]
     },
@@ -5579,7 +5200,7 @@
    "resets": 16,
    "distinct_frames": 1964,
    "final_state": "NOT_FINISHED",
-   "seconds": 258.51,
+   "seconds": 31.3,
    "baseline_actions": [
     54,
     58,
@@ -5599,57 +5220,68 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 1,
-     "accepted": 0,
-     "rejected": 0,
-     "calls": 1,
-     "cache_hits": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 2,
+     "accepted": 2,
+     "rejected": 1,
+     "calls": 0,
+     "cache_hits": 2,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 4,
        "n_options": 8,
-       "chosen": null
+       "chosen": "touch((0, 3, 3))",
+       "desc": "move the player (yellow, brown) onto/against 29\u00d7 black 3x3 at (15,15), (15,27), (15,33), \u2026"
+      },
+      {
+       "level": 0,
+       "n": 61,
+       "rejected": "touch((0, 3, 3))"
+      },
+      {
+       "level": 0,
+       "n": 61,
+       "n_options": 3,
+       "chosen": "touch((14, 3, 3))",
+       "desc": "move the player (black, brown) onto/against 1\u00d7 dark-blue 3x3 at (45,45)"
       }
      ]
     },
-    "greedy_steps": 31,
+    "greedy_steps": 0,
     "greedy_cap": 80,
     "learned_seq": [],
-    "plans": 462,
-    "goal_plans": 1,
-    "deaths": 85,
-    "surviving_goals": [
-     "touch((14, 3, 3))"
-    ],
-    "plan_steps": 806,
-    "replans_on_error": 114,
-    "fallback_steps": 1108,
-    "pred_total": 1814,
-    "pred_acc": 0.858,
+    "plans": 144,
+    "goal_plans": 43,
+    "deaths": 39,
+    "surviving_goals": null,
+    "plan_steps": 200,
+    "replans_on_error": 53,
+    "fallback_steps": 1760,
+    "pred_total": 1909,
+    "pred_acc": 0.954,
     "pred_by_source": {
      "memo": [
-      1396,
-      0.989
+      1796,
+      0.99
      ],
      "model": [
-      176,
-      0.443
+      46,
+      0.239
      ],
      "unreliable": [
-      242,
-      0.405
+      67,
+      0.478
      ]
     },
     "movers": {
      "1": [
       [
-       "(0, 3, 3)"
+       "(9, 3, 3)"
       ],
       [
-       6,
+       -6,
        0
       ]
      ],
@@ -5664,22 +5296,20 @@
      ],
      "3": [
       [
-       "(9, 3, 3)"
+       "(0, 3, 3)"
       ],
       [
        0,
-       -6
+       6
       ]
      ],
      "4": [
       [
-       "(0, 3, 3)",
-       "(12, 3, 3)",
-       "(15, 1, 1)"
+       "(9, 3, 3)"
       ],
       [
-       -6,
-       0
+       0,
+       6
       ]
      ]
     },
@@ -5694,7 +5324,7 @@
     "key_reliability": {
      "4": [
       20,
-      0.5
+      0.4
      ],
      "2": [
       20,
@@ -5706,25 +5336,21 @@
      ],
      "3": [
       20,
-      0.45
+      0.35
      ]
     }
    },
    "agent_errors": 0,
    "agent_error_sample": [],
    "game_id": "tu93-0768757b",
-   "levels_completed": 3,
+   "levels_completed": 0,
    "win_levels": 9,
-   "level_actions": [
-    193,
-    77,
-    338
-   ],
+   "level_actions": [],
    "actions": 2000,
-   "resets": 86,
-   "distinct_frames": 6175,
+   "resets": 40,
+   "distinct_frames": 3115,
    "final_state": "NOT_FINISHED",
-   "seconds": 41.08,
+   "seconds": 7.93,
    "baseline_actions": [
     19,
     16,
@@ -5736,7 +5362,7 @@
     23,
     111
    ],
-   "score": 0.28089515233497686
+   "score": 0.0
   },
   {
    "agent_stats": {
@@ -5747,25 +5373,27 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 9,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 6,
+     "accepted": 3,
      "rejected": 0,
-     "calls": 9,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 6,
      "cost_usd": 0.0,
      "log": [
       {
        "level": 0,
        "n": 11,
        "n_options": 18,
-       "chosen": null
+       "chosen": "touch((5, 4, 24))",
+       "desc": "move the player (yellow, light-grey) onto/against 1\u00d7 grey 4x24 at (28,40)"
       },
       {
        "level": 1,
        "n": 0,
        "n_options": 21,
-       "chosen": null
+       "chosen": "touch((14, 4, 2))",
+       "desc": "move the player (yellow, light-grey) onto/against 1\u00d7 dark-blue 4x2 at (40,28)"
       },
       {
        "level": 2,
@@ -5789,25 +5417,8 @@
        "level": 2,
        "n": 900,
        "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 2,
-       "n": 1200,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 2,
-       "n": 1500,
-       "n_options": 21,
-       "chosen": null
-      },
-      {
-       "level": 2,
-       "n": 1800,
-       "n_options": 21,
-       "chosen": null
+       "chosen": "touch((5, 16, 2))",
+       "desc": "move the player (yellow, dark-blue, dark-blue) onto/against 1\u00d7 grey 16x2 at (42,14)"
       }
      ]
     },
@@ -5934,7 +5545,7 @@
    "resets": 26,
    "distinct_frames": 1689,
    "final_state": "NOT_FINISHED",
-   "seconds": 295.3,
+   "seconds": 8.14,
    "baseline_actions": [
     7,
     18,
@@ -5955,12 +5566,12 @@
     "sequences": false,
     "seq_steps": 0,
     "llm": {
-     "model": "qwen/qwen3-32b",
-     "asks": 7,
-     "accepted": 0,
+     "model": "nvidia/nemotron-3-super-120b-a12b:free",
+     "asks": 2,
+     "accepted": 1,
      "rejected": 0,
-     "calls": 7,
-     "cache_hits": 0,
+     "calls": 0,
+     "cache_hits": 2,
      "cost_usd": 0.0,
      "log": [
       {
@@ -5973,37 +5584,8 @@
        "level": 0,
        "n": 301,
        "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 601,
-       "n_options": 13,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 901,
-       "n_options": 15,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1201,
-       "n_options": 8,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1501,
-       "n_options": 15,
-       "chosen": null
-      },
-      {
-       "level": 0,
-       "n": 1801,
-       "n_options": 13,
-       "chosen": null
+       "chosen": "overlap((4, 4, 4), (2, 2, 10))",
+       "desc": "bring a yellow 4x4 onto a red 2x10"
       }
      ]
     },
@@ -6112,7 +5694,7 @@
    "resets": 10,
    "distinct_frames": 1692,
    "final_state": "NOT_FINISHED",
-   "seconds": 231.66,
+   "seconds": 5.77,
    "baseline_actions": [
     71,
     119,
