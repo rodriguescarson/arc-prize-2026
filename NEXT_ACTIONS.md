@@ -1,4 +1,4 @@
-# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-12 09:55 IST)
+# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-12 10:08 IST)
 
 ## Verified deadlines (all Kaggle times 23:59 UTC = 05:29 IST next day)
 | Event | Date | IST | Note |
@@ -12,7 +12,7 @@ Internal plan: code freeze **30 Oct**, first real Kaggle submission by **20 Oct*
 
 ## Blockers needing Carson
 1. **Kaggle**: joined ARC-AGI-3 + Paper Track (done 10-12). ARC-AGI-2 not joined; only needed if the fallback track is used.
-2. **First competition submission MADE** (non-final): ID 57095368, kernel arc3-model-based-explorer-mem1-c1 v3, PENDING; the daily quota is used for 10-12. Eligibility locked once it scores. Carson's decisions remain: which two submissions to mark final before Nov 2, and whether to submit the memory-OFF twin on a later day for the paired comparison.
+2. **First competition submission MADE** (non-final): ID 57095368, kernel arc3-model-based-explorer-mem1-c1 v3, **COMPLETE, public score 0.15** (hidden public half). Eligibility locked. Daily quota used for 10-12. Carson's decisions remain: which two submissions to mark final before Nov 2, and whether to submit the memory-OFF twin on a later day for the paired comparison.
 3. **Disk**: 9.6 GB free. Not blocking the current CPU-only track.
 4. **Paid compute**: none spent, none planned for H1.
 
@@ -38,7 +38,7 @@ Pre-registered gates: P2 (≥2× explorer's level-1 coverage = 10 games) MET at 
 Faster-than-human levels so far: lp85 L1 15 actions (human 17), tn36 L1 43 (32), vc33 L1 43 (7) + L2 47 (18).
 
 ## Next steps (in order)
-1. Wait for submission 57095368 to score → fill the paper's Accuracy slot; submit the memory-OFF twin (kernel mem0 v3) on 10-13 for the paired hidden-set comparison (P5).
+1. Submit the memory-OFF twin (kernel mem0 v3) on 10-13 for the paired hidden-set comparison (P5): `kaggle competitions submit -c arc-prize-2026-arc-agi-3 -k carsonrodrigues/arc3-model-based-explorer-mem0-c1 -v 3 -f submission.parquet -m ...`
 2. E12 and E13 done and negative (both kept behind flags). The click games need a different object vocabulary (identity that survives size/colour changes across levels); treat as future work in the paper unless a cheap idea appears.
 3. Seeds 2–3 on the final candidate (E6) and the E12 variant; per-game failure table refresh.
 4. Paper: trim to ≤ 1,500 words (currently ~1,620), add the E11 table as a figure, final related-work deltas.

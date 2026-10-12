@@ -1,7 +1,7 @@
 # Learning what actions do: object-level effect models with cross-level memory for ARC-AGI-3
 
 *Working draft, 2026-10-12. ≤1,500 words at submission. Every number below is tagged
-[measured: file] or [pending]. Nothing is reported from the Kaggle leaderboard until a submission ID exists.*
+[measured: file] or [pending]. Kaggle numbers cite submission IDs from `submission/SUBMISSIONS.md`.*
 
 ## Abstract (draft)
 ARC-AGI-3 agents on Kaggle either run a 27B-parameter language model in a code REPL or explore blindly.
@@ -92,7 +92,7 @@ model and planning. Contact-driven curiosity raises both coverage and efficiency
 configuration that reaches a second level, with falling per-level cost. Per-game prediction accuracy is in
 fig. 3. Replicate variance is small because the agent is near-deterministic: three seeds of the final
 configuration score 0.280, 0.276 and 0.278 (13–15 levels, 11–12 games with a first level) and differ
-on 4 of 25 games [measured: E6], so we treat differences under 2 games or 0.02 points as noise. Hidden-set score [pending submission].
+on 4 of 25 games [measured: E6], so we treat differences under 2 games or 0.02 points as noise. On the Kaggle hidden set (public half, 55 unseen games) the memory-on agent scores **0.15** [measured: submission 57095368, kernel arc3-model-based-explorer-mem1-c1 v3], against 62.96 for the leading LLM-harness entry and 0 for most entries; the memory-off twin is submitted next for the paired hidden-set comparison (P5).
 
 ## 6. Failure analysis
 [Per-game table from failure_table.py; the six repeat-failure games from the Franzen audit; what the
