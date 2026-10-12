@@ -1,4 +1,4 @@
-# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-12 10:08 IST)
+# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-12 10:20 IST)
 
 ## Verified deadlines (all Kaggle times 23:59 UTC = 05:29 IST next day)
 | Event | Date | IST | Note |
@@ -38,7 +38,7 @@ Pre-registered gates: P2 (≥2× explorer's level-1 coverage = 10 games) MET at 
 Faster-than-human levels so far: lp85 L1 15 actions (human 17), tn36 L1 43 (32), vc33 L1 43 (7) + L2 47 (18).
 
 ## Next steps (in order)
-1. Submit the memory-OFF twin (kernel mem0 v3) on 10-13 for the paired hidden-set comparison (P5): `kaggle competitions submit -c arc-prize-2026-arc-agi-3 -k carsonrodrigues/arc3-model-based-explorer-mem0-c1 -v 3 -f submission.parquet -m ...`
+1. On 10-13 (quota reset 05:30 IST): submit the memory-ON kernel **v4** (per-game wall budget removed after the swarm simulation showed 23/25 games truncated at 600 s under 25-way interleaving): `kaggle competitions submit -c arc-prize-2026-arc-agi-3 -k carsonrodrigues/arc3-model-based-explorer-mem1-c1 -v 4 -f submission.parquet -m "v7 memory ON, no per-game wall budget"`. Then on 10-14 the memory-OFF twin (mem0 v4) for the paired comparison (P5). Compare v3 (0.15) vs v4 to measure the starvation effect on the hidden set.
 2. E12 and E13 done and negative (both kept behind flags). The click games need a different object vocabulary (identity that survives size/colour changes across levels); treat as future work in the paper unless a cheap idea appears.
 3. Seeds 2–3 on the final candidate (E6) and the E12 variant; per-game failure table refresh.
 4. Paper: trim to ≤ 1,500 words (currently ~1,620), add the E11 table as a figure, final related-work deltas.
