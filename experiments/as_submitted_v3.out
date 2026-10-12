@@ -81,3 +81,22 @@ su15-1944f8ab    levels 0 la [] exceptions  1430/1500 score 0.000 5.1s
 2026-10-12 15:16:00 | INFO | Closed scorecard: e46d842f-4573-488e-b9e0-cfe550afcb04
 2026-10-12 15:16:00 | INFO | Created new scorecard: 0a8fe6c5-4f17-4326-9057-c8f28cdf07e3
 2026-10-12 15:16:00 | INFO | Successfully loaded game class Tn36 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/tn36/ef4dde99/tn36.py
+tn36-ef4dde99    levels 1 la [39] exceptions  1430/1500 score 2.404 13.5s
+2026-10-12 15:16:14 | INFO | Closed scorecard: 0a8fe6c5-4f17-4326-9057-c8f28cdf07e3
+2026-10-12 15:16:14 | INFO | Created new scorecard: baa64c95-33bf-4535-bda8-2e66f7408a38
+2026-10-12 15:16:14 | INFO | Successfully loaded game class Tr87 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/tr87/cd924810/tr87.py
+tr87-cd924810    levels 0 la [] exceptions  1480/1500 score 0.000 3.7s
+2026-10-12 15:16:18 | INFO | Closed scorecard: baa64c95-33bf-4535-bda8-2e66f7408a38
+2026-10-12 15:16:18 | INFO | Created new scorecard: aaedd033-a81b-4225-a414-b72a282147bf
+2026-10-12 15:16:18 | INFO | Successfully loaded game class Tu93 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/tu93/0768757b/tu93.py
+tu93-0768757b    levels 0 la [] exceptions  1466/1500 score 0.000 3.9s
+2026-10-12 15:16:22 | INFO | Closed scorecard: aaedd033-a81b-4225-a414-b72a282147bf
+2026-10-12 15:16:22 | INFO | Created new scorecard: 9a567f6f-d291-4674-bf4c-d41d38e97afd
+2026-10-12 15:16:22 | INFO | Successfully loaded game class Vc33 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/vc33/5430563c/vc33.py
+vc33-5430563c    levels 0 la [] exceptions    80/1500 score 0.000 2.9s
+2026-10-12 15:16:24 | INFO | Closed scorecard: 9a567f6f-d291-4674-bf4c-d41d38e97afd
+2026-10-12 15:16:24 | INFO | Created new scorecard: e05b263e-e992-4a5b-b73c-cfb1494a3327
+2026-10-12 15:16:24 | INFO | Successfully loaded game class Wa30 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/wa30/ee6fef47/wa30.py
+wa30-ee6fef47    levels 0 la [] exceptions  1482/1500 score 0.000 2.8s
+2026-10-12 15:16:27 | INFO | Closed scorecard: e05b263e-e992-4a5b-b73c-cfb1494a3327
+TOTAL 0.0962 | levels 1 | agent exceptions 31736 | bundle submission/kaggle_runs/v3_mem1
