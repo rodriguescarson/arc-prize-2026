@@ -379,9 +379,18 @@ class Predicate:
 MAX_PREDICATE_AREA = 300  # objects this large are scenery, not goal participants
 
 
+def is_bar(o: Obj) -> bool:
+    """Thin, long objects are HUD bars / borders, never goal participants."""
+    return (o.h <= 2 and o.w >= 20) or (o.w <= 2 and o.h >= 20)
+
+
+def goal_participants(objs: list[Obj]) -> list[Obj]:
+    return [o for o in objs if o.h * o.w < MAX_PREDICATE_AREA and not is_bar(o)]
+
+
 def candidate_predicates(init_objs: list[Obj], final_objs: list[Obj], mover_idents: frozenset) -> set[Predicate]:
-    init_objs = [o for o in init_objs if o.h * o.w < MAX_PREDICATE_AREA]   # bbox size: hollow frames count as scenery too
-    final_objs = [o for o in final_objs if o.h * o.w < MAX_PREDICATE_AREA]
+    init_objs = goal_participants(init_objs)
+    final_objs = goal_participants(final_objs)
     ci, cf = Counter(ident(o) for o in init_objs), Counter(ident(o) for o in final_objs)
     classes = set(ci) | set(cf)
     cands: set[Predicate] = set()
