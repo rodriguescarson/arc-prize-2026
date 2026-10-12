@@ -25,3 +25,6 @@ INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and ma
 2026-10-12 05:28:18 | INFO | Closed scorecard: f6fee994-51ed-4abc-a35b-85ce8e316104
 2026-10-12 05:28:18 | INFO | Created new scorecard: da4b210d-584c-47b3-938d-8e51617f7fbd
 2026-10-12 05:28:19 | INFO | Successfully loaded game class Lf52 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/lf52/271a04aa/lf52.py
+2026-10-12 05:30:27 | INFO | Closed scorecard: da4b210d-584c-47b3-938d-8e51617f7fbd
+2026-10-12 05:30:27 | INFO | Created new scorecard: 8f394cba-035f-4146-8079-16f8f87cf0f5
+2026-10-12 05:30:27 | INFO | Successfully loaded game class Lp85 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/lp85/305b61c3/lp85.py

@@ -1,4 +1,4 @@
-# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-12 04:45 IST)
+# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-12 08:05 IST)
 
 ## Verified deadlines (all Kaggle times 23:59 UTC = 05:29 IST next day)
 | Event | Date | IST | Note |
@@ -11,17 +11,30 @@
 Internal plan: code freeze **30 Oct**, first real Kaggle submission by **20 Oct**, paper draft complete **4 Nov**, submit paper **7 Nov**.
 
 ## Blockers needing Carson
-1. **Kaggle rules**: accepted for the Paper Track (download now works). ARC-AGI-2 and ARC-AGI-3 data still 403 at 04:40 IST → accept rules on those two pages too (https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/rules and .../arc-prize-2026-arc-agi-3/rules). The paper must document a real submission on one of them.
-2. **Disk**: 9.6 GB free. Any local model work needs ~20 GB. Candidates to move/delete are Carson's call.
-3. **Paid compute**: nothing spent yet. Kaggle's free quota (30 GPU-h/week) is the default; a RunPod run needs explicit approval with a quoted price.
+1. **Kaggle**: joined ARC-AGI-3 + Paper Track (done 10-12). ARC-AGI-2 not joined; only needed if the fallback track is used.
+2. **First competition submission**: a private kernel was pushed for a "Save & Run All" plumbing check
+   (https://www.kaggle.com/code/carsonrodrigues/arc-agi-3-model-based-explorer-mem1). Clicking "Submit to Competition"
+   on a green run (1 of 1 daily submissions) needs Carson's go-ahead; target by **Oct 20** to lock eligibility before the Oct 26 entry deadline.
+3. **Disk**: 9.6 GB free. Not blocking the current CPU-only track.
+4. **Paid compute**: none spent, none planned for H1.
 
-## Current status
-- Pipeline (loader, pass@2 scorer, Kaggle-layout submission writer + validator, registry, diagnostics) done and committed.
-- Baselines measured on ARC-AGI-2 public eval: trivial 0/120; DSL search 0/120 (1.25% on ARC-AGI-1 eval, 3.75% on ARC-AGI-2 train).
-- ARC-AGI-3 engine runs offline on this Mac (ls20: 7 levels, random agent 0 levels in 30 actions).
-- Literature map in progress (agent running). Hypotheses + track choice follow it.
+## Current status (ARC-AGI-3, public 25 games, 2000 actions, seed 0, toolkit-exact 0–100 score)
+| Agent | Score | Levels | Games with level 1 |
+|---|---|---|---|
+| random (B0) | 0.192 | 3/183 | 2 |
+| novelty explorer (B1) | 0.038 | 5/183 | 5 |
+| model-based v1 (memory ON) | 0.110 | 8/183 | 7 |
+| **model-based v2** (bbox identity, rigid groups, swept-path blocking, terrain colours, reliability gating) | **0.246** | **11/183** | **9** |
+| v3 (contact curiosity, pre-HUD fix), v4 (thin-bar HUD detector, contact ON / OFF) | running in background | | |
+
+Pre-registered gates: P2 (≥2× explorer's level-1 coverage = 10 games) at 9/25, not yet met; P1 paired efficiency mixed
+(lp85 18 vs 109 better, ft09 303 vs 119 worse). H1 go/kill date Oct 22.
+Faster-than-human levels so far: lp85 L1 15 actions (human 17), tn36 L1 43 (32), vc33 L1 43 (7) + L2 47 (18).
 
 ## Next steps (in order)
-1. Finish `LITERATURE_MAP.md`, then `HYPOTHESES.md` with three scored hypotheses and the track decision.
-2. Build the chosen track's end-to-end Kaggle notebook path (ARC-AGI-3 starter kit cloned at `data/ARC-AGI-3-Kaggle-Starter`; ARC-AGI-2 path reuses gemma-swe-agent packaging).
-3. First real Kaggle submission (any score) to lock eligibility before 26 Oct.
+1. Read v3/v4 results; keep contact curiosity only if it beats v2 paired per game.
+2. Goal inference at level transitions + goal-directed planning for levels ≥2 (H1 part 4; level-index weighting makes later levels worth most).
+3. Memory ON vs OFF ablation (E3) and seeds 1–2 (E6 noise floor).
+4. Ask Carson to click "Submit to Competition" once the pushed kernel's run is green (E5).
+5. Human-replay prior (H2) needs the dataset: dub.link/vfwCqvb blocks curl (403/429); open it in a browser.
+6. Paper skeleton from measured numbers only (`paper/`), figures: exploration atlas, prediction accuracy by game, learning curves.

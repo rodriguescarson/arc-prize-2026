@@ -160,7 +160,7 @@ def build(memory: bool, max_actions: int, budget_h: float, username: str, contac
                     "language_info": {"name": "python"}}, "nbformat": 4, "nbformat_minor": 5}
     (OUT / "submission.ipynb").write_text(json.dumps(nb, indent=1))
     slug = f"arc3-model-based-explorer-mem{int(memory)}-c{int(contact)}"
-    meta = {"id": f"{username}/{slug}", "title": f"ARC-AGI-3 model-based explorer (mem{int(memory)})",
+    meta = {"id": f"{username}/{slug}", "title": slug,
             "code_file": "submission.ipynb", "language": "python", "kernel_type": "notebook", "is_private": True,
             "enable_gpu": False, "enable_tpu": False, "enable_internet": False, "keywords": [],
             "dataset_sources": [], "kernel_sources": [], "competition_sources": ["arc-prize-2026-arc-agi-3"], "model_sources": []}
