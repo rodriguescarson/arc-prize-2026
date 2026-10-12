@@ -149,13 +149,14 @@ if not os.getenv('KAGGLE_IS_COMPETITION_RERUN'):
     logging.getLogger().setLevel(logging.ERROR)
     arc = Arcade(environments_dir='/kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files', operation_mode=OperationMode.OFFLINE)
     for gid in ['vc33', 'ls20']:
-        env = arc.make(gid); ag = my_agent.MyAgent(game_id=gid); frames = [FrameData(levels_completed=0)]; t0 = time.time()
+        env = arc.make(gid); ag = my_agent.MyAgent(game_id=gid); frames = [FrameData(levels_completed=0)]; t0 = time.time(); n = 0
         for _ in range(150):
-            a = ag.choose_action(frames, frames[-1]); raw = env.step(a, data=a.action_data.model_dump())
+            a = ag.choose_action(frames, frames[-1]); raw = env.step(a, data=a.action_data.model_dump()); n += 1
             if raw is None: break
             frames.append(FrameData(game_id=raw.game_id, frame=[x.tolist() for x in raw.frame], state=raw.state, levels_completed=raw.levels_completed, win_levels=raw.win_levels, available_actions=raw.available_actions))
             if frames[-1].state is GameState.WIN: break
-        print(f'SELFTEST {gid}: actions {len(frames)-1} levels {frames[-1].levels_completed} secs {time.time()-t0:.1f} stats {ag.impl.stats().get("pred_acc")}')
+        # n, not len(frames): the shim trims the frames list in place (the framework only reads frames[-1])
+        print(f'SELFTEST {gid}: actions {n} levels {frames[-1].levels_completed} secs {time.time()-t0:.1f} stats {ag.impl.stats().get("pred_acc")}')
         arc.close_scorecard()
     # produce a dummy submission file so "Save & Run All" succeeds
     import pandas as pd
