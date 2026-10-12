@@ -1,0 +1,16 @@
+env   sess multi consist  most common repeated last-4 class sequence
+ar25    10     6       0  — ×0
+bp35    14    11       1  ('bg', (14, 5, 5), 'bg', (14, 5, 5)) ×1
+cn04    12     0       0  — ×0
+ft09    10     7       0  — ×0
+ka59    10     5       1  ((5, 1, 1), (4, 1, 1)) ×1
+lf52    11     7       6  ((14, 4, 4), (1, 2, 2), (14, 4, 4), (1, 2, 2)) ×4
+lp85    54    32       9  ((8, 4, 3), (14, 4, 3), (8, 4, 3), (14, 4, 3)) ×6
+r11l    10    10       4  ((3, 5, 5), 'bg', (3, 5, 5), 'bg') ×2
+s5i5    11    10       0  — ×0
+sb26    12    10       1  ((11, 4, 4), (2, 2, 2), (15, 4, 4), (2, 2, 2)) ×1
+sc25    15    13       4  ((3, 17, 17), (2, 3, 3), (3, 17, 17), (2, 3, 3)) ×2
+sk48    14    12       1  ((6, 2, 2), (15, 2, 2), (6, 6, 6), (15, 6, 6)) ×1
+vc33    10     9       1  ((12, 3, 12), (9, 3, 3), (12, 3, 12), (9, 3, 3)) ×1
+TOTAL multi-level click sessions 132; with a repeated class sequence 28 (21.2%)
+-> /Users/carson/Projects/arc_prize_2026/experiments/human_replays/sequences_k4.json
