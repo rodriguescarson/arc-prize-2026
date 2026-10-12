@@ -12,7 +12,7 @@ from collections import deque
 
 import numpy as np
 
-from .effects import EffectModel
+from .effects import DEATH, EffectModel
 from .perception import Obj, background_colour, ident, moved, render_move, state_key
 
 
@@ -54,7 +54,7 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
         if goal_test is not None and path and goal_test(o_list):
             return path, None  # goal state reached in the model: execute the path, no exploratory key needed
         cands = keys_for(o_list)
-        untried = [c for c in cands if c[0] not in tried.get(sk, set()) and not model.is_known_noop(c[1])]
+        untried = [c for c in cands if c[0] not in tried.get(sk, set()) and not model.is_known_noop(c[1]) and not model.is_deadly(sk, c[0])]
         if untried:
             untried.sort(key=lambda c: (model.n_obs[c[1]], ))
         # contact-driven target: mover touches a rarely-contacted class
@@ -76,6 +76,8 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
             continue
         for key, ckey, action, data in cands:
             nk = model.next_key(sk, key)
+            if nk == DEATH:
+                continue
             if nk is not None:
                 if nk not in seen:
                     seen.add(nk); q.append((nk, path + [(key, action, data)]))

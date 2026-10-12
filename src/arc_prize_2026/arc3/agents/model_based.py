@@ -31,7 +31,7 @@ class ModelBasedAgent(BaseAgent):
         self.predicted_next: int | None = None
         self.prev: tuple[list[Obj], np.ndarray, object, object] | None = None  # objs, grid, key, ckey
         self.levels_seen = 0
-        self.n_plans = 0; self.n_plan_steps = 0; self.n_replans_on_error = 0; self.n_fallback = 0
+        self.n_plans = 0; self.n_plan_steps = 0; self.n_replans_on_error = 0; self.n_fallback = 0; self.n_deaths = 0
         self.pred_by_source = {"memo": [0, 0], "model": [0, 0], "unreliable": [0, 0]}
         self.row_changes = np.zeros(64, dtype=np.int32); self.row_steps = 0; self.prev_grid: np.ndarray | None = None
         self.row_px = np.zeros(64, dtype=np.int64); self.row_maxpx = np.zeros(64, dtype=np.int64); self.mover_rows = np.zeros(64, dtype=bool)
@@ -115,6 +115,10 @@ class ModelBasedAgent(BaseAgent):
     # ---- main -------------------------------------------------------------------------------------
     def choose_action(self, frames: list[FrameData], latest: FrameData) -> GameAction:
         if latest.state in (GameState.NOT_PLAYED, GameState.GAME_OVER) or not latest.frame:
+            if latest.state is GameState.GAME_OVER and self.prev is not None:
+                p_objs, p_grid, p_key, p_ckey = self.prev
+                self.model.record_death(state_key(p_objs), p_key)   # never take this edge again
+                self.n_deaths += 1
             self.prev = None; self.plan = []; self.predicted_next = None
             return GameAction.RESET
         grid = np.asarray(latest.frame[-1], dtype=np.int16)
@@ -199,8 +203,9 @@ class ModelBasedAgent(BaseAgent):
         else:
             self.n_fallback += 1
             cands = keys_for(objs)
-            untried = [c for c in cands if c[0] not in self.tried.get(sk, set())]
-            pool = untried or cands
+            safe = [c for c in cands if not self.model.is_deadly(sk, c[0])] or cands
+            untried = [c for c in safe if c[0] not in self.tried.get(sk, set())]
+            pool = untried or safe
             key, ckey, action, data = self.rng.choice(pool)
         ckey = key if not isinstance(key, tuple) else (("click",) + tuple(key[1:4]) if key[1] != "lattice" else ("click", "lattice"))
         self.tried.setdefault(sk, set()).add(key)
@@ -218,7 +223,7 @@ class ModelBasedAgent(BaseAgent):
         return action
 
     def stats(self) -> dict:
-        return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "plans": self.n_plans, "goal_plans": self.n_goal_plans,
+        return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
                 "surviving_goals": sorted(map(str, self.goal_memory.surviving)) if self.goal_memory.surviving else None, "plan_steps": self.n_plan_steps,
                 "replans_on_error": self.n_replans_on_error, "fallback_steps": self.n_fallback,
                 "pred_total": self.model.n_pred, "pred_acc": None if self.model.accuracy is None else round(self.model.accuracy, 3),

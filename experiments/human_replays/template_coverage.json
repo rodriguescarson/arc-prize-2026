@@ -1,0 +1,76 @@
+{
+ "sk48": {
+  "sessions": 14,
+  "won": 7,
+  "transitions": 81,
+  "covered": 81,
+  "kinds": {
+   "appeared": 81,
+   "count": 43,
+   "gone": 81,
+   "overlap": 81,
+   "touch": 46
+  },
+  "first_actions": {
+   "4": 34,
+   "1": 26,
+   "6": 7,
+   "3": 3
+  }
+ },
+ "tn36": {
+  "sessions": 14,
+  "won": 6,
+  "transitions": 61,
+  "covered": 61,
+  "kinds": {
+   "appeared": 61,
+   "gone": 61,
+   "count": 51,
+   "overlap": 35
+  },
+  "first_actions": {
+   "6": 70
+  }
+ },
+ "m0r0": {
+  "sessions": 11,
+  "won": 7,
+  "transitions": 53,
+  "covered": 53,
+  "kinds": {
+   "appeared": 53,
+   "gone": 20,
+   "count": 7,
+   "overlap": 12,
+   "touch": 1
+  },
+  "first_actions": {
+   "1": 13,
+   "3": 11,
+   "2": 3,
+   "5": 4,
+   "4": 6,
+   "-1": 15,
+   "6": 3
+  }
+ },
+ "bp35": {
+  "sessions": 11,
+  "won": 2,
+  "transitions": 74,
+  "covered": 74,
+  "kinds": {
+   "appeared": 74,
+   "count": 38,
+   "gone": 74,
+   "overlap": 28,
+   "touch": 62
+  },
+  "first_actions": {
+   "4": 24,
+   "6": 23,
+   "3": 5
+  }
+ }
+}

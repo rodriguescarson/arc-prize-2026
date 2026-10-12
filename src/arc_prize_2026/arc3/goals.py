@@ -58,7 +58,12 @@ class Predicate:
         return f"{self.kind}({self.a}{', ' + str(self.b) if self.b is not None else ''})"
 
 
+MAX_PREDICATE_AREA = 300  # objects this large are scenery, not goal participants
+
+
 def candidate_predicates(init_objs: list[Obj], final_objs: list[Obj], mover_idents: frozenset) -> set[Predicate]:
+    init_objs = [o for o in init_objs if o.h * o.w < MAX_PREDICATE_AREA]   # bbox size: hollow frames count as scenery too
+    final_objs = [o for o in final_objs if o.h * o.w < MAX_PREDICATE_AREA]
     ci, cf = Counter(ident(o) for o in init_objs), Counter(ident(o) for o in final_objs)
     classes = set(ci) | set(cf)
     cands: set[Predicate] = set()

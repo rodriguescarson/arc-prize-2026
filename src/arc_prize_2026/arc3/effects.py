@@ -48,6 +48,9 @@ def _ahead_cells(o: Obj, dy: int, dx: int, grid: np.ndarray, members: list[Obj] 
     return cells
 
 
+DEATH = -1  # sentinel next-state key for transitions that ended the game
+
+
 class EffectModel:
     def __init__(self) -> None:
         self.moves: dict[Key, Counter] = defaultdict(Counter)          # key -> Counter[((colour, shape), (dy, dx))]
@@ -55,6 +58,7 @@ class EffectModel:
         self.passable: dict[Key, Counter] = defaultdict(Counter)
         self.transitions: dict[tuple[int, Key], int] = {}
         self.effects: dict[Key, Counter] = defaultdict(Counter)
+        self.deaths: Counter = Counter()
         self.n_obs: Counter = Counter()
         self.n_pred = 0
         self.n_pred_correct = 0
@@ -140,6 +144,13 @@ class EffectModel:
 
     def next_key(self, sk: int, key: Key) -> int | None:
         return self.transitions.get((sk, key))
+
+    def record_death(self, sk: int, key: Key) -> None:
+        self.transitions[(sk, key)] = DEATH
+        self.deaths[key] += 1
+
+    def is_deadly(self, sk: int, key: Key) -> bool:
+        return self.transitions.get((sk, key)) == DEATH
 
     def record_prediction(self, predicted_key: int | None, observed_key: int, key: Key | None = None) -> None:
         if predicted_key is None:

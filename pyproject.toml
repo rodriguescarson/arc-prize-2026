@@ -9,7 +9,10 @@ requires-python = ">=3.12"
 dependencies = [
     "arc-agi>=0.9.9",
     "arcengine>=0.9.3",
+    "matplotlib>=3.11.2",
     "numpy>=2.4.6",
+    "pandas>=3.0.6",
+    "pyarrow>=26.0.0",
 ]
 
 [project.scripts]
