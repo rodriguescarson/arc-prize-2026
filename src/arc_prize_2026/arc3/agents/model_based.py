@@ -34,6 +34,7 @@ class ModelBasedAgent(BaseAgent):
         self.model = EffectModel()
         self.tried: dict[int, set] = {}
         self.objs_cache: dict[int, tuple[list[Obj], np.ndarray]] = {}
+        self.adj_cache: dict = {}  # (state_key, mover_idents) -> adjacent classes
         self.plan: list = []
         self.predicted_next: int | None = None
         self.prev: tuple[list[Obj], np.ndarray, object, object] | None = None  # objs, grid, key, ckey
@@ -223,7 +224,7 @@ class ModelBasedAgent(BaseAgent):
             path, final = plan_to_information(self.model, objs, grid, keys_for, self.tried, self.objs_cache,
                                               self.max_depth, self.max_nodes, mover_idents or None,
                                               self.contacted if (mover_idents and self.contact) else None, goal_test,
-                                              click_model=self.click_model)
+                                              click_model=self.click_model, adj_cache=self.adj_cache)
             if path is not None:
                 if final is None:
                     self.n_goal_plans += 1

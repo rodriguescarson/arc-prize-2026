@@ -25,14 +25,26 @@ from .perception import Obj, diff, ident, moved as _moved, state_key
 Key = object  # action key: int action id, or ("click", y//4, x//4)
 
 
-def _ahead_cells(o: Obj, dy: int, dx: int, grid: np.ndarray, members: list[Obj] | None = None) -> list[int]:
+def _occupancy(members: list[Obj], shape: tuple[int, int]) -> np.ndarray:
+    """Boolean grid of cells inside any member's bbox (the rigid group's own footprint)."""
+    occ = np.zeros(shape, dtype=bool)
+    for m in members:
+        occ[m.y0:m.y1, m.x0:m.x1] = True
+    return occ
+
+
+def _ahead_cells(o: Obj, dy: int, dx: int, grid: np.ndarray, members: list[Obj] | None = None,
+                 occ: np.ndarray | None = None) -> list[int]:
     """Colours of every cell the object sweeps through when displaced by (dy, dx) in unit steps,
-    excluding cells currently occupied by any member of its rigid group. [-1] marks the world edge."""
+    excluding cells currently occupied by any member of its rigid group. [-1] marks the world edge.
+    `occ` (occupancy of the group) may be passed in to avoid rebuilding it per member; the former
+    per-cell scan over the group was quadratic in the group size and dominated bp35."""
     H, W = grid.shape
-    occupied = members or [o]
     steps = max(abs(dy), abs(dx))
     if steps == 0:
         return []
+    if occ is None:
+        occ = _occupancy(members or [o], (H, W))
     sy, sx = (dy > 0) - (dy < 0), (dx > 0) - (dx < 0)
     cells: list[int] = []
     for k in range(1, steps + 1):
@@ -40,11 +52,9 @@ def _ahead_cells(o: Obj, dy: int, dx: int, grid: np.ndarray, members: list[Obj] 
         ty1, tx1 = ty0 + o.h, tx0 + o.w
         if ty0 < 0 or tx0 < 0 or ty1 > H or tx1 > W:
             return [-1]
-        for y in range(ty0, ty1):
-            for x in range(tx0, tx1):
-                if any(m.y0 <= y < m.y1 and m.x0 <= x < m.x1 for m in occupied):
-                    continue
-                cells.append(int(grid[y, x]))
+        block = grid[ty0:ty1, tx0:tx1]
+        free = ~occ[ty0:ty1, tx0:tx1]
+        cells.extend(int(c) for c in block[free])  # row-major, same order as the former y/x loops
     return cells
 
 
@@ -183,8 +193,9 @@ class EffectModel:
             return None, "unknown"
         bl, pa = self.blocked[key], self.passable[key]
         blocked = False
+        occ = _occupancy(members, grid.shape)
         for o in members:
-            for c in _ahead_cells(o, dy, dx, grid, members):
+            for c in _ahead_cells(o, dy, dx, grid, members, occ):
                 if c == -1 or (bl[c] > 0 and bl[c] >= pa[c]):
                     blocked = True; break
             if blocked:

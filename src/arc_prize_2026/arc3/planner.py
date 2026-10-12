@@ -16,22 +16,34 @@ from .effects import DEATH, EffectModel
 from .perception import Obj, background_colour, ident, moved, render_move, state_key
 
 
+def _eq_key(o: Obj) -> tuple:
+    """The tuple the frozen dataclass compares on (mask is compare=False), so set membership == `o in list`."""
+    return (o.colour, o.y0, o.x0, o.y1, o.x1, o.area, o.shape)
+
+
 def adjacent_classes(members: list[Obj], objs: list[Obj]) -> set:
-    """Classes of non-member objects whose bbox touches (8-neighbourhood) any member's bbox."""
-    out = set()
-    for m in members:
-        for o in objs:
-            if o in members:
-                continue
-            if o.y0 <= m.y1 and m.y0 <= o.y1 and o.x0 <= m.x1 and m.x0 <= o.x1:
-                out.add(ident(o))
-    return out
+    """Classes of non-member objects whose bbox touches (8-neighbourhood) any member's bbox.
+
+    Vectorised: the pairwise bbox test is an (M x N) boolean matrix; membership uses the dataclass equality
+    tuple. Same result as the former double loop, which was quadratic in Python and dominated bp35."""
+    if not members or not objs:
+        return set()
+    mem = {_eq_key(m) for m in members}
+    others = [o for o in objs if _eq_key(o) not in mem]
+    if not others:
+        return set()
+    mb = np.array([(m.y0, m.x0, m.y1, m.x1) for m in members], dtype=np.int32)
+    ob = np.array([(o.y0, o.x0, o.y1, o.x1) for o in others], dtype=np.int32)
+    touch = ((ob[None, :, 0] <= mb[:, None, 2]) & (mb[:, None, 0] <= ob[None, :, 2])
+             & (ob[None, :, 1] <= mb[:, None, 3]) & (mb[:, None, 1] <= ob[None, :, 3]))
+    hit = touch.any(axis=0)
+    return {ident(o) for o, h in zip(others, hit) if h}
 
 
 def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, keys_for, tried: dict[int, set],
                         objs_cache: dict[int, tuple[list[Obj], np.ndarray]], max_depth: int = 12, max_nodes: int = 1500,
                         mover_idents: frozenset | None = None, contacted: dict | None = None, goal_test=None,
-                        click_model: bool = False):
+                        click_model: bool = False, adj_cache: dict | None = None):
     """keys_for(objs) -> list of (key, class_key, action, data). Returns (path_keys, final_key) or (None, None).
 
     Target priority: (1) a reachable state where the mover group touches an object class contacted fewer
@@ -63,7 +75,13 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
         if mover_idents and contacted is not None and untried:
             members = [o for o in o_list if ident(o) in mover_idents]
             if members:
-                adj = adjacent_classes(members, o_list)
+                ck = (sk, mover_idents)
+                if adj_cache is not None and ck in adj_cache:
+                    adj = adj_cache[ck]
+                else:
+                    adj = adjacent_classes(members, o_list)
+                    if adj_cache is not None:
+                        adj_cache[ck] = adj
                 if adj:
                     cc = min(contacted.get(c, 0) for c in adj)
                     if contact_best is None or cc < contact_best[0]:
