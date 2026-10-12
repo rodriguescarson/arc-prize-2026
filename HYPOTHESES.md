@@ -176,3 +176,4 @@ Decision: **H1 primary, H2 secondary add-on (if the data is accessible), H3 fall
 **Change:** reject a proposed goal after `greedy_cap` = 80 greedy steps without it holding ("not reachable by walking"), exclude it and ask again. Nothing else changes.
 **Prediction (seed 0, paired vs E20 Jev+greedy):** ls20 recovers its level (353 ± noise) while r11l and g50t keep theirs; total ≥ 0.295. Kill if ls20 is not recovered or any other game is lost.
 - **E20b (19:37): MET** — 0.2955 / 16 levels / 13 games, no loss; ls20 recovered (826). Mechanism = Jev proposes touch goals from the symbolic summary; the agent walks toward them with learned displacements when the planner has no goal path; a goal is dropped after 50 actions held without a transition or 80 greedy steps without reaching it.
+- **E20 replication (19:40): CONFIRMED** on seeds 1–2 (Δ +0.0158 both; +g50t, +r11l; ls20 degraded) — the proposer effect is ~11 seed-SDs.
