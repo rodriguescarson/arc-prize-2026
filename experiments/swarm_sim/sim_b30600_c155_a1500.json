@@ -10,22 +10,15 @@
    "actions": 1500,
    "levels": 0,
    "level_actions": [],
-   "wall": 240.0,
-   "cpu": 6.0
+   "wall": 144.6,
+   "cpu": 5.1
   },
   "sp80-589a99af": {
    "actions": 1500,
    "levels": 0,
    "level_actions": [],
-   "wall": 261.8,
-   "cpu": 21.5
-  },
-  "ka59-38d34dbb": {
-   "actions": 1500,
-   "levels": 0,
-   "level_actions": [],
-   "wall": 319.9,
-   "cpu": 9.7
+   "wall": 149.4,
+   "cpu": 18.8
   },
   "vc33-5430563c": {
    "actions": 1500,
@@ -34,15 +27,22 @@
     43,
     47
    ],
-   "wall": 324.9,
-   "cpu": 6.9
+   "wall": 182.3,
+   "cpu": 6.2
+  },
+  "ka59-38d34dbb": {
+   "actions": 1500,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 186.0,
+   "cpu": 8.4
   },
   "cn04-2fe56bfb": {
    "actions": 1500,
    "levels": 0,
    "level_actions": [],
-   "wall": 336.5,
-   "cpu": 26.5
+   "wall": 196.5,
+   "cpu": 15.1
   },
   "cd82-fb555c5d": {
    "actions": 1500,
@@ -50,15 +50,8 @@
    "level_actions": [
     653
    ],
-   "wall": 339.9,
-   "cpu": 8.8
-  },
-  "ar25-0c556536": {
-   "actions": 1500,
-   "levels": 0,
-   "level_actions": [],
-   "wall": 346.4,
-   "cpu": 10.3
+   "wall": 197.9,
+   "cpu": 6.7
   },
   "ls20-9607627b": {
    "actions": 1500,
@@ -66,8 +59,8 @@
    "level_actions": [
     353
    ],
-   "wall": 347.2,
-   "cpu": 7.5
+   "wall": 202.7,
+   "cpu": 6.3
   },
   "s5i5-18d95033": {
    "actions": 1500,
@@ -75,8 +68,15 @@
    "level_actions": [
     435
    ],
-   "wall": 369.7,
-   "cpu": 14.2
+   "wall": 205.5,
+   "cpu": 10.4
+  },
+  "ar25-0c556536": {
+   "actions": 1500,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 209.2,
+   "cpu": 7.5
   },
   "lp85-305b61c3": {
    "actions": 1500,
@@ -84,50 +84,57 @@
    "level_actions": [
     15
    ],
-   "wall": 407.4,
-   "cpu": 8.3
-  },
-  "ft09-0d8bbf25": {
-   "actions": 1500,
-   "levels": 0,
-   "level_actions": [],
-   "wall": 411.8,
-   "cpu": 8.9
-  },
-  "m0r0-492f87ba": {
-   "actions": 1500,
-   "levels": 0,
-   "level_actions": [],
-   "wall": 412.6,
-   "cpu": 29.6
+   "wall": 224.4,
+   "cpu": 7.1
   },
   "r11l-495a7899": {
    "actions": 1500,
    "levels": 0,
    "level_actions": [],
-   "wall": 419.2,
-   "cpu": 46.2
+   "wall": 231.9,
+   "cpu": 27.4
+  },
+  "ft09-0d8bbf25": {
+   "actions": 1500,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 233.4,
+   "cpu": 7.9
+  },
+  "m0r0-492f87ba": {
+   "actions": 1500,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 233.0,
+   "cpu": 26.7
   },
   "sc25-635fd71a": {
    "actions": 1500,
    "levels": 0,
    "level_actions": [],
-   "wall": 432.9,
-   "cpu": 11.6
-  },
-  "re86-8af5384d": {
-   "actions": 1500,
-   "levels": 0,
-   "level_actions": [],
-   "wall": 444.3,
-   "cpu": 8.3
+   "wall": 248.8,
+   "cpu": 9.0
   },
   "dc22-fdcac232": {
    "actions": 1500,
    "levels": 0,
    "level_actions": [],
-   "wall": 447.0,
-   "cpu": 24.6
+   "wall": 251.9,
+   "cpu": 18.0
+  },
+  "re86-8af5384d": {
+   "actions": 1500,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 255.0,
+   "cpu": 5.8
+  },
+  "sk48-d8078629": {
+   "actions": 1500,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 257.3,
+   "cpu": 14.9
   },
   "tu93-0768757b": {
    "actions": 1500,
@@ -137,22 +144,15 @@
     77,
     379
    ],
-   "wall": 468.9,
-   "cpu": 11.3
-  },
-  "sk48-d8078629": {
-   "actions": 1500,
-   "levels": 0,
-   "level_actions": [],
-   "wall": 475.4,
-   "cpu": 45.6
+   "wall": 260.8,
+   "cpu": 6.3
   },
   "sb26-7fbdac44": {
    "actions": 1500,
    "levels": 0,
    "level_actions": [],
-   "wall": 523.3,
-   "cpu": 22.9
+   "wall": 293.1,
+   "cpu": 17.7
   },
   "su15-1944f8ab": {
    "actions": 1500,
@@ -160,15 +160,15 @@
    "level_actions": [
     189
    ],
-   "wall": 529.0,
-   "cpu": 11.8
+   "wall": 297.7,
+   "cpu": 10.4
   },
   "tr87-cd924810": {
    "actions": 1500,
    "levels": 0,
    "level_actions": [],
-   "wall": 538.0,
-   "cpu": 104.6
+   "wall": 298.5,
+   "cpu": 21.3
   },
   "lf52-271a04aa": {
    "actions": 1500,
@@ -176,8 +176,8 @@
    "level_actions": [
     79
    ],
-   "wall": 567.4,
-   "cpu": 21.0
+   "wall": 309.5,
+   "cpu": 13.7
   },
   "g50t-5849a774": {
    "actions": 1500,
@@ -185,17 +185,8 @@
    "level_actions": [
     1159
    ],
-   "wall": 616.4,
-   "cpu": 10.1
-  },
-  "bp35-0a0ad940": {
-   "actions": 896,
-   "levels": 1,
-   "level_actions": [
-    646
-   ],
-   "wall": 657.3,
-   "cpu": 160.6
+   "wall": 347.2,
+   "cpu": 8.5
   },
   "tn36-ef4dde99": {
    "actions": 1500,
@@ -203,8 +194,17 @@
    "level_actions": [
     39
    ],
-   "wall": 671.4,
-   "cpu": 66.1
+   "wall": 406.9,
+   "cpu": 16.3
+  },
+  "bp35-0a0ad940": {
+   "actions": 1421,
+   "levels": 1,
+   "level_actions": [
+    646
+   ],
+   "wall": 433.1,
+   "cpu": 155.2
   }
  },
  "total": 0.2796835296330884
