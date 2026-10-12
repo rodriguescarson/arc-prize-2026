@@ -1,0 +1,158 @@
+[{"stream_name":"stderr","time":9.205921048,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":9.206001468,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":10.693742539,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.69378563,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.693791706,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.693796738,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":11.646140955,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.646190485,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.646196658000001,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.646202396,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":16.425473512,"data":"Looking in links: /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels\r\n"}
+,{"stream_name":"stdout","time":16.476260448,"data":"Processing /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels/arc_agi-0.9.8-py3-none-any.whl\r\n"}
+,{"stream_name":"stdout","time":16.476298831,"data":"Requirement already satisfied: python-dotenv in /usr/local/lib/python3.13/dist-packages (1.2.3)\r\n"}
+,{"stream_name":"stdout","time":16.527501007,"data":"Processing /kaggle/input/competitions/arc-prize-2026-arc-agi-3/arc_agi_3_wheels/arcengine-0.9.3-py3-none-any.whl (from arc-agi)\r\n"}
+,{"stream_name":"stdout","time":16.527544069,"data":"Requirement already satisfied: flask\u003e=3.1.0 in /usr/local/lib/python3.13/dist-packages (from arc-agi) (3.1.3)\r\n"}
+,{"stream_name":"stdout","time":16.527549049,"data":"Requirement already satisfied: matplotlib\u003e=3.7.0 in /usr/local/lib/python3.13/dist-packages (from arc-agi) (3.10.0)\r\n"}
+,{"stream_name":"stdout","time":16.527552526,"data":"Requirement already satisfied: pydantic\u003e=2.0.0 in /usr/local/lib/python3.13/dist-packages (from arc-agi) (2.13.5)\r\n"}
+,{"stream_name":"stdout","time":16.52755593,"data":"Requirement already satisfied: pillow\u003e=12.1.1 in /usr/local/lib/python3.13/dist-packages (from arc-agi) (12.3.0)\r\n"}
+,{"stream_name":"stdout","time":16.527559112,"data":"Requirement already satisfied: requests\u003e=2.31.0 in /usr/local/lib/python3.13/dist-packages (from arc-agi) (2.34.2)\r\n"}
+,{"stream_name":"stdout","time":16.527562295,"data":"Requirement already satisfied: numpy\u003e=1.24.0 in /usr/local/lib/python3.13/dist-packages (from arcengine\u003e=0.9.3-\u003earc-agi) (2.1.3)\r\n"}
+,{"stream_name":"stdout","time":16.527565843,"data":"Requirement already satisfied: blinker\u003e=1.9.0 in /usr/local/lib/python3.13/dist-packages (from flask\u003e=3.1.0-\u003earc-agi) (1.9.0)\r\n"}
+,{"stream_name":"stdout","time":16.527569635,"data":"Requirement already satisfied: click\u003e=8.1.3 in /usr/local/lib/python3.13/dist-packages (from flask\u003e=3.1.0-\u003earc-agi) (8.5.0)\r\n"}
+,{"stream_name":"stdout","time":16.527572901,"data":"Requirement already satisfied: itsdangerous\u003e=2.2.0 in /usr/local/lib/python3.13/dist-packages (from flask\u003e=3.1.0-\u003earc-agi) (2.2.0)\r\n"}
+,{"stream_name":"stdout","time":16.527596461999998,"data":"Requirement already satisfied: jinja2\u003e=3.1.2 in /usr/local/lib/python3.13/dist-packages (from flask\u003e=3.1.0-\u003earc-agi) (3.1.6)\r\n"}
+,{"stream_name":"stdout","time":16.527600529,"data":"Requirement already satisfied: markupsafe\u003e=2.1.1 in /usr/local/lib/python3.13/dist-packages (from flask\u003e=3.1.0-\u003earc-agi) (3.0.3)\r\n"}
+,{"stream_name":"stdout","time":16.527603965,"data":"Requirement already satisfied: werkzeug\u003e=3.1.0 in /usr/local/lib/python3.13/dist-packages (from flask\u003e=3.1.0-\u003earc-agi) (3.1.8)\r\n"}
+,{"stream_name":"stdout","time":16.578580237,"data":"Requirement already satisfied: contourpy\u003e=1.0.1 in /usr/local/lib/python3.13/dist-packages (from matplotlib\u003e=3.7.0-\u003earc-agi) (1.3.3)\r\n"}
+,{"stream_name":"stdout","time":16.578623079,"data":"Requirement already satisfied: cycler\u003e=0.10 in /usr/local/lib/python3.13/dist-packages (from matplotlib\u003e=3.7.0-\u003earc-agi) (0.12.1)\r\n"}
+,{"stream_name":"stdout","time":16.578630753,"data":"Requirement already satisfied: fonttools\u003e=4.22.0 in /usr/local/lib/python3.13/dist-packages (from matplotlib\u003e=3.7.0-\u003earc-agi) (4.64.0)\r\n"}
+,{"stream_name":"stdout","time":16.578636551,"data":"Requirement already satisfied: kiwisolver\u003e=1.3.1 in /usr/local/lib/python3.13/dist-packages (from matplotlib\u003e=3.7.0-\u003earc-agi) (1.5.1)\r\n"}
+,{"stream_name":"stdout","time":16.578641968,"data":"Requirement already satisfied: packaging\u003e=20.0 in /usr/local/lib/python3.13/dist-packages (from matplotlib\u003e=3.7.0-\u003earc-agi) (26.3)\r\n"}
+,{"stream_name":"stdout","time":16.578646814,"data":"Requirement already satisfied: pyparsing\u003e=2.3.1 in /usr/local/lib/python3.13/dist-packages (from matplotlib\u003e=3.7.0-\u003earc-agi) (3.3.2)\r\n"}
+,{"stream_name":"stdout","time":16.578650209,"data":"Requirement already satisfied: python-dateutil\u003e=2.7 in /usr/local/lib/python3.13/dist-packages (from matplotlib\u003e=3.7.0-\u003earc-agi) (2.9.0.post0)\r\n"}
+,{"stream_name":"stdout","time":16.578653639,"data":"Requirement already satisfied: annotated-types\u003e=0.6.0 in /usr/local/lib/python3.13/dist-packages (from pydantic\u003e=2.0.0-\u003earc-agi) (0.8.0)\r\n"}
+,{"stream_name":"stdout","time":16.578657103,"data":"Requirement already satisfied: pydantic-core==2.46.5 in /usr/local/lib/python3.13/dist-packages (from pydantic\u003e=2.0.0-\u003earc-agi) (2.46.5)\r\n"}
+,{"stream_name":"stdout","time":16.57866042,"data":"Requirement already satisfied: typing-extensions\u003e=4.14.1 in /usr/local/lib/python3.13/dist-packages (from pydantic\u003e=2.0.0-\u003earc-agi) (4.16.0)\r\n"}
+,{"stream_name":"stdout","time":16.57866369,"data":"Requirement already satisfied: typing-inspection\u003e=0.4.2 in /usr/local/lib/python3.13/dist-packages (from pydantic\u003e=2.0.0-\u003earc-agi) (0.4.4)\r\n"}
+,{"stream_name":"stdout","time":16.578667431,"data":"Requirement already satisfied: charset_normalizer\u003c4,\u003e=2 in /usr/local/lib/python3.13/dist-packages (from requests\u003e=2.31.0-\u003earc-agi) (3.4.9)\r\n"}
+,{"stream_name":"stdout","time":16.578671149,"data":"Requirement already satisfied: idna\u003c4,\u003e=2.5 in /usr/local/lib/python3.13/dist-packages (from requests\u003e=2.31.0-\u003earc-agi) (3.19)\r\n"}
+,{"stream_name":"stdout","time":16.578674573,"data":"Requirement already satisfied: urllib3\u003c3,\u003e=1.26 in /usr/local/lib/python3.13/dist-packages (from requests\u003e=2.31.0-\u003earc-agi) (2.8.0)\r\n"}
+,{"stream_name":"stdout","time":16.629879815,"data":"Requirement already satisfied: certifi\u003e=2023.5.7 in /usr/local/lib/python3.13/dist-packages (from requests\u003e=2.31.0-\u003earc-agi) (2026.7.22)\r\n"}
+,{"stream_name":"stdout","time":16.681115718,"data":"Requirement already satisfied: six\u003e=1.5 in /usr/local/lib/python3.13/dist-packages (from python-dateutil\u003e=2.7-\u003ematplotlib\u003e=3.7.0-\u003earc-agi) (1.17.0)\r\n"}
+,{"stream_name":"stdout","time":19.286591196,"data":"Installing collected packages: arcengine, arc-agi\r\n"}
+,{"stream_name":"stdout","time":19.491652805,"data":"Successfully installed arc-agi-0.9.8 arcengine-0.9.3\r\n"}
+,{"stream_name":"stdout","time":19.705903012,"data":"Writing /kaggle/working/my_agent.py\n"}
+,{"stream_name":"stdout","time":21.686424333,"data":"INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and max_open_for=3 days, 0:00:00\n"}
+,{"stream_name":"stdout","time":22.047843921,"data":"25 games, 2000 actions each, agent = MyAgent (memory True, contact True, goals True)\n"}
+,{"stream_name":"stdout","time":22.047894928,"data":"2026-10-12 09:45:28 | INFO | Created new scorecard: a8313f33-229b-4a44-aa03-14afcca37e45\n"}
+,{"stream_name":"stdout","time":22.114257202,"data":"2026-10-12 09:45:28 | INFO | Successfully loaded game class Ar25 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/ar25/0c556536/ar25.py\n"}
+,{"stream_name":"stdout","time":58.701615068,"data":"ar25-0c556536    levels  0/8  level_actions []  human []  score   0.000     36.6s\n"}
+,{"stream_name":"stdout","time":58.703084893,"data":"2026-10-12 09:46:05 | INFO | Closed scorecard: a8313f33-229b-4a44-aa03-14afcca37e45\n"}
+,{"stream_name":"stdout","time":58.704125357,"data":"2026-10-12 09:46:05 | INFO | Created new scorecard: c20c49f6-cf42-47ef-9a2b-c6df861b2b4f\n"}
+,{"stream_name":"stdout","time":58.801567573,"data":"2026-10-12 09:46:05 | INFO | Successfully loaded game class Bp35 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/bp35/0a0ad940/bp35.py\n"}
+,{"stream_name":"stdout","time":969.521202493,"data":"bp35-0a0ad940    levels  1/9  level_actions [646]  human [21]  score   0.002    910.7s\n"}
+,{"stream_name":"stdout","time":969.522578168,"data":"2026-10-12 10:01:16 | INFO | Closed scorecard: c20c49f6-cf42-47ef-9a2b-c6df861b2b4f\n"}
+,{"stream_name":"stdout","time":969.523558946,"data":"2026-10-12 10:01:16 | INFO | Created new scorecard: 641ff33b-0286-4853-b0be-dd750ba30fd7\n"}
+,{"stream_name":"stdout","time":969.572135358,"data":"2026-10-12 10:01:16 | INFO | Successfully loaded game class Cd82 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/cd82/fb555c5d/cd82.py\n"}
+,{"stream_name":"stdout","time":1007.124831625,"data":"cd82-fb555c5d    levels  1/6  level_actions [653]  human [55]  score   0.034     37.5s\n"}
+,{"stream_name":"stdout","time":1007.12633846,"data":"2026-10-12 10:01:53 | INFO | Closed scorecard: 641ff33b-0286-4853-b0be-dd750ba30fd7\n"}
+,{"stream_name":"stdout","time":1007.127348698,"data":"2026-10-12 10:01:53 | INFO | Created new scorecard: 92d1b7b8-0cd3-484b-b3aa-1c3e7d79b1e8\n"}
+,{"stream_name":"stdout","time":1007.206906288,"data":"2026-10-12 10:01:53 | INFO | Successfully loaded game class Cn04 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/cn04/2fe56bfb/cn04.py\n"}
+,{"stream_name":"stdout","time":1088.179188481,"data":"cn04-2fe56bfb    levels  0/6  level_actions []  human []  score   0.000     81.0s\n"}
+,{"stream_name":"stdout","time":1088.180448828,"data":"2026-10-12 10:03:14 | INFO | Closed scorecard: 92d1b7b8-0cd3-484b-b3aa-1c3e7d79b1e8\n"}
+,{"stream_name":"stdout","time":1088.181657708,"data":"2026-10-12 10:03:14 | INFO | Created new scorecard: 27cab3f7-585d-4461-8924-d5517b67309d\n"}
+,{"stream_name":"stdout","time":1088.279827654,"data":"2026-10-12 10:03:14 | INFO | Successfully loaded game class Dc22 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/dc22/fdcac232/dc22.py\n"}
+,{"stream_name":"stdout","time":1220.852226775,"data":"dc22-fdcac232    levels  0/6  level_actions []  human []  score   0.000    132.5s\n"}
+,{"stream_name":"stdout","time":1220.853685458,"data":"2026-10-12 10:05:27 | INFO | Closed scorecard: 27cab3f7-585d-4461-8924-d5517b67309d\n"}
+,{"stream_name":"stdout","time":1220.854842594,"data":"2026-10-12 10:05:27 | INFO | Created new scorecard: 89842fe2-138f-41b3-b940-d4591203a47e\n"}
+,{"stream_name":"stdout","time":1220.936442343,"data":"2026-10-12 10:05:27 | INFO | Successfully loaded game class Ft09 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/ft09/0d8bbf25/ft09.py\n"}
+,{"stream_name":"stdout","time":1264.592631059,"data":"ft09-0d8bbf25    levels  0/6  level_actions []  human []  score   0.000     43.7s\n"}
+,{"stream_name":"stdout","time":1264.593993796,"data":"2026-10-12 10:06:11 | INFO | Closed scorecard: 89842fe2-138f-41b3-b940-d4591203a47e\n"}
+,{"stream_name":"stdout","time":1264.595190226,"data":"2026-10-12 10:06:11 | INFO | Created new scorecard: f34cb7fd-c3ee-4978-9ad7-94aaba5575b7\n"}
+,{"stream_name":"stdout","time":1264.704132955,"data":"2026-10-12 10:06:11 | INFO | Successfully loaded game class G50t from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/g50t/5849a774/g50t.py\n"}
+,{"stream_name":"stdout","time":1296.393849244,"data":"g50t-5849a774    levels  1/7  level_actions [1159]  human [78]  score   0.016     31.6s\n"}
+,{"stream_name":"stdout","time":1296.395244172,"data":"2026-10-12 10:06:43 | INFO | Closed scorecard: f34cb7fd-c3ee-4978-9ad7-94aaba5575b7\n"}
+,{"stream_name":"stdout","time":1296.396379278,"data":"2026-10-12 10:06:43 | INFO | Created new scorecard: 3109a7e3-da3d-43ec-9cf8-9f21cc818a93\n"}
+,{"stream_name":"stdout","time":1296.515294589,"data":"2026-10-12 10:06:43 | INFO | Successfully loaded game class Ka59 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/ka59/38d34dbb/ka59.py\n"}
+,{"stream_name":"stdout","time":1338.544745854,"data":"ka59-38d34dbb    levels  0/7  level_actions []  human []  score   0.000     41.8s\n"}
+,{"stream_name":"stdout","time":1338.546311298,"data":"2026-10-12 10:07:25 | INFO | Closed scorecard: 3109a7e3-da3d-43ec-9cf8-9f21cc818a93\n"}
+,{"stream_name":"stdout","time":1338.547570891,"data":"2026-10-12 10:07:25 | INFO | Created new scorecard: 4839d1eb-4817-4cfb-bf0e-81a17cc8094c\n"}
+,{"stream_name":"stdout","time":1338.756793183,"data":"2026-10-12 10:07:25 | INFO | Successfully loaded game class Lf52 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/lf52/271a04aa/lf52.py\n"}
+,{"stream_name":"stdout","time":1399.224688936,"data":"lf52-271a04aa    levels  1/10  level_actions [79]  human [32]  score   0.298     60.5s\n"}
+,{"stream_name":"stdout","time":1399.22617973,"data":"2026-10-12 10:08:25 | INFO | Closed scorecard: 4839d1eb-4817-4cfb-bf0e-81a17cc8094c\n"}
+,{"stream_name":"stdout","time":1399.227500858,"data":"2026-10-12 10:08:25 | INFO | Created new scorecard: 04fd3e5b-376e-4137-9066-1a40d652558d\n"}
+,{"stream_name":"stdout","time":1399.422639886,"data":"2026-10-12 10:08:26 | INFO | Successfully loaded game class Lp85 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/lp85/305b61c3/lp85.py\n"}
+,{"stream_name":"stdout","time":1440.622676939,"data":"lp85-305b61c3    levels  1/8  level_actions [15]  human [17]  score   2.778     41.2s\n"}
+,{"stream_name":"stdout","time":1440.624010754,"data":"2026-10-12 10:09:07 | INFO | Closed scorecard: 04fd3e5b-376e-4137-9066-1a40d652558d\n"}
+,{"stream_name":"stdout","time":1440.625006804,"data":"2026-10-12 10:09:07 | INFO | Created new scorecard: 48ec8bf9-e8a5-446f-842b-00e7ef3d3d67\n"}
+,{"stream_name":"stdout","time":1440.733212529,"data":"2026-10-12 10:09:07 | INFO | Successfully loaded game class Ls20 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/ls20/9607627b/ls20.py\n"}
+,{"stream_name":"stdout","time":1470.27358956,"data":"ls20-9607627b    levels  1/7  level_actions [353]  human [22]  score   0.014     29.5s\n"}
+,{"stream_name":"stdout","time":1470.274745351,"data":"2026-10-12 10:09:37 | INFO | Closed scorecard: 48ec8bf9-e8a5-446f-842b-00e7ef3d3d67\n"}
+,{"stream_name":"stdout","time":1470.275767471,"data":"2026-10-12 10:09:37 | INFO | Created new scorecard: 16479c94-72cb-44be-8fd3-bbd12acbc856\n"}
+,{"stream_name":"stdout","time":1470.308186016,"data":"2026-10-12 10:09:37 | INFO | Successfully loaded game class M0r0 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/m0r0/492f87ba/m0r0.py\n"}
+,{"stream_name":"stdout","time":1592.914879624,"data":"m0r0-492f87ba    levels  1/6  level_actions [1725]  human [30]  score   0.001    122.6s\n"}
+,{"stream_name":"stdout","time":1592.916179025,"data":"2026-10-12 10:11:39 | INFO | Closed scorecard: 16479c94-72cb-44be-8fd3-bbd12acbc856\n"}
+,{"stream_name":"stdout","time":1592.917450664,"data":"2026-10-12 10:11:39 | INFO | Created new scorecard: b3033235-4747-473c-b717-9014f0732dc1\n"}
+,{"stream_name":"stdout","time":1593.089408193,"data":"2026-10-12 10:11:39 | INFO | Successfully loaded game class R11l from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/r11l/495a7899/r11l.py\n"}
+,{"stream_name":"stdout","time":1731.708914394,"data":"r11l-495a7899    levels  0/6  level_actions []  human []  score   0.000    138.6s\n"}
+,{"stream_name":"stdout","time":1731.710255277,"data":"2026-10-12 10:13:58 | INFO | Closed scorecard: b3033235-4747-473c-b717-9014f0732dc1\n"}
+,{"stream_name":"stdout","time":1731.711171974,"data":"2026-10-12 10:13:58 | INFO | Created new scorecard: 3c64f65b-8781-4358-a26c-e5d924858b5c\n"}
+,{"stream_name":"stdout","time":1731.863894712,"data":"2026-10-12 10:13:58 | INFO | Successfully loaded game class Re86 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/re86/8af5384d/re86.py\n"}
+,{"stream_name":"stdout","time":1757.86374624,"data":"re86-8af5384d    levels  0/8  level_actions []  human []  score   0.000     25.9s\n"}
+,{"stream_name":"stdout","time":1757.865019477,"data":"2026-10-12 10:14:24 | INFO | Closed scorecard: 3c64f65b-8781-4358-a26c-e5d924858b5c\n"}
+,{"stream_name":"stdout","time":1757.865955454,"data":"2026-10-12 10:14:24 | INFO | Created new scorecard: e5757f97-ed6d-4455-8235-b6e877677c21\n"}
+,{"stream_name":"stdout","time":1757.994091616,"data":"2026-10-12 10:14:24 | INFO | Successfully loaded game class S5i5 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/s5i5/18d95033/s5i5.py\n"}
+,{"stream_name":"stdout","time":1815.491539173,"data":"s5i5-18d95033    levels  1/8  level_actions [435]  human [20]  score   0.006     57.5s\n"}
+,{"stream_name":"stdout","time":1815.49307305,"data":"2026-10-12 10:15:22 | INFO | Closed scorecard: e5757f97-ed6d-4455-8235-b6e877677c21\n"}
+,{"stream_name":"stdout","time":1815.494103638,"data":"2026-10-12 10:15:22 | INFO | Created new scorecard: 9bc9b127-dc38-4647-acfd-c14c13d3bb5f\n"}
+,{"stream_name":"stdout","time":1815.545318571,"data":"2026-10-12 10:15:22 | INFO | Successfully loaded game class Sb26 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/sb26/7fbdac44/sb26.py\n"}
+,{"stream_name":"stdout","time":1892.86968216,"data":"sb26-7fbdac44    levels  0/8  level_actions []  human []  score   0.000     77.3s\n"}
+,{"stream_name":"stdout","time":1892.871383685,"data":"2026-10-12 10:16:39 | INFO | Closed scorecard: 9bc9b127-dc38-4647-acfd-c14c13d3bb5f\n"}
+,{"stream_name":"stdout","time":1892.872768334,"data":"2026-10-12 10:16:39 | INFO | Created new scorecard: 8e20bf4b-a241-448b-b2cc-806e1a94c37f\n"}
+,{"stream_name":"stdout","time":1893.008507699,"data":"2026-10-12 10:16:39 | INFO | Successfully loaded game class Sc25 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/sc25/635fd71a/sc25.py\n"}
+,{"stream_name":"stdout","time":1937.320688214,"data":"sc25-635fd71a    levels  0/6  level_actions []  human []  score   0.000     44.2s\n"}
+,{"stream_name":"stdout","time":1937.322121548,"data":"2026-10-12 10:17:24 | INFO | Closed scorecard: 8e20bf4b-a241-448b-b2cc-806e1a94c37f\n"}
+,{"stream_name":"stdout","time":1937.323135935,"data":"2026-10-12 10:17:24 | INFO | Created new scorecard: 811b1ddd-8180-46c6-b1e2-709cc209097f\n"}
+,{"stream_name":"stdout","time":1937.469920403,"data":"2026-10-12 10:17:24 | INFO | Successfully loaded game class Sk48 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/sk48/d8078629/sk48.py\n"}
+,{"stream_name":"stdout","time":2021.966908121,"data":"sk48-d8078629    levels  0/8  level_actions []  human []  score   0.000     84.5s\n"}
+,{"stream_name":"stdout","time":2021.968251566,"data":"2026-10-12 10:18:48 | INFO | Closed scorecard: 811b1ddd-8180-46c6-b1e2-709cc209097f\n"}
+,{"stream_name":"stdout","time":2021.969323361,"data":"2026-10-12 10:18:48 | INFO | Created new scorecard: 73658dd6-4d19-48f5-b322-2e02349f6b41\n"}
+,{"stream_name":"stdout","time":2021.999811161,"data":"2026-10-12 10:18:48 | INFO | Successfully loaded game class Sp80 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/sp80/589a99af/sp80.py\n"}
+,{"stream_name":"stdout","time":2102.416748857,"data":"sp80-589a99af    levels  0/6  level_actions []  human []  score   0.000     80.4s\n"}
+,{"stream_name":"stdout","time":2102.417847888,"data":"2026-10-12 10:20:09 | INFO | Closed scorecard: 73658dd6-4d19-48f5-b322-2e02349f6b41\n"}
+,{"stream_name":"stdout","time":2102.418793235,"data":"2026-10-12 10:20:09 | INFO | Created new scorecard: d9a6eca7-0d19-4a51-ac1d-57ab1967a6fd\n"}
+,{"stream_name":"stdout","time":2102.46392309,"data":"2026-10-12 10:20:09 | INFO | Successfully loaded game class Su15 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/su15/1944f8ab/su15.py\n"}
+,{"stream_name":"stdout","time":2161.617577711,"data":"su15-1944f8ab    levels  1/9  level_actions [189]  human [22]  score   0.030     59.1s\n"}
+,{"stream_name":"stdout","time":2161.619075274,"data":"2026-10-12 10:21:08 | INFO | Closed scorecard: d9a6eca7-0d19-4a51-ac1d-57ab1967a6fd\n"}
+,{"stream_name":"stdout","time":2161.620459706,"data":"2026-10-12 10:21:08 | INFO | Created new scorecard: 0c398c04-1583-412f-a9c3-a36c5f2dd236\n"}
+,{"stream_name":"stdout","time":2161.746853184,"data":"2026-10-12 10:21:08 | INFO | Successfully loaded game class Tn36 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/tn36/ef4dde99/tn36.py\n"}
+,{"stream_name":"stdout","time":2246.118864637,"data":"tn36-ef4dde99    levels  1/7  level_actions [39]  human [32]  score   2.404     84.3s\n"}
+,{"stream_name":"stdout","time":2246.120270891,"data":"2026-10-12 10:22:32 | INFO | Closed scorecard: 0c398c04-1583-412f-a9c3-a36c5f2dd236\n"}
+,{"stream_name":"stdout","time":2246.121242571,"data":"2026-10-12 10:22:32 | INFO | Created new scorecard: 13870c5a-dad2-4c5d-8452-997d5e21b8cc\n"}
+,{"stream_name":"stdout","time":2246.157622728,"data":"2026-10-12 10:22:32 | INFO | Successfully loaded game class Tr87 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/tr87/cd924810/tr87.py\n"}
+,{"stream_name":"stdout","time":2369.101572401,"data":"tr87-cd924810    levels  0/6  level_actions []  human []  score   0.000    122.9s\n"}
+,{"stream_name":"stdout","time":2369.102811908,"data":"2026-10-12 10:24:35 | INFO | Closed scorecard: 13870c5a-dad2-4c5d-8452-997d5e21b8cc\n"}
+,{"stream_name":"stdout","time":2369.103745609,"data":"2026-10-12 10:24:35 | INFO | Created new scorecard: 80cd70be-f1a6-4542-9b91-9e668b3b6005\n"}
+,{"stream_name":"stdout","time":2369.146040311,"data":"2026-10-12 10:24:35 | INFO | Successfully loaded game class Tu93 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/tu93/0768757b/tu93.py\n"}
+,{"stream_name":"stdout","time":2395.503804619,"data":"tu93-0768757b    levels  3/9  level_actions [193, 77, 379]  human [19, 16, 34]  score   0.267     26.3s\n"}
+,{"stream_name":"stdout","time":2395.504905607,"data":"2026-10-12 10:25:02 | INFO | Closed scorecard: 80cd70be-f1a6-4542-9b91-9e668b3b6005\n"}
+,{"stream_name":"stdout","time":2395.505838691,"data":"2026-10-12 10:25:02 | INFO | Created new scorecard: 30994b4b-c065-4efe-8c34-27c121f2eafe\n"}
+,{"stream_name":"stdout","time":2395.547865733,"data":"2026-10-12 10:25:02 | INFO | Successfully loaded game class Vc33 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/vc33/5430563c/vc33.py\n"}
+,{"stream_name":"stdout","time":2427.00750948,"data":"vc33-5430563c    levels  2/7  level_actions [43, 47]  human [7, 18]  score   1.142     31.3s\n"}
+,{"stream_name":"stdout","time":2427.008548516,"data":"2026-10-12 10:25:33 | INFO | Closed scorecard: 30994b4b-c065-4efe-8c34-27c121f2eafe\n"}
+,{"stream_name":"stdout","time":2427.009501043,"data":"2026-10-12 10:25:33 | INFO | Created new scorecard: 36b0eeb2-1119-46f1-afd2-7920980c601e\n"}
+,{"stream_name":"stdout","time":2427.091975367,"data":"2026-10-12 10:25:33 | INFO | Successfully loaded game class Wa30 from /kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files/wa30/ee6fef47/wa30.py\n"}
+,{"stream_name":"stdout","time":2454.298571163,"data":"wa30-ee6fef47    levels  0/9  level_actions []  human []  score   0.000     27.2s\n"}
+,{"stream_name":"stdout","time":2454.299654492,"data":"2026-10-12 10:26:01 | INFO | Closed scorecard: 36b0eeb2-1119-46f1-afd2-7920980c601e\n"}
+,{"stream_name":"stdout","time":2454.302127102,"data":"\n"}
+,{"stream_name":"stdout","time":2454.302163775,"data":"TOTAL 0.2797 | levels 15/183 | games with level 1: 12 | wall 2432s\n"}
+,{"stream_name":"stderr","time":2459.094420958,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2459.094488557,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2459.38546578,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2459.385513036,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2460.610994629,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":2460.739190578,"data":"[NbConvertApp] Writing 89002 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":2465.069431088,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2466.180876767,"data":"[NbConvertApp] Writing 618832 bytes to __results__.html\n"}
+]
