@@ -21,7 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[4]
 SRC = ROOT / "src" / "arc_prize_2026" / "arc3"
 OUT = ROOT / "submission" / "kaggle"
-MODULES = ["perception.py", "effects.py", "planner.py", "agents/base.py", "agents/model_based.py"]
+MODULES = ["perception.py", "effects.py", "goals.py", "planner.py", "agents/base.py", "agents/model_based.py"]
 
 SHIM = '''
 

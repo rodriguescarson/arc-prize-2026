@@ -212,7 +212,7 @@ class EffectModel:
         self.n_obs: Counter = Counter()
         self.n_pred = 0
         self.n_pred_correct = 0
-        self.key_pred: dict[Key, list[int]] = defaultdict(lambda: [0, 0])  # key -> [n, correct] for generative predictions
+        self.key_pred: dict[Key, deque] = defaultdict(lambda: deque(maxlen=20))  # last 20 generative outcomes per key
         self.min_reliability = 0.5
 
     # ---- learning -------------------------------------------------------------------------------
@@ -226,12 +226,12 @@ class EffectModel:
         for o, p, delta in d["moved"]:
             self.moves[key][(ident(o), delta)] += 1
             self.passable[key].update(_ahead_cells(o, *delta, grid_before))
-        if not d["moved"] and sig == (0, 0, 0, 0):
-            # nothing moved: if we know what this key usually moves, record what was ahead of it
-            group = self.modal_group(key)
-            if group is not None:
-                idents, (dy, dx) = group
-                members = [o for o in before if ident(o) in idents]
+        group = self.modal_group(key)
+        if group is not None and not d["moved"]:
+            # the group did not move (HUD/bar changes elsewhere are irrelevant): record what was in its way
+            idents, (dy, dx) = group
+            members = [o for o in before if ident(o) in idents]
+            if members and all(any((m.colour, m.y0, m.x0, m.y1, m.x1) == (p.colour, p.y0, p.x0, p.y1, p.x1) for p in after) for m in members):
                 for o in members:
                     self.blocked[key].update(_ahead_cells(o, dy, dx, grid_before, members))
         return d
@@ -262,9 +262,8 @@ class EffectModel:
         group = self.modal_group(key)
         if group is None:
             return None, "unknown"
-        n, c = self.key_pred[key]
-        if n >= 10 and c / n < self.min_reliability:
-            return None, "unreliable"  # this key's mechanic is not a rigid move; memo-only from here on
+        hist = self.key_pred[key]
+        unreliable = len(hist) >= 10 and sum(hist) / len(hist) < self.min_reliability
         idents, (dy, dx) = group
         members = [o for o in objs if ident(o) in idents]
         if not members:
@@ -277,10 +276,21 @@ class EffectModel:
                     blocked = True; break
             if blocked:
                 break
+        src = "unreliable" if unreliable else "model"
         if blocked:
-            return list(objs), "model"
+            return list(objs), src
         out = [_moved(o, dy, dx) if ident(o) in idents else o for o in objs]
-        return out, "model"
+        return out, src
+
+    def predict_unchecked(self, objs: list[Obj], key: Key) -> list[Obj] | None:
+        """Apply the modal group displacement with no blocking check and no reliability gate (for goal examples)."""
+        group = self.modal_group(key)
+        if group is None:
+            return None
+        idents, (dy, dx) = group
+        if not any(ident(o) in idents for o in objs):
+            return None
+        return [_moved(o, dy, dx) if ident(o) in idents else o for o in objs]
 
     def next_key(self, sk: int, key: Key) -> int | None:
         return self.transitions.get((sk, key))
@@ -292,11 +302,121 @@ class EffectModel:
         ok = int(predicted_key == observed_key)
         self.n_pred_correct += ok
         if key is not None:
-            self.key_pred[key][0] += 1; self.key_pred[key][1] += ok
+            self.key_pred[key].append(ok)
 
     @property
     def accuracy(self) -> float | None:
         return self.n_pred_correct / self.n_pred if self.n_pred else None
+
+# ---- goals.py ----
+"""Goal inference from level transitions.
+
+When `levels_completed` increments, the state just before the transition is a positive example of the
+level's goal; the level's initial state is a negative example. We enumerate predicates from a fixed
+template class over object classes (ident = (colour, h, w)) and keep those that are TRUE at the
+transition and FALSE at the level start. Across levels of one game, surviving predicates are those
+that held at every transition seen (intersection). Later levels then plan toward any surviving predicate.
+
+Templates:
+  Gone(c)         : no object of class c remains                      (collect/clear everything of c)
+  Count(c, k)     : exactly k objects of class c remain, k < initial  (partial clearing)
+  Touch(c)        : the mover group's bbox touches an object of class c (reach c)
+  Overlap(c, d)   : an object of class c overlaps an object of class d (bring c onto d)
+  Appeared(c)     : class c absent at start, present at the end       (reveal/create c)
+"""
+
+
+
+
+def _touch(a: Obj, b: Obj) -> bool:
+    return a.y0 <= b.y1 and b.y0 <= a.y1 and a.x0 <= b.x1 and b.x0 <= a.x1
+
+
+def _overlap(a: Obj, b: Obj) -> bool:
+    return a.y0 < b.y1 and b.y0 < a.y1 and a.x0 < b.x1 and b.x0 < a.x1
+
+
+@dataclass(frozen=True)
+class Predicate:
+    kind: str
+    a: tuple
+    b: tuple | int | None = None
+
+    def holds(self, objs: list[Obj], mover_idents: frozenset) -> bool:
+        if self.kind == "gone":
+            return not any(ident(o) == self.a for o in objs)
+        if self.kind == "count":
+            return sum(ident(o) == self.a for o in objs) == self.b
+        if self.kind == "appeared":
+            return any(ident(o) == self.a for o in objs)
+        if self.kind == "touch":
+            members = [o for o in objs if ident(o) in mover_idents]
+            targets = [o for o in objs if ident(o) == self.a]
+            return any(_touch(m, t) for m in members for t in targets)
+        if self.kind == "overlap":
+            xs = [o for o in objs if ident(o) == self.a]; ys = [o for o in objs if ident(o) == self.b]
+            return any(_overlap(x, y) for x in xs for y in ys)
+        return False
+
+    def classes(self) -> set:
+        return {self.a} | ({self.b} if isinstance(self.b, tuple) else set())
+
+    def __str__(self) -> str:
+        return f"{self.kind}({self.a}{', ' + str(self.b) if self.b is not None else ''})"
+
+
+def candidate_predicates(init_objs: list[Obj], final_objs: list[Obj], mover_idents: frozenset) -> set[Predicate]:
+    ci, cf = Counter(ident(o) for o in init_objs), Counter(ident(o) for o in final_objs)
+    classes = set(ci) | set(cf)
+    cands: set[Predicate] = set()
+    for c in classes:
+        if c in mover_idents:
+            continue
+        if ci[c] > 0 and cf[c] == 0:
+            cands.add(Predicate("gone", c))
+        if ci[c] > cf[c] > 0:
+            cands.add(Predicate("count", c, cf[c]))
+        if ci[c] == 0 and cf[c] > 0:
+            cands.add(Predicate("appeared", c))
+    if mover_idents:
+        for c in classes - set(mover_idents):
+            p = Predicate("touch", c)
+            if p.holds(final_objs, mover_idents) and not p.holds(init_objs, mover_idents):
+                cands.add(p)
+    non_mover = [c for c in classes if c not in mover_idents]
+    for c in non_mover:
+        for d in non_mover:
+            if c >= d:
+                continue
+            p = Predicate("overlap", c, d)
+            if p.holds(final_objs, mover_idents) and not p.holds(init_objs, mover_idents):
+                cands.add(p)
+    return cands
+
+
+class GoalMemory:
+    def __init__(self) -> None:
+        self.surviving: set[Predicate] | None = None
+        self.transitions = 0
+
+    def update(self, cands: set[Predicate]) -> None:
+        self.transitions += 1
+        self.surviving = set(cands) if self.surviving is None else (self.surviving & cands)
+
+    def active(self, objs: list[Obj]) -> list[Predicate]:
+        """Surviving predicates whose classes exist (or, for gone/count, existed) in the current level."""
+        if not self.surviving:
+            return []
+        present = {ident(o) for o in objs}
+        out = []
+        for p in self.surviving:
+            if p.kind in ("gone", "count", "touch") and p.a not in present:
+                continue
+            if p.kind == "overlap" and not (p.a in present and p.b in present):
+                continue
+            out.append(p)
+        order = {"touch": 0, "overlap": 1, "count": 2, "gone": 3, "appeared": 4}
+        return sorted(out, key=lambda p: order[p.kind])
 
 # ---- planner.py ----
 """Breadth-first planning in the learned effect model.
@@ -326,7 +446,7 @@ def adjacent_classes(members: list[Obj], objs: list[Obj]) -> set:
 
 def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, keys_for, tried: dict[int, set],
                         objs_cache: dict[int, tuple[list[Obj], np.ndarray]], max_depth: int = 12, max_nodes: int = 1500,
-                        mover_idents: frozenset | None = None, contacted: dict | None = None):
+                        mover_idents: frozenset | None = None, contacted: dict | None = None, goal_test=None):
     """keys_for(objs) -> list of (key, class_key, action, data). Returns (path_keys, final_key) or (None, None).
 
     Target priority: (1) a reachable state where the mover group touches an object class contacted fewer
@@ -347,6 +467,8 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
         if sk not in objs_cache:
             continue
         o_list, g = objs_cache[sk]
+        if goal_test is not None and path and goal_test(o_list):
+            return path, None  # goal state reached in the model: execute the path, no exploratory key needed
         cands = keys_for(o_list)
         untried = [c for c in cands if c[0] not in tried.get(sk, set()) and not model.is_known_noop(c[1])]
         if untried:
@@ -375,7 +497,7 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
                     seen.add(nk); q.append((nk, path + [(key, action, data)]))
                 continue
             pred, src = model.predict(o_list, g, ckey)
-            if pred is None:
+            if pred is None or src == "unreliable":
                 continue
             nk = state_key(pred)
             if nk == sk or nk in seen:
@@ -434,10 +556,15 @@ model across levels (memory=True) or reset it at each level (memory=False)."""
 
 class ModelBasedAgent(BaseAgent):
     def __init__(self, game_id: str, seed: int = 0, memory: bool = True, max_depth: int = 12, max_nodes: int = 1500,
-                 click_lattice: int = 8, contact: bool = True, **kwargs):
+                 click_lattice: int = 8, contact: bool = True, goals: bool = True, **kwargs):
         super().__init__(game_id, seed)
         self.memory = memory
         self.contact = contact
+        self.goals = goals
+        self.goal_memory = GoalMemory()
+        self.level_init_objs: list[Obj] | None = None
+        self.level_init_grid: np.ndarray | None = None
+        self.n_goal_plans = 0
         self.max_depth, self.max_nodes, self.click_lattice = max_depth, max_nodes, click_lattice
         self.model = EffectModel()
         self.tried: dict[int, set] = {}
@@ -447,9 +574,9 @@ class ModelBasedAgent(BaseAgent):
         self.prev: tuple[list[Obj], np.ndarray, object, object] | None = None  # objs, grid, key, ckey
         self.levels_seen = 0
         self.n_plans = 0; self.n_plan_steps = 0; self.n_replans_on_error = 0; self.n_fallback = 0
-        self.pred_by_source = {"memo": [0, 0], "model": [0, 0]}
+        self.pred_by_source = {"memo": [0, 0], "model": [0, 0], "unreliable": [0, 0]}
         self.row_changes = np.zeros(64, dtype=np.int32); self.row_steps = 0; self.prev_grid: np.ndarray | None = None
-        self.row_px = np.zeros(64, dtype=np.int64); self.mover_rows = np.zeros(64, dtype=bool)
+        self.row_px = np.zeros(64, dtype=np.int64); self.row_maxpx = np.zeros(64, dtype=np.int64); self.mover_rows = np.zeros(64, dtype=bool)
         self.volatile_rows: np.ndarray = np.zeros(64, dtype=bool)
         self.terrain_colours: set[int] = set()
         self.contacted: dict = {}  # object class -> number of steps the mover group has touched it
@@ -465,14 +592,28 @@ class ModelBasedAgent(BaseAgent):
             changed_rows = d.any(axis=1)
             if changed_rows.any():
                 self.row_changes += changed_rows; self.row_steps += 1
-                self.row_px += d.sum(axis=1)
+                px = d.sum(axis=1)
+                self.row_px += px
+                self.row_maxpx = np.maximum(self.row_maxpx, px)
             if self.row_steps >= 10:
                 rate_rows = (self.row_changes / self.row_steps) > 0.8
             else:
                 rate_rows = np.zeros(64, dtype=bool)
-            with np.errstate(divide="ignore", invalid="ignore"):
-                mean_px = np.where(self.row_changes > 0, self.row_px / np.maximum(self.row_changes, 1), 0.0)
-            bar_rows = (self.row_changes >= 4) & (mean_px <= 1.0) & ~self.mover_rows
+            # thin bars: every change in the row is exactly 1 px, seen >= 6 times, never a mover row, and the
+            # flagged rows form bands of at most 2 adjacent rows (a 1-px sprite wandering over many rows is not a bar)
+            cand = (self.row_changes >= 6) & (self.row_maxpx <= 1) & ~self.mover_rows
+            bar_rows = np.zeros(64, dtype=bool)
+            y = 0
+            while y < 64:
+                if cand[y]:
+                    y2 = y
+                    while y2 + 1 < 64 and cand[y2 + 1]:
+                        y2 += 1
+                    if y2 - y + 1 <= 2 and (y2 <= 5 or y >= 50):  # HUD bars live at the frame edges
+                        bar_rows[y:y2 + 1] = True
+                    y = y2 + 1
+                else:
+                    y += 1
             self.volatile_rows = rate_rows | bar_rows
         self.prev_grid = grid
 
@@ -521,11 +662,32 @@ class ModelBasedAgent(BaseAgent):
         grid = np.asarray(latest.frame[-1], dtype=np.int16)
         self._update_volatility(grid, after_reset=self.prev is None)
         objs = self.perceive(grid)
+        early_movers = frozenset().union(*[g[0] for k in self.model.moves if (g := self.model.modal_group(k))]) if self.model.moves else frozenset()
+        if early_movers:
+            members = [o for o in objs if ident(o) in early_movers]
+            # decorations (direction markers, eyes) fully inside a mover member's bbox are part of the mover: drop them
+            objs = [o for o in objs if o in members or not any(m.y0 <= o.y0 and o.y1 <= m.y1 and m.x0 <= o.x0 and o.x1 <= m.x1 for m in members)]
         sk = state_key(objs)
+        if self.level_init_objs is None:
+            self.level_init_objs = objs; self.level_init_grid = grid
         self.objs_cache[sk] = (objs, grid)
 
         # level transition bookkeeping
         if latest.levels_completed > self.levels_seen:
+            if self.goals and self.prev is not None and self.level_init_grid is not None:
+                mover = frozenset().union(*[g[0] for k in self.model.moves if (g := self.model.modal_group(k))]) if self.model.moves else frozenset()
+                # positive example = the state the winning action produced in the model (the pre-transition
+                # frame does not yet show the mover on the target); negative = level start, both re-perceived
+                # under the current HUD/terrain mask so stale bar objects cannot become "goals"
+                p_objs, p_grid, p_key, p_ckey = self.prev
+                pre = self.perceive(p_grid)
+                post, _src = self.model.predict(pre, p_grid, p_ckey)
+                if post is None or state_key(post) == state_key(pre):
+                    post = self.model.predict_unchecked(pre, p_ckey)
+                positive = post if post is not None else pre
+                init = self.perceive(self.level_init_grid)
+                self.goal_memory.update(candidate_predicates(init, positive, mover))
+            self.level_init_objs = objs; self.level_init_grid = grid
             self.levels_seen = latest.levels_completed
             self.tried = {}; self.plan = []; self.predicted_next = None; self.contacted = {}
             if not self.memory:
@@ -541,8 +703,8 @@ class ModelBasedAgent(BaseAgent):
                 src = self._pred_src
                 self.pred_by_source[src][0] += 1
                 self.pred_by_source[src][1] += int(self.predicted_next == sk)
-                self.model.record_prediction(self.predicted_next, sk, p_ckey if src == "model" else None)
-                if self.predicted_next != sk:
+                self.model.record_prediction(self.predicted_next, sk, p_ckey if src in ("model", "unreliable") else None)
+                if self.predicted_next != sk and src != "unreliable":
                     self.plan = []; self.n_replans_on_error += 1
             self.predicted_next = None
 
@@ -557,11 +719,19 @@ class ModelBasedAgent(BaseAgent):
                 self.contacted.setdefault(ident(o), 0)
         keys_for = self._keys_for(latest)
         if not self.plan:
+            goal_test = None
+            if self.goals:
+                active = self.goal_memory.active(objs)
+                if active:
+                    mi = mover_idents
+                    goal_test = lambda o, _a=active, _m=mi: any(p.holds(o, _m) for p in _a)
             path, final = plan_to_information(self.model, objs, grid, keys_for, self.tried, self.objs_cache,
                                               self.max_depth, self.max_nodes, mover_idents or None,
-                                              self.contacted if (mover_idents and self.contact) else None)
+                                              self.contacted if (mover_idents and self.contact) else None, goal_test)
             if path is not None:
-                self.plan = list(path) + [final[:1] + (final[2], final[3])] if final else list(path)
+                if final is None:
+                    self.n_goal_plans += 1
+                self.plan = list(path) + ([final[:1] + (final[2], final[3])] if final else [])
                 # normalise entries to (key, action, data)
                 self.plan = [(e[0], e[-2], e[-1]) for e in self.plan]
                 self.n_plans += 1
@@ -583,21 +753,22 @@ class ModelBasedAgent(BaseAgent):
         else:
             pred, src = self.model.predict(objs, grid, ckey)
             if pred is not None:
-                self.predicted_next, self._pred_src = state_key(pred), "model"
+                self.predicted_next, self._pred_src = state_key(pred), src
         self.prev = (objs, grid, key, ckey)
         if action.is_complex():
             action.set_data(data)
         return action
 
     def stats(self) -> dict:
-        return {"memory": self.memory, "contact": self.contact, "plans": self.n_plans, "plan_steps": self.n_plan_steps,
+        return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "plans": self.n_plans, "goal_plans": self.n_goal_plans,
+                "surviving_goals": sorted(map(str, self.goal_memory.surviving)) if self.goal_memory.surviving else None, "plan_steps": self.n_plan_steps,
                 "replans_on_error": self.n_replans_on_error, "fallback_steps": self.n_fallback,
                 "pred_total": self.model.n_pred, "pred_acc": None if self.model.accuracy is None else round(self.model.accuracy, 3),
                 "pred_by_source": {k: (v[0], round(v[1] / v[0], 3) if v[0] else None) for k, v in self.pred_by_source.items()},
                 "movers": {str(k): [sorted(map(str, g[0])), list(g[1])] for k in self.model.moves if (g := self.model.modal_group(k))},
                 "volatile_rows": [int(i) for i in np.where(self.volatile_rows)[0]], "terrain_colours": sorted(self.terrain_colours),
                 "known_noops": [str(k) for k in self.model.effects if self.model.is_known_noop(k)],
-                "key_reliability": {str(k): [v[0], round(v[1] / v[0], 2)] for k, v in self.model.key_pred.items() if v[0]}}
+                "key_reliability": {str(k): [len(v), round(sum(v) / len(v), 2)] for k, v in self.model.key_pred.items() if len(v)}}
 
 # ======================================================================================
 # Kaggle framework adapter (ARC-AGI-3-Agents contract)
