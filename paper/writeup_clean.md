@@ -4,7 +4,7 @@
 ## Abstract
 ARC-AGI-3 agents on Kaggle either run a large language model in a code REPL or explore blindly.
 We ask whether a small, training-free agent can instead *learn what its actions do* while playing,
-plan in that learned model, and carry what it learned across the levels of a game. The agent segments
+plan in that model, and carry what it learned across a game's levels. The agent segments
 each 64×64 frame into objects, learns per-action object displacements with blocking rules from frame
 diffs, plans by breadth-first search in the learned model toward unexplored interactions, and, after the
 first level transition, infers a goal predicate from a fixed template class and plans toward it on later
@@ -15,20 +15,17 @@ formula, and two reusable diagnostics: a non-determinism test for state represen
 hidden-counter detector.
 
 ## 1. Problem and question
-ARC-AGI-3 is interactive: the agent sees a 64×64 frame, chooses among up to seven actions, and must discover rules, controls and goal from scratch across levels
-of increasing difficulty. The score is
+ARC-AGI-3 is interactive: the agent sees a 64×64 frame, chooses among up to seven actions, and must discover rules, controls and goal from scratch across levels. The score is
 efficiency: a completed level earns 100·(human actions / agent actions)², capped at 115, and a game's score
 weights level k by k, so later levels dominate. The organisers' failure taxonomy for frontier
 models names false world models and "solved the level, didn't learn the game"; the strongest public-set
-paper concludes that "goal inference is the hard part". An agent must learn three things from interaction
-alone: what the *state* is, what each *action does*, and what counts as *done*. We ask how far one that
+paper concludes that "goal inference is the hard part". An agent must learn three things from interaction: what the *state* is, what each *action does*, and what counts as *done*. We ask how far one that
 learns all three online, with no language model and no training set, gets on the hidden Kaggle set.
 
 ## 2. Prior work and gap
 Kaggle entries fall into three families: LLM-in-REPL harnesses (Tufa Labs' Duck, Franzen's Milestone-2),
 a 27–75B model writing Python against the frames on a 96 GB GPU; a "will the frame change" CNN
-(Stochastic Goose) that re-initialises at every level; and white-box search that imports the public games'
-source and cannot run on hidden games. Research papers (Twin, Tycho, PRO-LONG) build executable world
+(Stochastic Goose) that re-initialises at every level; and white-box search that imports the public games' source, impossible on hidden games. Research papers (Twin, Tycho, PRO-LONG) build executable world
 models with frontier APIs and report 88–100% on the 25 public games only, which AERA shows null strategies
 partly solve. No public agent learns a non-LLM model of action effects, plans in it, keeps it across
 levels and is evaluated on the hidden set.
@@ -79,7 +76,7 @@ public numbers are development, the hidden set is evaluation.
 | final_v7 | 0.280 | 15/183 | 12 | 2 | 11.0× | 1 | 1372 |
 
 
-The explorer and the model-based agent share perception, so the table isolates the learned model and
+Explorer and model-based agent share perception, so the table isolates the learned model and
 planning. Contact-driven curiosity raises coverage and efficiency (11 vs 10 games; median level-1 cost
 8.6× vs 21.2× human). Memory changes nothing on level 1 by construction and alone reaches a second level, at
 falling per-level cost (per-game prediction accuracy: fig. 3). Three seeds
@@ -93,8 +90,7 @@ Per game: no game dies in a loop (resets
 ≤ 4.3% of actions) or cycles through a few states (≥ 16% distinct frames), so exploration itself is not
 what stalls. Five games are *model-blind* (generative accuracy < 0.3: bp35,
 cd82, ka59, sk48, tn36), effects memorised but never predicted; the other 20 are *no-progress*:
-the planner keeps finding untried transitions (median 1,973 of 2,000 steps planned) without crossing a
-level boundary, which is a goal problem, not a search problem. A reached first level costs 0.9× (lp85) to
+the planner keeps finding untried transitions (median 1,973 of 2,000 steps planned) without crossing a level boundary: a goal problem, not a search problem. A reached first level costs 0.9× (lp85) to
 58× (m0r0) the human count. A published 100-trajectory audit of the 75B-parameter
 Franzen harness lists sk48 as never clearing level 1 and bp35 and lf52 as stopping after one level; our
 agent matches all three.
