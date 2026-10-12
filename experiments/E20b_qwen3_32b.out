@@ -40,3 +40,18 @@ INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and ma
 2026-10-12 20:24:51 | INFO | Closed scorecard: f3aa9ca4-fb22-4125-beb0-25425a47de81
 2026-10-12 20:24:51 | INFO | Created new scorecard: 1e2e9b84-4e52-4b96-bd64-074bea9f7363
 2026-10-12 20:24:51 | INFO | Successfully loaded game class Re86 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/re86/8af5384d/re86.py
+2026-10-12 20:28:47 | INFO | Closed scorecard: 1e2e9b84-4e52-4b96-bd64-074bea9f7363
+2026-10-12 20:28:47 | INFO | Created new scorecard: 5319b565-50bf-47b9-81ef-d9249f228430
+2026-10-12 20:28:47 | INFO | Successfully loaded game class S5i5 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/s5i5/18d95033/s5i5.py
+2026-10-12 20:30:08 | INFO | Closed scorecard: 5319b565-50bf-47b9-81ef-d9249f228430
+2026-10-12 20:30:08 | INFO | Created new scorecard: 7a33a2da-bf75-4a15-9547-15ec52b9c042
+2026-10-12 20:30:08 | INFO | Successfully loaded game class Sb26 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sb26/7fbdac44/sb26.py
+2026-10-12 20:34:26 | INFO | Closed scorecard: 7a33a2da-bf75-4a15-9547-15ec52b9c042
+2026-10-12 20:34:26 | INFO | Created new scorecard: 84524cea-c1d4-4fcc-ab90-7a1e965e1858
+2026-10-12 20:34:26 | INFO | Successfully loaded game class Sc25 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sc25/635fd71a/sc25.py
+2026-10-12 20:38:30 | INFO | Closed scorecard: 84524cea-c1d4-4fcc-ab90-7a1e965e1858
+2026-10-12 20:38:30 | INFO | Created new scorecard: a3317733-ab06-4dba-9cc5-03af766ac189
+2026-10-12 20:38:30 | INFO | Successfully loaded game class Sk48 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sk48/d8078629/sk48.py
+2026-10-12 20:42:43 | INFO | Closed scorecard: a3317733-ab06-4dba-9cc5-03af766ac189
+2026-10-12 20:42:43 | INFO | Created new scorecard: da68ff05-7c17-4f84-a1dc-162de41130ee
+2026-10-12 20:42:43 | INFO | Successfully loaded game class Sp80 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sp80/589a99af/sp80.py
