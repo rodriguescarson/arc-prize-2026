@@ -61,3 +61,6 @@ INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and ma
 2026-10-12 06:56:35 | INFO | Closed scorecard: fe6d318a-ebdb-4cb6-ad95-e34e1b8ea865
 2026-10-12 06:56:35 | INFO | Created new scorecard: 8def5393-1414-4609-8aa8-c7cc6cc9a901
 2026-10-12 06:56:35 | INFO | Successfully loaded game class Tn36 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/tn36/ef4dde99/tn36.py
+2026-10-12 06:58:50 | INFO | Closed scorecard: 8def5393-1414-4609-8aa8-c7cc6cc9a901
+2026-10-12 06:58:50 | INFO | Created new scorecard: a28bdd5f-97f3-4f35-abed-6270b0d55970
+2026-10-12 06:58:50 | INFO | Successfully loaded game class Tr87 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/tr87/cd924810/tr87.py
