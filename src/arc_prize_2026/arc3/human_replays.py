@@ -29,7 +29,7 @@ def perceive(grid: np.ndarray, terrain_frac: float = 0.20):
     return [o for o in segment(grid, drop_background=False) if o.colour not in terrain]
 
 
-def analyse_session(row) -> dict:
+def analyse_session(row, family: str = "base", null: bool = False, rng=None) -> dict:
     traj = json.loads(row["trajectory"])
     frames, actions, levels = [], [], []
     for ev in traj:
@@ -68,7 +68,10 @@ def analyse_session(row) -> dict:
         if levels[i] > levels[i - 1]:
             init_objs = perceive(frames[level_start]); pre_objs = perceive(frames[i - 1])
             positive = predicted_post(pre_objs, actions[i]) if actions[i] in (1, 2, 3, 4, 5) else pre_objs
-            cands = candidate_predicates(init_objs, positive, mover)
+            if null:  # E18 control: a random non-transition frame of the level stands in for the positive example
+                lo, hi = level_start + 1, i - 1
+                positive = perceive(frames[rng.integers(lo, hi + 1)]) if hi >= lo else init_objs
+            cands = candidate_predicates(init_objs, positive, mover, family)
             out["transitions"].append({"level": levels[i], "actions": i - level_start, "n_candidates": len(cands),
                                        "kinds": sorted({p.kind for p in cands})})
             out["surviving"] = set(cands) if out["surviving"] is None else (out["surviving"] & cands)
@@ -80,6 +83,11 @@ def analyse_session(row) -> dict:
 def main(argv=None):
     argv = argv or sys.argv[1:]
     root = Path(argv[0]); max_sessions = int(argv[argv.index("--max-sessions") + 1]) if "--max-sessions" in argv else None
+    family = argv[argv.index("--family") + 1] if "--family" in argv else "base"
+    null = "--null" in argv
+    tag = argv[argv.index("--tag") + 1] if "--tag" in argv else ""
+    rng = np.random.default_rng(0)
+    print(f"config: family={family} null={null} tag={tag}")
     files = sorted(root.glob("*.parquet"))
     per_env = defaultdict(lambda: {"sessions": 0, "won": 0, "transitions": 0, "covered": 0, "kinds": Counter(), "first_actions": Counter(),
                                    "multi": 0, "consistent": 0, "surv_sizes": [], "surv_examples": Counter()})
@@ -90,7 +98,7 @@ def main(argv=None):
             if max_sessions and n >= max_sessions:
                 break
             n += 1
-            r = analyse_session(row)
+            r = analyse_session(row, family, null, rng)
             e = per_env[r["env"]]
             e["sessions"] += 1; e["won"] += r["won"]
             for a in r["first_actions"]:
@@ -114,7 +122,7 @@ def main(argv=None):
         ex = e["surv_examples"].most_common(1)[0] if e["surv_examples"] else ("—", 0)
         print(f"{env:5s} {e['sessions']:4d} {e['won']:4d} {e['transitions']:5d} {e['multi']:5d} {e['consistent']:7d} {med:12.0f}  {ex[0]} ×{ex[1]}")
     print(f"TOTAL sessions with >=2 transitions {tot_m}; with a non-empty cross-level intersection {tot_k} ({100 * tot_k / max(1, tot_m):.1f}%)")
-    out = Path(__file__).resolve().parents[3] / "experiments" / "human_replays" / "template_coverage.json"
+    out = Path(__file__).resolve().parents[3] / "experiments" / "human_replays" / (f"template_coverage_{tag}.json" if tag else "template_coverage.json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({env: {k: (dict(v) if isinstance(v, Counter) else v) for k, v in e.items()} for env, e in per_env.items()}, indent=1, default=str))
     print("->", out)
