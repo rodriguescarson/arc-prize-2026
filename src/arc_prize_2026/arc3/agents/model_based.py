@@ -242,7 +242,10 @@ class ModelBasedAgent(BaseAgent):
                 if active:
                     mi = mover_idents
                     goal_test = lambda o, _a=active, _m=mi: any(p.holds(o, _m) for p in _a)
-            if goal_test is None and self.llm_goal is not None:
+            if goal_test is None and self.llm_goal is not None and self.llm_goal_reached_at is None and not self.llm_goal.holds(objs, mover_idents):
+                # E20c: a proposed goal is a planning target only until it is first reached; afterwards the agent
+                # explores normally while the patience timer decides whether the goal was right (otherwise the
+                # planner shuttles between goal-satisfying states and never finds the real transition: tu93).
                 mi = mover_idents
                 goal_test = lambda o, _p=self.llm_goal, _m=mi: _p.holds(o, _m)
             path, final = plan_to_information(self.model, objs, grid, keys_for, self.tried, self.objs_cache,
@@ -310,6 +313,8 @@ class ModelBasedAgent(BaseAgent):
             goal = act[0] if act else None
         if goal is None or goal.kind != "touch" or not mover_idents:
             return None
+        if goal is self.llm_goal and self.llm_goal_reached_at is not None:
+            return None  # E20c: already reached once; stop walking toward it
         members = [o for o in objs if ident(o) in mover_idents]
         targets = [o for o in objs if ident(o) == goal.a]
         if not members or not targets:
