@@ -86,10 +86,10 @@ planning. Contact-driven curiosity raises coverage and efficiency (11 vs 10 game
 8.6× vs 21.2× human). Memory changes nothing on level 1 by construction and alone reaches a second level, at
 falling per-level cost (per-game prediction accuracy: fig. 3). Three seeds
 of the final configuration score 0.280, 0.276 and 0.278 and differ on 4 of 25 games [measured: E6];
-differences under 2 games or 0.02 points are noise. On the hidden public half (55 unseen games) the
-memory-on agent scores **0.15** [measured: submission 57095368, kernel arc3-model-based-explorer-mem1-c1
-v3]; the leading LLM harness scores 62.96 and most entries 0. The memory-off twin follows for the paired
-hidden-set test.
+differences under 2 games or 0.02 points are noise. Our first hidden-set submission scored **0.15** [measured: submission 57095368]; it was later found to run a
+bundle whose movement-prediction path raised an exception on every call and fell back to cyclic actions, so
+it measures a crippled agent, not this one. Fixed-bundle submissions follow [pending: 10-13 to 10-16]; the
+leading LLM harness scores 62.96 and most entries 0.
 
 ## 6. Failure analysis
 Per game [measured: `failure_table.py` on arc3_E3_v7_bars_mem1_a2000_s0]: no game dies in a loop (resets
