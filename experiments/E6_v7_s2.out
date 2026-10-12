@@ -1,0 +1,3 @@
+INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and max_open_for=3 days, 0:00:00
+2026-10-12 08:52:07 | INFO | Created new scorecard: d34cb142-d8b0-493b-9bf5-9bdc9af78ee6
+2026-10-12 08:52:07 | INFO | Successfully loaded game class Ar25 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/ar25/0c556536/ar25.py
