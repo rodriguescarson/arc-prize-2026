@@ -1,10 +1,10 @@
 {
- "my_agent_sha256": "2a9d301ed61e66ada03174223b7b6e3d5539c1abbd130716a264b6c14d4b71c1",
- "git_commit": "60e92d3bde75129b78163edd7fb58edb8b762136",
+ "my_agent_sha256": "64c4d2dd0db2b0d65599543f2858a01c10cfecc613391bfccb6c69ec098be589",
+ "git_commit": "647dfc067b1a08a66051e6db3d6c14f22ea79dd0",
  "memory": false,
  "contact": true,
  "max_actions": 1500,
  "budget_h": 8.5,
- "game_budget_s": 600,
+ "game_budget_s": 30600,
  "kernel_id": "carsonrodrigues/arc3-model-based-explorer-mem0-c1"
 }
