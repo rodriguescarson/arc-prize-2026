@@ -15,6 +15,9 @@ uv run arc3 --agent explorer    --max-actions 2000                    # novelty-
 uv run arc3 --agent model_based --max-actions 2000 --kwargs '{"memory": true, "goals": true, "contact": true}'
 uv run arc3 --agent model_based --max-actions 2000 --kwargs '{"memory": false}'   # ablation
 # negative-result variants (kept, off by default): '{"click_model": true}' (E12), '{"sequences": true}' (E13); prior_explorer agent (E8)
+uv run arc3 --agent model_based --max-actions 4000 --time-budget 900     # E17: levels vs action budget
+uv run python -m arc_prize_2026.arc3.swarm_sim --game-budget-s 30600 --game-cpu-s 155 --max-actions 3000   # the rerun's 110-thread concurrency, simulated
+uv run python -m arc_prize_2026.arc3.human_replays data/human_replays --family extended --tag e18        # E11/E18 goal-template coverage (+ --null control)
 uv run python -m arc_prize_2026.arc3.failure_table experiments/<run>/results.json
 uv run python -m arc_prize_2026.arc3.figures --ladder a=... b=... --atlas experiments/arc3_E0_explorer_a2000_s0_logged/atlas.json
 for t in tests/test_*.py; do uv run python $t; done
@@ -29,7 +32,7 @@ the Kaggle hidden set (110 games) is the only evaluation.
 | `MISSION.md` | the full research brief |
 | `RESEARCH_INVENTORY.md`, `LITERATURE_MAP.md`, `HYPOTHESES.md`, `EXPERIMENT_PLAN.md`, `IMPLEMENTATION_PLAN.md`, `RUBRIC_SCORECARD.md`, `NEXT_ACTIONS.md` | deliverables; `RESEARCH_LOG.md` is the append-only lab notebook |
 | `EXPERIMENT_LOG.csv` | one row per run: hypothesis, commit, config, split, score, runtime, outcome |
-| `src/arc_prize_2026/arc3/` | `perception.py` (objects, state key), `effects.py` (online effect model), `planner.py` (BFS in the model), `goals.py` (goal inference), `agents/` (random, explorer, model_based), `runner.py` + `cli.py` (offline harness), `atlas.py`, `volatility.py`, `failure_table.py`, `figures.py`, `human_replays.py`, `kaggle/build_notebook.py` |
+| `src/arc_prize_2026/arc3/` | `perception.py` (objects, state key), `effects.py` (online effect model), `planner.py` (BFS in the model), `goals.py` (goal inference), `agents/` (random, explorer, model_based), `runner.py` + `cli.py` (offline harness), `atlas.py`, `volatility.py`, `failure_table.py`, `figures.py`, `human_replays.py`, `swarm_sim.py` (rerun concurrency simulator), `kaggle/build_notebook.py` (competition kernel), `kaggle/build_repro.py` (public reproduction notebook) |
 | `src/arc_prize_2026/{data,score,submission,runner,solvers}` | ARC-AGI-2 pipeline (fallback track; pass@2 scorer, Kaggle layout validator, DSL-search floor) |
 | `submission/kaggle/` | generated single-file agent + notebook + `BUILD.json` (sha256, commit) |
 | `paper/` | draft and figures |
@@ -42,10 +45,16 @@ the Kaggle hidden set (110 games) is the only evaluation.
 - **Exploration atlas**: `arc3/atlas.py` (distinct states, no-op fraction per action, branching).
 
 ## Kaggle
-`uv run python -m arc_prize_2026.arc3.kaggle.build_notebook --memory 1 --contact 1` writes
-`submission/kaggle/submission.ipynb` (installs `arc-agi` from the competition wheelhouse, no internet)
-and `kernel-metadata.json`; push with `kaggle kernels push -p submission/kaggle`. The offline bundle is
-tested by `tests/test_kaggle_bundle.py`.
+`uv run python -m arc_prize_2026.arc3.kaggle.build_notebook --memory 1 --contact 1 --goals 1 --max-actions 3000 --budget-h 8.25 --game-cpu-s 700`
+writes `submission/kaggle/submission.ipynb` (installs `arc-agi` from the competition wheelhouse, no internet)
+and `kernel-metadata.json`; push with `kaggle kernels push -p submission/kaggle`. The rerun plays all 110
+games as concurrent threads under one GIL, so the shim budgets each game by its own thread-CPU time
+(`ARC3_GAME_CPU_S`), keeps a global wall budget, caps actions, and trims the framework's frame list in place.
+`tests/test_kaggle_bundle.py` calls the bundled agent directly *and* through the shim and asserts its action
+sequence is bit-identical to the repo agent (a dropped import alias once crashed every shipped kernel behind
+the shim's exception fallback; nothing that only tests through the fallback can see that).
+`uv run python -m arc_prize_2026.arc3.kaggle.build_repro` builds the Paper-Track reproduction notebook
+(`carsonrodrigues/arc3-paper-reproduce-public25`), which replays the public-25 table inside Kaggle's runtime.
 
 ## Licence
 Code: CC-BY 4.0 on submission per the competition rules (to be confirmed at release). Game environments,
