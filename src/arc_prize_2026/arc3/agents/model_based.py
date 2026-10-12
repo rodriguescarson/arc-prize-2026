@@ -159,7 +159,10 @@ class ModelBasedAgent(BaseAgent):
         # learn from the last transition
         if self.prev is not None:
             p_objs, p_grid, p_key, p_ckey = self.prev
-            self.model.observe(p_objs, p_grid, p_ckey, objs)
+            clicked = None
+            if isinstance(p_key, tuple) and p_key[0] == "click" and p_key[1] != "lattice":
+                clicked = next((o for o in p_objs if (o.colour, o.h, o.w, o.y0, o.x0) == (p_key[1], p_key[2], p_key[3], p_key[4], p_key[5])), None)
+            self.model.observe(p_objs, p_grid, p_ckey, objs, clicked=clicked)
             self.model.transitions[(state_key(p_objs), p_key)] = sk
             if self.predicted_next is not None:
                 src = self._pred_src
@@ -214,7 +217,11 @@ class ModelBasedAgent(BaseAgent):
         if nk is not None:
             self.predicted_next, self._pred_src = nk, "memo"
         else:
-            pred, src = self.model.predict(objs, grid, ckey)
+            if isinstance(key, tuple) and key[0] == "click" and key[1] != "lattice":
+                clicked = next((o for o in objs if (o.colour, o.h, o.w, o.y0, o.x0) == (key[1], key[2], key[3], key[4], key[5])), None)
+                pred, src = self.model.predict_click(objs, ckey, clicked) if clicked is not None else (None, "unknown")
+            else:
+                pred, src = self.model.predict(objs, grid, ckey)
             if pred is not None:
                 self.predicted_next, self._pred_src = state_key(pred), src
         self.prev = (objs, grid, key, ckey)
@@ -231,4 +238,5 @@ class ModelBasedAgent(BaseAgent):
                 "movers": {str(k): [sorted(map(str, g[0])), list(g[1])] for k in self.model.moves if (g := self.model.modal_group(k))},
                 "volatile_rows": [int(i) for i in np.where(self.volatile_rows)[0]], "terrain_colours": sorted(self.terrain_colours),
                 "known_noops": [str(k) for k in self.model.effects if self.model.is_known_noop(k)],
+                "click_classes_modelled": sum(1 for k in self.model.click_effects if self.model.modal_click(k) is not None),
                 "key_reliability": {str(k): [len(v), round(sum(v) / len(v), 2)] for k, v in self.model.key_pred.items() if len(v)}}

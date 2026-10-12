@@ -59,6 +59,11 @@ class EffectModel:
         self.transitions: dict[tuple[int, Key], int] = {}
         self.effects: dict[Key, Counter] = defaultdict(Counter)
         self.deaths: Counter = Counter()
+        # click effects by clicked class: ckey -> Counter[signature]; signature in
+        #   ("none",) | ("recolour", new_colour) | ("vanish",) | ("other",)
+        self.click_effects: dict[Key, Counter] = defaultdict(Counter)
+        # side effects on other classes when clicking ckey: ckey -> Counter[(other_ident, "recolour", new_colour)]
+        self.click_side: dict[Key, Counter] = defaultdict(Counter)
         self.n_obs: Counter = Counter()
         self.n_pred = 0
         self.n_pred_correct = 0
@@ -66,8 +71,10 @@ class EffectModel:
         self.min_reliability = 0.5
 
     # ---- learning -------------------------------------------------------------------------------
-    def observe(self, before: list[Obj], grid_before: np.ndarray, key: Key, after: list[Obj]) -> dict:
+    def observe(self, before: list[Obj], grid_before: np.ndarray, key: Key, after: list[Obj], clicked: Obj | None = None) -> dict:
         d = diff(before, after)
+        if clicked is not None and isinstance(key, tuple) and key[0] == "click":
+            self._observe_click(key, clicked, d, before, after)
         sk_b, sk_a = state_key(before), state_key(after)
         self.transitions[(sk_b, key)] = sk_a
         self.n_obs[key] += 1
@@ -85,6 +92,63 @@ class EffectModel:
                 for o in members:
                     self.blocked[key].update(_ahead_cells(o, dy, dx, grid_before, members))
         return d
+
+    def _observe_click(self, ckey: Key, clicked: Obj, d: dict, before: list[Obj], after: list[Obj]) -> None:
+        same_pos = lambda a, b: (a.y0, a.x0, a.y1, a.x1) == (b.y0, b.x0, b.y1, b.x1)
+        sig = ("none",)
+        if any(same_pos(o, clicked) for o in d["same"]) and not (d["moved"] or d["recoloured"] or d["vanished"] or d["appeared"]):
+            sig = ("none",)
+        else:
+            rec = [(o, p) for o, p in d["recoloured"] if same_pos(o, clicked)]
+            if rec:
+                sig = ("recolour", rec[0][1].colour)
+            elif any(same_pos(o, clicked) for o in d["vanished"]):
+                sig = ("vanish",)
+            elif any(same_pos(o, clicked) for o in d["same"]):
+                sig = ("other",)  # clicked object unchanged, something else changed
+            else:
+                sig = ("other",)
+        self.click_effects[ckey][sig] += 1
+        for o, p in d["recoloured"]:
+            if not same_pos(o, clicked):
+                self.click_side[ckey][(ident(o), "recolour", p.colour)] += 1
+
+    def modal_click(self, ckey: Key):
+        c = self.click_effects.get(ckey)
+        if not c:
+            return None
+        sig, n = c.most_common(1)[0]
+        return sig if n / sum(c.values()) >= 0.6 and sum(c.values()) >= 2 else None
+
+    def predict_click(self, objs: list[Obj], ckey: Key, clicked: Obj) -> tuple[list[Obj] | None, str]:
+        """Generative prediction for a click on `clicked` (class ckey) from its modal signature."""
+        sig = self.modal_click(ckey)
+        if sig is None:
+            return None, "unknown"
+        hist = self.key_pred[ckey]
+        src = "unreliable" if (len(hist) >= 10 and sum(hist) / len(hist) < self.min_reliability) else "model"
+        if sig[0] == "none":
+            return list(objs), src
+        out = []
+        for o in objs:
+            if o is clicked:
+                if sig[0] == "recolour":
+                    out.append(Obj(sig[1], o.y0, o.x0, o.y1, o.x1, o.area, o.shape, o.mask))
+                elif sig[0] == "vanish":
+                    continue
+                else:
+                    out.append(o)
+            else:
+                out.append(o)
+        if sig[0] == "other":
+            # consistent side effects (>= 80% of clicks on this class) are applied; else unknown
+            total = sum(self.click_effects[ckey].values())
+            side = {k: n for k, n in self.click_side[ckey].items() if n >= 0.8 * total}
+            if not side:
+                return None, "unknown"
+            out = [Obj(nc, o.y0, o.x0, o.y1, o.x1, o.area, o.shape, o.mask) if any(k[0] == ident(o) for k in side) else o
+                   for o in out for nc in [next(k[2] for k in side if k[0] == ident(o))] ] if side else out
+        return out, src
 
     def modal_group(self, key: Key):
         """(set of idents that move together, modal displacement) or None."""

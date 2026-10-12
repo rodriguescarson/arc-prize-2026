@@ -82,17 +82,29 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
                 if nk not in seen:
                     seen.add(nk); q.append((nk, path + [(key, action, data)]))
                 continue
-            pred, src = model.predict(o_list, g, ckey)
+            if isinstance(key, tuple) and key[0] == "click" and key[1] != "lattice":
+                clicked = next((o for o in o_list if (o.colour, o.h, o.w, o.y0, o.x0) == (key[1], key[2], key[3], key[4], key[5])), None)
+                pred, src = model.predict_click(o_list, ckey, clicked) if clicked is not None else (None, "unknown")
+            else:
+                pred, src = model.predict(o_list, g, ckey)
             if pred is None or src == "unreliable":
                 continue
             nk = state_key(pred)
             if nk == sk or nk in seen:
                 continue
-            # render the predicted grid for the moved objects
+            # render the predicted grid: moved objects for movement predictions; recolour/erase for clicks
             g2 = g
-            for a, b in zip(o_list, pred):
-                if (a.y0, a.x0) != (b.y0, b.x0):
-                    g2 = render_move(g2, a, b, bg)
+            if len(pred) == len(o_list):
+                for a, b in zip(o_list, pred):
+                    if (a.y0, a.x0) != (b.y0, b.x0):
+                        g2 = render_move(g2, a, b, bg)
+                    elif a.colour != b.colour:
+                        g2 = g2.copy(); sub = g2[a.y0:a.y1, a.x0:a.x1]; m = np.frombuffer(a.mask, dtype=bool).reshape(a.h, a.w) if a.mask else np.ones((a.h, a.w), bool); sub[m] = b.colour
+            else:
+                g2 = g2.copy()
+                gone = [a for a in o_list if a not in pred]
+                for a in gone:
+                    sub = g2[a.y0:a.y1, a.x0:a.x1]; m = np.frombuffer(a.mask, dtype=bool).reshape(a.h, a.w) if a.mask else np.ones((a.h, a.w), bool); sub[m] = bg
             objs_cache.setdefault(nk, (pred, g2))
             seen.add(nk); q.append((nk, path + [(key, action, data)]))
     if contact_best is not None and contact_best[2]:
