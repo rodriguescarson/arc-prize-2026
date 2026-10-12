@@ -15,6 +15,8 @@ Internal plan: code freeze **30 Oct**, first real Kaggle submission by **20 Oct*
 2. **First competition submission MADE** (non-final): ID 57095368, kernel arc3-model-based-explorer-mem1-c1 v3, **COMPLETE, public score 0.15** (hidden public half). Eligibility locked. Daily quota used for 10-12. Carson's decisions remain: which two submissions to mark final before Nov 2, and whether to submit the memory-OFF twin on a later day for the paired comparison.
 3. **Disk**: 9.6 GB free. Not blocking the current CPU-only track.
 4. **Paid compute**: none spent, none planned for H1.
+5. **Direction (asked 10-12 12:40, open):** keep the paper line only; add a fork of the Franzen plateau notebook on free Kaggle GPU quota (scheduling patch + object-level tools; one 4×25 A/B per week); or the LoRA route (needs paid multi-GPU, advised against: no transferable data, no measurable validation).
+6. **Publishing at filing (Carson's call):** the Paper Track needs a public notebook; `carsonrodrigues/arc3-paper-reproduce-public25` v1 (reproduces 0.2797 / 15 levels on Kaggle CPU) is built and private. Making it and the repo public happens only on Carson's say-so.
 
 ## Current status (ARC-AGI-3, public 25 games, 2000 actions, seed 0, toolkit-exact 0–100 score)
 | Agent | Score | Levels | Games with level 1 |
