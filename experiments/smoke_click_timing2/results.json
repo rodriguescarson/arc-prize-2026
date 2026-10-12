@@ -1,0 +1,81 @@
+{
+ "agent": "ModelBasedAgent",
+ "agent_kwargs": {},
+ "seed": 0,
+ "max_actions": 150,
+ "time_budget_s": 300.0,
+ "n_games": 1,
+ "total_score": 0.0,
+ "levels_completed": 0,
+ "total_levels": 7,
+ "games_won": 0,
+ "wall_s": 0.6,
+ "games": [
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "plans": 11,
+    "goal_plans": 0,
+    "deaths": 2,
+    "surviving_goals": null,
+    "plan_steps": 11,
+    "replans_on_error": 0,
+    "fallback_steps": 136,
+    "pred_total": 134,
+    "pred_acc": 1.0,
+    "pred_by_source": {
+     "memo": [
+      122,
+      1.0
+     ],
+     "model": [
+      12,
+      1.0
+     ],
+     "unreliable": [
+      0,
+      null
+     ]
+    },
+    "movers": {},
+    "volatile_rows": [
+     1
+    ],
+    "terrain_colours": [
+     5
+    ],
+    "known_noops": [
+     "('click', 4, 4, 4)"
+    ],
+    "click_classes_modelled": 3,
+    "key_reliability": {
+     "('click', 4, 4, 4)": [
+      12,
+      1.0
+     ]
+    }
+   },
+   "game_id": "tn36-ef4dde99",
+   "levels_completed": 0,
+   "win_levels": 7,
+   "level_actions": [],
+   "actions": 150,
+   "resets": 3,
+   "distinct_frames": 122,
+   "final_state": "NOT_FINISHED",
+   "seconds": 0.54,
+   "baseline_actions": [
+    32,
+    72,
+    26,
+    40,
+    30,
+    55,
+    62
+   ],
+   "score": 0.0
+  }
+ ]
+}

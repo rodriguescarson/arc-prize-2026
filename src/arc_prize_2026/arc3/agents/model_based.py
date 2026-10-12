@@ -90,23 +90,24 @@ class ModelBasedAgent(BaseAgent):
         return [o for o in objs if o.colour not in terrain]
 
     # ---- candidate actions ---------------------------------------------------------------------
+    MAX_CLICK_OBJECTS = 16  # per node: clicks on at most this many objects (largest first), lattice only if no objects
+
     def _keys_for(self, latest: FrameData):
         legal = self.legal_actions(latest)
 
-        def keys(objs: list[Obj]):
+        def keys(objs: list[Obj], depth: int = 0):
             out = []
             for a in legal:
                 if a.is_complex():
-                    seen_cls = set()
-                    for o in objs:
+                    cands = list(objs) if depth == 0 else sorted(objs, key=lambda o: -o.area)[: self.MAX_CLICK_OBJECTS]
+                    for o in cands:
                         cy, cx = o.centre
-                        cls = ("click",) + ident(o)
-                        out.append((("click",) + ident(o) + (o.y0, o.x0), cls, a, {"x": int(cx), "y": int(cy)}))
-                        seen_cls.add(cls)
-                    step = 64 // self.click_lattice
-                    for y in range(step // 2, 64, step):
-                        for x in range(step // 2, 64, step):
-                            out.append((("click", "lattice", y, x), ("click", "lattice"), a, {"x": x, "y": y}))
+                        out.append((("click",) + ident(o) + (o.y0, o.x0), ("click",) + ident(o), a, {"x": int(cx), "y": int(cy)}))
+                    if not cands or depth == 0:
+                        step = 64 // self.click_lattice
+                        for y in range(step // 2, 64, step):
+                            for x in range(step // 2, 64, step):
+                                out.append((("click", "lattice", y, x), ("click", "lattice"), a, {"x": x, "y": y}))
                 else:
                     out.append((a.value, a.value, a, {}))
             return out

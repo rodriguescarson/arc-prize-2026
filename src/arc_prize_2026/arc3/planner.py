@@ -43,6 +43,7 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
     seen = {start}
     nodes = 0
     best = None
+    pred_cache: dict[tuple, tuple] = {}
     contact_best = None  # (contact_count, depth, path, key)
     min_contact = min(contacted.values()) if contacted else 0
     while q and nodes < max_nodes:
@@ -53,7 +54,7 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
         o_list, g = objs_cache[sk]
         if goal_test is not None and path and goal_test(o_list):
             return path, None  # goal state reached in the model: execute the path, no exploratory key needed
-        cands = keys_for(o_list)
+        cands = keys_for(o_list, len(path))
         untried = [c for c in cands if c[0] not in tried.get(sk, set()) and not model.is_known_noop(c[1]) and not model.is_deadly(sk, c[0])]
         if untried:
             untried.sort(key=lambda c: (model.n_obs[c[1]], ))
@@ -82,11 +83,16 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
                 if nk not in seen:
                     seen.add(nk); q.append((nk, path + [(key, action, data)]))
                 continue
-            if isinstance(key, tuple) and key[0] == "click" and key[1] != "lattice":
+            ck = (sk, key)
+            if ck in pred_cache:
+                pred, src = pred_cache[ck]
+            elif isinstance(key, tuple) and key[0] == "click" and key[1] != "lattice":
                 clicked = next((o for o in o_list if (o.colour, o.h, o.w, o.y0, o.x0) == (key[1], key[2], key[3], key[4], key[5])), None)
                 pred, src = model.predict_click(o_list, ckey, clicked) if clicked is not None else (None, "unknown")
+                pred_cache[ck] = (pred, src)
             else:
                 pred, src = model.predict(o_list, g, ckey)
+                pred_cache[ck] = (pred, src)
             if pred is None or src == "unreliable":
                 continue
             nk = state_key(pred)
