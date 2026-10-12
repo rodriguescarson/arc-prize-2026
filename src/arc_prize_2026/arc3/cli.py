@@ -11,7 +11,8 @@ from ..registry import log_run
 
 AGENTS = {"random": ("arc_prize_2026.arc3.agents.random_agent", "RandomAgent"),
           "explorer": ("arc_prize_2026.arc3.agents.explorer", "ExplorerAgent"),
-          "model_based": ("arc_prize_2026.arc3.agents.model_based", "ModelBasedAgent")}
+          "model_based": ("arc_prize_2026.arc3.agents.model_based", "ModelBasedAgent"),
+          "prior_explorer": ("arc_prize_2026.arc3.agents.prior_explorer", "PriorExplorerAgent")}
 
 
 def main(argv=None):

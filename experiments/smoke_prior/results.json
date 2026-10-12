@@ -1,0 +1,81 @@
+{
+ "agent": "PriorExplorerAgent",
+ "agent_kwargs": {},
+ "seed": 0,
+ "max_actions": 300,
+ "time_budget_s": 300.0,
+ "n_games": 3,
+ "total_score": 0.0,
+ "levels_completed": 0,
+ "total_levels": 21,
+ "games_won": 0,
+ "wall_s": 3.3,
+ "games": [
+  {
+   "agent_stats": null,
+   "game_id": "ls20-9607627b",
+   "levels_completed": 0,
+   "win_levels": 7,
+   "level_actions": [],
+   "actions": 300,
+   "resets": 3,
+   "distinct_frames": 253,
+   "final_state": "NOT_FINISHED",
+   "seconds": 0.39,
+   "baseline_actions": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": null,
+   "game_id": "tn36-ef4dde99",
+   "levels_completed": 0,
+   "win_levels": 7,
+   "level_actions": [],
+   "actions": 300,
+   "resets": 5,
+   "distinct_frames": 179,
+   "final_state": "NOT_FINISHED",
+   "seconds": 1.47,
+   "baseline_actions": [
+    32,
+    72,
+    26,
+    40,
+    30,
+    55,
+    62
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": null,
+   "game_id": "vc33-5430563c",
+   "levels_completed": 0,
+   "win_levels": 7,
+   "level_actions": [],
+   "actions": 300,
+   "resets": 6,
+   "distinct_frames": 157,
+   "final_state": "NOT_FINISHED",
+   "seconds": 1.36,
+   "baseline_actions": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ],
+   "score": 0.0
+  }
+ ]
+}
