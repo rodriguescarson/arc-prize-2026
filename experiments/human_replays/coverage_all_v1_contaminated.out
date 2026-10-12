@@ -1,0 +1,28 @@
+env   sess  won trans multi consist median|surv|  most common surviving predicate
+ar25    10    5    64     9       4            1  gone((11, 64, 1)) ×4
+bp35    14    2    82    11      11            1  gone((0, 1, 64)) ×11
+cd82    11    8    52    10      10            1  gone((4, 1, 64)) ×10
+cn04    12    6    46     9       9            1  gone((4, 1, 32)) ×9
+dc22    11    4    49    10       8            2  gone((0, 1, 64)) ×8
+ft09    10    4    32     7       7            1  gone((12, 1, 64)) ×7
+g50t    12    2    31     8       8            4  touch((9, 7, 7)) ×8
+ka59    10    3    34     5       5            1  gone((4, 1, 64)) ×5
+lf52    11    4    79     8       8            4  appeared((2, 1, 2)) ×8
+lp85    54   15   204    32      32            1  gone((14, 64, 1)) ×32
+ls20    13    6    56     9       9            1  gone((11, 2, 42)) ×9
+m0r0    11    7    53     9       0          nan  — ×0
+r11l    10   10    60    10      10            1  gone((0, 64, 1)) ×10
+re86    11    5    64    11      11            1  gone((15, 1, 64)) ×11
+s5i5    11    4    54    10      10            2  count((13, 1, 1), 4) ×10
+sb26    12    5    66    10      10            1  gone((2, 1, 64)) ×10
+sc25    15   10    73    13      13            1  gone((14, 64, 2)) ×13
+sk48    14    7    81    13      13            2  gone((2, 1, 64)) ×13
+sp80    12    2    33     7       7            1  gone((14, 1, 64)) ×7
+su15    13    3    50     8       8            1  gone((0, 1, 64)) ×8
+tn36    14    6    61     9       9            1  gone((9, 1, 61)) ×9
+tr87    12    6    58    11      11            1  gone((1, 1, 64)) ×11
+tu93    13    9    95    13      13            1  gone((6, 1, 64)) ×13
+vc33    10    6    53     9       9            1  gone((7, 1, 64)) ×9
+wa30    14    5    84    11      11            1  gone((7, 1, 64)) ×10
+TOTAL sessions with >=2 transitions 262; with a non-empty cross-level intersection 246 (93.9%)
+-> /Users/carson/Projects/arc_prize_2026/experiments/human_replays/template_coverage.json

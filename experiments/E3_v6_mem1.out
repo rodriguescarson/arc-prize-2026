@@ -43,3 +43,12 @@ INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and ma
 2026-10-12 07:04:42 | INFO | Closed scorecard: 15c84d85-2ddc-4ff7-b0e5-edd578c935ba
 2026-10-12 07:04:42 | INFO | Created new scorecard: 08d5aabb-c569-4773-91ff-bf0c51aa905f
 2026-10-12 07:04:42 | INFO | Successfully loaded game class S5i5 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/s5i5/18d95033/s5i5.py
+2026-10-12 07:06:03 | INFO | Closed scorecard: 08d5aabb-c569-4773-91ff-bf0c51aa905f
+2026-10-12 07:06:03 | INFO | Created new scorecard: bc53628a-74ff-4272-8e28-d195a26f1402
+2026-10-12 07:06:03 | INFO | Successfully loaded game class Sb26 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sb26/7fbdac44/sb26.py
+2026-10-12 07:07:23 | INFO | Closed scorecard: bc53628a-74ff-4272-8e28-d195a26f1402
+2026-10-12 07:07:23 | INFO | Created new scorecard: 2828b0cc-5880-48a7-b5b0-bf0cd9348259
+2026-10-12 07:07:23 | INFO | Successfully loaded game class Sc25 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sc25/635fd71a/sc25.py
+2026-10-12 07:07:42 | INFO | Closed scorecard: 2828b0cc-5880-48a7-b5b0-bf0cd9348259
+2026-10-12 07:07:42 | INFO | Created new scorecard: adc71931-8d04-45d1-b0f9-83571c25005f
+2026-10-12 07:07:42 | INFO | Successfully loaded game class Sk48 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sk48/d8078629/sk48.py
