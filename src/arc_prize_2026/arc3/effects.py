@@ -143,11 +143,10 @@ class EffectModel:
         if sig[0] == "other":
             # consistent side effects (>= 80% of clicks on this class) are applied; else unknown
             total = sum(self.click_effects[ckey].values())
-            side = {k: n for k, n in self.click_side[ckey].items() if n >= 0.8 * total}
+            side = {k[0]: k[2] for k, n in self.click_side[ckey].items() if n >= 0.8 * total and k[1] == "recolour"}
             if not side:
                 return None, "unknown"
-            out = [Obj(nc, o.y0, o.x0, o.y1, o.x1, o.area, o.shape, o.mask) if any(k[0] == ident(o) for k in side) else o
-                   for o in out for nc in [next(k[2] for k in side if k[0] == ident(o))] ] if side else out
+            out = [Obj(side[ident(o)], o.y0, o.x0, o.y1, o.x1, o.area, o.shape, o.mask) if ident(o) in side else o for o in out]
         return out, src
 
     def modal_group(self, key: Key):

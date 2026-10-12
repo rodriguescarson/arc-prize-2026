@@ -48,11 +48,18 @@ def play_game(arc: Arcade, game_id: str, agent, max_actions: int, time_budget_s:
     n_actions = 0
     n_resets = 0
     frame_hashes: set[int] = set()
+    agent_errors: list[str] = []
     while n_actions < max_actions and (time.time() - t0) < time_budget_s:
         latest = frames[-1]
         if agent.is_done(frames, latest):
             break
-        action = agent.choose_action(frames, latest)
+        try:
+            action = agent.choose_action(frames, latest)
+        except Exception as e:  # noqa: BLE001 - record and fall back, never abort the run
+            agent_errors.append(f"{type(e).__name__}: {e}")
+            action = GameAction.RESET if latest.state in (GameState.NOT_PLAYED, GameState.GAME_OVER) else GameAction.ACTION1
+            if action.is_complex():
+                action.set_data({"x": 32, "y": 32})
         data = action.action_data.model_dump() if hasattr(action, "action_data") else {}
         raw = env.step(action, data=data)
         n_actions += 1
@@ -82,7 +89,7 @@ def play_game(arc: Arcade, game_id: str, agent, max_actions: int, time_budget_s:
             break
     win_levels = frames[-1].win_levels
     stats = agent.stats() if hasattr(agent, "stats") else None
-    return {"agent_stats": stats,
+    return {"agent_stats": stats, "agent_errors": len(agent_errors), "agent_error_sample": agent_errors[:3],
         "game_id": game_id, "levels_completed": frames[-1].levels_completed, "win_levels": win_levels,
         "level_actions": level_actions, "actions": n_actions, "resets": n_resets,
         "distinct_frames": len(frame_hashes), "final_state": frames[-1].state.value,

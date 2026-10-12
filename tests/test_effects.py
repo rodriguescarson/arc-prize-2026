@@ -37,3 +37,22 @@ assert m.next_key(sk3, 4) == sk3
 sk = state_key(objs(gw)); m.record_death(sk, 2)
 assert m.is_deadly(sk, 2) and m.next_key(sk, 2) == DEATH
 print("effects ok")
+
+# click effects: recolour on click, generalised to an unseen object of the same class; side-effect path must not raise
+from arc_prize_2026.arc3.perception import Obj
+m2 = EffectModel()
+def g_click(c_btn, c_lamp):
+    g = np.full((64, 64), 4, dtype=np.int16); g[5:8, 5:8] = c_btn; g[20:23, 20:23] = c_lamp; return g
+o_before = objs(g_click(1, 2)); o_after = objs(g_click(1, 3))   # clicking the button recolours the lamp (side effect), button unchanged
+btn = next(o for o in o_before if o.colour == 1)
+for _ in range(3):
+    m2.observe(o_before, g_click(1, 2), ("click", 1, 3, 3), o_after, clicked=btn)
+assert m2.modal_click(("click", 1, 3, 3)) == ("other",)
+pred, src = m2.predict_click(o_before, ("click", 1, 3, 3), btn)
+assert pred is not None and any(o.colour == 3 for o in pred), (pred, src)
+# recolour-on-click
+m3 = EffectModel(); ob = objs(g_click(5, 2)); oa = objs(g_click(6, 2)); b = next(o for o in ob if o.colour == 5)
+for _ in range(2): m3.observe(ob, g_click(5, 2), ("click", 5, 3, 3), oa, clicked=b)
+pred, src = m3.predict_click(ob, ("click", 5, 3, 3), b)
+assert any(o.colour == 6 and o.y0 == 5 for o in pred), pred
+print("click effects ok")
