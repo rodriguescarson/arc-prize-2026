@@ -179,14 +179,26 @@ generatively; recolour/appear/vanish are memorised through `transitions` and oth
 Key = object  # action key: int action id, or ("click", y//4, x//4)
 
 
-def _ahead_cells(o: Obj, dy: int, dx: int, grid: np.ndarray, members: list[Obj] | None = None) -> list[int]:
+def _occupancy(members: list[Obj], shape: tuple[int, int]) -> np.ndarray:
+    """Boolean grid of cells inside any member's bbox (the rigid group's own footprint)."""
+    occ = np.zeros(shape, dtype=bool)
+    for m in members:
+        occ[m.y0:m.y1, m.x0:m.x1] = True
+    return occ
+
+
+def _ahead_cells(o: Obj, dy: int, dx: int, grid: np.ndarray, members: list[Obj] | None = None,
+                 occ: np.ndarray | None = None) -> list[int]:
     """Colours of every cell the object sweeps through when displaced by (dy, dx) in unit steps,
-    excluding cells currently occupied by any member of its rigid group. [-1] marks the world edge."""
+    excluding cells currently occupied by any member of its rigid group. [-1] marks the world edge.
+    `occ` (occupancy of the group) may be passed in to avoid rebuilding it per member; the former
+    per-cell scan over the group was quadratic in the group size and dominated bp35."""
     H, W = grid.shape
-    occupied = members or [o]
     steps = max(abs(dy), abs(dx))
     if steps == 0:
         return []
+    if occ is None:
+        occ = _occupancy(members or [o], (H, W))
     sy, sx = (dy > 0) - (dy < 0), (dx > 0) - (dx < 0)
     cells: list[int] = []
     for k in range(1, steps + 1):
@@ -194,11 +206,9 @@ def _ahead_cells(o: Obj, dy: int, dx: int, grid: np.ndarray, members: list[Obj] 
         ty1, tx1 = ty0 + o.h, tx0 + o.w
         if ty0 < 0 or tx0 < 0 or ty1 > H or tx1 > W:
             return [-1]
-        for y in range(ty0, ty1):
-            for x in range(tx0, tx1):
-                if any(m.y0 <= y < m.y1 and m.x0 <= x < m.x1 for m in occupied):
-                    continue
-                cells.append(int(grid[y, x]))
+        block = grid[ty0:ty1, tx0:tx1]
+        free = ~occ[ty0:ty1, tx0:tx1]
+        cells.extend(int(c) for c in block[free])  # row-major, same order as the former y/x loops
     return cells
 
 
@@ -337,8 +347,9 @@ class EffectModel:
             return None, "unknown"
         bl, pa = self.blocked[key], self.passable[key]
         blocked = False
+        occ = _occupancy(members, grid.shape)
         for o in members:
-            for c in _ahead_cells(o, dy, dx, grid, members):
+            for c in _ahead_cells(o, dy, dx, grid, members, occ):
                 if c == -1 or (bl[c] > 0 and bl[c] >= pa[c]):
                     blocked = True; break
             if blocked:
@@ -520,22 +531,34 @@ Returns the action-key path to that state plus the exploratory key to take there
 
 
 
+def _eq_key(o: Obj) -> tuple:
+    """The tuple the frozen dataclass compares on (mask is compare=False), so set membership == `o in list`."""
+    return (o.colour, o.y0, o.x0, o.y1, o.x1, o.area, o.shape)
+
+
 def adjacent_classes(members: list[Obj], objs: list[Obj]) -> set:
-    """Classes of non-member objects whose bbox touches (8-neighbourhood) any member's bbox."""
-    out = set()
-    for m in members:
-        for o in objs:
-            if o in members:
-                continue
-            if o.y0 <= m.y1 and m.y0 <= o.y1 and o.x0 <= m.x1 and m.x0 <= o.x1:
-                out.add(ident(o))
-    return out
+    """Classes of non-member objects whose bbox touches (8-neighbourhood) any member's bbox.
+
+    Vectorised: the pairwise bbox test is an (M x N) boolean matrix; membership uses the dataclass equality
+    tuple. Same result as the former double loop, which was quadratic in Python and dominated bp35."""
+    if not members or not objs:
+        return set()
+    mem = {_eq_key(m) for m in members}
+    others = [o for o in objs if _eq_key(o) not in mem]
+    if not others:
+        return set()
+    mb = np.array([(m.y0, m.x0, m.y1, m.x1) for m in members], dtype=np.int32)
+    ob = np.array([(o.y0, o.x0, o.y1, o.x1) for o in others], dtype=np.int32)
+    touch = ((ob[None, :, 0] <= mb[:, None, 2]) & (mb[:, None, 0] <= ob[None, :, 2])
+             & (ob[None, :, 1] <= mb[:, None, 3]) & (mb[:, None, 1] <= ob[None, :, 3]))
+    hit = touch.any(axis=0)
+    return {ident(o) for o, h in zip(others, hit) if h}
 
 
 def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, keys_for, tried: dict[int, set],
                         objs_cache: dict[int, tuple[list[Obj], np.ndarray]], max_depth: int = 12, max_nodes: int = 1500,
                         mover_idents: frozenset | None = None, contacted: dict | None = None, goal_test=None,
-                        click_model: bool = False):
+                        click_model: bool = False, adj_cache: dict | None = None):
     """keys_for(objs) -> list of (key, class_key, action, data). Returns (path_keys, final_key) or (None, None).
 
     Target priority: (1) a reachable state where the mover group touches an object class contacted fewer
@@ -567,7 +590,13 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
         if mover_idents and contacted is not None and untried:
             members = [o for o in o_list if ident(o) in mover_idents]
             if members:
-                adj = adjacent_classes(members, o_list)
+                ck = (sk, mover_idents)
+                if adj_cache is not None and ck in adj_cache:
+                    adj = adj_cache[ck]
+                else:
+                    adj = adjacent_classes(members, o_list)
+                    if adj_cache is not None:
+                        adj_cache[ck] = adj
                 if adj:
                     cc = min(contacted.get(c, 0) for c in adj)
                     if contact_best is None or cc < contact_best[0]:
@@ -685,6 +714,7 @@ class ModelBasedAgent(BaseAgent):
         self.model = EffectModel()
         self.tried: dict[int, set] = {}
         self.objs_cache: dict[int, tuple[list[Obj], np.ndarray]] = {}
+        self.adj_cache: dict = {}  # (state_key, mover_idents) -> adjacent classes
         self.plan: list = []
         self.predicted_next: int | None = None
         self.prev: tuple[list[Obj], np.ndarray, object, object] | None = None  # objs, grid, key, ckey
@@ -874,7 +904,7 @@ class ModelBasedAgent(BaseAgent):
             path, final = plan_to_information(self.model, objs, grid, keys_for, self.tried, self.objs_cache,
                                               self.max_depth, self.max_nodes, mover_idents or None,
                                               self.contacted if (mover_idents and self.contact) else None, goal_test,
-                                              click_model=self.click_model)
+                                              click_model=self.click_model, adj_cache=self.adj_cache)
             if path is not None:
                 if final is None:
                     self.n_goal_plans += 1

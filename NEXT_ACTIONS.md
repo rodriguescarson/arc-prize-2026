@@ -1,4 +1,4 @@
-# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-12 12:27 IST)
+# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-12 13:41 IST)
 
 ## Verified deadlines (all Kaggle times 23:59 UTC = 05:29 IST next day)
 | Event | Date | IST | Note |
@@ -38,7 +38,7 @@ Pre-registered gates: P2 (≥2× explorer's level-1 coverage = 10 games) MET at 
 Faster-than-human levels so far: lp85 L1 15 actions (human 17), tn36 L1 43 (32), vc33 L1 43 (7) + L2 47 (18).
 
 ## Next steps (in order)
-1. On 10-13 (quota reset 05:30 IST; session cron 992a88d2 at 05:37): submit the memory-ON kernel **v5** (per-game *thread-CPU* budget 700 s; the rerun plays all 110 games as concurrent threads under one GIL, so a per-game wall budget starves games (v3) and no budget lets one pathological game eat the shared 8.5 h (v4 risk; bp35 took 7,171 s alone in the uncapped simulation)): `kaggle competitions submit -c arc-prize-2026-arc-agi-3 -k carsonrodrigues/arc3-model-based-explorer-mem1-c1 -v 5 -f submission.parquet -m "v7 memory ON, per-game thread-CPU budget 700 s (kernel v5)"`. Then on 10-14 the memory-OFF twin (mem0 v5) for the paired comparison (P5). Compare v3 (0.15) vs v5 against the E14 prediction in HYPOTHESES.md. Kernel v4 (no per-game limit) stays available as a fallback, not to be submitted first.
+1. On 10-13 (quota reset 05:30 IST; session cron at 05:37): submit the memory-ON kernel **v6** (E15 vectorised planner, verified bit-identical on 24/25 public games; per-game *thread-CPU* budget 700 s; the rerun plays all 110 games as concurrent threads under one GIL, so a per-game wall budget starves games (v3) and no budget lets one pathological game eat the shared 8.5 h): `kaggle competitions submit -c arc-prize-2026-arc-agi-3 -k carsonrodrigues/arc3-model-based-explorer-mem1-c1 -v 6 -f submission.parquet -m "v7 agent (E15 speed-up), memory ON, per-game thread-CPU budget 700 s (kernel v6)"`. Then on 10-14 the memory-OFF twin (mem0 v6) for the paired comparison (P5). Compare v3 (0.15) vs v6 against the E14 prediction in HYPOTHESES.md. Kernels v4 (no per-game limit) and v5 (CPU budget, pre-speed-up) remain as fallbacks.
 2. E12 and E13 done and negative (both kept behind flags). The click games need a different object vocabulary (identity that survives size/colour changes across levels); treat as future work in the paper unless a cheap idea appears.
 3. Seeds 2–3 on the final candidate (E6) and the E12 variant; per-game failure table refresh.
 4. Paper: trim to ≤ 1,500 words (currently ~1,620), add the E11 table as a figure, final related-work deltas.
