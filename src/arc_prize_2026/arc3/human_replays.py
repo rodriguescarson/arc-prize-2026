@@ -20,7 +20,7 @@ import numpy as np
 import pyarrow.parquet as pq
 
 from .goals import candidate_predicates
-from .perception import ident, segment, diff
+from .perception import ident, segment, diff, moved as _moved
 
 
 def perceive(grid: np.ndarray, terrain_frac: float = 0.20):
@@ -43,17 +43,32 @@ def analyse_session(row) -> dict:
         levels.append(int(d.get("levels_completed", 0)))
     out = {"env": row["env"], "won": int(row["won"]), "n_frames": len(frames), "transitions": [], "first_actions": actions[1:6], "surviving": None}
     move_counts: Counter = Counter()
+    by_action: dict[int, Counter] = defaultdict(Counter)   # action id -> Counter[(ident, delta)]
     for i in range(1, len(frames)):
         if actions[i] in (1, 2, 3, 4, 5):
             d = diff(perceive(frames[i - 1]), perceive(frames[i]))
             for o, p, delta in d["moved"]:
-                move_counts[ident(o)] += 1
+                move_counts[ident(o)] += 1; by_action[actions[i]][(ident(o), delta)] += 1
     mover = frozenset(c for c, n in move_counts.most_common(2)) if move_counts else frozenset()
+
+    def predicted_post(objs, a):
+        """Mirror the agent: apply the session's modal displacement for action a to its mover classes."""
+        if a not in by_action or not by_action[a]:
+            return objs
+        by_delta = Counter()
+        for (cls, delta), n in by_action[a].items():
+            by_delta[delta] += n
+        delta, _ = by_delta.most_common(1)[0]
+        top = max(n for (cls, d), n in by_action[a].items() if d == delta)
+        idents = {cls for (cls, d), n in by_action[a].items() if d == delta and n >= 0.5 * top}
+        return [_moved(o, *delta) if ident(o) in idents else o for o in objs]
+
     level_start = 0
     for i in range(1, len(frames)):
         if levels[i] > levels[i - 1]:
             init_objs = perceive(frames[level_start]); pre_objs = perceive(frames[i - 1])
-            cands = candidate_predicates(init_objs, pre_objs, mover)
+            positive = predicted_post(pre_objs, actions[i]) if actions[i] in (1, 2, 3, 4, 5) else pre_objs
+            cands = candidate_predicates(init_objs, positive, mover)
             out["transitions"].append({"level": levels[i], "actions": i - level_start, "n_candidates": len(cands),
                                        "kinds": sorted({p.kind for p in cands})})
             out["surviving"] = set(cands) if out["surviving"] is None else (out["surviving"] & cands)
