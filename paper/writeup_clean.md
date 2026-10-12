@@ -10,9 +10,8 @@ diffs, plans by breadth-first search in the learned model toward unexplored inte
 first level transition, infers a goal predicate from a fixed template class and plans toward it on later
 levels. On the 25 public games it clears 15 levels versus 5 for a novelty-seeking explorer and
 3 for a random agent, one of them under the human action count and one within
-1.25× of it. Where the goal is inferred, level 2 costs 0.4× level 1. We release the agent, an offline harness that reproduces the competition's scoring
-formula, and two reusable diagnostics: a non-determinism test for state representations and a
-hidden-counter detector.
+1.25× of it. Where the goal is inferred, level 2 costs 0.4× level 1. We release the agent, an offline harness with the competition's scoring formula, and two reusable
+diagnostics: a non-determinism test for state representations and a hidden-counter detector.
 
 ## 1. Problem and question
 ARC-AGI-3 is interactive: the agent sees a 64×64 frame, chooses among up to seven actions, and must discover rules, controls and goal from scratch across levels. The score is
@@ -81,10 +80,9 @@ planning. Contact-driven curiosity raises coverage and efficiency (11 vs 10 game
 8.6× vs 21.2× human). Memory changes nothing on level 1 by construction and alone reaches a second level, at
 falling per-level cost (per-game prediction accuracy: fig. 3). Three seeds
 of the final configuration score 0.280, 0.276 and 0.278 and differ on 4 of 25 games;
-differences under 2 games or 0.02 points are noise. Our first hidden-set submission scored **0.15**; it was later found to run a
-bundle whose movement-prediction path raised an exception on every call and fell back to cyclic actions, so
-it measures a crippled agent, not this one. Fixed-bundle submissions follow; the
-leading LLM harness scores 62.96 and most entries 0.
+differences under 2 games or 0.02 points are noise. Our first hidden-set submission scored **0.15**; its bundle later proved to
+raise an exception in the movement-prediction path and fall back to cyclic actions, so it measures a crippled
+agent. Fixed-bundle submissions follow; the leading LLM harness scores 62.96.
 
 ## 6. Failure analysis
 Per game: no game dies in a loop (resets
