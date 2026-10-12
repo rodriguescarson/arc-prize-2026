@@ -9,7 +9,7 @@
    "count": 43,
    "overlap": 81,
    "gone": 27,
-   "touch": 46
+   "touch": 38
   },
   "first_actions": {
    "4": 34,
@@ -91,9 +91,9 @@
   "kinds": {
    "appeared": 82,
    "count": 42,
-   "touch": 38,
+   "touch": 80,
    "gone": 58,
-   "overlap": 10
+   "overlap": 12
   },
   "first_actions": {
    "4": 30,
@@ -168,12 +168,13 @@
   "sessions": 13,
   "won": 9,
   "transitions": 95,
-  "covered": 73,
+  "covered": 94,
   "kinds": {
+   "overlap": 91,
    "appeared": 53,
    "gone": 73,
-   "overlap": 27,
-   "count": 11
+   "count": 11,
+   "touch": 7
   },
   "first_actions": {
    "4": 27,
@@ -182,9 +183,25 @@
    "3": 1
   },
   "multi": 13,
-  "consistent": 0,
-  "surv_sizes": [],
-  "surv_examples": {}
+  "consistent": 12,
+  "surv_sizes": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "surv_examples": {
+   "overlap((9, 3, 3), (14, 3, 3))": 10,
+   "touch((14, 3, 3))": 2
+  }
  },
  "lp85": {
   "sessions": 54,
@@ -239,8 +256,8 @@
   "kinds": {
    "appeared": 84,
    "gone": 84,
-   "touch": 84,
-   "overlap": 57,
+   "touch": 76,
+   "overlap": 59,
    "count": 42
   },
   "first_actions": {
@@ -254,7 +271,7 @@
   "multi": 11,
   "consistent": 1,
   "surv_sizes": [
-   6
+   5
   ],
   "surv_examples": {
    "appeared((0, 4, 5))": 1,
@@ -351,7 +368,7 @@
    "appeared": 67,
    "gone": 73,
    "touch": 23,
-   "overlap": 35
+   "overlap": 46
   },
   "first_actions": {
    "3": 24,
@@ -398,7 +415,7 @@
    "appeared": 64,
    "gone": 64,
    "overlap": 55,
-   "touch": 56,
+   "touch": 57,
    "count": 21
   },
   "first_actions": {
@@ -476,8 +493,8 @@
    "appeared": 64,
    "count": 64,
    "gone": 57,
-   "overlap": 35,
-   "touch": 20
+   "overlap": 36,
+   "touch": 21
   },
   "first_actions": {
    "1": 15,
@@ -538,11 +555,11 @@
   "transitions": 56,
   "covered": 56,
   "kinds": {
-   "touch": 54,
+   "touch": 56,
    "count": 18,
    "gone": 45,
    "appeared": 37,
-   "overlap": 38
+   "overlap": 39
   },
   "first_actions": {
    "4": 5,
@@ -551,13 +568,17 @@
    "2": 1
   },
   "multi": 9,
-  "consistent": 2,
+  "consistent": 3,
   "surv_sizes": [
    1,
-   1
+   3,
+   2
   ],
   "surv_examples": {
-   "touch((5, 7, 7))": 2
+   "touch((5, 7, 7))": 3,
+   "touch((9, 1, 1))": 1,
+   "touch((9, 3, 3))": 1,
+   "overlap((5, 7, 7), (9, 3, 5))": 1
   }
  },
  "ft09": {
@@ -606,12 +627,13 @@
   "sessions": 12,
   "won": 6,
   "transitions": 58,
-  "covered": 54,
+  "covered": 56,
   "kinds": {
    "appeared": 35,
    "count": 37,
    "gone": 38,
-   "overlap": 25
+   "overlap": 25,
+   "touch": 25
   },
   "first_actions": {
    "4": 14,
@@ -646,18 +668,19 @@
   "multi": 8,
   "consistent": 8,
   "surv_sizes": [
-   3,
-   3,
    4,
-   1,
-   3,
-   3,
-   3,
-   3
+   4,
+   5,
+   2,
+   4,
+   4,
+   4,
+   4
   ],
   "surv_examples": {
    "appeared((2, 3, 3))": 7,
    "gone((1, 3, 3))": 7,
+   "touch((9, 1, 1))": 8,
    "touch((9, 7, 7))": 8,
    "appeared((2, 5, 5))": 1
   }
