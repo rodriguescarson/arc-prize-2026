@@ -15,8 +15,7 @@ formula, and two reusable diagnostics: a non-determinism test for state represen
 hidden-counter detector.
 
 ## 1. Problem and question
-ARC-AGI-3 is interactive: the agent sees a 64×64 frame, chooses among up to seven actions (four
-directions, two buttons, a click), and must discover rules, controls and goal from scratch across levels
+ARC-AGI-3 is interactive: the agent sees a 64×64 frame, chooses among up to seven actions, and must discover rules, controls and goal from scratch across levels
 of increasing difficulty. The score is
 efficiency: a completed level earns 100·(human actions / agent actions)², capped at 115, and a game's score
 weights level k by k, so later levels dominate. The organisers' failure taxonomy for frontier
@@ -94,8 +93,8 @@ Per game: no game dies in a loop (resets
 what stalls. Five games are *model-blind* (generative accuracy < 0.3: bp35,
 cd82, ka59, sk48, tn36), where effects are memorised but never predicted; the other 20 are *no-progress*:
 the planner keeps finding untried transitions (median 1,973 of 2,000 steps planned) without crossing a
-level boundary, which is a goal problem, not a search problem. Where a first level is reached its cost
-spans 0.9× (lp85) to 58× (m0r0) the human count. A published 100-trajectory audit of the 75B-parameter
+level boundary, which is a goal problem, not a search problem. A reached first level costs 0.9× (lp85) to
+58× (m0r0) the human count. A published 100-trajectory audit of the 75B-parameter
 Franzen harness lists sk48 as never clearing level 1 and bp35 and lf52 as stopping after one level; our
 agent matches all three.
 
