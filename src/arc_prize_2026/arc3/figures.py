@@ -84,13 +84,15 @@ def fig_learning(run: dict, out: Path):
     fig.tight_layout(); fig.savefig(out / "fig4_learning_curve.png", dpi=160); plt.close(fig)
 
 
-def fig_budget(run4000: dict, out: Path, kaggle_speed: float = 4.5, n_hidden: int = 110, budget_s: float = 30600.0):
-    """E17: levels completed as a function of the per-game action budget (cumulative level-action counts of one
-    4,000-action run) with the rerun's extrapolated CPU use (110 games x mean seconds x Kaggle slowdown)."""
+def fig_budget(run4000: dict, out: Path, measured_cpu: dict[int, float] | None = None, kaggle_speed: float = 4.5,
+               n_hidden: int = 110, budget_s: float = 30600.0):
+    """E17: levels completed as a function of the per-game action cap (cumulative level-action counts of one
+    4,000-action run) with the rerun CPU fraction from the 25-thread simulations' measured thread-CPU sums
+    (seconds per 25 games), extrapolated as 110 games x mean x Kaggle slowdown."""
     budgets = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000]
-    levels, cpu = [], []
+    levels = []
     for b in budgets:
-        n = 0; secs = 0.0
+        n = 0
         for g in run4000["games"]:
             c = 0
             for x in g["level_actions"]:
@@ -98,22 +100,22 @@ def fig_budget(run4000: dict, out: Path, kaggle_speed: float = 4.5, n_hidden: in
                     break
                 c += x
                 n += int(c <= b)
-            secs += g["seconds"] / max(1, g["actions"]) * min(b, g["actions"])
-        levels.append(n); cpu.append(100 * secs / len(run4000["games"]) * n_hidden * kaggle_speed / budget_s)
+        levels.append(n)
+    measured_cpu = measured_cpu or {1500: 451.0, 3000: 886.0}  # experiments/swarm_sim_c155_v6.out, swarm_sim_c155_a3000.out
+    xs = sorted(measured_cpu); ys = [100 * measured_cpu[b] / 25 * n_hidden * kaggle_speed / budget_s for b in xs]
     fig, ax = plt.subplots(figsize=(6, 4))
-    ax.plot(budgets, levels, marker="o", color=C1, label="levels completed (public 25)")
+    ax.plot(budgets, levels, marker="o", color=C1, label="levels completed (public 25, one run)")
     ax.set_xlabel("actions per game (cap)"); ax.set_ylabel("levels completed", color=C1)
     ax.set_ylim(0, max(levels) + 3)
     ax2 = ax.twinx()
-    ax2.plot(budgets, cpu, marker="s", ls="--", color=ACC, label="extrapolated rerun CPU (% of 8.5 h, upper bound)")
-    ax2.axhline(60, color=C3, ls=":", lw=1); ax2.set_ylabel("% of rerun budget", color=ACC)
-    ax2.set_ylim(0, max(cpu) * 1.15)
+    ax2.plot(xs, ys, marker="s", ls="--", color=ACC, label="rerun CPU, measured thread-CPU x 110 games x 4.5")
+    ax2.axhline(60, color=C3, ls=":", lw=1); ax2.set_ylabel("% of the 8.5 h rerun budget", color=ACC)
+    ax2.set_ylim(0, 100)
     ax.axvline(3000, color=C2, lw=1, ls="-.")
-    ax.set_title("E17: coverage vs action budget; cap set to 3,000")
+    ax.set_title("E17: coverage vs action cap; cap set to 3,000 (57% of budget)")
     h1, l1 = ax.get_legend_handles_labels(); h2, l2 = ax2.get_legend_handles_labels()
     ax.legend(h1 + h2, l1 + l2, loc="lower right", fontsize=8)
     fig.tight_layout(); fig.savefig(out / "fig5_budget.png", dpi=160); plt.close(fig)
-
 
 def main(argv=None):
     ap = argparse.ArgumentParser()
