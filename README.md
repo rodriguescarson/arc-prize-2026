@@ -14,6 +14,7 @@ uv run arc3 --agent random      --max-actions 2000                    # floor
 uv run arc3 --agent explorer    --max-actions 2000                    # novelty-seeking baseline
 uv run arc3 --agent model_based --max-actions 2000 --kwargs '{"memory": true, "goals": true, "contact": true}'
 uv run arc3 --agent model_based --max-actions 2000 --kwargs '{"memory": false}'   # ablation
+# negative-result variants (kept, off by default): '{"click_model": true}' (E12), '{"sequences": true}' (E13); prior_explorer agent (E8)
 uv run python -m arc_prize_2026.arc3.failure_table experiments/<run>/results.json
 uv run python -m arc_prize_2026.arc3.figures --ladder a=... b=... --atlas experiments/arc3_E0_explorer_a2000_s0_logged/atlas.json
 for t in tests/test_*.py; do uv run python $t; done

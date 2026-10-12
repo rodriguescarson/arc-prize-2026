@@ -20,6 +20,12 @@ class ModelBasedAgent(BaseAgent):
         self.contact = contact
         self.goals = goals
         self.click_model = click_model  # E12: generative click effects in planning (failed its gate; off by default)
+        self.sequences = kwargs.get("sequences", False)  # E13: replay the level-1 clicked-class sequence on later levels
+        self.seq_k = kwargs.get("seq_k", 4)
+        self.level_clicks: list = []      # clicked classes in the current level (consecutive repeats compressed)
+        self.learned_seq: list | None = None
+        self.seq_queue: list = []          # classes still to click on this level
+        self.n_seq_steps = 0
         self.goal_memory = GoalMemory()
         self.level_init_objs: list[Obj] | None = None
         self.level_init_grid: np.ndarray | None = None
@@ -137,6 +143,12 @@ class ModelBasedAgent(BaseAgent):
             self.level_init_objs = objs; self.level_init_grid = grid
         self.objs_cache[sk] = (objs, grid)
 
+        # E13: level transition -> remember the clicked-class sequence of the level just finished
+        if self.sequences and latest.levels_completed > self.levels_seen:
+            if self.level_clicks:
+                self.learned_seq = self.level_clicks[-self.seq_k:]
+            self.level_clicks = []
+            self.seq_queue = list(self.learned_seq or [])
         # level transition bookkeeping
         if latest.levels_completed > self.levels_seen:
             if self.goals and self.prev is not None and self.level_init_grid is not None:
@@ -186,6 +198,21 @@ class ModelBasedAgent(BaseAgent):
             for o in objs:
                 self.contacted.setdefault(ident(o), 0)
         keys_for = self._keys_for(latest)
+        if self.sequences and self.seq_queue and not self.plan:
+            legal = self.legal_actions(latest)
+            click_action = next((a for a in legal if a.is_complex()), None)
+            target = None
+            while self.seq_queue and target is None:   # skip classes absent on this level
+                cls = self.seq_queue.pop(0)
+                target = next((o for o in objs if ident(o) == cls), None)
+            if click_action is not None and target is not None:
+                cy, cx = target.centre
+                key = ("click",) + ident(target) + (target.y0, target.x0); ckey = ("click",) + ident(target)
+                self.tried.setdefault(sk, set()).add(key)
+                self.prev = (objs, grid, key, ckey); self.predicted_next = None; self.n_seq_steps += 1
+                self.level_clicks.append(cls) if not self.level_clicks or self.level_clicks[-1] != cls else None
+                click_action.set_data({"x": int(cx), "y": int(cy)})
+                return click_action
         if not self.plan:
             goal_test = None
             if self.goals:
@@ -231,10 +258,15 @@ class ModelBasedAgent(BaseAgent):
         self.prev = (objs, grid, key, ckey)
         if action.is_complex():
             action.set_data(data)
+            if self.sequences and isinstance(key, tuple) and key[1] != "lattice":
+                cls = ("click",) + tuple(key[1:4])
+                cls = tuple(key[1:4])
+                if not self.level_clicks or self.level_clicks[-1] != cls:
+                    self.level_clicks.append(cls)
         return action
 
     def stats(self) -> dict:
-        return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "click_model": self.click_model, "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
+        return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "click_model": self.click_model, "sequences": self.sequences, "seq_steps": self.n_seq_steps, "learned_seq": [str(c) for c in (self.learned_seq or [])], "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
                 "surviving_goals": sorted(map(str, self.goal_memory.surviving)) if self.goal_memory.surviving else None, "plan_steps": self.n_plan_steps,
                 "replans_on_error": self.n_replans_on_error, "fallback_steps": self.n_fallback,
                 "pred_total": self.model.n_pred, "pred_acc": None if self.model.accuracy is None else round(self.model.accuracy, 3),
