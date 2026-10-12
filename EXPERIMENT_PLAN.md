@@ -39,3 +39,16 @@ bp35, wa30, g50t, sp80) are tracked explicitly.
 Before any claim, two seeds of the same agent must be compared to establish per-game and whole-run
 replicate SD (the Franzen audit found 1.87-point spans on whole-run means, 40-point spans per game).
 A difference smaller than 2× the replicate SD is reported as "within noise".
+
+## Outcomes so far (appended 2026-10-12 11:40 IST; details in RESEARCH_LOG.md and EXPERIMENT_LOG.csv)
+| ID | Outcome |
+|---|---|
+| E0 | done: atlas (`experiments/arc3_E0_explorer_a2000_s0_logged/atlas.json`); median 983 distinct states in 2000 actions, median |A| 5 |
+| E1 | measured: generative accuracy ≥0.9 on 2 games, ≥0.6 on 6, memo accuracy ≥0.95 on 14/25 after HUD detectors (P4 threshold ≥0.8 on ≥15 games NOT met for the generative model; met for memoised determinism on 14) |
+| E2 | model-based vs explorer: 15 vs 5 levels, 11 vs 5 games with L1 (P2 met since v3); P1 paired L1 ratio mixed |
+| E-contact (added) | contact curiosity ON 0.284/15 vs OFF 0.204/13; kept ON |
+| E3 | memory ON 0.277/13 vs OFF 0.227/11; L1 identical, L2 only with memory (tu93, vc33), ratios fall 10.4→4.8 and 6.1→2.6 (P3 direction confirmed on n=2) |
+| E10 (added) | death-edge learning: tu93 resets 350→85, 3 levels; full run v6 pending |
+| E11 (added) | human-replay goal-template consistency across levels (340 sessions) — running |
+| E5 | kernel pushed and green in "Save & Run All"; competition submission awaits Carson |
+| E6 | seed-1 replicate of v5 running |

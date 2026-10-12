@@ -116,7 +116,32 @@ RECORDINGS_DIR=/kaggle/working/server_recording
 
 DUMMY_CELL = r'''import os
 if not os.getenv('KAGGLE_IS_COMPETITION_RERUN'):
-    # Non-competition mode: produce a dummy submission file so "Save & Run All" succeeds
+    # Self-test in Kaggle's own environment: play two public games offline with the agent (no gateway needed)
+    import sys, time, logging, types
+    sys.path.insert(0, '/kaggle/working')
+    fw = types.ModuleType('agents'); fa = types.ModuleType('agents.agent')
+    class _A:
+        MAX_ACTIONS = 80
+        def __init__(self, card_id='', game_id='x', agent_name='', ROOT_URL='', record=False, arc_env=None, tags=None): self.game_id = game_id
+        @property
+        def name(self): return self.game_id
+    fa.Agent = _A; fw.agent = fa; sys.modules['agents'] = fw; sys.modules['agents.agent'] = fa
+    import my_agent
+    import arc_agi
+    from arc_agi import Arcade, OperationMode
+    from arcengine import FrameData, GameState
+    logging.getLogger().setLevel(logging.ERROR)
+    arc = Arcade(environments_dir='/kaggle/input/competitions/arc-prize-2026-arc-agi-3/environment_files', operation_mode=OperationMode.OFFLINE)
+    for gid in ['vc33', 'ls20']:
+        env = arc.make(gid); ag = my_agent.MyAgent(game_id=gid); frames = [FrameData(levels_completed=0)]; t0 = time.time()
+        for _ in range(150):
+            a = ag.choose_action(frames, frames[-1]); raw = env.step(a, data=a.action_data.model_dump())
+            if raw is None: break
+            frames.append(FrameData(game_id=raw.game_id, frame=[x.tolist() for x in raw.frame], state=raw.state, levels_completed=raw.levels_completed, win_levels=raw.win_levels, available_actions=raw.available_actions))
+            if frames[-1].state is GameState.WIN: break
+        print(f'SELFTEST {gid}: actions {len(frames)-1} levels {frames[-1].levels_completed} secs {time.time()-t0:.1f} stats {ag.impl.stats().get("pred_acc")}')
+        arc.close_scorecard()
+    # produce a dummy submission file so "Save & Run All" succeeds
     import pandas as pd
     submission = pd.DataFrame(data=[['1_0', '1', True, 1]], columns=['row_id', 'game_id', 'end_of_game', 'score'])
     submission.to_parquet('/kaggle/working/submission.parquet', index=False)
