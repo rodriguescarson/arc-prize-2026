@@ -41,7 +41,7 @@ def analyse_session(row) -> dict:
         ai = d.get("action_input") or {}
         actions.append(int(ai.get("id", -1)) if str(ai.get("id", "")).lstrip("-").isdigit() else -1)
         levels.append(int(d.get("levels_completed", 0)))
-    out = {"env": row["env"], "won": int(row["won"]), "n_frames": len(frames), "transitions": [], "first_actions": actions[1:6]}
+    out = {"env": row["env"], "won": int(row["won"]), "n_frames": len(frames), "transitions": [], "first_actions": actions[1:6], "surviving": None}
     move_counts: Counter = Counter()
     for i in range(1, len(frames)):
         if actions[i] in (1, 2, 3, 4, 5):
@@ -56,7 +56,9 @@ def analyse_session(row) -> dict:
             cands = candidate_predicates(init_objs, pre_objs, mover)
             out["transitions"].append({"level": levels[i], "actions": i - level_start, "n_candidates": len(cands),
                                        "kinds": sorted({p.kind for p in cands})})
+            out["surviving"] = set(cands) if out["surviving"] is None else (out["surviving"] & cands)
             level_start = i
+    out["surviving"] = sorted(map(str, out["surviving"])) if out["surviving"] is not None else None
     return out
 
 
@@ -64,7 +66,8 @@ def main(argv=None):
     argv = argv or sys.argv[1:]
     root = Path(argv[0]); max_sessions = int(argv[argv.index("--max-sessions") + 1]) if "--max-sessions" in argv else None
     files = sorted(root.glob("*.parquet"))
-    per_env = defaultdict(lambda: {"sessions": 0, "won": 0, "transitions": 0, "covered": 0, "kinds": Counter(), "first_actions": Counter()})
+    per_env = defaultdict(lambda: {"sessions": 0, "won": 0, "transitions": 0, "covered": 0, "kinds": Counter(), "first_actions": Counter(),
+                                   "multi": 0, "consistent": 0, "surv_sizes": [], "surv_examples": Counter()})
     n = 0
     for f in files:
         df = pq.read_table(f).to_pandas()
@@ -81,16 +84,24 @@ def main(argv=None):
                 e["transitions"] += 1; e["covered"] += int(t["n_candidates"] > 0)
                 for k in t["kinds"]:
                     e["kinds"][k] += 1
-    print(f"{'env':5s} {'sess':>4s} {'won':>4s} {'trans':>5s} {'covered':>7s} {'cov%':>5s}  kinds(at covered transitions)   first actions")
-    tot_t = tot_c = 0
+            if len(r["transitions"]) >= 2:
+                e["multi"] += 1
+                if r["surviving"]:
+                    e["consistent"] += 1; e["surv_sizes"].append(len(r["surviving"]))
+                    for pr in r["surviving"][:5]:
+                        e["surv_examples"][pr] += 1
+    print(f"{'env':5s} {'sess':>4s} {'won':>4s} {'trans':>5s} {'multi':>5s} {'consist':>7s} {'median|surv|':>12s}  most common surviving predicate")
+    tot_m = tot_k = 0
+    import statistics
     for env in sorted(per_env):
-        e = per_env[env]; tot_t += e["transitions"]; tot_c += e["covered"]
-        cov = 100 * e["covered"] / e["transitions"] if e["transitions"] else float("nan")
-        print(f"{env:5s} {e['sessions']:4d} {e['won']:4d} {e['transitions']:5d} {e['covered']:7d} {cov:5.0f}  {dict(e['kinds'])}   {e['first_actions'].most_common(3)}")
-    print(f"TOTAL transitions {tot_t} covered {tot_c} ({100 * tot_c / max(1, tot_t):.1f}%)")
+        e = per_env[env]; tot_m += e["multi"]; tot_k += e["consistent"]
+        med = statistics.median(e["surv_sizes"]) if e["surv_sizes"] else float("nan")
+        ex = e["surv_examples"].most_common(1)[0] if e["surv_examples"] else ("—", 0)
+        print(f"{env:5s} {e['sessions']:4d} {e['won']:4d} {e['transitions']:5d} {e['multi']:5d} {e['consistent']:7d} {med:12.0f}  {ex[0]} ×{ex[1]}")
+    print(f"TOTAL sessions with >=2 transitions {tot_m}; with a non-empty cross-level intersection {tot_k} ({100 * tot_k / max(1, tot_m):.1f}%)")
     out = Path(__file__).resolve().parents[3] / "experiments" / "human_replays" / "template_coverage.json"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps({env: {k: (dict(v) if isinstance(v, Counter) else v) for k, v in e.items()} for env, e in per_env.items()}, indent=1))
+    out.write_text(json.dumps({env: {k: (dict(v) if isinstance(v, Counter) else v) for k, v in e.items()} for env, e in per_env.items()}, indent=1, default=str))
     print("->", out)
 
 
