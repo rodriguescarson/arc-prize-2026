@@ -1,22 +1,52 @@
-"""The generated single-file agent must run in the offline harness with a stubbed framework Agent."""
-import sys, types, importlib.util, pathlib
-ROOT = pathlib.Path(__file__).resolve().parents[1]
-# stub the ARC-AGI-3-Agents framework base class the bundle imports
-agents = types.ModuleType("agents"); agent_mod = types.ModuleType("agents.agent")
-class Agent:
+"""The kernel bundle must behave exactly like the repo agent. Two checks the old test lacked:
+1. call the bundled agent's `impl.choose_action` directly (outside the shim's exception handler), so any NameError
+   or missing alias in the concatenated file surfaces instead of being swallowed as a fallback action;
+2. the bundle's action sequence on three public games must be identical to the repo agent's.
+"""
+import sys, types, logging
+from pathlib import Path
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+from arc_prize_2026.arc3.kaggle.build_notebook import build  # noqa: E402
+
+out = Path("/tmp/arc3_bundle_test"); build(True, 1500, 8.5, "test", True, 30600, out, 700, True)
+sys.path.insert(0, str(out))
+fw = types.ModuleType("agents"); fa = types.ModuleType("agents.agent")
+class _A:
     MAX_ACTIONS = 80
-    def __init__(self, card_id="", game_id="x", agent_name="", ROOT_URL="", record=False, arc_env=None, tags=None):
-        self.game_id = game_id
+    def __init__(self, card_id="", game_id="x", agent_name="", ROOT_URL="", record=False, arc_env=None, tags=None): self.game_id = game_id
     @property
-    def name(self): return f"{self.game_id}.stub"
-agent_mod.Agent = Agent; agents.agent = agent_mod
-sys.modules["agents"] = agents; sys.modules["agents.agent"] = agent_mod
-spec = importlib.util.spec_from_file_location("my_agent", ROOT / "submission/kaggle/my_agent.py")
-m = importlib.util.module_from_spec(spec); sys.modules["my_agent"] = m; spec.loader.exec_module(m)
-from arc_prize_2026.arc3.runner import run
-class Wrapped(m.MyAgent):
-    def __init__(self, game_id, seed=0, **kw):
-        super().__init__(game_id=game_id)
-s = run(Wrapped, games=["vc33", "ls20"], max_actions=200, seed=0)
-assert s["n_games"] == 2 and all(g["actions"] > 0 for g in s["games"]), s
-print("kaggle bundle ok:", {g["game_id"][:4]: (g["levels_completed"], g["actions"]) for g in s["games"]})
+    def name(self): return self.game_id
+fa.Agent = _A; fw.agent = fa; sys.modules["agents"] = fw; sys.modules["agents.agent"] = fa
+import my_agent  # noqa: E402
+from arc_agi import Arcade, OperationMode  # noqa: E402
+from arcengine import FrameData, GameState  # noqa: E402
+from arc_prize_2026.arc3.agents.model_based import ModelBasedAgent  # noqa: E402
+logging.getLogger().setLevel(logging.ERROR)
+ENVS = ROOT / "data" / "kaggle" / "arc-prize-2026-arc-agi-3" / "environment_files"
+arc = Arcade(environments_dir=str(ENVS), operation_mode=OperationMode.OFFLINE)
+
+def play(agent_fn, gid, n_actions):
+    env = arc.make(gid, seed=0); frames = [FrameData(levels_completed=0)]; seq = []
+    for _ in range(n_actions):
+        a = agent_fn(frames, frames[-1])  # no try/except: exceptions must surface
+        raw = env.step(a, data=a.action_data.model_dump())
+        seq.append((a.name, a.action_data.model_dump() if a.is_complex() else None))
+        if raw is None: break
+        frames.append(FrameData(game_id=raw.game_id, frame=[np.asarray(x).tolist() for x in raw.frame], state=raw.state,
+                                levels_completed=raw.levels_completed, win_levels=raw.win_levels, available_actions=raw.available_actions))
+        if frames[-1].state is GameState.WIN: break
+    arc.close_scorecard()
+    return seq, frames[-1].levels_completed
+
+report = {}
+for gid, n in [("ls20", 400), ("vc33", 400), ("tu93", 300), ("sp80", 300)]:
+    bundle = my_agent.MyAgent(game_id=gid)
+    b_seq, b_lv = play(bundle.impl.choose_action, gid, n)
+    repo = ModelBasedAgent(game_id=gid, seed=0, memory=True, contact=True, goals=True)
+    r_seq, r_lv = play(repo.choose_action, gid, n)
+    assert b_seq == r_seq, f"{gid}: bundle diverges from the repo agent at step {next(i for i, (x, y) in enumerate(zip(b_seq, r_seq)) if x != y)}"
+    report[gid] = (b_lv, len(b_seq))
+print("kaggle bundle ok (direct calls, bit-identical to the repo agent):", report)

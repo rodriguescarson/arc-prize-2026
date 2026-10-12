@@ -163,9 +163,20 @@ INSTALL_CELL = "!pip install --no-index --find-links /kaggle/input/competitions/
 
 
 def strip_relative_imports(src: str) -> str:
+    """Drop package-relative imports (every module is concatenated into one file) but keep their aliases:
+    `from .perception import moved as _moved` becomes `_moved = moved`. Dropping the alias silently left
+    `_moved` undefined in every kernel bundle up to v7 (found 2026-10-12 15:20 by calling the bundled agent
+    outside the shim's exception handler)."""
     out = []
     for line in src.splitlines():
-        if re.match(r"^\s*from \.\.?[\w.]* import ", line) or re.match(r"^\s*from \.\.?[\w.]*\s+import\s*\(", line):
+        m = re.match(r"^\s*from \.\.?[\w.]* import (.*)$", line)
+        if m:
+            for item in m.group(1).strip("() ").split(","):
+                parts = item.strip().split()
+                if len(parts) == 3 and parts[1] == "as":
+                    out.append(f"{parts[2]} = {parts[0]}")
+            continue
+        if re.match(r"^\s*from \.\.?[\w.]*\s+import\s*\(", line):
             continue
         out.append(line)
     return "\n".join(out)
