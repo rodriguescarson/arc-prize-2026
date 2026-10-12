@@ -1,0 +1,10 @@
+{
+ "my_agent_sha256": "5755724951ef3db60488008241782ceec2d5442a610499e5c02a01c43277eb19",
+ "git_commit": "84edcf8e112fd28732ba813c150618607f65759d",
+ "memory": false,
+ "contact": true,
+ "max_actions": 1500,
+ "budget_h": 8.5,
+ "game_budget_s": 600,
+ "kernel_id": "carsonrodrigues/arc3-model-based-explorer-mem0-c1"
+}
