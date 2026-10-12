@@ -76,10 +76,9 @@ public numbers are development; hidden is evaluation.
 
 
 Explorer and model-based agent share perception, so the table isolates the learned model and
-planning. Contact-driven curiosity raises coverage and efficiency (11 vs 10 games; median level-1 cost
-8.6× vs 21.2× human). Memory changes nothing on level 1 by construction and alone reaches a second level, at
-falling per-level cost (per-game prediction accuracy: fig. 3). Three seeds
-of the final configuration score 0.280, 0.276 and 0.278 and differ on 4 of 25 games;
+planning. Contact curiosity raises coverage and efficiency (11 vs 10 games; median level-1 cost 8.6× vs 21.2×
+human). Memory changes nothing on level 1 by construction and alone reaches a second level, at
+falling per-level cost (per-game prediction accuracy: fig. 3). Three seeds score 0.280, 0.276 and 0.278 and differ on 4 of 25 games;
 differences under 2 games or 0.02 points are noise. Our first hidden-set submission scored **0.15**; its bundle later proved to
 raise an exception in the movement-prediction path and fall back to cyclic actions, so it measures a crippled
 agent. Fixed-bundle submissions follow; the leading LLM harness scores 62.96.
@@ -105,8 +104,9 @@ and class-level click-effect prediction (≥ 0.6 accuracy on 6 of 13 click games
 slowed from 15 to 774 actions): click effects are learnable, but those games' goals are click sequences
 outside our template class.
 **Reproducibility.** CPU only, no training set, no per-game code. One command (`uv run arc3 --agent
-model_based --max-actions 2000`) reproduces every public-25 number; each `EXPERIMENT_LOG.csv` row carries
-its commit; the submitted notebook embeds `my_agent.py` with its sha256 and commit in `BUILD.json`.
+model_based --max-actions 2000`) reproduces every public-25 number, and the public notebook replays them
+inside Kaggle's runtime; each
+`EXPERIMENT_LOG.csv` row carries its commit; `my_agent.py` ships with its sha256 and commit in `BUILD.json`.
 **Conclusion.** Learning what actions do, planning in that model and keeping it across levels turns a
 blind explorer into an agent that clears first levels on 12 of 25 public games and plays later levels
 several times more efficiently, with no language model. The measured failures (hidden counters, non-rigid
