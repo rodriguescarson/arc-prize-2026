@@ -116,3 +116,8 @@ Decision: **H1 primary, H2 secondary add-on (if the data is accessible), H3 fall
 - Unplanned findings worth a paragraph each: hidden-counter progress bars (non-Markov state detected by memo accuracy < 1), rigid multi-part sprites with decorations, deadly-edge memoisation (tu93 resets 350 → 85).
 - Decision at 06:59: H1 stays primary (P2 met, P3 supported, mechanism measurable); H2 data is now local for the next cycle.
 - **H2 (human-habit prior) — 07:12: FAILED its pre-registered gate.** Paired level-1 ratio median 1.0 (CI [1.0, 11.5], n=3), coverage 4 vs 5 games, total 0.013 vs 0.038 (`arc3_E8_prior_explorer_a2000_s0`). Reported as a negative result; the replay data stays in use for E11 (goal-template consistency) and per-level human baselines.
+
+## Next cycle — E12 pre-registration (07:44)
+**Limitation measured:** 12 of 25 public games are click-driven; there the effect model is memo-only (generative accuracy < 0.3), the explorer cannot plan toward unseen click outcomes, and the goal template class is empty on human replays for those games (E11).
+**Mechanism:** learn click effects by object class: for a click on class c, the modal object-level diff (recolour c→c′, vanish, appear at a relative offset, toggle) conditioned on the clicked object's class and its neighbours' classes; predict generatively for unseen objects of the same class; add "all objects of class c recoloured to c′" and "clicked-object sequence" templates to the goal class.
+**Predictions (public 25, 2000 actions, seed 0, paired vs v7):** level-1 coverage on the 12 click-driven games rises from 4 to ≥ 7; generative accuracy ≥ 0.6 on ≥ 6 of them; no regression on the 13 movement games (same levels ± seed noise). Kill if coverage gain < 2 games by Oct 18.

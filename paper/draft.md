@@ -31,15 +31,13 @@ each *action does*, and what counts as *done*, and we ask how far an agent that 
 with no language model and no training set, gets on the hidden Kaggle set.
 
 ## 2. Prior work and gap
-Kaggle entries fall into three families (survey in `LITERATURE_MAP.md` §7 and `data/kaggle/reference/`):
-(i) LLM-in-REPL harnesses (Tufa Labs' Duck, Franzen's Milestone-2 solution) in which a 27B model writes
-Python that inspects frames and emits actions on a 96 GB GPU; (ii) a learned "will the frame change"
-CNN (Stochastic Goose, the official sample) that re-initialises at every level; (iii) white-box search
-that imports the public games' source code and therefore cannot run on hidden games. Research papers
-(Twin, Tycho, PRO-LONG) build executable world models with frontier APIs and report 88–100% on the 25
-public games only, which AERA shows even null strategies partly solve. No public agent learns a
-non-LLM model of action effects, plans in it, and keeps it across levels; none evaluates that mechanism
-on the hidden set. That is the gap this submission fills.
+Kaggle entries fall into three families: LLM-in-REPL harnesses (Tufa Labs' Duck, Franzen's Milestone-2)
+where a 27B model writes Python against the frames on a 96 GB GPU; a "will the frame change" CNN
+(Stochastic Goose) that re-initialises at every level; and white-box search that imports the public games'
+source and cannot run on hidden games. Research papers (Twin, Tycho, PRO-LONG) build executable world
+models with frontier APIs and report 88–100% on the 25 public games only, a set AERA shows null strategies
+partly solve. No public agent learns a non-LLM model of action effects, plans in it, keeps it across
+levels, and is evaluated on the hidden set. That is the gap.
 
 ## 3. Method
 3.1 State: objects (colour, bbox, mask), terrain colours (≥20% coverage) kept for collision but not identity,
@@ -59,12 +57,11 @@ where our two detectors recover it.
 vector unless blocked by a colour in the swept path. Measured: the generative model is ≥ 0.9 accurate on
 sp80 and su15 and ≥ 0.6 on dc22, g50t, m0r0, ls20 [measured: fig3]; it fails on click-driven games where
 effects are not displacements (ft09, r11l, s5i5, tn36, vc33 rely on memoisation).
-**Bound.** Under A1, a model-free explorer that revisits known transitions pays again for each revisit;
-a model-based planner pays at most once per unknown (state, action) pair, so the real actions needed to
-learn a level's dynamics are ≤ |S_reach|·|A|, with planning free. Median reachable abstract states in
-2000 explorer actions is 983 with median |A| = 5 [measured: atlas], so a model-free sweep cannot finish
-even the reachable part of one level inside the budget, while the planner's cost is bounded by the number
-of *distinct* pairs it chooses to resolve (contact-driven targets cut that further).
+**Bound.** Under A1 a model-free explorer pays again for every revisited transition; a planner pays at
+most once per unknown (state, action) pair, so real actions ≤ |S_reach|·|A| with planning free. The
+explorer reaches a median 983 abstract states in 2000 actions with median |A| = 5 [measured: atlas], so a
+model-free sweep cannot cover one level inside the budget, while the planner resolves only the distinct
+pairs it chooses (contact-driven targets cut that further).
 **Transfer.** Levels of a game share dynamics and goal (the organisers' design); the score weights level
 k by k. So the gain from learning is realised on later levels: memory ON vs OFF leaves level-1 cost
 identical (same code path) and lowers later-level cost [measured: E3, tu93 10.4→4.8, vc33 6.1→2.6
@@ -86,14 +83,8 @@ numbers are development; the hidden set is evaluation. [measured: `paper/results
 | v5_memory_on | 0.277 | 13/183 | 11 | 2 | 10.4× | 1 | 2172 |
 | v5_memory_off | 0.227 | 11/183 | 11 | 0 | 10.4× | 1 | 2475 |
 | v5_seed1 | 0.283 | 14/183 | 12 | 2 | 9.3× | 1 | 1737 |
-| v6_death_edges | 0.280 | 15/183 | 12 | 2 | 11.0× | 1 | 1745 |
+| final_v7 | 0.280 | 15/183 | 12 | 2 | 11.0× | 1 | 1372 |
 
-explorer_human_prior: per-level actions/human — lp85 [6.4, 46.8]
-v4_contact_on: per-level actions/human — lf52 [2.4, 13.5]; tu93 [34.3, 12.7, 17.2]; vc33 [6.1, 2.6]
-v4_contact_off: per-level actions/human — tu93 [24.1, 13.0, 13.9]; vc33 [6.1, 2.6]
-v5_memory_on: per-level actions/human — tu93 [10.4, 4.8]; vc33 [6.1, 2.6]
-v5_seed1: per-level actions/human — tu93 [10.4, 4.8]; vc33 [6.1, 2.6]
-v6_death_edges: per-level actions/human — tu93 [10.2, 4.8, 11.1]; vc33 [6.1, 2.6]
 
 Reading the table: the explorer and the model-based agent share perception; the difference is the learned
 model and planning. Contact-driven curiosity raises both coverage and efficiency (11 vs 10 games, 8.6× vs
