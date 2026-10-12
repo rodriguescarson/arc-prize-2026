@@ -1,0 +1,6130 @@
+{
+ "agent": "ModelBasedAgent",
+ "agent_kwargs": {
+  "contact": true,
+  "memory": true,
+  "goals": true,
+  "llm_goals": "qwen/qwen3-32b",
+  "greedy": true,
+  "greedy_cap": 80
+ },
+ "seed": 0,
+ "max_actions": 2000,
+ "time_budget_s": 900.0,
+ "n_games": 25,
+ "total_score": 0.280293,
+ "levels_completed": 15,
+ "total_levels": 183,
+ "games_won": 0,
+ "wall_s": 5226.2,
+ "games": [
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 13,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 7,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 601,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 901,
+       "n_options": 7,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1201,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1501,
+       "n_options": 18,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1801,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1487,
+    "goal_plans": 0,
+    "deaths": 20,
+    "surviving_goals": null,
+    "plan_steps": 1979,
+    "replans_on_error": 62,
+    "fallback_steps": 0,
+    "pred_total": 1306,
+    "pred_acc": 0.383,
+    "pred_by_source": {
+     "memo": [
+      504,
+      0.976
+     ],
+     "model": [
+      50,
+      0.0
+     ],
+     "unreliable": [
+      752,
+      0.011
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(0, 1, 1)",
+       "(5, 9, 9)"
+      ],
+      [
+       -3,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(0, 1, 1)",
+       "(5, 9, 9)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(0, 1, 1)"
+      ],
+      [
+       3,
+       -3
+      ]
+     ],
+     "4": [
+      [
+       "(0, 1, 1)",
+       "(5, 9, 9)"
+      ],
+      [
+       0,
+       3
+      ]
+     ],
+     "7": [
+      [
+       "(4, 9, 9)",
+       "(5, 9, 9)"
+      ],
+      [
+       0,
+       3
+      ]
+     ]
+    },
+    "volatile_rows": [],
+    "terrain_colours": [
+     9
+    ],
+    "known_noops": [
+     "('click', 10, 63, 3)",
+     "('click', 5, 9, 9)",
+     "('click', 4, 9, 9)",
+     "('click', 0, 1, 1)",
+     "('click', 11, 9, 9)",
+     "('click', 5, 1, 63)",
+     "('click', 'lattice')",
+     "('click', 10, 15, 3)",
+     "('click', 4, 3, 6)",
+     "('click', 10, 39, 3)",
+     "('click', 10, 45, 3)",
+     "('click', 5, 8, 1)",
+     "('click', 11, 56, 1)",
+     "('click', 4, 9, 6)",
+     "('click', 5, 9, 1)",
+     "('click', 11, 55, 1)",
+     "('click', 5, 10, 1)",
+     "('click', 11, 54, 1)",
+     "('click', 5, 11, 1)",
+     "('click', 11, 53, 1)",
+     "('click', 5, 12, 1)",
+     "('click', 11, 52, 1)",
+     "('click', 5, 13, 1)",
+     "('click', 11, 51, 1)",
+     "('click', 5, 14, 1)",
+     "('click', 11, 50, 1)",
+     "('click', 5, 15, 1)",
+     "('click', 11, 49, 1)",
+     "('click', 5, 16, 1)",
+     "('click', 11, 48, 1)",
+     "('click', 5, 17, 1)",
+     "('click', 11, 47, 1)",
+     "('click', 5, 18, 1)",
+     "('click', 11, 46, 1)",
+     "('click', 5, 19, 1)",
+     "('click', 11, 45, 1)",
+     "('click', 5, 20, 1)",
+     "('click', 11, 44, 1)",
+     "('click', 5, 21, 1)",
+     "('click', 11, 43, 1)",
+     "('click', 5, 22, 1)",
+     "('click', 11, 42, 1)",
+     "('click', 5, 23, 1)",
+     "('click', 11, 41, 1)",
+     "('click', 5, 24, 1)",
+     "('click', 11, 40, 1)",
+     "('click', 5, 25, 1)",
+     "('click', 11, 39, 1)",
+     "('click', 5, 26, 1)",
+     "('click', 11, 38, 1)",
+     "('click', 5, 27, 1)",
+     "('click', 11, 37, 1)",
+     "('click', 5, 28, 1)",
+     "('click', 11, 36, 1)",
+     "('click', 5, 29, 1)",
+     "('click', 11, 35, 1)",
+     "('click', 5, 30, 1)",
+     "('click', 11, 34, 1)",
+     "('click', 5, 31, 1)",
+     "('click', 11, 33, 1)",
+     "('click', 5, 32, 1)",
+     "('click', 11, 32, 1)",
+     "('click', 5, 33, 1)",
+     "('click', 11, 31, 1)",
+     "('click', 5, 34, 1)",
+     "('click', 11, 30, 1)",
+     "('click', 5, 35, 1)",
+     "('click', 11, 29, 1)",
+     "('click', 5, 36, 1)",
+     "('click', 11, 28, 1)",
+     "('click', 5, 37, 1)",
+     "('click', 11, 27, 1)",
+     "('click', 5, 38, 1)",
+     "('click', 11, 26, 1)",
+     "('click', 5, 39, 1)",
+     "('click', 11, 25, 1)",
+     "('click', 5, 40, 1)",
+     "('click', 11, 24, 1)",
+     "('click', 5, 41, 1)",
+     "('click', 11, 23, 1)",
+     "('click', 5, 42, 1)",
+     "('click', 11, 22, 1)",
+     "('click', 5, 43, 1)",
+     "('click', 11, 21, 1)",
+     "('click', 5, 44, 1)",
+     "('click', 11, 20, 1)",
+     "('click', 5, 45, 1)",
+     "('click', 11, 19, 1)",
+     "('click', 5, 46, 1)",
+     "('click', 11, 18, 1)",
+     "('click', 5, 47, 1)",
+     "('click', 11, 17, 1)",
+     "('click', 5, 48, 1)",
+     "('click', 11, 16, 1)",
+     "('click', 5, 49, 1)",
+     "('click', 11, 15, 1)",
+     "('click', 5, 50, 1)",
+     "('click', 11, 14, 1)",
+     "('click', 5, 51, 1)",
+     "('click', 11, 13, 1)",
+     "('click', 5, 52, 1)",
+     "('click', 11, 12, 1)",
+     "('click', 5, 53, 1)",
+     "('click', 11, 11, 1)",
+     "('click', 5, 54, 1)",
+     "('click', 11, 10, 1)",
+     "('click', 5, 55, 1)",
+     "('click', 11, 9, 1)",
+     "('click', 5, 56, 1)",
+     "('click', 11, 8, 1)",
+     "('click', 5, 57, 1)",
+     "('click', 11, 7, 1)",
+     "('click', 10, 21, 3)",
+     "('click', 5, 58, 1)",
+     "('click', 11, 6, 1)",
+     "('click', 5, 59, 1)",
+     "('click', 11, 5, 1)",
+     "('click', 5, 60, 1)",
+     "('click', 11, 4, 1)",
+     "('click', 10, 18, 3)",
+     "('click', 5, 61, 1)",
+     "('click', 10, 42, 3)",
+     "('click', 11, 3, 1)",
+     "('click', 5, 62, 1)",
+     "('click', 11, 2, 1)",
+     "('click', 5, 63, 1)",
+     "('click', 11, 1, 1)",
+     "('click', 10, 12, 3)",
+     "('click', 10, 48, 3)",
+     "('click', 10, 36, 3)",
+     "('click', 10, 9, 3)",
+     "('click', 10, 51, 3)",
+     "('click', 10, 6, 3)",
+     "('click', 10, 54, 3)",
+     "('click', 10, 33, 3)",
+     "('click', 10, 3, 3)",
+     "('click', 10, 57, 3)",
+     "('click', 10, 24, 3)",
+     "('click', 10, 30, 3)",
+     "('click', 10, 27, 3)"
+    ],
+    "click_classes_modelled": 142,
+    "key_reliability": {
+     "1": [
+      20,
+      0.0
+     ],
+     "2": [
+      20,
+      0.0
+     ],
+     "3": [
+      20,
+      0.05
+     ],
+     "4": [
+      20,
+      0.0
+     ],
+     "7": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "ar25-0c556536",
+   "levels_completed": 0,
+   "win_levels": 8,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 21,
+   "distinct_frames": 835,
+   "final_state": "NOT_FINISHED",
+   "seconds": 225.24,
+   "baseline_actions": [
+    32,
+    50,
+    75,
+    37,
+    89,
+    159,
+    233,
+    73
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 3,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 3,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 8,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 4,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 601,
+       "n_options": 4,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1724,
+    "goal_plans": 0,
+    "deaths": 74,
+    "surviving_goals": [
+     "appeared((7, 3, 3))",
+     "gone((14, 5, 5))",
+     "touch((7, 3, 3))"
+    ],
+    "plan_steps": 1796,
+    "replans_on_error": 35,
+    "fallback_steps": 129,
+    "pred_total": 1335,
+    "pred_acc": 0.075,
+    "pred_by_source": {
+     "memo": [
+      78,
+      0.91
+     ],
+     "model": [
+      30,
+      0.067
+     ],
+     "unreliable": [
+      1227,
+      0.022
+     ]
+    },
+    "movers": {
+     "3": [
+      [
+       "(9, 4, 2)"
+      ],
+      [
+       0,
+       -5
+      ]
+     ],
+     "4": [
+      [
+       "(11, 2, 1)",
+       "(9, 4, 2)"
+      ],
+      [
+       0,
+       6
+      ]
+     ],
+     "('click', 14, 5, 5)": [
+      [
+       "(3, 1, 1)"
+      ],
+      [
+       12,
+       0
+      ]
+     ]
+    },
+    "volatile_rows": [
+     63
+    ],
+    "terrain_colours": [
+     5,
+     10
+    ],
+    "known_noops": [
+     "('click', 3, 1, 1)",
+     "('click', 9, 4, 2)",
+     "('click', 11, 2, 1)",
+     "('click', 'lattice')",
+     "7",
+     "('click', 15, 5, 64)",
+     "('click', 15, 11, 64)",
+     "('click', 9, 2, 2)",
+     "('click', 11, 1, 1)",
+     "('click', 15, 17, 64)",
+     "('click', 14, 3, 5)",
+     "('click', 7, 3, 3)",
+     "('click', 15, 4, 3)",
+     "('click', 0, 1, 1)",
+     "('click', 10, 30, 17)",
+     "('click', 10, 23, 17)"
+    ],
+    "click_classes_modelled": 19,
+    "key_reliability": {
+     "3": [
+      20,
+      0.0
+     ],
+     "4": [
+      20,
+      0.05
+     ],
+     "('click', 14, 5, 5)": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "bp35-0a0ad940",
+   "levels_completed": 1,
+   "win_levels": 9,
+   "level_actions": [
+    646
+   ],
+   "actions": 2000,
+   "resets": 75,
+   "distinct_frames": 7168,
+   "final_state": "NOT_FINISHED",
+   "seconds": 561.08,
+   "baseline_actions": [
+    21,
+    48,
+    44,
+    38,
+    33,
+    87,
+    86,
+    131,
+    163
+   ],
+   "score": 0.0023483403464041636
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 8,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 8,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 8,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 308,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 608,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 0,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 300,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 600,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 900,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 1200,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1959,
+    "goal_plans": 0,
+    "deaths": 19,
+    "surviving_goals": null,
+    "plan_steps": 1980,
+    "replans_on_error": 57,
+    "fallback_steps": 0,
+    "pred_total": 568,
+    "pred_acc": 0.12,
+    "pred_by_source": {
+     "memo": [
+      24,
+      0.875
+     ],
+     "model": [
+      87,
+      0.379
+     ],
+     "unreliable": [
+      457,
+      0.031
+     ]
+    },
+    "movers": {
+     "('click', 4, 5, 5)": [
+      [
+       "(0, 1, 5)"
+      ],
+      [
+       0,
+       -6
+      ]
+     ],
+     "('click', 0, 3, 3)": [
+      [
+       "(0, 1, 5)"
+      ],
+      [
+       0,
+       -6
+      ]
+     ],
+     "('click', 15, 3, 3)": [
+      [
+       "(0, 1, 5)"
+      ],
+      [
+       0,
+       6
+      ]
+     ],
+     "('click', 12, 3, 3)": [
+      [
+       "(0, 1, 5)"
+      ],
+      [
+       0,
+       6
+      ]
+     ]
+    },
+    "volatile_rows": [
+     56
+    ],
+    "terrain_colours": [
+     5
+    ],
+    "known_noops": [
+     "('click', 4, 18, 18)",
+     "('click', 3, 9, 46)",
+     "('click', 0, 5, 10)",
+     "('click', 0, 1, 5)",
+     "('click', 15, 5, 10)",
+     "('click', 2, 9, 14)",
+     "('click', 15, 7, 12)",
+     "('click', 0, 10, 10)",
+     "('click', 'lattice')",
+     "('click', 2, 17, 17)",
+     "('click', 15, 13, 13)",
+     "('click', 4, 1, 61)",
+     "('click', 0, 7, 12)",
+     "('click', 0, 13, 13)",
+     "('click', 2, 14, 9)",
+     "('click', 0, 12, 7)",
+     "('click', 15, 5, 5)",
+     "('click', 15, 12, 7)",
+     "('click', 15, 10, 10)",
+     "('click', 0, 5, 5)",
+     "('click', 0, 5, 9)",
+     "('click', 15, 4, 4)",
+     "('click', 0, 9, 9)",
+     "('click', 0, 9, 5)",
+     "('click', 0, 4, 4)",
+     "('click', 15, 10, 5)",
+     "('click', 0, 10, 5)",
+     "('click', 15, 9, 9)",
+     "('click', 0, 4, 8)",
+     "('click', 0, 10, 9)",
+     "('click', 12, 10, 10)",
+     "('click', 15, 5, 9)",
+     "('click', 4, 1, 51)",
+     "('click', 4, 1, 45)",
+     "('click', 4, 1, 40)",
+     "('click', 4, 1, 33)",
+     "('click', 12, 5, 10)",
+     "('click', 12, 13, 13)",
+     "('click', 12, 12, 7)",
+     "('click', 12, 10, 5)",
+     "('click', 12, 5, 5)",
+     "('click', 4, 1, 1)",
+     "('click', 12, 4, 4)"
+    ],
+    "click_classes_modelled": 96,
+    "key_reliability": {
+     "('click', 4, 5, 5)": [
+      20,
+      0.0
+     ],
+     "('click', 15, 3, 3)": [
+      20,
+      0.0
+     ],
+     "('click', 0, 3, 3)": [
+      20,
+      0.0
+     ],
+     "('click', 12, 3, 3)": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "cd82-fb555c5d",
+   "levels_completed": 1,
+   "win_levels": 6,
+   "level_actions": [
+    653
+   ],
+   "actions": 2000,
+   "resets": 20,
+   "distinct_frames": 3249,
+   "final_state": "NOT_FINISHED",
+   "seconds": 256.23,
+   "baseline_actions": [
+    55,
+    8,
+    41,
+    21,
+    23,
+    23
+   ],
+   "score": 0.033781561610477046
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 2,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 2,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 601,
+       "n_options": 2,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 901,
+       "n_options": 2,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1201,
+       "n_options": 2,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1501,
+       "n_options": 2,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1801,
+       "n_options": 2,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1535,
+    "goal_plans": 0,
+    "deaths": 26,
+    "surviving_goals": null,
+    "plan_steps": 1973,
+    "replans_on_error": 46,
+    "fallback_steps": 0,
+    "pred_total": 1697,
+    "pred_acc": 0.318,
+    "pred_by_source": {
+     "memo": [
+      438,
+      1.0
+     ],
+     "model": [
+      50,
+      0.08
+     ],
+     "unreliable": [
+      1209,
+      0.08
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(8, 3, 3)"
+      ],
+      [
+       -3,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(8, 3, 3)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(8, 3, 3)"
+      ],
+      [
+       0,
+       -3
+      ]
+     ],
+     "4": [
+      [
+       "(8, 3, 3)"
+      ],
+      [
+       0,
+       3
+      ]
+     ],
+     "5": [
+      [
+       "(0, 15, 15)",
+       "(8, 3, 3)"
+      ],
+      [
+       3,
+       -3
+      ]
+     ]
+    },
+    "volatile_rows": [
+     0
+    ],
+    "terrain_colours": [
+     10
+    ],
+    "known_noops": [
+     "('click', 0, 15, 15)",
+     "('click', 14, 21, 9)",
+     "('click', 'lattice')",
+     "('click', 12, 15, 15)",
+     "('click', 0, 21, 9)",
+     "('click', 0, 9, 21)",
+     "('click', 14, 9, 21)"
+    ],
+    "click_classes_modelled": 7,
+    "key_reliability": {
+     "1": [
+      20,
+      0.05
+     ],
+     "2": [
+      20,
+      0.1
+     ],
+     "3": [
+      20,
+      0.05
+     ],
+     "4": [
+      20,
+      0.2
+     ],
+     "5": [
+      20,
+      0.2
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "cn04-2fe56bfb",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 27,
+   "distinct_frames": 1542,
+   "final_state": "NOT_FINISHED",
+   "seconds": 236.14,
+   "baseline_actions": [
+    29,
+    54,
+    85,
+    300,
+    208,
+    113
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 601,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 901,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1201,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1501,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1801,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1644,
+    "goal_plans": 0,
+    "deaths": 19,
+    "surviving_goals": null,
+    "plan_steps": 1980,
+    "replans_on_error": 194,
+    "fallback_steps": 0,
+    "pred_total": 1211,
+    "pred_acc": 0.386,
+    "pred_by_source": {
+     "memo": [
+      439,
+      0.706
+     ],
+     "model": [
+      122,
+      0.467
+     ],
+     "unreliable": [
+      650,
+      0.154
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(14, 2, 2)"
+      ],
+      [
+       -2,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(14, 2, 2)"
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(14, 2, 2)"
+      ],
+      [
+       0,
+       -2
+      ]
+     ],
+     "4": [
+      [
+       "(14, 2, 2)"
+      ],
+      [
+       0,
+       2
+      ]
+     ],
+     "('click', 0, 7, 15)": [
+      [
+       "(9, 4, 4)"
+      ],
+      [
+       14,
+       -10
+      ]
+     ],
+     "('click', 9, 5, 13)": [
+      [
+       "(9, 1, 1)"
+      ],
+      [
+       14,
+       -8
+      ]
+     ]
+    },
+    "volatile_rows": [],
+    "terrain_colours": [
+     3,
+     4,
+     5
+    ],
+    "known_noops": [
+     "('click', 0, 2, 2)",
+     "('click', 2, 6, 6)",
+     "('click', 9, 4, 4)",
+     "('click', 11, 2, 2)",
+     "('click', 2, 4, 4)",
+     "('click', 8, 4, 6)",
+     "('click', 13, 4, 4)",
+     "('click', 9, 1, 1)",
+     "('click', 14, 2, 2)",
+     "('click', 'lattice')",
+     "('click', 8, 6, 4)",
+     "('click', 0, 1, 37)",
+     "('click', 0, 1, 36)",
+     "('click', 0, 1, 33)",
+     "('click', 0, 1, 20)",
+     "('click', 0, 1, 17)",
+     "('click', 0, 1, 15)",
+     "('click', 0, 1, 1)",
+     "('click', 0, 1, 56)",
+     "('click', 0, 1, 54)",
+     "('click', 0, 1, 53)",
+     "('click', 0, 1, 51)",
+     "('click', 0, 1, 48)",
+     "('click', 0, 1, 46)",
+     "('click', 0, 1, 41)",
+     "('click', 0, 1, 30)",
+     "('click', 0, 1, 23)",
+     "('click', 0, 1, 13)",
+     "('click', 0, 1, 11)",
+     "('click', 0, 1, 10)",
+     "('click', 0, 1, 8)"
+    ],
+    "click_classes_modelled": 55,
+    "key_reliability": {
+     "1": [
+      20,
+      0.15
+     ],
+     "2": [
+      20,
+      0.2
+     ],
+     "3": [
+      20,
+      0.4
+     ],
+     "4": [
+      20,
+      0.55
+     ],
+     "('click', 9, 5, 13)": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "dc22-fdcac232",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 20,
+   "distinct_frames": 1042,
+   "final_state": "NOT_FINISHED",
+   "seconds": 243.35,
+   "baseline_actions": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 100,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 400,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 700,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1000,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1300,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1600,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1900,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 862,
+    "goal_plans": 0,
+    "deaths": 5,
+    "surviving_goals": null,
+    "plan_steps": 862,
+    "replans_on_error": 0,
+    "fallback_steps": 1132,
+    "pred_total": 0,
+    "pred_acc": null,
+    "pred_by_source": {
+     "memo": [
+      0,
+      null
+     ],
+     "model": [
+      0,
+      null
+     ],
+     "unreliable": [
+      0,
+      null
+     ]
+    },
+    "movers": {},
+    "volatile_rows": [
+     63
+    ],
+    "terrain_colours": [
+     5
+    ],
+    "known_noops": [
+     "('click', 9, 6, 6)",
+     "('click', 8, 6, 6)",
+     "('click', 2, 2, 2)",
+     "('click', 0, 2, 2)",
+     "('click', 2, 4, 2)",
+     "('click', 8, 2, 2)",
+     "('click', 0, 2, 4)",
+     "('click', 2, 6, 6)",
+     "('click', 4, 30, 30)",
+     "('click', 0, 4, 2)",
+     "('click', 2, 2, 4)",
+     "('click', 0, 6, 2)",
+     "('click', 'lattice')"
+    ],
+    "click_classes_modelled": 12,
+    "key_reliability": {}
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "ft09-0d8bbf25",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 6,
+   "distinct_frames": 318,
+   "final_state": "NOT_FINISHED",
+   "seconds": 231.02,
+   "baseline_actions": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 4,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 4,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 2,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 302,
+       "n_options": 19,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 602,
+       "n_options": 19,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 902,
+       "n_options": 19,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 128,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1015,
+    "goal_plans": 440,
+    "deaths": 14,
+    "surviving_goals": [
+     "appeared((2, 3, 3))",
+     "appeared((2, 5, 5))",
+     "appeared((9, 1, 10))",
+     "gone((1, 3, 3))",
+     "touch((9, 1, 1))",
+     "touch((9, 7, 7))"
+    ],
+    "plan_steps": 1464,
+    "replans_on_error": 301,
+    "fallback_steps": 521,
+    "pred_total": 1954,
+    "pred_acc": 0.735,
+    "pred_by_source": {
+     "memo": [
+      1444,
+      0.873
+     ],
+     "model": [
+      271,
+      0.565
+     ],
+     "unreliable": [
+      239,
+      0.092
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(9, 5, 5)"
+      ],
+      [
+       -6,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(9, 5, 5)"
+      ],
+      [
+       6,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(9, 5, 5)"
+      ],
+      [
+       0,
+       -6
+      ]
+     ],
+     "4": [
+      [
+       "(9, 5, 5)"
+      ],
+      [
+       0,
+       6
+      ]
+     ],
+     "5": [
+      [
+       "(9, 1, 3)",
+       "(9, 3, 3)"
+      ],
+      [
+       0,
+       4
+      ]
+     ]
+    },
+    "volatile_rows": [],
+    "terrain_colours": [
+     0,
+     5
+    ],
+    "known_noops": [],
+    "click_classes_modelled": 0,
+    "key_reliability": {
+     "2": [
+      20,
+      0.35
+     ],
+     "5": [
+      20,
+      0.0
+     ],
+     "1": [
+      20,
+      0.0
+     ],
+     "4": [
+      20,
+      0.15
+     ],
+     "3": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "g50t-5849a774",
+   "levels_completed": 1,
+   "win_levels": 7,
+   "level_actions": [
+    1159
+   ],
+   "actions": 2000,
+   "resets": 15,
+   "distinct_frames": 6118,
+   "final_state": "NOT_FINISHED",
+   "seconds": 148.09,
+   "baseline_actions": [
+    78,
+    175,
+    179,
+    230,
+    96,
+    54,
+    67
+   ],
+   "score": 0.016175745379091517
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 14,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 8,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 601,
+       "n_options": 9,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 901,
+       "n_options": 9,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1201,
+       "n_options": 9,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1501,
+       "n_options": 9,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1801,
+       "n_options": 9,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1903,
+    "goal_plans": 0,
+    "deaths": 19,
+    "surviving_goals": null,
+    "plan_steps": 1980,
+    "replans_on_error": 282,
+    "fallback_steps": 0,
+    "pred_total": 756,
+    "pred_acc": 0.198,
+    "pred_by_source": {
+     "memo": [
+      315,
+      0.244
+     ],
+     "model": [
+      57,
+      0.228
+     ],
+     "unreliable": [
+      384,
+      0.156
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(0, 1, 1)",
+       "(14, 3, 3)"
+      ],
+      [
+       -3,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(0, 1, 1)",
+       "(14, 3, 3)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(0, 1, 1)",
+       "(14, 3, 3)"
+      ],
+      [
+       0,
+       -3
+      ]
+     ],
+     "4": [
+      [
+       "(0, 1, 1)",
+       "(14, 3, 3)"
+      ],
+      [
+       0,
+       3
+      ]
+     ],
+     "('click', 14, 3, 3)": [
+      [
+       "(14, 3, 2)"
+      ],
+      [
+       0,
+       4
+      ]
+     ]
+    },
+    "volatile_rows": [],
+    "terrain_colours": [
+     2
+    ],
+    "known_noops": [
+     "('click', 1, 21, 18)",
+     "('click', 15, 21, 6)",
+     "('click', 1, 21, 15)",
+     "('click', 4, 5, 5)",
+     "('click', 1, 3, 3)",
+     "('click', 0, 1, 1)",
+     "('click', 'lattice')",
+     "('click', 4, 1, 51)",
+     "('click', 4, 1, 35)",
+     "('click', 4, 1, 33)",
+     "('click', 4, 1, 26)",
+     "('click', 1, 21, 21)",
+     "('click', 1, 3, 6)",
+     "('click', 1, 21, 24)"
+    ],
+    "click_classes_modelled": 125,
+    "key_reliability": {
+     "1": [
+      20,
+      0.1
+     ],
+     "2": [
+      20,
+      0.2
+     ],
+     "3": [
+      20,
+      0.0
+     ],
+     "4": [
+      20,
+      0.35
+     ],
+     "('click', 14, 3, 3)": [
+      20,
+      0.05
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "ka59-38d34dbb",
+   "levels_completed": 0,
+   "win_levels": 7,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 20,
+   "distinct_frames": 1394,
+   "final_state": "NOT_FINISHED",
+   "seconds": 233.88,
+   "baseline_actions": [
+    28,
+    109,
+    51,
+    51,
+    33,
+    132,
+    326
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 1,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 1,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 11,
+       "n_options": 16,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 970,
+    "goal_plans": 716,
+    "deaths": 1,
+    "surviving_goals": [
+     "appeared((1, 2, 2))",
+     "appeared((2, 1, 2))",
+     "appeared((2, 2, 1))",
+     "appeared((3, 6, 6))",
+     "touch((1, 2, 2))",
+     "touch((1, 4, 4))",
+     "touch((2, 1, 2))",
+     "touch((2, 2, 1))"
+    ],
+    "plan_steps": 1998,
+    "replans_on_error": 48,
+    "fallback_steps": 0,
+    "pred_total": 1761,
+    "pred_acc": 0.972,
+    "pred_by_source": {
+     "memo": [
+      1705,
+      1.0
+     ],
+     "model": [
+      55,
+      0.127
+     ],
+     "unreliable": [
+      1,
+      0.0
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(11, 6, 6)",
+       "(12, 4, 4)",
+       "(9, 1, 2)",
+       "(9, 8, 4)"
+      ],
+      [
+       -6,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(11, 6, 6)",
+       "(12, 4, 4)",
+       "(9, 1, 2)",
+       "(9, 8, 4)"
+      ],
+      [
+       6,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(11, 6, 6)",
+       "(12, 4, 4)",
+       "(9, 2, 1)",
+       "(9, 4, 8)"
+      ],
+      [
+       0,
+       -6
+      ]
+     ],
+     "4": [
+      [
+       "(11, 6, 6)",
+       "(12, 4, 4)",
+       "(9, 2, 1)",
+       "(9, 4, 8)"
+      ],
+      [
+       0,
+       6
+      ]
+     ],
+     "('click', 9, 44, 20)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       12,
+       0
+      ]
+     ],
+     "('click', 1, 1, 1)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       12
+      ]
+     ],
+     "('click', 14, 4, 4)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       12
+      ]
+     ],
+     "('click', 2, 2, 1)": [
+      [
+       "(14, 4, 4)"
+      ],
+      [
+       0,
+       12
+      ]
+     ],
+     "('click', 1, 2, 2)": [
+      [
+       "(14, 4, 4)"
+      ],
+      [
+       12,
+       0
+      ]
+     ],
+     "('click', 5, 13, 10)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       6
+      ]
+     ],
+     "('click', 15, 12, 8)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       6
+      ]
+     ],
+     "('click', 9, 11, 4)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       6
+      ]
+     ],
+     "('click', 5, 4, 4)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       6
+      ]
+     ],
+     "('click', 0, 2, 2)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       6
+      ]
+     ]
+    },
+    "volatile_rows": [],
+    "terrain_colours": [
+     10
+    ],
+    "known_noops": [
+     "('click', 5, 44, 44)",
+     "('click', 0, 42, 42)",
+     "('click', 1, 4, 4)",
+     "('click', 'lattice')",
+     "7",
+     "('click', 5, 50, 53)",
+     "('click', 0, 18, 42)",
+     "('click', 9, 8, 1)",
+     "('click', 9, 10, 44)",
+     "('click', 11, 6, 6)",
+     "('click', 9, 2, 1)",
+     "('click', 12, 4, 4)",
+     "('click', 9, 4, 8)",
+     "('click', 0, 12, 12)",
+     "('click', 9, 14, 14)"
+    ],
+    "click_classes_modelled": 25,
+    "key_reliability": {
+     "('click', 1, 1, 1)": [
+      6,
+      0.0
+     ],
+     "('click', 2, 2, 1)": [
+      8,
+      0.0
+     ],
+     "('click', 5, 13, 10)": [
+      2,
+      0.0
+     ],
+     "('click', 15, 12, 8)": [
+      1,
+      0.0
+     ],
+     "('click', 9, 11, 4)": [
+      1,
+      0.0
+     ],
+     "('click', 5, 4, 4)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 2, 2)": [
+      1,
+      0.0
+     ],
+     "('click', 14, 4, 4)": [
+      8,
+      0.0
+     ],
+     "('click', 9, 44, 20)": [
+      1,
+      0.0
+     ],
+     "3": [
+      10,
+      0.3
+     ],
+     "4": [
+      11,
+      0.27
+     ],
+     "2": [
+      3,
+      0.0
+     ],
+     "1": [
+      3,
+      0.33
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "lf52-271a04aa",
+   "levels_completed": 1,
+   "win_levels": 10,
+   "level_actions": [
+    79
+   ],
+   "actions": 2000,
+   "resets": 2,
+   "distinct_frames": 2385,
+   "final_state": "NOT_FINISHED",
+   "seconds": 45.79,
+   "baseline_actions": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ],
+   "score": 0.2983204905973693
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 8,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 8,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 10,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 0,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 300,
+       "n_options": 14,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 600,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 900,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 1200,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 1500,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 1800,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1710,
+    "goal_plans": 0,
+    "deaths": 26,
+    "surviving_goals": [
+     "touch((1, 4, 4))",
+     "touch((10, 4, 4))",
+     "touch((8, 8, 6))"
+    ],
+    "plan_steps": 1973,
+    "replans_on_error": 180,
+    "fallback_steps": 0,
+    "pred_total": 799,
+    "pred_acc": 0.329,
+    "pred_by_source": {
+     "memo": [
+      420,
+      0.626
+     ],
+     "model": [
+      23,
+      0.0
+     ],
+     "unreliable": [
+      356,
+      0.0
+     ]
+    },
+    "movers": {
+     "('click', 8, 8, 6)": [
+      [
+       "(11, 4, 4)",
+       "(15, 4, 4)",
+       "(2, 4, 4)",
+       "(9, 4, 4)"
+      ],
+      [
+       0,
+       -6
+      ]
+     ],
+     "('click', 8, 4, 3)": [
+      [
+       "(2, 2, 2)"
+      ],
+      [
+       0,
+       12
+      ]
+     ],
+     "('click', 14, 4, 3)": [
+      [
+       "(2, 2, 2)"
+      ],
+      [
+       0,
+       -12
+      ]
+     ]
+    },
+    "volatile_rows": [
+     0,
+     17,
+     18,
+     20,
+     21,
+     26,
+     27,
+     29,
+     30,
+     32,
+     33,
+     35,
+     36,
+     38,
+     39,
+     41,
+     42,
+     44,
+     45
+    ],
+    "terrain_colours": [
+     3,
+     4
+    ],
+    "known_noops": [
+     "('click', 14, 64, 1)",
+     "('click', 5, 1, 4)",
+     "('click', 11, 2, 2)",
+     "('click', 'lattice')",
+     "('click', 5, 5, 1)",
+     "('click', 14, 59, 1)",
+     "('click', 5, 10, 1)",
+     "('click', 14, 54, 1)",
+     "('click', 5, 15, 1)",
+     "('click', 14, 49, 1)",
+     "('click', 5, 20, 1)",
+     "('click', 14, 44, 1)",
+     "('click', 14, 1, 4)",
+     "('click', 10, 2, 2)",
+     "('click', 9, 2, 2)",
+     "('click', 15, 2, 2)",
+     "('click', 2, 2, 2)",
+     "('click', 11, 1, 1)",
+     "('click', 1, 2, 2)",
+     "('click', 14, 63, 1)",
+     "('click', 5, 2, 1)",
+     "('click', 14, 62, 1)",
+     "('click', 5, 3, 1)",
+     "('click', 14, 61, 1)",
+     "('click', 5, 4, 1)",
+     "('click', 14, 60, 1)",
+     "('click', 5, 6, 1)",
+     "('click', 14, 58, 1)",
+     "('click', 5, 7, 1)",
+     "('click', 14, 57, 1)",
+     "('click', 5, 9, 1)",
+     "('click', 14, 55, 1)",
+     "('click', 5, 11, 1)",
+     "('click', 14, 53, 1)",
+     "('click', 5, 12, 1)",
+     "('click', 14, 52, 1)",
+     "('click', 5, 13, 1)",
+     "('click', 14, 51, 1)",
+     "('click', 5, 14, 1)",
+     "('click', 14, 50, 1)",
+     "('click', 5, 16, 1)",
+     "('click', 14, 48, 1)",
+     "('click', 5, 17, 1)",
+     "('click', 14, 47, 1)",
+     "('click', 5, 18, 1)",
+     "('click', 14, 46, 1)",
+     "('click', 5, 19, 1)",
+     "('click', 14, 45, 1)",
+     "('click', 5, 21, 1)",
+     "('click', 14, 43, 1)",
+     "('click', 5, 22, 1)",
+     "('click', 14, 42, 1)",
+     "('click', 5, 23, 1)",
+     "('click', 14, 41, 1)",
+     "('click', 5, 25, 1)",
+     "('click', 14, 39, 1)",
+     "('click', 5, 26, 1)",
+     "('click', 14, 38, 1)",
+     "('click', 5, 27, 1)",
+     "('click', 14, 37, 1)",
+     "('click', 5, 28, 1)",
+     "('click', 14, 36, 1)",
+     "('click', 5, 29, 1)",
+     "('click', 14, 35, 1)",
+     "('click', 5, 30, 1)",
+     "('click', 14, 34, 1)",
+     "('click', 5, 31, 1)",
+     "('click', 14, 33, 1)",
+     "('click', 5, 32, 1)",
+     "('click', 14, 32, 1)",
+     "('click', 5, 33, 1)",
+     "('click', 14, 31, 1)",
+     "('click', 5, 34, 1)",
+     "('click', 14, 30, 1)",
+     "('click', 5, 35, 1)",
+     "('click', 14, 29, 1)",
+     "('click', 5, 36, 1)",
+     "('click', 14, 28, 1)",
+     "('click', 5, 37, 1)",
+     "('click', 14, 27, 1)",
+     "('click', 5, 38, 1)",
+     "('click', 14, 26, 1)",
+     "('click', 5, 39, 1)",
+     "('click', 14, 25, 1)",
+     "('click', 5, 41, 1)",
+     "('click', 14, 23, 1)",
+     "('click', 5, 42, 1)",
+     "('click', 14, 22, 1)",
+     "('click', 5, 43, 1)",
+     "('click', 14, 21, 1)",
+     "('click', 5, 44, 1)",
+     "('click', 14, 20, 1)",
+     "('click', 5, 45, 1)",
+     "('click', 14, 19, 1)",
+     "('click', 5, 46, 1)",
+     "('click', 14, 18, 1)",
+     "('click', 5, 47, 1)",
+     "('click', 14, 17, 1)",
+     "('click', 5, 48, 1)",
+     "('click', 14, 16, 1)",
+     "('click', 5, 49, 1)",
+     "('click', 14, 15, 1)",
+     "('click', 5, 50, 1)",
+     "('click', 14, 14, 1)",
+     "('click', 5, 51, 1)",
+     "('click', 14, 13, 1)",
+     "('click', 5, 52, 1)",
+     "('click', 14, 12, 1)",
+     "('click', 5, 53, 1)",
+     "('click', 14, 11, 1)",
+     "('click', 5, 54, 1)",
+     "('click', 14, 10, 1)",
+     "('click', 5, 55, 1)",
+     "('click', 14, 9, 1)",
+     "('click', 5, 57, 1)",
+     "('click', 14, 7, 1)",
+     "('click', 5, 58, 1)",
+     "('click', 14, 6, 1)",
+     "('click', 5, 59, 1)",
+     "('click', 14, 5, 1)",
+     "('click', 5, 60, 1)",
+     "('click', 14, 4, 1)",
+     "('click', 5, 61, 1)",
+     "('click', 14, 3, 1)",
+     "('click', 5, 62, 1)",
+     "('click', 14, 2, 1)",
+     "('click', 5, 63, 1)",
+     "('click', 14, 1, 1)"
+    ],
+    "click_classes_modelled": 130,
+    "key_reliability": {
+     "('click', 8, 8, 6)": [
+      3,
+      0.0
+     ],
+     "('click', 8, 4, 3)": [
+      20,
+      0.0
+     ],
+     "('click', 14, 4, 3)": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "lp85-305b61c3",
+   "levels_completed": 1,
+   "win_levels": 8,
+   "level_actions": [
+    15
+   ],
+   "actions": 2000,
+   "resets": 27,
+   "distinct_frames": 1407,
+   "final_state": "NOT_FINISHED",
+   "seconds": 259.82,
+   "baseline_actions": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ],
+   "score": 2.7777777777777777
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 2,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 2,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 65,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 501,
+    "goal_plans": 21,
+    "deaths": 25,
+    "surviving_goals": [
+     "touch((5, 7, 7))",
+     "touch((9, 1, 1))",
+     "touch((9, 3, 3))"
+    ],
+    "plan_steps": 1047,
+    "replans_on_error": 183,
+    "fallback_steps": 927,
+    "pred_total": 1943,
+    "pred_acc": 0.894,
+    "pred_by_source": {
+     "memo": [
+      1444,
+      0.956
+     ],
+     "model": [
+      426,
+      0.718
+     ],
+     "unreliable": [
+      73,
+      0.685
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       -5,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       5,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       0,
+       -5
+      ]
+     ],
+     "4": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       0,
+       5
+      ]
+     ]
+    },
+    "volatile_rows": [
+     61,
+     62
+    ],
+    "terrain_colours": [
+     3,
+     4
+    ],
+    "known_noops": [],
+    "click_classes_modelled": 0,
+    "key_reliability": {
+     "1": [
+      20,
+      0.8
+     ],
+     "2": [
+      20,
+      0.75
+     ],
+     "3": [
+      20,
+      1.0
+     ],
+     "4": [
+      20,
+      0.95
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "ls20-9607627b",
+   "levels_completed": 1,
+   "win_levels": 7,
+   "level_actions": [
+    353
+   ],
+   "actions": 2000,
+   "resets": 26,
+   "distinct_frames": 1050,
+   "final_state": "NOT_FINISHED",
+   "seconds": 70.42,
+   "baseline_actions": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ],
+   "score": 0.013871962928612128
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 1,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 1,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 1,
+       "n": 0,
+       "n_options": 4,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1643,
+    "goal_plans": 0,
+    "deaths": 12,
+    "surviving_goals": null,
+    "plan_steps": 1987,
+    "replans_on_error": 188,
+    "fallback_steps": 0,
+    "pred_total": 1673,
+    "pred_acc": 0.53,
+    "pred_by_source": {
+     "memo": [
+      344,
+      0.997
+     ],
+     "model": [
+      607,
+      0.692
+     ],
+     "unreliable": [
+      722,
+      0.172
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(10, 5, 5)"
+      ],
+      [
+       -5,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(10, 5, 5)"
+      ],
+      [
+       5,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(10, 5, 5)"
+      ],
+      [
+       0,
+       -5
+      ]
+     ],
+     "4": [
+      [
+       "(10, 5, 5)"
+      ],
+      [
+       0,
+       5
+      ]
+     ]
+    },
+    "volatile_rows": [],
+    "terrain_colours": [
+     5,
+     6,
+     15
+    ],
+    "known_noops": [
+     "5",
+     "('click', 10, 5, 5)",
+     "('click', 'lattice')",
+     "('click', 0, 1, 3)"
+    ],
+    "click_classes_modelled": 27,
+    "key_reliability": {
+     "1": [
+      20,
+      0.85
+     ],
+     "2": [
+      20,
+      0.6
+     ],
+     "3": [
+      20,
+      0.45
+     ],
+     "4": [
+      20,
+      0.15
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "m0r0-492f87ba",
+   "levels_completed": 1,
+   "win_levels": 6,
+   "level_actions": [
+    1725
+   ],
+   "actions": 2000,
+   "resets": 13,
+   "distinct_frames": 1568,
+   "final_state": "NOT_FINISHED",
+   "seconds": 60.45,
+   "baseline_actions": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ],
+   "score": 0.001440273651993879
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 601,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 901,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1201,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1501,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1801,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1149,
+    "goal_plans": 0,
+    "deaths": 32,
+    "surviving_goals": null,
+    "plan_steps": 1967,
+    "replans_on_error": 193,
+    "fallback_steps": 0,
+    "pred_total": 1035,
+    "pred_acc": 0.79,
+    "pred_by_source": {
+     "memo": [
+      828,
+      0.988
+     ],
+     "model": [
+      183,
+      0.0
+     ],
+     "unreliable": [
+      24,
+      0.0
+     ]
+    },
+    "movers": {
+     "('click', 0, 64, 1)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "('click', 15, 1, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       -9,
+       15
+      ]
+     ],
+     "('click', 1, 1, 1)": [
+      [
+       "(1, 1, 1)",
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       2,
+       5
+      ]
+     ],
+     "('click', 1, 2, 1)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       6,
+       6
+      ]
+     ],
+     "('click', 15, 5, 5)": [
+      [
+       "(1, 1, 2)",
+       "(15, 1, 1)"
+      ],
+      [
+       6,
+       13
+      ]
+     ],
+     "('click', 6, 1, 1)": [
+      [
+       "(1, 1, 1)",
+       "(1, 1, 2)"
+      ],
+      [
+       3,
+       3
+      ]
+     ],
+     "('click', 2, 12, 7)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       4,
+       2
+      ]
+     ],
+     "('click', 0, 59, 3)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       3,
+       1
+      ]
+     ],
+     "('click', 1, 1, 2)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       6,
+       6
+      ]
+     ],
+     "('click', 0, 53, 4)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     "('click', 0, 51, 4)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       10,
+       10
+      ]
+     ],
+     "('click', 0, 49, 4)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       4,
+       2
+      ]
+     ],
+     "('click', 0, 47, 4)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     "('click', 0, 45, 4)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       1,
+       -2
+      ]
+     ],
+     "('click', 1, 3, 1)": [
+      [
+       "(1, 4, 1)"
+      ],
+      [
+       5,
+       -1
+      ]
+     ],
+     "('click', 1, 4, 1)": [
+      [
+       "(1, 4, 1)",
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       7,
+       -2
+      ]
+     ],
+     "('click', 0, 42, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       10,
+       -19
+      ]
+     ],
+     "('click', 0, 41, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       -7,
+       -2
+      ]
+     ],
+     "('click', 0, 39, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       13,
+       -19
+      ]
+     ],
+     "('click', 0, 37, 3)": [
+      [
+       "(1, 1, 1)",
+       "(1, 1, 2)"
+      ],
+      [
+       3,
+       1
+      ]
+     ],
+     "('click', 0, 35, 3)": [
+      [
+       "(1, 1, 2)",
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "('click', 0, 33, 3)": [
+      [
+       "(1, 1, 2)"
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     "('click', 0, 31, 4)": [
+      [
+       "(1, 1, 2)"
+      ],
+      [
+       7,
+       12
+      ]
+     ],
+     "('click', 0, 29, 4)": [
+      [
+       "(1, 1, 2)",
+       "(15, 1, 1)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "('click', 1, 5, 1)": [
+      [
+       "(6, 1, 1)"
+      ],
+      [
+       11,
+       -3
+      ]
+     ],
+     "('click', 1, 1, 3)": [
+      [
+       "(0, 5, 5)",
+       "(15, 1, 1)"
+      ],
+      [
+       0,
+       4
+      ]
+     ],
+     "('click', 1, 1, 4)": [
+      [
+       "(6, 1, 1)"
+      ],
+      [
+       1,
+       9
+      ]
+     ],
+     "('click', 3, 3, 2)": [
+      [
+       "(3, 1, 1)"
+      ],
+      [
+       0,
+       -4
+      ]
+     ],
+     "('click', 0, 63, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       7,
+       -19
+      ]
+     ],
+     "('click', 0, 62, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       0,
+       -17
+      ]
+     ],
+     "('click', 0, 61, 1)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "('click', 0, 60, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       -13,
+       -12
+      ]
+     ],
+     "('click', 0, 59, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       8,
+       -19
+      ]
+     ],
+     "('click', 0, 58, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       6,
+       -19
+      ]
+     ],
+     "('click', 0, 54, 1)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "('click', 0, 53, 1)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       -2
+      ]
+     ],
+     "('click', 0, 52, 1)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       1,
+       -1
+      ]
+     ],
+     "('click', 0, 51, 1)": [
+      [
+       "(1, 1, 1)",
+       "(1, 1, 2)"
+      ],
+      [
+       3,
+       1
+      ]
+     ],
+     "('click', 0, 47, 1)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       2,
+       1
+      ]
+     ],
+     "('click', 0, 46, 1)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       2,
+       1
+      ]
+     ],
+     "('click', 0, 45, 1)": [
+      [
+       "(1, 1, 1)",
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       -4,
+       -7
+      ]
+     ],
+     "('click', 0, 41, 3)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       4,
+       3
+      ]
+     ],
+     "('click', 0, 36, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       -6,
+       -2
+      ]
+     ],
+     "('click', 0, 31, 3)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "('click', 0, 57, 3)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       4,
+       3
+      ]
+     ],
+     "('click', 0, 43, 4)": [
+      [
+       "(1, 1, 1)",
+       "(1, 1, 2)"
+      ],
+      [
+       2,
+       2
+      ]
+     ],
+     "('click', 0, 41, 4)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "('click', 0, 39, 4)": [
+      [
+       "(1, 1, 1)",
+       "(15, 1, 1)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "('click', 0, 37, 4)": [
+      [
+       "(1, 1, 1)",
+       "(1, 1, 2)",
+       "(15, 1, 1)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "('click', 0, 35, 4)": [
+      [
+       "(1, 1, 2)",
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "('click', 0, 33, 4)": [
+      [
+       "(1, 1, 2)"
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "('click', 0, 38, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       0,
+       -3
+      ]
+     ],
+     "('click', 0, 32, 1)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       -2,
+       -8
+      ]
+     ],
+     "('click', 15, 5, 2)": [
+      [
+       "(15, 5, 2)"
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "('click', 0, 29, 2)": [
+      [
+       "(15, 5, 2)"
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     "('click', 3, 1, 1)": [
+      [
+       "(3, 1, 1)"
+      ],
+      [
+       0,
+       -4
+      ]
+     ],
+     "('click', 0, 49, 3)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       4,
+       3
+      ]
+     ],
+     "('click', 0, 47, 3)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       2,
+       1
+      ]
+     ],
+     "('click', 0, 39, 3)": [
+      [
+       "(1, 1, 2)",
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "('click', 0, 29, 1)": [
+      [
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       -1,
+       -7
+      ]
+     ],
+     "('click', 0, 55, 3)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       4,
+       3
+      ]
+     ],
+     "('click', 0, 53, 3)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       4,
+       3
+      ]
+     ],
+     "('click', 0, 45, 3)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       1,
+       -1
+      ]
+     ],
+     "('click', 0, 41, 2)": [
+      [
+       "(15, 5, 2)",
+       "(15, 5, 4)",
+       "(6, 1, 1)"
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     "('click', 3, 2, 2)": [
+      [
+       "(3, 1, 1)"
+      ],
+      [
+       -5,
+       -2
+      ]
+     ],
+     "('click', 15, 5, 3)": [
+      [
+       "(3, 1, 1)"
+      ],
+      [
+       5,
+       2
+      ]
+     ],
+     "('click', 0, 28, 5)": [
+      [
+       "(15, 5, 3)",
+       "(6, 1, 1)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "('click', 3, 4, 4)": [
+      [
+       "(0, 4, 4)",
+       "(3, 4, 4)"
+      ],
+      [
+       5,
+       -5
+      ]
+     ],
+     "('click', 0, 47, 6)": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "('click', 0, 41, 5)": [
+      [
+       "(1, 1, 1)",
+       "(15, 1, 1)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "('click', 0, 35, 5)": [
+      [
+       "(1, 1, 2)",
+       "(15, 5, 5)",
+       "(6, 1, 1)"
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "('click', 0, 31, 5)": [
+      [
+       "(15, 5, 3)",
+       "(6, 1, 1)"
+      ],
+      [
+       6,
+       0
+      ]
+     ],
+     "('click', 0, 29, 5)": [
+      [
+       "(1, 1, 2)",
+       "(15, 1, 1)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "('click', 0, 36, 2)": [
+      [
+       "(3, 1, 1)"
+      ],
+      [
+       -6,
+       0
+      ]
+     ],
+     "('click', 0, 52, 2)": [
+      [
+       "(15, 5, 4)",
+       "(6, 1, 1)"
+      ],
+      [
+       2,
+       0
+      ]
+     ],
+     "('click', 1, 6, 1)": [
+      [
+       "(3, 2, 2)"
+      ],
+      [
+       7,
+       0
+      ]
+     ],
+     "('click', 1, 7, 1)": [
+      [
+       "(15, 5, 2)"
+      ],
+      [
+       1,
+       0
+      ]
+     ],
+     "('click', 0, 50, 2)": [
+      [
+       "(3, 1, 1)"
+      ],
+      [
+       -4,
+       0
+      ]
+     ],
+     "('click', 0, 47, 2)": [
+      [
+       "(15, 5, 2)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "('click', 15, 7, 3)": [
+      [
+       "(6, 1, 1)"
+      ],
+      [
+       -2,
+       0
+      ]
+     ]
+    },
+    "volatile_rows": [
+     62
+    ],
+    "terrain_colours": [
+     5
+    ],
+    "known_noops": [],
+    "click_classes_modelled": 204,
+    "key_reliability": {
+     "('click', 15, 1, 1)": [
+      10,
+      0.0
+     ],
+     "('click', 1, 3, 1)": [
+      4,
+      0.0
+     ],
+     "('click', 15, 5, 5)": [
+      10,
+      0.0
+     ],
+     "('click', 1, 4, 1)": [
+      6,
+      0.0
+     ],
+     "('click', 6, 1, 1)": [
+      17,
+      0.0
+     ],
+     "('click', 2, 12, 7)": [
+      15,
+      0.0
+     ],
+     "('click', 1, 1, 3)": [
+      10,
+      0.0
+     ],
+     "('click', 0, 39, 1)": [
+      2,
+      0.0
+     ],
+     "('click', 1, 1, 1)": [
+      18,
+      0.0
+     ],
+     "('click', 0, 59, 3)": [
+      2,
+      0.0
+     ],
+     "('click', 0, 53, 4)": [
+      3,
+      0.0
+     ],
+     "('click', 0, 47, 4)": [
+      3,
+      0.0
+     ],
+     "('click', 0, 63, 1)": [
+      2,
+      0.0
+     ],
+     "('click', 0, 57, 3)": [
+      2,
+      0.0
+     ],
+     "('click', 0, 51, 4)": [
+      2,
+      0.0
+     ],
+     "('click', 0, 39, 4)": [
+      3,
+      0.0
+     ],
+     "('click', 0, 33, 4)": [
+      3,
+      0.0
+     ],
+     "('click', 1, 1, 2)": [
+      8,
+      0.0
+     ],
+     "('click', 0, 45, 4)": [
+      2,
+      0.0
+     ],
+     "('click', 0, 42, 1)": [
+      3,
+      0.0
+     ],
+     "('click', 0, 38, 1)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 62, 1)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 53, 1)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 47, 3)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 52, 1)": [
+      3,
+      0.0
+     ],
+     "('click', 0, 41, 1)": [
+      2,
+      0.0
+     ],
+     "('click', 0, 35, 3)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 29, 4)": [
+      3,
+      0.0
+     ],
+     "('click', 1, 5, 1)": [
+      2,
+      0.0
+     ],
+     "('click', 0, 59, 1)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 53, 3)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 31, 4)": [
+      2,
+      0.0
+     ],
+     "('click', 0, 54, 1)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 49, 3)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 37, 4)": [
+      2,
+      0.0
+     ],
+     "('click', 0, 41, 3)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 29, 1)": [
+      1,
+      0.0
+     ],
+     "('click', 1, 2, 1)": [
+      3,
+      0.0
+     ],
+     "('click', 0, 43, 4)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 35, 4)": [
+      1,
+      0.0
+     ],
+     "('click', 15, 5, 3)": [
+      13,
+      0.0
+     ],
+     "('click', 0, 49, 4)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 51, 1)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 28, 5)": [
+      2,
+      0.0
+     ],
+     "('click', 0, 37, 3)": [
+      1,
+      0.0
+     ],
+     "('click', 3, 2, 2)": [
+      8,
+      0.0
+     ],
+     "('click', 15, 5, 2)": [
+      11,
+      0.0
+     ],
+     "('click', 0, 41, 2)": [
+      2,
+      0.0
+     ],
+     "('click', 3, 3, 2)": [
+      1,
+      0.0
+     ],
+     "('click', 3, 1, 1)": [
+      5,
+      0.0
+     ],
+     "('click', 3, 4, 4)": [
+      4,
+      0.0
+     ],
+     "('click', 0, 31, 3)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 29, 5)": [
+      1,
+      0.0
+     ],
+     "('click', 0, 36, 2)": [
+      1,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "r11l-495a7899",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 33,
+   "distinct_frames": 1056,
+   "final_state": "NOT_FINISHED",
+   "seconds": 251.1,
+   "baseline_actions": [
+    22,
+    33,
+    51,
+    26,
+    52,
+    49
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 14,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 8,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 601,
+       "n_options": 8,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 901,
+       "n_options": 8,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1201,
+       "n_options": 8,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1501,
+       "n_options": 8,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1801,
+       "n_options": 12,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1109,
+    "goal_plans": 0,
+    "deaths": 19,
+    "surviving_goals": null,
+    "plan_steps": 1980,
+    "replans_on_error": 48,
+    "fallback_steps": 0,
+    "pred_total": 1936,
+    "pred_acc": 0.472,
+    "pred_by_source": {
+     "memo": [
+      869,
+      1.0
+     ],
+     "model": [
+      50,
+      0.04
+     ],
+     "unreliable": [
+      1017,
+      0.042
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(0, 1, 1)",
+       "(9, 1, 13)",
+       "(9, 13, 1)"
+      ],
+      [
+       -3,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(0, 1, 1)",
+       "(11, 11, 1)",
+       "(9, 1, 13)",
+       "(9, 13, 1)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(0, 1, 1)",
+       "(9, 1, 13)",
+       "(9, 13, 1)"
+      ],
+      [
+       0,
+       -3
+      ]
+     ],
+     "4": [
+      [
+       "(0, 1, 1)",
+       "(9, 1, 13)",
+       "(9, 13, 1)"
+      ],
+      [
+       0,
+       3
+      ]
+     ],
+     "5": [
+      [
+       "(0, 1, 1)"
+      ],
+      [
+       -15,
+       -9
+      ]
+     ]
+    },
+    "volatile_rows": [
+     63
+    ],
+    "terrain_colours": [
+     5
+    ],
+    "known_noops": [],
+    "click_classes_modelled": 0,
+    "key_reliability": {
+     "1": [
+      20,
+      0.0
+     ],
+     "2": [
+      20,
+      0.05
+     ],
+     "3": [
+      20,
+      0.0
+     ],
+     "4": [
+      20,
+      0.0
+     ],
+     "5": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "re86-8af5384d",
+   "levels_completed": 0,
+   "win_levels": 8,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 20,
+   "distinct_frames": 1711,
+   "final_state": "NOT_FINISHED",
+   "seconds": 236.4,
+   "baseline_actions": [
+    26,
+    42,
+    86,
+    108,
+    189,
+    139,
+    424,
+    241
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 2,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 2,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 5,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 305,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1695,
+    "goal_plans": 0,
+    "deaths": 18,
+    "surviving_goals": [
+     "appeared((11, 1, 1))",
+     "appeared((11, 24, 3))",
+     "appeared((11, 4, 3))",
+     "appeared((13, 3, 3))",
+     "appeared((14, 1, 1))",
+     "appeared((14, 3, 24))",
+     "gone((11, 8, 3))",
+     "gone((14, 3, 5))",
+     "overlap((13, 3, 3), (14, 1, 1))",
+     "overlap((13, 3, 3), (14, 3, 24))",
+     "touch((11, 4, 3))"
+    ],
+    "plan_steps": 1981,
+    "replans_on_error": 246,
+    "fallback_steps": 0,
+    "pred_total": 974,
+    "pred_acc": 0.426,
+    "pred_by_source": {
+     "memo": [
+      451,
+      0.634
+     ],
+     "model": [
+      108,
+      0.25
+     ],
+     "unreliable": [
+      415,
+      0.246
+     ]
+    },
+    "movers": {
+     "('click', 4, 5, 5)": [
+      [
+       "(13, 1, 1)",
+       "(3, 1, 3)"
+      ],
+      [
+       0,
+       -3
+      ]
+     ],
+     "('click', 14, 3, 3)": [
+      [
+       "(13, 1, 1)"
+      ],
+      [
+       0,
+       3
+      ]
+     ],
+     "('click', 11, 3, 3)": [
+      [
+       "(13, 1, 1)",
+       "(14, 2, 3)",
+       "(3, 1, 3)"
+      ],
+      [
+       0,
+       3
+      ]
+     ],
+     "('click', 12, 3, 3)": [
+      [
+       "(13, 1, 1)",
+       "(3, 1, 3)",
+       "(3, 3, 1)"
+      ],
+      [
+       0,
+       3
+      ]
+     ],
+     "('click', 10, 3, 3)": [
+      [
+       "(11, 3, 2)",
+       "(13, 1, 1)",
+       "(14, 2, 3)",
+       "(3, 1, 3)",
+       "(3, 3, 1)"
+      ],
+      [
+       -3,
+       0
+      ]
+     ]
+    },
+    "volatile_rows": [],
+    "terrain_colours": [
+     5
+    ],
+    "known_noops": [
+     "('click', 3, 3, 1)",
+     "('click', 14, 3, 5)",
+     "('click', 13, 1, 1)",
+     "('click', 2, 7, 13)",
+     "('click', 3, 5, 1)",
+     "('click', 3, 1, 3)",
+     "('click', 2, 13, 7)",
+     "('click', 3, 1, 5)",
+     "('click', 'lattice')",
+     "('click', 3, 1, 61)",
+     "('click', 3, 1, 60)",
+     "('click', 3, 1, 59)",
+     "('click', 14, 3, 2)",
+     "('click', 3, 1, 58)",
+     "('click', 4, 1, 6)",
+     "('click', 3, 1, 56)",
+     "('click', 3, 1, 55)",
+     "('click', 4, 1, 9)",
+     "('click', 3, 1, 54)",
+     "('click', 3, 1, 52)",
+     "('click', 4, 1, 12)",
+     "('click', 11, 5, 3)",
+     "('click', 11, 2, 3)",
+     "('click', 14, 3, 8)",
+     "('click', 14, 3, 11)",
+     "('click', 11, 17, 3)",
+     "('click', 11, 23, 3)",
+     "('click', 11, 24, 3)",
+     "('click', 13, 3, 3)",
+     "('click', 11, 1, 1)",
+     "('click', 11, 4, 3)",
+     "('click', 11, 7, 3)",
+     "('click', 14, 3, 14)",
+     "('click', 14, 3, 17)",
+     "('click', 14, 3, 20)",
+     "('click', 11, 10, 3)",
+     "('click', 14, 3, 24)",
+     "('click', 14, 1, 1)",
+     "('click', 15, 18, 24)",
+     "('click', 15, 30, 3)",
+     "('click', 11, 3, 2)",
+     "('click', 14, 2, 3)",
+     "('click', 12, 3, 2)",
+     "('click', 10, 2, 3)",
+     "('click', 12, 3, 5)",
+     "('click', 10, 5, 3)",
+     "('click', 12, 3, 8)",
+     "('click', 12, 3, 11)",
+     "('click', 12, 3, 14)",
+     "('click', 12, 3, 17)",
+     "('click', 12, 3, 20)",
+     "('click', 12, 3, 23)",
+     "('click', 12, 3, 26)",
+     "('click', 14, 5, 3)",
+     "('click', 11, 3, 5)",
+     "('click', 10, 23, 3)",
+     "('click', 10, 32, 3)",
+     "('click', 4, 1, 45)",
+     "('click', 3, 1, 18)",
+     "('click', 3, 1, 17)",
+     "('click', 3, 1, 16)",
+     "('click', 3, 1, 15)",
+     "('click', 4, 1, 49)",
+     "('click', 3, 1, 14)",
+     "('click', 3, 1, 12)",
+     "('click', 4, 1, 52)",
+     "('click', 3, 1, 11)",
+     "('click', 3, 1, 10)",
+     "('click', 3, 1, 9)",
+     "('click', 3, 1, 8)",
+     "('click', 3, 1, 7)",
+     "('click', 3, 1, 6)",
+     "('click', 4, 1, 58)",
+     "('click', 3, 1, 4)",
+     "('click', 3, 1, 2)",
+     "('click', 3, 1, 62)",
+     "('click', 3, 1, 51)",
+     "('click', 3, 1, 50)",
+     "('click', 3, 1, 49)",
+     "('click', 3, 1, 48)",
+     "('click', 3, 1, 47)",
+     "('click', 4, 1, 17)",
+     "('click', 3, 1, 46)",
+     "('click', 3, 1, 44)",
+     "('click', 4, 1, 20)",
+     "('click', 3, 1, 43)",
+     "('click', 3, 1, 42)",
+     "('click', 3, 1, 41)",
+     "('click', 3, 1, 40)",
+     "('click', 3, 1, 39)",
+     "('click', 3, 1, 38)",
+     "('click', 4, 1, 26)",
+     "('click', 3, 1, 36)",
+     "('click', 3, 1, 35)",
+     "('click', 4, 1, 29)",
+     "('click', 3, 1, 34)",
+     "('click', 3, 1, 32)",
+     "('click', 4, 1, 32)",
+     "('click', 3, 1, 31)",
+     "('click', 3, 1, 30)",
+     "('click', 3, 1, 29)",
+     "('click', 3, 1, 28)",
+     "('click', 3, 1, 27)",
+     "('click', 3, 1, 26)",
+     "('click', 4, 1, 38)",
+     "('click', 3, 1, 24)",
+     "('click', 3, 1, 23)",
+     "('click', 4, 1, 41)",
+     "('click', 3, 1, 22)",
+     "('click', 3, 1, 20)",
+     "('click', 4, 1, 44)"
+    ],
+    "click_classes_modelled": 152,
+    "key_reliability": {
+     "('click', 4, 5, 5)": [
+      20,
+      0.3
+     ],
+     "('click', 11, 3, 3)": [
+      20,
+      0.15
+     ],
+     "('click', 14, 3, 3)": [
+      20,
+      0.25
+     ],
+     "('click', 12, 3, 3)": [
+      20,
+      0.45
+     ],
+     "('click', 10, 3, 3)": [
+      20,
+      0.2
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "s5i5-18d95033",
+   "levels_completed": 1,
+   "win_levels": 8,
+   "level_actions": [
+    435
+   ],
+   "actions": 2000,
+   "resets": 19,
+   "distinct_frames": 1072,
+   "final_state": "NOT_FINISHED",
+   "seconds": 80.41,
+   "baseline_actions": [
+    20,
+    89,
+    106,
+    54,
+    162,
+    38,
+    86,
+    83
+   ],
+   "score": 0.00587190440539628
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 16,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 316,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 616,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 916,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1216,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1516,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1816,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1161,
+    "goal_plans": 0,
+    "deaths": 9,
+    "surviving_goals": null,
+    "plan_steps": 1894,
+    "replans_on_error": 93,
+    "fallback_steps": 96,
+    "pred_total": 1268,
+    "pred_acc": 0.578,
+    "pred_by_source": {
+     "memo": [
+      776,
+      0.945
+     ],
+     "model": [
+      50,
+      0.0
+     ],
+     "unreliable": [
+      442,
+      0.0
+     ]
+    },
+    "movers": {
+     "('click', 8, 10, 28)": [
+      [
+       "(14, 4, 4)",
+       "(9, 4, 4)"
+      ],
+      [
+       29,
+       -1
+      ]
+     ],
+     "('click', 14, 4, 4)": [
+      [
+       "(14, 4, 4)"
+      ],
+      [
+       -29,
+       1
+      ]
+     ],
+     "('click', 15, 4, 4)": [
+      [
+       "(0, 6, 6)"
+      ],
+      [
+       0,
+       8
+      ]
+     ],
+     "('click', 9, 4, 4)": [
+      [
+       "(9, 4, 4)"
+      ],
+      [
+       -29,
+       1
+      ]
+     ],
+     "('click', 11, 4, 4)": [
+      [
+       "(0, 6, 6)"
+      ],
+      [
+       0,
+       8
+      ]
+     ]
+    },
+    "volatile_rows": [
+     53
+    ],
+    "terrain_colours": [
+     4
+    ],
+    "known_noops": [
+     "('click', 5, 8, 29)",
+     "('click', 9, 6, 6)",
+     "('click', 14, 6, 6)",
+     "('click', 11, 6, 6)",
+     "('click', 15, 6, 6)",
+     "('click', 5, 4, 4)",
+     "('click', 0, 3, 3)",
+     "('click', 2, 2, 2)",
+     "('click', 'lattice')",
+     "7",
+     "('click', 2, 1, 60)",
+     "('click', 3, 1, 4)",
+     "('click', 2, 1, 59)",
+     "('click', 3, 1, 5)"
+    ],
+    "click_classes_modelled": 16,
+    "key_reliability": {
+     "('click', 9, 4, 4)": [
+      20,
+      0.0
+     ],
+     "('click', 11, 4, 4)": [
+      20,
+      0.0
+     ],
+     "('click', 14, 4, 4)": [
+      20,
+      0.0
+     ],
+     "('click', 15, 4, 4)": [
+      20,
+      0.0
+     ],
+     "('click', 8, 10, 28)": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "sb26-7fbdac44",
+   "levels_completed": 0,
+   "win_levels": 8,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 10,
+   "distinct_frames": 4911,
+   "final_state": "NOT_FINISHED",
+   "seconds": 258.17,
+   "baseline_actions": [
+    18,
+    28,
+    18,
+    19,
+    31,
+    23,
+    58,
+    18
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 4,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 304,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 604,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 904,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1204,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1504,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1804,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1568,
+    "goal_plans": 0,
+    "deaths": 30,
+    "surviving_goals": null,
+    "plan_steps": 1833,
+    "replans_on_error": 134,
+    "fallback_steps": 136,
+    "pred_total": 570,
+    "pred_acc": 0.547,
+    "pred_by_source": {
+     "memo": [
+      412,
+      0.757
+     ],
+     "model": [
+      34,
+      0.0
+     ],
+     "unreliable": [
+      124,
+      0.0
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(10, 1, 2)",
+       "(9, 1, 2)"
+      ],
+      [
+       -1,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(9, 1, 2)"
+      ],
+      [
+       3,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(10, 4, 2)",
+       "(9, 4, 2)"
+      ],
+      [
+       0,
+       -4
+      ]
+     ],
+     "4": [
+      [
+       "(10, 4, 2)"
+      ],
+      [
+       0,
+       2
+      ]
+     ]
+    },
+    "volatile_rows": [],
+    "terrain_colours": [
+     5
+    ],
+    "known_noops": [
+     "('click', 14, 64, 2)",
+     "('click', 9, 6, 5)",
+     "('click', 10, 4, 4)",
+     "('click', 2, 4, 22)",
+     "('click', 9, 4, 2)",
+     "('click', 10, 4, 2)",
+     "('click', 3, 10, 10)",
+     "('click', 2, 8, 8)",
+     "('click', 15, 2, 2)",
+     "('click', 'lattice')",
+     "('click', 10, 2, 4)",
+     "('click', 9, 2, 4)",
+     "('click', 0, 2, 2)",
+     "('click', 14, 62, 2)",
+     "('click', 2, 4, 18)",
+     "('click', 2, 4, 4)",
+     "('click', 0, 4, 2)",
+     "('click', 14, 60, 2)",
+     "('click', 0, 6, 2)",
+     "('click', 14, 58, 2)",
+     "('click', 0, 8, 2)",
+     "('click', 14, 56, 2)",
+     "('click', 0, 10, 2)",
+     "('click', 14, 54, 2)",
+     "('click', 0, 12, 2)",
+     "('click', 14, 52, 2)",
+     "('click', 0, 14, 2)",
+     "('click', 14, 50, 2)",
+     "('click', 0, 16, 2)",
+     "('click', 14, 48, 2)",
+     "('click', 0, 18, 2)",
+     "('click', 14, 46, 2)",
+     "('click', 0, 20, 2)",
+     "('click', 14, 44, 2)",
+     "('click', 0, 22, 2)",
+     "('click', 14, 42, 2)",
+     "('click', 0, 24, 2)",
+     "('click', 14, 40, 2)",
+     "('click', 0, 26, 2)",
+     "('click', 14, 38, 2)",
+     "('click', 0, 28, 2)",
+     "('click', 14, 36, 2)",
+     "('click', 0, 30, 2)",
+     "('click', 14, 34, 2)",
+     "('click', 0, 32, 2)",
+     "('click', 14, 32, 2)",
+     "('click', 0, 34, 2)",
+     "('click', 14, 30, 2)",
+     "('click', 0, 36, 2)",
+     "('click', 14, 28, 2)",
+     "('click', 0, 38, 2)",
+     "('click', 14, 26, 2)",
+     "('click', 0, 40, 2)",
+     "('click', 2, 4, 26)",
+     "('click', 10, 2, 1)",
+     "('click', 9, 2, 1)",
+     "('click', 14, 24, 2)",
+     "('click', 0, 42, 2)",
+     "('click', 9, 1, 2)",
+     "('click', 10, 1, 2)",
+     "('click', 14, 22, 2)",
+     "('click', 0, 44, 2)",
+     "('click', 14, 20, 2)",
+     "('click', 0, 46, 2)",
+     "('click', 14, 18, 2)",
+     "('click', 0, 48, 2)",
+     "('click', 14, 16, 2)",
+     "('click', 0, 50, 2)",
+     "('click', 14, 14, 2)",
+     "('click', 0, 52, 2)",
+     "('click', 14, 12, 2)",
+     "('click', 0, 54, 2)",
+     "('click', 14, 10, 2)",
+     "('click', 0, 56, 2)",
+     "('click', 14, 8, 2)",
+     "('click', 0, 58, 2)",
+     "('click', 14, 6, 2)",
+     "('click', 0, 60, 2)",
+     "('click', 14, 4, 2)",
+     "('click', 0, 62, 2)",
+     "('click', 14, 2, 2)",
+     "('click', 0, 64, 2)",
+     "('click', 2, 4, 14)",
+     "('click', 2, 4, 8)",
+     "('click', 2, 4, 10)",
+     "('click', 2, 4, 12)",
+     "('click', 2, 2, 6)",
+     "('click', 2, 4, 20)"
+    ],
+    "click_classes_modelled": 91,
+    "key_reliability": {
+     "4": [
+      20,
+      0.0
+     ],
+     "2": [
+      20,
+      0.0
+     ],
+     "3": [
+      10,
+      0.0
+     ],
+     "1": [
+      4,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "sc25-635fd71a",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 31,
+   "distinct_frames": 1199,
+   "final_state": "NOT_FINISHED",
+   "seconds": 243.47,
+   "baseline_actions": [
+    36,
+    6,
+    32,
+    83,
+    143,
+    50
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 601,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 901,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1201,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1501,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1801,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1645,
+    "goal_plans": 0,
+    "deaths": 8,
+    "surviving_goals": null,
+    "plan_steps": 1991,
+    "replans_on_error": 70,
+    "fallback_steps": 0,
+    "pred_total": 1878,
+    "pred_acc": 0.243,
+    "pred_by_source": {
+     "memo": [
+      357,
+      0.969
+     ],
+     "model": [
+      61,
+      0.033
+     ],
+     "unreliable": [
+      1460,
+      0.074
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(2, 1, 1)"
+      ],
+      [
+       -6,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(2, 1, 1)"
+      ],
+      [
+       6,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(1, 1, 1)"
+      ],
+      [
+       0,
+       -6
+      ]
+     ],
+     "4": [
+      [
+       "(8, 4, 4)",
+       "(9, 4, 4)"
+      ],
+      [
+       0,
+       6
+      ]
+     ],
+     "7": [
+      [
+       "(2, 1, 1)"
+      ],
+      [
+       -6,
+       0
+      ]
+     ]
+    },
+    "volatile_rows": [
+     53
+    ],
+    "terrain_colours": [
+     4,
+     5
+    ],
+    "known_noops": [
+     "('click', 2, 2, 2)",
+     "('click', 3, 4, 2)",
+     "('click', 8, 4, 4)",
+     "('click', 9, 4, 4)",
+     "('click', 14, 4, 4)",
+     "('click', 3, 2, 2)",
+     "('click', 6, 6, 6)",
+     "('click', 0, 4, 4)",
+     "('click', 6, 2, 2)",
+     "('click', 1, 1, 1)",
+     "('click', 1, 2, 3)",
+     "('click', 2, 1, 1)",
+     "('click', 'lattice')",
+     "('click', 0, 2, 2)"
+    ],
+    "click_classes_modelled": 17,
+    "key_reliability": {
+     "1": [
+      20,
+      0.0
+     ],
+     "2": [
+      20,
+      0.25
+     ],
+     "7": [
+      20,
+      0.0
+     ],
+     "3": [
+      20,
+      0.0
+     ],
+     "4": [
+      20,
+      0.15
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "sk48-d8078629",
+   "levels_completed": 0,
+   "win_levels": 8,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 9,
+   "distinct_frames": 2565,
+   "final_state": "NOT_FINISHED",
+   "seconds": 252.97,
+   "baseline_actions": [
+    61,
+    177,
+    101,
+    103,
+    230,
+    181,
+    125,
+    92
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 20,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 601,
+       "n_options": 20,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 901,
+       "n_options": 20,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1201,
+       "n_options": 20,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1501,
+       "n_options": 20,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1801,
+       "n_options": 20,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 439,
+    "goal_plans": 0,
+    "deaths": 64,
+    "surviving_goals": null,
+    "plan_steps": 630,
+    "replans_on_error": 35,
+    "fallback_steps": 1305,
+    "pred_total": 1395,
+    "pred_acc": 0.973,
+    "pred_by_source": {
+     "memo": [
+      973,
+      1.0
+     ],
+     "model": [
+      400,
+      0.912
+     ],
+     "unreliable": [
+      22,
+      0.909
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(9, 4, 20)"
+      ],
+      [
+       -4,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(9, 4, 20)"
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(9, 4, 20)"
+      ],
+      [
+       0,
+       -4
+      ]
+     ],
+     "4": [
+      [
+       "(9, 4, 20)"
+      ],
+      [
+       0,
+       4
+      ]
+     ]
+    },
+    "volatile_rows": [
+     0
+    ],
+    "terrain_colours": [
+     12
+    ],
+    "known_noops": [
+     "5",
+     "('click', 4, 3, 4)",
+     "('click', 6, 4, 4)",
+     "('click', 9, 4, 20)",
+     "('click', 11, 8, 12)",
+     "('click', 1, 4, 64)",
+     "('click', 'lattice')"
+    ],
+    "click_classes_modelled": 5,
+    "key_reliability": {
+     "1": [
+      20,
+      1.0
+     ],
+     "2": [
+      20,
+      1.0
+     ],
+     "3": [
+      20,
+      1.0
+     ],
+     "4": [
+      20,
+      1.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "sp80-589a99af",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 65,
+   "distinct_frames": 887,
+   "final_state": "NOT_FINISHED",
+   "seconds": 241.95,
+   "baseline_actions": [
+    39,
+    58,
+    25,
+    148,
+    96,
+    152
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 6,
+       "n_options": 5,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 0,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 300,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 600,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 900,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 1200,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 1500,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1883,
+    "goal_plans": 0,
+    "deaths": 26,
+    "surviving_goals": [
+     "gone((0, 3, 3))"
+    ],
+    "plan_steps": 1928,
+    "replans_on_error": 140,
+    "fallback_steps": 45,
+    "pred_total": 969,
+    "pred_acc": 0.57,
+    "pred_by_source": {
+     "memo": [
+      47,
+      0.957
+     ],
+     "model": [
+      612,
+      0.775
+     ],
+     "unreliable": [
+      310,
+      0.106
+     ]
+    },
+    "movers": {
+     "('click', 3, 1, 1)": [
+      [
+       "(3, 1, 1)"
+      ],
+      [
+       6,
+       -6
+      ]
+     ],
+     "('click', 0, 3, 3)": [
+      [
+       "(15, 3, 3)"
+      ],
+      [
+       -6,
+       6
+      ]
+     ],
+     "('click', 'lattice')": [
+      [
+       "(6, 2, 2)"
+      ],
+      [
+       6,
+       -5
+      ]
+     ],
+     "7": [
+      [
+       "(6, 2, 2)"
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "('click', 6, 2, 2)": [
+      [
+       "(6, 2, 2)"
+      ],
+      [
+       -1,
+       -1
+      ]
+     ]
+    },
+    "volatile_rows": [],
+    "terrain_colours": [
+     5
+    ],
+    "known_noops": [
+     "('click', 4, 10, 64)",
+     "('click', 15, 3, 3)",
+     "('click', 9, 9, 9)",
+     "('click', 'lattice')",
+     "('click', 0, 1, 62)",
+     "('click', 0, 1, 60)",
+     "('click', 0, 1, 58)",
+     "('click', 0, 1, 56)",
+     "('click', 0, 1, 54)",
+     "('click', 0, 1, 52)",
+     "('click', 0, 1, 50)",
+     "('click', 0, 1, 48)",
+     "('click', 0, 1, 46)",
+     "('click', 10, 2, 2)",
+     "('click', 15, 2, 2)",
+     "('click', 11, 2, 2)",
+     "('click', 11, 4, 4)",
+     "('click', 0, 1, 4)",
+     "('click', 0, 1, 42)",
+     "('click', 0, 1, 26)",
+     "('click', 0, 1, 24)",
+     "('click', 0, 1, 22)",
+     "('click', 0, 1, 20)",
+     "('click', 0, 1, 18)",
+     "('click', 0, 1, 16)",
+     "('click', 0, 1, 14)",
+     "('click', 0, 1, 12)",
+     "('click', 0, 1, 10)",
+     "('click', 0, 1, 8)",
+     "('click', 0, 1, 6)",
+     "('click', 0, 1, 2)",
+     "('click', 0, 1, 44)",
+     "('click', 0, 1, 40)",
+     "('click', 0, 1, 38)",
+     "('click', 0, 1, 36)",
+     "('click', 0, 1, 34)",
+     "('click', 0, 1, 32)",
+     "('click', 0, 1, 30)",
+     "('click', 0, 1, 28)"
+    ],
+    "click_classes_modelled": 42,
+    "key_reliability": {
+     "('click', 3, 1, 1)": [
+      10,
+      0.9
+     ],
+     "('click', 0, 3, 3)": [
+      1,
+      0.0
+     ],
+     "('click', 'lattice')": [
+      5,
+      1.0
+     ],
+     "7": [
+      20,
+      0.05
+     ],
+     "('click', 6, 2, 2)": [
+      20,
+      1.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "su15-1944f8ab",
+   "levels_completed": 1,
+   "win_levels": 9,
+   "level_actions": [
+    189
+   ],
+   "actions": 2000,
+   "resets": 27,
+   "distinct_frames": 4167,
+   "final_state": "NOT_FINISHED",
+   "seconds": 240.94,
+   "baseline_actions": [
+    22,
+    42,
+    26,
+    115,
+    36,
+    31,
+    8,
+    40,
+    41
+   ],
+   "score": 0.03010989489531523
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 0,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 0,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": []
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1887,
+    "goal_plans": 0,
+    "deaths": 31,
+    "surviving_goals": [
+     "gone((1, 1, 3))",
+     "gone((1, 3, 1))"
+    ],
+    "plan_steps": 1968,
+    "replans_on_error": 89,
+    "fallback_steps": 0,
+    "pred_total": 723,
+    "pred_acc": 0.246,
+    "pred_by_source": {
+     "memo": [
+      103,
+      0.786
+     ],
+     "model": [
+      96,
+      0.302
+     ],
+     "unreliable": [
+      524,
+      0.13
+     ]
+    },
+    "movers": {
+     "('click', 11, 2, 3)": [
+      [
+       "(9, 9, 9)"
+      ],
+      [
+       0,
+       10
+      ]
+     ],
+     "('click', 11, 3, 2)": [
+      [
+       "(4, 4, 4)"
+      ],
+      [
+       8,
+       -8
+      ]
+     ],
+     "('click', 0, 1, 1)": [
+      [
+       "(0, 1, 1)",
+       "(9, 9, 9)"
+      ],
+      [
+       0,
+       10
+      ]
+     ]
+    },
+    "volatile_rows": [
+     1
+    ],
+    "terrain_colours": [
+     3,
+     5
+    ],
+    "known_noops": [
+     "('click', 0, 43, 38)",
+     "('click', 4, 4, 4)",
+     "('click', 11, 4, 4)",
+     "('click', 4, 1, 2)",
+     "('click', 4, 4, 3)",
+     "('click', 11, 5, 6)",
+     "('click', 4, 3, 4)",
+     "('click', 9, 9, 9)",
+     "('click', 'lattice')",
+     "('click', 0, 51, 30)",
+     "('click', 2, 31, 30)"
+    ],
+    "click_classes_modelled": 14,
+    "key_reliability": {
+     "('click', 11, 2, 3)": [
+      20,
+      0.0
+     ],
+     "('click', 11, 3, 2)": [
+      20,
+      0.0
+     ],
+     "('click', 0, 1, 1)": [
+      20,
+      0.5
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "tn36-ef4dde99",
+   "levels_completed": 1,
+   "win_levels": 7,
+   "level_actions": [
+    39
+   ],
+   "actions": 2000,
+   "resets": 32,
+   "distinct_frames": 6116,
+   "final_state": "NOT_FINISHED",
+   "seconds": 20.88,
+   "baseline_actions": [
+    32,
+    72,
+    26,
+    40,
+    30,
+    55,
+    62
+   ],
+   "score": 2.404433173663943
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 3,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 303,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 603,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 903,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1203,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1503,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1803,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1922,
+    "goal_plans": 0,
+    "deaths": 15,
+    "surviving_goals": null,
+    "plan_steps": 1984,
+    "replans_on_error": 234,
+    "fallback_steps": 0,
+    "pred_total": 1922,
+    "pred_acc": 0.339,
+    "pred_by_source": {
+     "memo": [
+      62,
+      1.0
+     ],
+     "model": [
+      679,
+      0.655
+     ],
+     "unreliable": [
+      1181,
+      0.123
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(7, 1, 1)"
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "2": [
+      [
+       "(7, 1, 1)"
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "3": [
+      [
+       "(0, 2, 5)"
+      ],
+      [
+       0,
+       -7
+      ]
+     ],
+     "4": [
+      [
+       "(0, 2, 5)"
+      ],
+      [
+       0,
+       7
+      ]
+     ]
+    },
+    "volatile_rows": [
+     63
+    ],
+    "terrain_colours": [
+     2,
+     3
+    ],
+    "known_noops": [],
+    "click_classes_modelled": 0,
+    "key_reliability": {
+     "3": [
+      20,
+      0.45
+     ],
+     "4": [
+      20,
+      0.45
+     ],
+     "2": [
+      20,
+      0.0
+     ],
+     "1": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "tr87-cd924810",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 16,
+   "distinct_frames": 1964,
+   "final_state": "NOT_FINISHED",
+   "seconds": 258.51,
+   "baseline_actions": [
+    54,
+    58,
+    40,
+    45,
+    71,
+    146
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 1,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 1,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 4,
+       "n_options": 8,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 31,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 462,
+    "goal_plans": 1,
+    "deaths": 85,
+    "surviving_goals": [
+     "touch((14, 3, 3))"
+    ],
+    "plan_steps": 806,
+    "replans_on_error": 114,
+    "fallback_steps": 1108,
+    "pred_total": 1814,
+    "pred_acc": 0.858,
+    "pred_by_source": {
+     "memo": [
+      1396,
+      0.989
+     ],
+     "model": [
+      176,
+      0.443
+     ],
+     "unreliable": [
+      242,
+      0.405
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(0, 3, 3)"
+      ],
+      [
+       6,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(9, 3, 3)"
+      ],
+      [
+       6,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(9, 3, 3)"
+      ],
+      [
+       0,
+       -6
+      ]
+     ],
+     "4": [
+      [
+       "(0, 3, 3)",
+       "(12, 3, 3)",
+       "(15, 1, 1)"
+      ],
+      [
+       -6,
+       0
+      ]
+     ]
+    },
+    "volatile_rows": [
+     63
+    ],
+    "terrain_colours": [
+     5
+    ],
+    "known_noops": [],
+    "click_classes_modelled": 0,
+    "key_reliability": {
+     "4": [
+      20,
+      0.5
+     ],
+     "2": [
+      20,
+      0.6
+     ],
+     "1": [
+      20,
+      0.6
+     ],
+     "3": [
+      20,
+      0.45
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "tu93-0768757b",
+   "levels_completed": 3,
+   "win_levels": 9,
+   "level_actions": [
+    193,
+    77,
+    338
+   ],
+   "actions": 2000,
+   "resets": 86,
+   "distinct_frames": 6175,
+   "final_state": "NOT_FINISHED",
+   "seconds": 41.08,
+   "baseline_actions": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ],
+   "score": 0.28089515233497686
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 9,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 9,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 11,
+       "n_options": 18,
+       "chosen": null
+      },
+      {
+       "level": 1,
+       "n": 0,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 2,
+       "n": 0,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 2,
+       "n": 300,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 2,
+       "n": 600,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 2,
+       "n": 900,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 2,
+       "n": 1200,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 2,
+       "n": 1500,
+       "n_options": 21,
+       "chosen": null
+      },
+      {
+       "level": 2,
+       "n": 1800,
+       "n_options": 21,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1039,
+    "goal_plans": 0,
+    "deaths": 25,
+    "surviving_goals": null,
+    "plan_steps": 1974,
+    "replans_on_error": 16,
+    "fallback_steps": 0,
+    "pred_total": 1216,
+    "pred_acc": 0.798,
+    "pred_by_source": {
+     "memo": [
+      935,
+      1.0
+     ],
+     "model": [
+      22,
+      0.273
+     ],
+     "unreliable": [
+      259,
+      0.112
+     ]
+    },
+    "movers": {
+     "('click', 9, 4, 4)": [
+      [
+       "(14, 6, 2)",
+       "(4, 6, 4)"
+      ],
+      [
+       0,
+       4
+      ]
+     ],
+     "('click', 9, 2, 2)": [
+      [
+       "(14, 1, 3)"
+      ],
+      [
+       -2,
+       0
+      ]
+     ]
+    },
+    "volatile_rows": [
+     0
+    ],
+    "terrain_colours": [
+     3,
+     4
+    ],
+    "known_noops": [
+     "('click', 5, 4, 18)",
+     "('click', 11, 4, 2)",
+     "('click', 5, 4, 24)",
+     "('click', 4, 6, 4)",
+     "('click', 11, 6, 2)",
+     "('click', 'lattice')",
+     "('click', 5, 4, 56)",
+     "('click', 5, 4, 28)",
+     "('click', 14, 4, 2)",
+     "('click', 5, 4, 14)",
+     "('click', 14, 6, 2)",
+     "('click', 11, 1, 3)",
+     "('click', 5, 17, 2)",
+     "('click', 0, 28, 8)",
+     "('click', 5, 3, 2)",
+     "('click', 15, 1, 2)",
+     "('click', 5, 18, 2)",
+     "('click', 14, 1, 2)",
+     "('click', 5, 16, 2)",
+     "('click', 11, 1, 2)",
+     "('click', 5, 10, 2)",
+     "('click', 15, 1, 3)",
+     "('click', 5, 6, 2)",
+     "('click', 0, 6, 10)",
+     "('click', 14, 1, 3)",
+     "('click', 0, 4, 8)",
+     "('click', 0, 2, 6)",
+     "('click', 0, 6, 8)",
+     "('click', 0, 4, 10)",
+     "('click', 0, 2, 4)",
+     "('click', 0, 8, 8)",
+     "('click', 0, 10, 8)",
+     "('click', 0, 12, 8)",
+     "('click', 0, 14, 8)",
+     "('click', 0, 16, 8)",
+     "('click', 0, 26, 8)",
+     "('click', 0, 24, 8)",
+     "('click', 0, 18, 8)",
+     "('click', 0, 20, 8)",
+     "('click', 0, 22, 8)",
+     "('click', 0, 8, 10)",
+     "('click', 0, 10, 10)"
+    ],
+    "click_classes_modelled": 43,
+    "key_reliability": {
+     "('click', 9, 4, 4)": [
+      12,
+      0.5
+     ],
+     "('click', 9, 2, 2)": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "vc33-5430563c",
+   "levels_completed": 2,
+   "win_levels": 7,
+   "level_actions": [
+    43,
+    47
+   ],
+   "actions": 2000,
+   "resets": 26,
+   "distinct_frames": 1689,
+   "final_state": "NOT_FINISHED",
+   "seconds": 295.3,
+   "baseline_actions": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ],
+   "score": 1.1423079157501077
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "click_model": false,
+    "sequences": false,
+    "seq_steps": 0,
+    "llm": {
+     "model": "qwen/qwen3-32b",
+     "asks": 7,
+     "accepted": 0,
+     "rejected": 0,
+     "calls": 7,
+     "cache_hits": 0,
+     "cost_usd": 0.0,
+     "log": [
+      {
+       "level": 0,
+       "n": 1,
+       "n_options": 13,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 301,
+       "n_options": 8,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 601,
+       "n_options": 13,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 901,
+       "n_options": 15,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1201,
+       "n_options": 8,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1501,
+       "n_options": 15,
+       "chosen": null
+      },
+      {
+       "level": 0,
+       "n": 1801,
+       "n_options": 13,
+       "chosen": null
+      }
+     ]
+    },
+    "greedy_steps": 0,
+    "greedy_cap": 80,
+    "learned_seq": [],
+    "plans": 1589,
+    "goal_plans": 0,
+    "deaths": 9,
+    "surviving_goals": null,
+    "plan_steps": 1990,
+    "replans_on_error": 57,
+    "fallback_steps": 0,
+    "pred_total": 1051,
+    "pred_acc": 0.485,
+    "pred_by_source": {
+     "memo": [
+      399,
+      0.995
+     ],
+     "model": [
+      61,
+      0.098
+     ],
+     "unreliable": [
+      591,
+      0.181
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(0, 1, 4)",
+       "(14, 3, 4)"
+      ],
+      [
+       -4,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(0, 1, 4)",
+       "(14, 3, 4)"
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(0, 4, 1)",
+       "(14, 4, 3)"
+      ],
+      [
+       0,
+       -4
+      ]
+     ],
+     "4": [
+      [
+       "(0, 4, 1)",
+       "(14, 4, 3)"
+      ],
+      [
+       0,
+       4
+      ]
+     ]
+    },
+    "volatile_rows": [
+     63
+    ],
+    "terrain_colours": [
+     1
+    ],
+    "known_noops": [],
+    "click_classes_modelled": 0,
+    "key_reliability": {
+     "1": [
+      20,
+      0.4
+     ],
+     "2": [
+      20,
+      0.3
+     ],
+     "4": [
+      20,
+      0.3
+     ],
+     "3": [
+      20,
+      0.3
+     ]
+    }
+   },
+   "agent_errors": 0,
+   "agent_error_sample": [],
+   "game_id": "wa30-ee6fef47",
+   "levels_completed": 0,
+   "win_levels": 9,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 10,
+   "distinct_frames": 1692,
+   "final_state": "NOT_FINISHED",
+   "seconds": 231.66,
+   "baseline_actions": [
+    71,
+    119,
+    183,
+    98,
+    368,
+    68,
+    79,
+    442,
+    415
+   ],
+   "score": 0.0
+  }
+ ]
+}
