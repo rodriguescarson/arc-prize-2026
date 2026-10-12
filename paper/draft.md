@@ -103,8 +103,11 @@ representation cannot express.]
 recolouring mechanics are learned by memorisation and cannot be planned toward before they are seen;
 exploration still pays hundreds of actions on most first levels, which the squared-efficiency metric
 turns into near-zero credit; the goal template class is small and, where it does not contain the true
-goal, cross-level transfer gives nothing; absolute scores are far below the LLM-harness leaders. A
-human-habit prior we pre-registered did not help (median paired ratio 1.0) and is reported as such.
+goal, cross-level transfer gives nothing; absolute scores are far below the LLM-harness leaders. Two
+pre-registered extensions did not pass their gates and are reported as such: a human-habit exploration
+prior (median paired level-1 ratio 1.0) and class-level click-effect prediction, which reached ≥ 0.6
+accuracy on 6 of 13 click games yet left coverage unchanged and slowed lp85 from 15 to 774 actions:
+click effects are learnable but the goals in those games are click sequences outside our template class.
 **Reproducibility.** CPU only, no training set, no per-game code. `uv sync && uv run arc3 --agent
 model_based --max-actions 2000` reproduces every public-25 number from `experiments/`; each run row in
 `EXPERIMENT_LOG.csv` carries its commit; the submitted notebook embeds `my_agent.py` whose sha256 and

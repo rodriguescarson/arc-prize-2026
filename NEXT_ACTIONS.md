@@ -1,4 +1,4 @@
-# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-12 07:45 IST)
+# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-12 08:45 IST)
 
 ## Verified deadlines (all Kaggle times 23:59 UTC = 05:29 IST next day)
 | Event | Date | IST | Note |
@@ -34,13 +34,14 @@ Internal plan: code freeze **30 Oct**, first real Kaggle submission by **20 Oct*
 | v6 death-edge learning | 0.280 | 15/183 | 12 |
 | **v7 (+bar exclusion; final candidate, = Kaggle kernels v2)** | **0.280** | **15/183** | **12** |
 | explorer + human-habit prior (H2, E8) | 0.013 | 5/183 | 4 (negative) |
+| E12 click-effect generalisation | 0.197 | 14/183 | 11 (negative; gate failed) |
 
 Pre-registered gates: P2 (≥2× explorer's level-1 coverage = 10 games) MET at 11/25 since v3; P1 paired efficiency mixed; P3 (within-game learning curve) supported on 2/2 games that reach level ≥2 with memory ON (tu93 10.4→4.8, vc33 6.1→2.6 actions/human), none without memory. H1 go/kill date Oct 22.
 Faster-than-human levels so far: lp85 L1 15 actions (human 17), tn36 L1 43 (32), vc33 L1 43 (7) + L2 47 (18).
 
 ## Next steps (in order)
 1. Carson submits the mem1 kernel (E5) → first hidden-set score → fill the paper's Accuracy slot.
-2. E12 click-effect generalisation (pre-registered in HYPOTHESES.md); kill by Oct 18 if < 2 games gained.
+2. E12 done and negative (kept behind a flag). Next mechanism candidates: click-*sequence* goals (ordered templates) or curiosity over click outcomes without planning on them; pre-register before running.
 3. Seeds 2–3 on the final candidate (E6) and the E12 variant; per-game failure table refresh.
 4. Paper: trim to ≤ 1,500 words (currently ~1,620), add the E11 table as a figure, final related-work deltas.
 5. Two final Kaggle submissions (memory ON / OFF) by Oct 30; writeup submitted Nov 7.

@@ -14,11 +14,12 @@ from .base import ACTION_BY_ID, BaseAgent
 
 class ModelBasedAgent(BaseAgent):
     def __init__(self, game_id: str, seed: int = 0, memory: bool = True, max_depth: int = 12, max_nodes: int = 1500,
-                 click_lattice: int = 8, contact: bool = True, goals: bool = True, **kwargs):
+                 click_lattice: int = 8, contact: bool = True, goals: bool = True, click_model: bool = False, **kwargs):
         super().__init__(game_id, seed)
         self.memory = memory
         self.contact = contact
         self.goals = goals
+        self.click_model = click_model  # E12: generative click effects in planning (failed its gate; off by default)
         self.goal_memory = GoalMemory()
         self.level_init_objs: list[Obj] | None = None
         self.level_init_grid: np.ndarray | None = None
@@ -99,11 +100,12 @@ class ModelBasedAgent(BaseAgent):
             out = []
             for a in legal:
                 if a.is_complex():
-                    cands = list(objs) if depth == 0 else sorted(objs, key=lambda o: -o.area)[: self.MAX_CLICK_OBJECTS]
+                    # v7 behaviour (click_model off): every object at every depth; E12: cap look-ahead nodes for speed
+                    cands = list(objs) if (depth == 0 or not self.click_model) else sorted(objs, key=lambda o: -o.area)[: self.MAX_CLICK_OBJECTS]
                     for o in cands:
                         cy, cx = o.centre
                         out.append((("click",) + ident(o) + (o.y0, o.x0), ("click",) + ident(o), a, {"x": int(cx), "y": int(cy)}))
-                    if not cands or depth == 0:
+                    if not cands or depth == 0 or not self.click_model:
                         step = 64 // self.click_lattice
                         for y in range(step // 2, 64, step):
                             for x in range(step // 2, 64, step):
@@ -193,7 +195,8 @@ class ModelBasedAgent(BaseAgent):
                     goal_test = lambda o, _a=active, _m=mi: any(p.holds(o, _m) for p in _a)
             path, final = plan_to_information(self.model, objs, grid, keys_for, self.tried, self.objs_cache,
                                               self.max_depth, self.max_nodes, mover_idents or None,
-                                              self.contacted if (mover_idents and self.contact) else None, goal_test)
+                                              self.contacted if (mover_idents and self.contact) else None, goal_test,
+                                              click_model=self.click_model)
             if path is not None:
                 if final is None:
                     self.n_goal_plans += 1
@@ -218,11 +221,11 @@ class ModelBasedAgent(BaseAgent):
         if nk is not None:
             self.predicted_next, self._pred_src = nk, "memo"
         else:
-            if isinstance(key, tuple) and key[0] == "click" and key[1] != "lattice":
+            if self.click_model and isinstance(key, tuple) and key[0] == "click" and key[1] != "lattice":
                 clicked = next((o for o in objs if (o.colour, o.h, o.w, o.y0, o.x0) == (key[1], key[2], key[3], key[4], key[5])), None)
                 pred, src = self.model.predict_click(objs, ckey, clicked) if clicked is not None else (None, "unknown")
             else:
-                pred, src = self.model.predict(objs, grid, ckey)
+                pred, src = self.model.predict(objs, grid, ckey)  # v7 path: clicks may move objects (displacement model)
             if pred is not None:
                 self.predicted_next, self._pred_src = state_key(pred), src
         self.prev = (objs, grid, key, ckey)
@@ -231,7 +234,7 @@ class ModelBasedAgent(BaseAgent):
         return action
 
     def stats(self) -> dict:
-        return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
+        return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "click_model": self.click_model, "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
                 "surviving_goals": sorted(map(str, self.goal_memory.surviving)) if self.goal_memory.surviving else None, "plan_steps": self.n_plan_steps,
                 "replans_on_error": self.n_replans_on_error, "fallback_steps": self.n_fallback,
                 "pred_total": self.model.n_pred, "pred_acc": None if self.model.accuracy is None else round(self.model.accuracy, 3),

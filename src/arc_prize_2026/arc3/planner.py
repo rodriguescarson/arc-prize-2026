@@ -30,7 +30,8 @@ def adjacent_classes(members: list[Obj], objs: list[Obj]) -> set:
 
 def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, keys_for, tried: dict[int, set],
                         objs_cache: dict[int, tuple[list[Obj], np.ndarray]], max_depth: int = 12, max_nodes: int = 1500,
-                        mover_idents: frozenset | None = None, contacted: dict | None = None, goal_test=None):
+                        mover_idents: frozenset | None = None, contacted: dict | None = None, goal_test=None,
+                        click_model: bool = False):
     """keys_for(objs) -> list of (key, class_key, action, data). Returns (path_keys, final_key) or (None, None).
 
     Target priority: (1) a reachable state where the mover group touches an object class contacted fewer
@@ -86,7 +87,7 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
             ck = (sk, key)
             if ck in pred_cache:
                 pred, src = pred_cache[ck]
-            elif isinstance(key, tuple) and key[0] == "click" and key[1] != "lattice":
+            elif click_model and isinstance(key, tuple) and key[0] == "click" and key[1] != "lattice":
                 clicked = next((o for o in o_list if (o.colour, o.h, o.w, o.y0, o.x0) == (key[1], key[2], key[3], key[4], key[5])), None)
                 pred, src = model.predict_click(o_list, ckey, clicked) if clicked is not None else (None, "unknown")
                 pred_cache[ck] = (pred, src)
