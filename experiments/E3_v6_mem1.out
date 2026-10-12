@@ -52,3 +52,6 @@ INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and ma
 2026-10-12 07:07:42 | INFO | Closed scorecard: 2828b0cc-5880-48a7-b5b0-bf0cd9348259
 2026-10-12 07:07:42 | INFO | Created new scorecard: adc71931-8d04-45d1-b0f9-83571c25005f
 2026-10-12 07:07:42 | INFO | Successfully loaded game class Sk48 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sk48/d8078629/sk48.py
+2026-10-12 07:12:09 | INFO | Closed scorecard: adc71931-8d04-45d1-b0f9-83571c25005f
+2026-10-12 07:12:09 | INFO | Created new scorecard: 12a62ba6-da3b-4d53-842e-81e2e737ba3a
+2026-10-12 07:12:09 | INFO | Successfully loaded game class Sp80 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sp80/589a99af/sp80.py

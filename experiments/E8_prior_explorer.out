@@ -70,3 +70,36 @@ INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and ma
 2026-10-12 07:11:40 | INFO | Closed scorecard: 20967162-c2e1-4681-abe5-84676481a4b5
 2026-10-12 07:11:40 | INFO | Created new scorecard: b97ed64b-02a9-4537-a3ef-8677bdb4bdd9
 2026-10-12 07:11:40 | INFO | Successfully loaded game class Vc33 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/vc33/5430563c/vc33.py
+2026-10-12 07:12:03 | INFO | Closed scorecard: b97ed64b-02a9-4537-a3ef-8677bdb4bdd9
+2026-10-12 07:12:03 | INFO | Created new scorecard: 2f0c8f1c-ea30-449e-a085-2d6ca2c86008
+2026-10-12 07:12:03 | INFO | Successfully loaded game class Wa30 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/wa30/ee6fef47/wa30.py
+2026-10-12 07:12:07 | INFO | Closed scorecard: 2f0c8f1c-ea30-449e-a085-2d6ca2c86008
+PriorExplorerAgent seed=0 max_actions=2000: score=0.0130 levels=5/183 won=0/25 wall=551.8s
+game              lv/tot   score   acts  rst frames level_actions
+ar25-0c556536      0/8     0.000   2000   26   1555 []
+bp35-0a0ad940      0/9     0.000   2000   31   2412 []
+cd82-fb555c5d      0/6     0.000   2000   20    654 []
+cn04-2fe56bfb      0/6     0.000   2000   27   1022 []
+dc22-fdcac232      0/6     0.000   2000   27    756 []
+ft09-0d8bbf25      1/6     0.005   2000   52   1543 [1369]
+g50t-5849a774      0/7     0.000   2000   16   5883 []
+ka59-38d34dbb      0/7     0.000   2000   20    920 []
+lf52-271a04aa      0/10    0.000   2000   30    678 []
+lp85-305b61c3      2/8     0.070   2000   28   1595 [109, 1780]
+ls20-9607627b      0/7     0.000   2000   16   1079 []
+m0r0-492f87ba      0/6     0.000   2000   14    636 []
+r11l-495a7899      1/6     0.240   2000   91   2901 [98]
+re86-8af5384d      0/8     0.000   2000   20   1928 []
+s5i5-18d95033      0/8     0.000   2000   40    759 []
+sb26-7fbdac44      0/8     0.000   2000   16   9322 []
+sc25-635fd71a      0/6     0.000   2000   33   1697 []
+sk48-d8078629      0/8     0.000   2000    2    425 []
+sp80-589a99af      1/6     0.009   2000   55   1622 [895]
+su15-1944f8ab      0/9     0.000   2000   60   7716 []
+tn36-ef4dde99      0/7     0.000   2000   33    672 []
+tr87-cd924810      0/6     0.000   2000   16   1950 []
+tu93-0768757b      0/9     0.000   2000   40   2579 []
+vc33-5430563c      0/7     0.000   2000   40    210 []
+wa30-ee6fef47      0/9     0.000   2000   10   1604 []
+results -> /Users/carson/Projects/arc_prize_2026/experiments/arc3_E8_prior_explorer_a2000_s0/results.json
+exit 0

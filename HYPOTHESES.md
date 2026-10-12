@@ -115,3 +115,4 @@ Decision: **H1 primary, H2 secondary add-on (if the data is accessible), H3 fall
 - **P5 (hidden set): pending** — kernel runs in Kaggle's runtime (self-test green); submission awaits Carson.
 - Unplanned findings worth a paragraph each: hidden-counter progress bars (non-Markov state detected by memo accuracy < 1), rigid multi-part sprites with decorations, deadly-edge memoisation (tu93 resets 350 → 85).
 - Decision at 06:59: H1 stays primary (P2 met, P3 supported, mechanism measurable); H2 data is now local for the next cycle.
+- **H2 (human-habit prior) — 07:12: FAILED its pre-registered gate.** Paired level-1 ratio median 1.0 (CI [1.0, 11.5], n=3), coverage 4 vs 5 games, total 0.013 vs 0.038 (`arc3_E8_prior_explorer_a2000_s0`). Reported as a negative result; the replay data stays in use for E11 (goal-template consistency) and per-level human baselines.
