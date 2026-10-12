@@ -106,3 +106,12 @@ submission itself. Kept only as the fallback if ARC-AGI-3 produces nothing by Oc
 | **Mean** | **3.9** | 3.1 | 2.4 |
 
 Decision: **H1 primary, H2 secondary add-on (if the data is accessible), H3 fallback track.**
+
+## Outcomes (appended 2026-10-12 06:59 IST; evidence in EXPERIMENT_LOG.csv and experiments/)
+- **P2 (coverage ≥ 2× explorer's 5 games): MET** — 11 games with level 1 from v3 onward (`arc3_E2_v4_hud_contact1_a2000_s0`).
+- **P1 (level-1 cost ≤ 0.5× explorer, paired): NOT MET** — among games both finish, ratios are mixed (lp85 15 vs 109, ls20 353 vs 644 better; ft09 303 vs 119 worse); median level-1 cost vs human 8.6× (v4) vs 6.4× (explorer, on its 5 easier games).
+- **P3 (within-game learning curve with memory): SUPPORTED on n = 2** — memory ON reaches level 2 on tu93 and vc33 with actions/human 10.4→4.8 and 6.1→2.6; memory OFF reaches no level 2 (`arc3_E3_v5_mem{1,0}_goals1_a2000_s0`). Needs more games reaching level ≥ 3 to test the ≥60% criterion.
+- **P4 (generative accuracy > 0.8 after 200 actions on ≥ 15 games): NOT MET** — ≥ 0.9 on 2 games, ≥ 0.6 on 6; memoised determinism ≥ 0.95 on 14/25. The generative model is a displacement model; click-driven games are memo-only by design.
+- **P5 (hidden set): pending** — kernel runs in Kaggle's runtime (self-test green); submission awaits Carson.
+- Unplanned findings worth a paragraph each: hidden-counter progress bars (non-Markov state detected by memo accuracy < 1), rigid multi-part sprites with decorations, deadly-edge memoisation (tu93 resets 350 → 85).
+- Decision at 06:59: H1 stays primary (P2 met, P3 supported, mechanism measurable); H2 data is now local for the next cycle.
