@@ -965,10 +965,11 @@ import os as _os, time as _time
 from agents.agent import Agent as _FrameworkAgent
 
 _START = _time.time()
-_BUDGET_S = float(_os.getenv("ARC3_BUDGET_S", "30600"))
-_MAX_ACTIONS = int(_os.getenv("ARC3_MAX_ACTIONS", "1500"))
+_BUDGET_S = float(_os.getenv("ARC3_BUDGET_S", "29700"))
+_MAX_ACTIONS = int(_os.getenv("ARC3_MAX_ACTIONS", "3000"))
 _MEMORY = _os.getenv("ARC3_MEMORY", "0") == "1"
 _CONTACT = _os.getenv("ARC3_CONTACT", "1") == "1"
+_GOALS = _os.getenv("ARC3_GOALS", "1") == "1"
 _GAME_BUDGET_S = float(_os.getenv("ARC3_GAME_BUDGET_S", "30600"))
 # Per-game CPU budget (seconds of *this thread's* CPU time). The rerun plays all 110 games as concurrent threads
 # under one GIL, so wall time is shared and meaningless per game; thread CPU time is each game's fair-share meter.
@@ -982,14 +983,14 @@ class MyAgent(_FrameworkAgent):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.impl = ModelBasedAgent(game_id=self.game_id, seed=0, memory=_MEMORY, contact=_CONTACT)
+        self.impl = ModelBasedAgent(game_id=self.game_id, seed=0, memory=_MEMORY, contact=_CONTACT, goals=_GOALS)
         self._n = 0
         self._t0 = _time.time()
         self._c0 = None  # thread CPU clock, captured lazily inside the game's own thread (init runs in the main thread)
 
     @property
     def name(self) -> str:
-        return f"{super().name}.modelbased.mem{int(_MEMORY)}.contact{int(_CONTACT)}"
+        return f"{super().name}.modelbased.mem{int(_MEMORY)}.contact{int(_CONTACT)}.goals{int(_GOALS)}"
 
     def is_done(self, frames, latest_frame) -> bool:
         if latest_frame.state is GameState.WIN:

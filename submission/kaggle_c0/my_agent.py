@@ -965,8 +965,8 @@ import os as _os, time as _time
 from agents.agent import Agent as _FrameworkAgent
 
 _START = _time.time()
-_BUDGET_S = float(_os.getenv("ARC3_BUDGET_S", "30600"))
-_MAX_ACTIONS = int(_os.getenv("ARC3_MAX_ACTIONS", "1500"))
+_BUDGET_S = float(_os.getenv("ARC3_BUDGET_S", "29700"))
+_MAX_ACTIONS = int(_os.getenv("ARC3_MAX_ACTIONS", "3000"))
 _MEMORY = _os.getenv("ARC3_MEMORY", "1") == "1"
 _CONTACT = _os.getenv("ARC3_CONTACT", "0") == "1"
 _GOALS = _os.getenv("ARC3_GOALS", "1") == "1"
