@@ -25,3 +25,30 @@ INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and ma
 2026-10-12 10:20:13 | INFO | Successfully loaded game class Tu93 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/tu93/0768757b/tu93.py
 2026-10-12 10:20:14 | INFO | Successfully loaded game class Vc33 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/vc33/5430563c/vc33.py
 2026-10-12 10:20:15 | INFO | Successfully loaded game class Wa30 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/wa30/ee6fef47/wa30.py
+game             actions levels    wall score
+ar25-0c556536       1500      0   587.3 0.000
+bp35-0a0ad940       1500      1  7170.9 0.002
+cd82-fb555c5d       1500      1   641.0 0.034
+cn04-2fe56bfb       1500      0   621.6 0.000
+dc22-fdcac232       1500      0   822.5 0.000
+ft09-0d8bbf25       1500      0   656.0 0.000
+g50t-5849a774       1500      1  1143.6 0.016
+ka59-38d34dbb       1500      0   623.2 0.000
+lf52-271a04aa       1500      1  1122.3 0.298
+lp85-305b61c3       1500      1   611.3 2.778
+ls20-9607627b       1500      1   630.1 0.014
+m0r0-492f87ba       1500      0   799.6 0.000
+r11l-495a7899       1500      0   819.3 0.000
+re86-8af5384d       1500      0   810.4 0.000
+s5i5-18d95033       1500      1   613.4 0.006
+sb26-7fbdac44       1500      0  1048.7 0.000
+sc25-635fd71a       1500      0   790.5 0.000
+sk48-d8078629       1500      0   938.0 0.000
+sp80-589a99af       1500      0   576.0 0.000
+su15-1944f8ab       1500      1   941.2 0.030
+tn36-ef4dde99       1500      1  1363.3 2.404
+tr87-cd924810       1500      0  1095.0 0.000
+tu93-0768757b       1500      3   818.4 0.267
+vc33-5430563c       1500      2   542.4 1.142
+wa30-ee6fef47       1500      0   467.6 0.000
+TOTAL 0.280 | levels 14 | mean actions 1500 | wall 7171s | budget/game 30600.0s, cap 1500

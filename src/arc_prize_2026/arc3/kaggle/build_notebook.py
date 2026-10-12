@@ -5,7 +5,7 @@ self-contained `my_agent.py` (numpy + stdlib only), wraps ModelBasedAgent in a f
 subclass named MyAgent, and writes a 4-cell notebook with the same rerun plumbing as Kaggle's official
 Stochastic Goose sample (gateway at http://gateway:8001, KAGGLE_IS_COMPETITION_RERUN switch).
 
-Usage: uv run python -m arc_prize_2026.arc3.kaggle.build_notebook --memory 1 --max-actions 1500 --budget-h 8.5
+Usage: uv run python -m arc_prize_2026.arc3.kaggle.build_notebook --memory 1 --max-actions 1500 --budget-h 8.5 --game-cpu-s 700
 Outputs: submission/kaggle/my_agent.py, submission/kaggle/submission.ipynb, submission/kaggle/kernel-metadata.json,
          submission/kaggle/BUILD.json (sha256 of my_agent.py, git commit, flags).
 """
@@ -37,6 +37,9 @@ _MAX_ACTIONS = int(_os.getenv("ARC3_MAX_ACTIONS", "{max_actions}"))
 _MEMORY = _os.getenv("ARC3_MEMORY", "{memory}") == "1"
 _CONTACT = _os.getenv("ARC3_CONTACT", "{contact}") == "1"
 _GAME_BUDGET_S = float(_os.getenv("ARC3_GAME_BUDGET_S", "{game_budget_s}"))
+# Per-game CPU budget (seconds of *this thread's* CPU time). The rerun plays all 110 games as concurrent threads
+# under one GIL, so wall time is shared and meaningless per game; thread CPU time is each game's fair-share meter.
+_GAME_CPU_S = float(_os.getenv("ARC3_GAME_CPU_S", "{game_cpu_s}"))
 
 
 class MyAgent(_FrameworkAgent):
@@ -49,6 +52,7 @@ class MyAgent(_FrameworkAgent):
         self.impl = ModelBasedAgent(game_id=self.game_id, seed=0, memory=_MEMORY, contact=_CONTACT)
         self._n = 0
         self._t0 = _time.time()
+        self._c0 = None  # thread CPU clock, captured lazily inside the game's own thread (init runs in the main thread)
 
     @property
     def name(self) -> str:
@@ -59,10 +63,16 @@ class MyAgent(_FrameworkAgent):
             return True
         if _time.time() - _START > _BUDGET_S or _time.time() - self._t0 > _GAME_BUDGET_S:
             return True
+        if self._c0 is None:
+            self._c0 = _time.thread_time()
+        if _time.thread_time() - self._c0 > _GAME_CPU_S:
+            return True
         return self._n >= _MAX_ACTIONS
 
     def choose_action(self, frames, latest_frame) -> GameAction:
         self._n += 1
+        if self._c0 is None:
+            self._c0 = _time.thread_time()
         try:
             return self.impl.choose_action(frames, latest_frame)
         except Exception as e:  # never crash the swarm thread
@@ -160,7 +170,7 @@ def strip_relative_imports(src: str) -> str:
     return "\n".join(out)
 
 
-def build(memory: bool, max_actions: int, budget_h: float, username: str, contact: bool = True, game_budget_s: int = 600, out_dir: Path | None = None) -> dict:
+def build(memory: bool, max_actions: int, budget_h: float, username: str, contact: bool = True, game_budget_s: int = 30600, out_dir: Path | None = None, game_cpu_s: int = 700) -> dict:
     global OUT
     if out_dir is not None:
         OUT = Path(out_dir)
@@ -176,7 +186,7 @@ def build(memory: bool, max_actions: int, budget_h: float, username: str, contac
         src = "\n".join(l for l in src.splitlines() if not re.match(r"^(import (random|numpy as np)|from (collections|dataclasses|typing|arcengine) import )", l))
         parts.append(f"\n# ---- {m} ----\n" + src)
     agent_src = "\n".join(parts) + SHIM.format(budget_s=int(budget_h * 3600), max_actions=max_actions, memory=int(memory),
-                                              contact=int(contact), game_budget_s=game_budget_s)
+                                              contact=int(contact), game_budget_s=game_budget_s, game_cpu_s=game_cpu_s)
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "my_agent.py").write_text(agent_src)
     nb = {"cells": [
@@ -199,7 +209,7 @@ def build(memory: bool, max_actions: int, budget_h: float, username: str, contac
     except Exception:
         commit = "unknown"
     info = {"my_agent_sha256": sha, "git_commit": commit, "memory": memory, "contact": contact, "max_actions": max_actions,
-            "budget_h": budget_h, "game_budget_s": game_budget_s, "kernel_id": meta["id"]}
+            "budget_h": budget_h, "game_budget_s": game_budget_s, "game_cpu_s": game_cpu_s, "kernel_id": meta["id"]}
     (OUT / "BUILD.json").write_text(json.dumps(info, indent=1))
     return info
 
@@ -211,10 +221,11 @@ def main(argv=None):
     ap.add_argument("--budget-h", type=float, default=8.5)
     ap.add_argument("--username", default="carsonrodrigues")
     ap.add_argument("--contact", type=int, default=1)
-    ap.add_argument("--game-budget-s", type=int, default=600)
+    ap.add_argument("--game-budget-s", type=int, default=30600)
+    ap.add_argument("--game-cpu-s", type=int, default=700, help="per-game thread-CPU budget (s); 110 games share one 8.5 h GIL")
     ap.add_argument("--out-dir", default=None)
     a = ap.parse_args(argv)
-    print(json.dumps(build(bool(a.memory), a.max_actions, a.budget_h, a.username, bool(a.contact), a.game_budget_s, Path(a.out_dir) if a.out_dir else None), indent=1))
+    print(json.dumps(build(bool(a.memory), a.max_actions, a.budget_h, a.username, bool(a.contact), a.game_budget_s, Path(a.out_dir) if a.out_dir else None, a.game_cpu_s), indent=1))
 
 
 if __name__ == "__main__":

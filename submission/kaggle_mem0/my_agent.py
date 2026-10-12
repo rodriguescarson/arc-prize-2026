@@ -940,6 +940,9 @@ _MAX_ACTIONS = int(_os.getenv("ARC3_MAX_ACTIONS", "1500"))
 _MEMORY = _os.getenv("ARC3_MEMORY", "0") == "1"
 _CONTACT = _os.getenv("ARC3_CONTACT", "1") == "1"
 _GAME_BUDGET_S = float(_os.getenv("ARC3_GAME_BUDGET_S", "30600"))
+# Per-game CPU budget (seconds of *this thread's* CPU time). The rerun plays all 110 games as concurrent threads
+# under one GIL, so wall time is shared and meaningless per game; thread CPU time is each game's fair-share meter.
+_GAME_CPU_S = float(_os.getenv("ARC3_GAME_CPU_S", "700"))
 
 
 class MyAgent(_FrameworkAgent):
@@ -952,6 +955,7 @@ class MyAgent(_FrameworkAgent):
         self.impl = ModelBasedAgent(game_id=self.game_id, seed=0, memory=_MEMORY, contact=_CONTACT)
         self._n = 0
         self._t0 = _time.time()
+        self._c0 = None  # thread CPU clock, captured lazily inside the game's own thread (init runs in the main thread)
 
     @property
     def name(self) -> str:
@@ -962,10 +966,16 @@ class MyAgent(_FrameworkAgent):
             return True
         if _time.time() - _START > _BUDGET_S or _time.time() - self._t0 > _GAME_BUDGET_S:
             return True
+        if self._c0 is None:
+            self._c0 = _time.thread_time()
+        if _time.thread_time() - self._c0 > _GAME_CPU_S:
+            return True
         return self._n >= _MAX_ACTIONS
 
     def choose_action(self, frames, latest_frame) -> GameAction:
         self._n += 1
+        if self._c0 is None:
+            self._c0 = _time.thread_time()
         try:
             return self.impl.choose_action(frames, latest_frame)
         except Exception as e:  # never crash the swarm thread
