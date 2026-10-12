@@ -15,7 +15,8 @@ from .base import ACTION_BY_ID, BaseAgent
 class ModelBasedAgent(BaseAgent):
     def __init__(self, game_id: str, seed: int = 0, memory: bool = True, max_depth: int = 12, max_nodes: int = 1500,
                  click_lattice: int = 8, contact: bool = True, goals: bool = True, click_model: bool = False,
-                 llm_goals: str | None = None, llm_every: int = 300, llm_patience: int = 50, greedy: bool = False, greedy_cap: int = 0, **kwargs):
+                 llm_goals: str | None = None, llm_every: int = 300, llm_patience: int = 50, greedy: bool = False, greedy_cap: int = 0,
+                 llm_unreached_cap: int = 0, llm_max_asks: int = 0, **kwargs):
         super().__init__(game_id, seed)
         self.memory = memory
         self.contact = contact
@@ -49,6 +50,8 @@ class ModelBasedAgent(BaseAgent):
         self.level_actions_n = 0        # actions taken on the current level
         self.greedy = greedy; self.n_greedy = 0   # E20: step toward a touch-goal target when no plan exists
         self.greedy_cap = greedy_cap; self.n_greedy_goal = 0  # E20b: greedy steps spent on the current proposed goal (0 = no cap)
+        self.llm_unreached_cap = llm_unreached_cap; self.llm_max_asks = llm_max_asks  # E20d: drop a never-reached goal after N actions; cap asks per level
+        self.llm_goal_accepted_n = None; self.llm_asks_level = 0
         self.transition_note = None     # text describing what the last transition changed
         self.plan: list = []
         self.predicted_next: int | None = None
@@ -183,7 +186,7 @@ class ModelBasedAgent(BaseAgent):
             if self.proposer is not None:
                 surv = sorted(map(str, self.goal_memory.surviving)) if self.goal_memory.surviving else []
                 self.transition_note = ("predicates true at the transition and false at the level start: " + ", ".join(surv[:6])) if surv else "nothing in the template class survived"
-                self.llm_goal = None; self.llm_goal_reached_at = None; self.llm_excluded = set(); self.level_actions_n = 0; self.llm_last_ask_n = None
+                self.llm_goal = None; self.llm_goal_reached_at = None; self.llm_excluded = set(); self.level_actions_n = 0; self.llm_last_ask_n = None; self.llm_asks_level = 0; self.llm_goal_accepted_n = None
             self.level_init_objs = objs; self.level_init_grid = grid
             self.levels_seen = latest.levels_completed
             self.tried = {}; self.plan = []; self.predicted_next = None; self.contacted = {}
@@ -351,6 +354,12 @@ class ModelBasedAgent(BaseAgent):
         from ..llm_goal import build_prompt, goal_menu, summarise_level
         if self.goals and self.goal_memory.active(objs):
             return  # an inferred goal exists: the proposer is not consulted
+        if (self.llm_goal is not None and self.llm_unreached_cap and self.llm_goal_reached_at is None and self.llm_goal_accepted_n is not None
+                and self.level_actions_n - self.llm_goal_accepted_n >= self.llm_unreached_cap and not self.llm_goal.holds(objs, mover_idents)):
+            # E20d: never reached within the cap: drop it (bounded damage from plausible-but-far goals: tu93)
+            self.llm_excluded.add(str(self.llm_goal)); self.llm_rejected += 1
+            self.llm_log.append({"level": self.levels_seen, "n": self.level_actions_n, "rejected": str(self.llm_goal), "why": "unreached_cap"})
+            self.llm_goal = None; self.llm_goal_reached_at = None; self.n_greedy_goal = 0
         if self.llm_goal is not None and self.greedy_cap and self.n_greedy_goal >= self.greedy_cap and not self.llm_goal.holds(objs, mover_idents):
             # E20b: walked toward it for `greedy_cap` steps without reaching it: not reachable by walking; ask again
             self.llm_excluded.add(str(self.llm_goal)); self.llm_rejected += 1
@@ -374,15 +383,17 @@ class ModelBasedAgent(BaseAgent):
         elif n - self.llm_last_ask_n < self.llm_every and not just_rejected:
             return
         self.llm_last_ask_n = n
+        if self.llm_max_asks and self.llm_asks_level >= self.llm_max_asks:
+            return  # E20d: ask budget for this level spent
         menu = goal_menu(objs, mover_idents, self.llm_excluded)
         if not menu:
             return
         prompt, options = build_prompt(summarise_level(objs, grid, self.model, mover_idents, self.levels_seen, self.transition_note, self.level_actions_n), menu)
         idx, raw = self.proposer.choose(prompt, options)
-        self.llm_asks += 1
+        self.llm_asks += 1; self.llm_asks_level += 1
         entry = {"level": self.levels_seen, "n": self.level_actions_n, "n_options": len(options), "chosen": None}
         if idx is not None and 0 <= idx < len(menu):
-            self.llm_goal = menu[idx][0]; self.llm_goal_reached_at = None; self.llm_accepted += 1; self.n_greedy_goal = 0
+            self.llm_goal = menu[idx][0]; self.llm_goal_reached_at = None; self.llm_accepted += 1; self.n_greedy_goal = 0; self.llm_goal_accepted_n = self.level_actions_n
             entry["chosen"] = str(self.llm_goal); entry["desc"] = menu[idx][1]
             self.plan = []  # replan toward the new goal
         self.llm_log.append(entry)
