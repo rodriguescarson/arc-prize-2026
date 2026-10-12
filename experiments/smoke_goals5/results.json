@@ -1,0 +1,485 @@
+{
+ "agent": "ModelBasedAgent",
+ "agent_kwargs": {},
+ "seed": 0,
+ "max_actions": 2000,
+ "time_budget_s": 300.0,
+ "n_games": 4,
+ "total_score": 0.002818,
+ "levels_completed": 2,
+ "total_levels": 28,
+ "games_won": 0,
+ "wall_s": 259.1,
+ "games": [
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "plans": 565,
+    "goal_plans": 15,
+    "surviving_goals": [
+     "touch((5, 7, 7))",
+     "touch((9, 1, 1))",
+     "touch((9, 3, 3))"
+    ],
+    "plan_steps": 1367,
+    "replans_on_error": 174,
+    "fallback_steps": 609,
+    "pred_total": 1947,
+    "pred_acc": 0.897,
+    "pred_by_source": {
+     "memo": [
+      1350,
+      0.973
+     ],
+     "model": [
+      515,
+      0.734
+     ],
+     "unreliable": [
+      82,
+      0.671
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       -5,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       5,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       0,
+       -5
+      ]
+     ],
+     "4": [
+      [
+       "(12, 2, 5)",
+       "(9, 3, 5)"
+      ],
+      [
+       0,
+       5
+      ]
+     ]
+    },
+    "volatile_rows": [
+     61,
+     62
+    ],
+    "terrain_colours": [
+     3,
+     4
+    ],
+    "known_noops": [],
+    "key_reliability": {
+     "1": [
+      20,
+      0.6
+     ],
+     "2": [
+      20,
+      0.7
+     ],
+     "3": [
+      20,
+      1.0
+     ],
+     "4": [
+      20,
+      0.7
+     ]
+    }
+   },
+   "game_id": "ls20-9607627b",
+   "levels_completed": 1,
+   "win_levels": 7,
+   "level_actions": [
+    488
+   ],
+   "actions": 2000,
+   "resets": 24,
+   "distinct_frames": 1325,
+   "final_state": "NOT_FINISHED",
+   "seconds": 8.75,
+   "baseline_actions": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ],
+   "score": 0.0072585134564441215
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "plans": 444,
+    "goal_plans": 0,
+    "surviving_goals": null,
+    "plan_steps": 650,
+    "replans_on_error": 35,
+    "fallback_steps": 1285,
+    "pred_total": 1476,
+    "pred_acc": 0.975,
+    "pred_by_source": {
+     "memo": [
+      1051,
+      1.0
+     ],
+     "model": [
+      403,
+      0.913
+     ],
+     "unreliable": [
+      22,
+      0.909
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(9, 4, 20)"
+      ],
+      [
+       -4,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(9, 4, 20)"
+      ],
+      [
+       4,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(9, 4, 20)"
+      ],
+      [
+       0,
+       -4
+      ]
+     ],
+     "4": [
+      [
+       "(9, 4, 20)"
+      ],
+      [
+       0,
+       4
+      ]
+     ]
+    },
+    "volatile_rows": [
+     0
+    ],
+    "terrain_colours": [
+     12
+    ],
+    "known_noops": [
+     "5",
+     "('click', 4, 3, 4)",
+     "('click', 6, 4, 4)",
+     "('click', 9, 4, 20)",
+     "('click', 11, 8, 12)",
+     "('click', 1, 4, 64)",
+     "('click', 'lattice')"
+    ],
+    "key_reliability": {
+     "1": [
+      20,
+      1.0
+     ],
+     "2": [
+      20,
+      1.0
+     ],
+     "3": [
+      20,
+      1.0
+     ],
+     "4": [
+      20,
+      1.0
+     ]
+    }
+   },
+   "game_id": "sp80-589a99af",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 65,
+   "distinct_frames": 985,
+   "final_state": "NOT_FINISHED",
+   "seconds": 22.13,
+   "baseline_actions": [
+    39,
+    58,
+    25,
+    148,
+    96,
+    152
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "plans": 1910,
+    "goal_plans": 0,
+    "surviving_goals": null,
+    "plan_steps": 1984,
+    "replans_on_error": 220,
+    "fallback_steps": 0,
+    "pred_total": 1924,
+    "pred_acc": 0.35,
+    "pred_by_source": {
+     "memo": [
+      74,
+      1.0
+     ],
+     "model": [
+      668,
+      0.671
+     ],
+     "unreliable": [
+      1182,
+      0.128
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(7, 1, 1)"
+      ],
+      [
+       0,
+       -1
+      ]
+     ],
+     "2": [
+      [
+       "(7, 1, 1)"
+      ],
+      [
+       2,
+       -1
+      ]
+     ],
+     "3": [
+      [
+       "(0, 2, 5)"
+      ],
+      [
+       0,
+       -7
+      ]
+     ],
+     "4": [
+      [
+       "(0, 2, 5)"
+      ],
+      [
+       0,
+       7
+      ]
+     ]
+    },
+    "volatile_rows": [
+     63
+    ],
+    "terrain_colours": [
+     2,
+     3
+    ],
+    "known_noops": [],
+    "key_reliability": {
+     "3": [
+      20,
+      0.7
+     ],
+     "4": [
+      20,
+      0.7
+     ],
+     "2": [
+      20,
+      0.0
+     ],
+     "1": [
+      20,
+      0.0
+     ]
+    }
+   },
+   "game_id": "tr87-cd924810",
+   "levels_completed": 0,
+   "win_levels": 6,
+   "level_actions": [],
+   "actions": 2000,
+   "resets": 16,
+   "distinct_frames": 1963,
+   "final_state": "NOT_FINISHED",
+   "seconds": 221.08,
+   "baseline_actions": [
+    54,
+    58,
+    40,
+    45,
+    71,
+    146
+   ],
+   "score": 0.0
+  },
+  {
+   "agent_stats": {
+    "memory": true,
+    "contact": true,
+    "goals": true,
+    "plans": 488,
+    "goal_plans": 0,
+    "surviving_goals": [
+     "touch((14, 3, 3))"
+    ],
+    "plan_steps": 1773,
+    "replans_on_error": 79,
+    "fallback_steps": 0,
+    "pred_total": 1534,
+    "pred_acc": 0.902,
+    "pred_by_source": {
+     "memo": [
+      1285,
+      1.0
+     ],
+     "model": [
+      97,
+      0.186
+     ],
+     "unreliable": [
+      152,
+      0.533
+     ]
+    },
+    "movers": {
+     "1": [
+      [
+       "(4, 1, 1)",
+       "(9, 3, 3)"
+      ],
+      [
+       -6,
+       0
+      ]
+     ],
+     "2": [
+      [
+       "(9, 3, 3)"
+      ],
+      [
+       6,
+       0
+      ]
+     ],
+     "3": [
+      [
+       "(9, 3, 3)"
+      ],
+      [
+       0,
+       -6
+      ]
+     ],
+     "4": [
+      [
+       "(9, 3, 3)"
+      ],
+      [
+       0,
+       6
+      ]
+     ]
+    },
+    "volatile_rows": [
+     63
+    ],
+    "terrain_colours": [
+     5
+    ],
+    "known_noops": [],
+    "key_reliability": {
+     "4": [
+      20,
+      0.35
+     ],
+     "2": [
+      20,
+      0.45
+     ],
+     "1": [
+      20,
+      0.6
+     ],
+     "3": [
+      20,
+      0.45
+     ]
+    }
+   },
+   "game_id": "tu93-0768757b",
+   "levels_completed": 1,
+   "win_levels": 9,
+   "level_actions": [
+    447
+   ],
+   "actions": 2000,
+   "resets": 227,
+   "distinct_frames": 1933,
+   "final_state": "NOT_FINISHED",
+   "seconds": 6.96,
+   "baseline_actions": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ],
+   "score": 0.004014945383952787
+  }
+ ]
+}

@@ -30,7 +30,7 @@ def adjacent_classes(members: list[Obj], objs: list[Obj]) -> set:
 
 def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, keys_for, tried: dict[int, set],
                         objs_cache: dict[int, tuple[list[Obj], np.ndarray]], max_depth: int = 12, max_nodes: int = 1500,
-                        mover_idents: frozenset | None = None, contacted: dict | None = None):
+                        mover_idents: frozenset | None = None, contacted: dict | None = None, goal_test=None):
     """keys_for(objs) -> list of (key, class_key, action, data). Returns (path_keys, final_key) or (None, None).
 
     Target priority: (1) a reachable state where the mover group touches an object class contacted fewer
@@ -51,6 +51,8 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
         if sk not in objs_cache:
             continue
         o_list, g = objs_cache[sk]
+        if goal_test is not None and path and goal_test(o_list):
+            return path, None  # goal state reached in the model: execute the path, no exploratory key needed
         cands = keys_for(o_list)
         untried = [c for c in cands if c[0] not in tried.get(sk, set()) and not model.is_known_noop(c[1])]
         if untried:
@@ -79,7 +81,7 @@ def plan_to_information(model: EffectModel, objs: list[Obj], grid: np.ndarray, k
                     seen.add(nk); q.append((nk, path + [(key, action, data)]))
                 continue
             pred, src = model.predict(o_list, g, ckey)
-            if pred is None:
+            if pred is None or src == "unreliable":
                 continue
             nk = state_key(pred)
             if nk == sk or nk in seen:

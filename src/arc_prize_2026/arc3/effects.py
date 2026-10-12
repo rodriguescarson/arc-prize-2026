@@ -16,7 +16,7 @@ generatively; recolour/appear/vanish are memorised through `transitions` and oth
 """
 from __future__ import annotations
 
-from collections import Counter, defaultdict
+from collections import Counter, defaultdict, deque
 
 import numpy as np
 
@@ -58,7 +58,7 @@ class EffectModel:
         self.n_obs: Counter = Counter()
         self.n_pred = 0
         self.n_pred_correct = 0
-        self.key_pred: dict[Key, list[int]] = defaultdict(lambda: [0, 0])  # key -> [n, correct] for generative predictions
+        self.key_pred: dict[Key, deque] = defaultdict(lambda: deque(maxlen=20))  # last 20 generative outcomes per key
         self.min_reliability = 0.5
 
     # ---- learning -------------------------------------------------------------------------------
@@ -72,12 +72,12 @@ class EffectModel:
         for o, p, delta in d["moved"]:
             self.moves[key][(ident(o), delta)] += 1
             self.passable[key].update(_ahead_cells(o, *delta, grid_before))
-        if not d["moved"] and sig == (0, 0, 0, 0):
-            # nothing moved: if we know what this key usually moves, record what was ahead of it
-            group = self.modal_group(key)
-            if group is not None:
-                idents, (dy, dx) = group
-                members = [o for o in before if ident(o) in idents]
+        group = self.modal_group(key)
+        if group is not None and not d["moved"]:
+            # the group did not move (HUD/bar changes elsewhere are irrelevant): record what was in its way
+            idents, (dy, dx) = group
+            members = [o for o in before if ident(o) in idents]
+            if members and all(any((m.colour, m.y0, m.x0, m.y1, m.x1) == (p.colour, p.y0, p.x0, p.y1, p.x1) for p in after) for m in members):
                 for o in members:
                     self.blocked[key].update(_ahead_cells(o, dy, dx, grid_before, members))
         return d
@@ -108,9 +108,8 @@ class EffectModel:
         group = self.modal_group(key)
         if group is None:
             return None, "unknown"
-        n, c = self.key_pred[key]
-        if n >= 10 and c / n < self.min_reliability:
-            return None, "unreliable"  # this key's mechanic is not a rigid move; memo-only from here on
+        hist = self.key_pred[key]
+        unreliable = len(hist) >= 10 and sum(hist) / len(hist) < self.min_reliability
         idents, (dy, dx) = group
         members = [o for o in objs if ident(o) in idents]
         if not members:
@@ -123,10 +122,21 @@ class EffectModel:
                     blocked = True; break
             if blocked:
                 break
+        src = "unreliable" if unreliable else "model"
         if blocked:
-            return list(objs), "model"
+            return list(objs), src
         out = [_moved(o, dy, dx) if ident(o) in idents else o for o in objs]
-        return out, "model"
+        return out, src
+
+    def predict_unchecked(self, objs: list[Obj], key: Key) -> list[Obj] | None:
+        """Apply the modal group displacement with no blocking check and no reliability gate (for goal examples)."""
+        group = self.modal_group(key)
+        if group is None:
+            return None
+        idents, (dy, dx) = group
+        if not any(ident(o) in idents for o in objs):
+            return None
+        return [_moved(o, dy, dx) if ident(o) in idents else o for o in objs]
 
     def next_key(self, sk: int, key: Key) -> int | None:
         return self.transitions.get((sk, key))
@@ -138,7 +148,7 @@ class EffectModel:
         ok = int(predicted_key == observed_key)
         self.n_pred_correct += ok
         if key is not None:
-            self.key_pred[key][0] += 1; self.key_pred[key][1] += ok
+            self.key_pred[key].append(ok)
 
     @property
     def accuracy(self) -> float | None:
