@@ -67,7 +67,7 @@ class ModelBasedAgent(BaseAgent):
                     y2 = y
                     while y2 + 1 < 64 and cand[y2 + 1]:
                         y2 += 1
-                    if y2 - y + 1 <= 2:
+                    if y2 - y + 1 <= 2 and (y2 <= 5 or y >= 50):  # HUD bars live at the frame edges
                         bar_rows[y:y2 + 1] = True
                     y = y2 + 1
                 else:
@@ -120,6 +120,11 @@ class ModelBasedAgent(BaseAgent):
         grid = np.asarray(latest.frame[-1], dtype=np.int16)
         self._update_volatility(grid, after_reset=self.prev is None)
         objs = self.perceive(grid)
+        early_movers = frozenset().union(*[g[0] for k in self.model.moves if (g := self.model.modal_group(k))]) if self.model.moves else frozenset()
+        if early_movers:
+            members = [o for o in objs if ident(o) in early_movers]
+            # decorations (direction markers, eyes) fully inside a mover member's bbox are part of the mover: drop them
+            objs = [o for o in objs if o in members or not any(m.y0 <= o.y0 and o.y1 <= m.y1 and m.x0 <= o.x0 and o.x1 <= m.x1 for m in members)]
         sk = state_key(objs)
         if self.level_init_objs is None:
             self.level_init_objs = objs; self.level_init_grid = grid
