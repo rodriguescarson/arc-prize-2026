@@ -93,7 +93,9 @@ Reading the table: the explorer and the model-based agent share perception; the 
 model and planning. Contact-driven curiosity raises both coverage and efficiency (11 vs 10 games, 8.6× vs
 21.2× median level-1 cost). The memory ablation changes nothing on level 1 by construction and is the only
 configuration that reaches a second level, with falling per-level cost. Per-game prediction accuracy is in
-fig. 3; replicate variance [pending E6, seed 1 running]; hidden-set score [pending submission].
+fig. 3. Replicate variance is small because the agent is near-deterministic: seeds 0 and 1 of the
+same configuration differ on 2 of 25 games (totals 0.277 vs 0.283, levels 13 vs 14) [measured: E6], so
+we treat differences of fewer than 2 games or 0.02 points as noise. Hidden-set score [pending submission].
 
 ## 6. Failure analysis
 [Per-game table from failure_table.py; the six repeat-failure games from the Franzen audit; what the

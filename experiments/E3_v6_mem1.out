@@ -37,3 +37,9 @@ INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and ma
 2026-10-12 07:01:41 | INFO | Closed scorecard: 620edf85-fbe6-4114-bd8e-7288f736cb61
 2026-10-12 07:01:41 | INFO | Created new scorecard: 01b0c5f5-7382-445e-9a51-cd920595e2d1
 2026-10-12 07:01:41 | INFO | Successfully loaded game class R11l from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/r11l/495a7899/r11l.py
+2026-10-12 07:03:48 | INFO | Closed scorecard: 01b0c5f5-7382-445e-9a51-cd920595e2d1
+2026-10-12 07:03:48 | INFO | Created new scorecard: 15c84d85-2ddc-4ff7-b0e5-edd578c935ba
+2026-10-12 07:03:48 | INFO | Successfully loaded game class Re86 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/re86/8af5384d/re86.py
+2026-10-12 07:04:42 | INFO | Closed scorecard: 15c84d85-2ddc-4ff7-b0e5-edd578c935ba
+2026-10-12 07:04:42 | INFO | Created new scorecard: 08d5aabb-c569-4773-91ff-bf0c51aa905f
+2026-10-12 07:04:42 | INFO | Successfully loaded game class S5i5 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/s5i5/18d95033/s5i5.py
