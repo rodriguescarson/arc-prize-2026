@@ -1,0 +1,217 @@
+{
+ "config": {
+  "game_budget_s": 30600.0,
+  "max_actions": 3000,
+  "games": "all",
+  "game_cpu_s": 155.0
+ },
+ "games": {
+  "wa30-ee6fef47": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 310.8,
+   "cpu": 10.4
+  },
+  "sp80-589a99af": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 337.0,
+   "cpu": 31.2
+  },
+  "cn04-2fe56bfb": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 383.1,
+   "cpu": 30.9
+  },
+  "ka59-38d34dbb": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 416.2,
+   "cpu": 19.6
+  },
+  "vc33-5430563c": {
+   "actions": 3000,
+   "levels": 2,
+   "level_actions": [
+    43,
+    47
+   ],
+   "wall": 419.7,
+   "cpu": 15.4
+  },
+  "ar25-0c556536": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 438.4,
+   "cpu": 19.0
+  },
+  "cd82-fb555c5d": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    653
+   ],
+   "wall": 466.9,
+   "cpu": 18.2
+  },
+  "s5i5-18d95033": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    435
+   ],
+   "wall": 492.2,
+   "cpu": 22.6
+  },
+  "ls20-9607627b": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    353
+   ],
+   "wall": 493.6,
+   "cpu": 11.2
+  },
+  "r11l-495a7899": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 553.4,
+   "cpu": 41.6
+  },
+  "lp85-305b61c3": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    15
+   ],
+   "wall": 571.4,
+   "cpu": 17.8
+  },
+  "ft09-0d8bbf25": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    2672
+   ],
+   "wall": 588.1,
+   "cpu": 28.2
+  },
+  "sc25-635fd71a": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 591.1,
+   "cpu": 20.4
+  },
+  "re86-8af5384d": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 681.0,
+   "cpu": 14.5
+  },
+  "dc22-fdcac232": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 689.5,
+   "cpu": 68.2
+  },
+  "sk48-d8078629": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    2863
+   ],
+   "wall": 724.3,
+   "cpu": 50.7
+  },
+  "tu93-0768757b": {
+   "actions": 3000,
+   "levels": 3,
+   "level_actions": [
+    193,
+    77,
+    379
+   ],
+   "wall": 730.9,
+   "cpu": 16.0
+  },
+  "bp35-0a0ad940": {
+   "actions": 1415,
+   "levels": 1,
+   "level_actions": [
+    646
+   ],
+   "wall": 791.2,
+   "cpu": 158.5
+  },
+  "su15-1944f8ab": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    189
+   ],
+   "wall": 809.0,
+   "cpu": 32.6
+  },
+  "m0r0-492f87ba": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    1725
+   ],
+   "wall": 816.7,
+   "cpu": 64.2
+  },
+  "sb26-7fbdac44": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 824.2,
+   "cpu": 39.0
+  },
+  "lf52-271a04aa": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    79
+   ],
+   "wall": 836.1,
+   "cpu": 26.2
+  },
+  "tr87-cd924810": {
+   "actions": 3000,
+   "levels": 0,
+   "level_actions": [],
+   "wall": 840.9,
+   "cpu": 62.9
+  },
+  "g50t-5849a774": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    1159
+   ],
+   "wall": 847.8,
+   "cpu": 30.0
+  },
+  "tn36-ef4dde99": {
+   "actions": 3000,
+   "levels": 1,
+   "level_actions": [
+    39
+   ],
+   "wall": 859.5,
+   "cpu": 36.3
+  }
+ },
+ "total": 0.27984090977924286
+}
