@@ -13,3 +13,21 @@ INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and ma
 2026-10-12 23:28:35 | INFO | Closed scorecard: 117d39d3-053c-4fb2-8185-24697d1558c1
 2026-10-12 23:28:35 | INFO | Created new scorecard: 68b17c76-d503-4c02-a7ba-2c374a10b79c
 2026-10-12 23:28:35 | INFO | Successfully loaded game class Dc22 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/dc22/fdcac232/dc22.py
+2026-10-12 23:31:21 | INFO | Closed scorecard: 68b17c76-d503-4c02-a7ba-2c374a10b79c
+2026-10-12 23:31:21 | INFO | Created new scorecard: a4d73e44-34ce-4b62-9b2a-04840aabe0e9
+2026-10-12 23:31:21 | INFO | Successfully loaded game class Ft09 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/ft09/0d8bbf25/ft09.py
+2026-10-12 23:32:24 | INFO | Closed scorecard: a4d73e44-34ce-4b62-9b2a-04840aabe0e9
+2026-10-12 23:32:24 | INFO | Created new scorecard: 064e2c4b-18d1-4ccf-9167-1e8b7133ee21
+2026-10-12 23:32:24 | INFO | Successfully loaded game class G50t from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/g50t/5849a774/g50t.py
+2026-10-12 23:32:58 | INFO | Closed scorecard: 064e2c4b-18d1-4ccf-9167-1e8b7133ee21
+2026-10-12 23:32:58 | INFO | Created new scorecard: d64d6068-33da-4567-9146-fccc04f265ef
+2026-10-12 23:32:58 | INFO | Successfully loaded game class Ka59 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/ka59/38d34dbb/ka59.py
+2026-10-12 23:34:54 | INFO | Closed scorecard: d64d6068-33da-4567-9146-fccc04f265ef
+2026-10-12 23:34:54 | INFO | Created new scorecard: 75e09bb8-032f-4069-891d-c9e3aa30be4c
+2026-10-12 23:34:54 | INFO | Successfully loaded game class Lf52 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/lf52/271a04aa/lf52.py
+2026-10-12 23:40:24 | INFO | Closed scorecard: 75e09bb8-032f-4069-891d-c9e3aa30be4c
+2026-10-12 23:40:24 | INFO | Created new scorecard: 3ba5f266-84d2-486f-bdac-96eb67c64641
+2026-10-12 23:40:24 | INFO | Successfully loaded game class Lp85 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/lp85/305b61c3/lp85.py
+2026-10-12 23:45:11 | INFO | Closed scorecard: 3ba5f266-84d2-486f-bdac-96eb67c64641
+2026-10-12 23:45:11 | INFO | Created new scorecard: 53d85527-6d6e-4c82-b331-e549c9b1bc61
+2026-10-12 23:45:11 | INFO | Successfully loaded game class Ls20 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/ls20/9607627b/ls20.py
