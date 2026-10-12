@@ -4,3 +4,101 @@ INFO:arc_agi.scorecard:Initialized ScorecardManager with idle_for=0:15:00 and ma
 2026-10-12 18:54:11 | INFO | Closed scorecard: 453e929f-cdd8-455d-ae7b-b983d4033167
 2026-10-12 18:54:11 | INFO | Created new scorecard: d64cc447-7f87-40db-9ba5-85663c8e7e8d
 2026-10-12 18:54:11 | INFO | Successfully loaded game class Bp35 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/bp35/0a0ad940/bp35.py
+2026-10-12 19:03:37 | INFO | Closed scorecard: d64cc447-7f87-40db-9ba5-85663c8e7e8d
+2026-10-12 19:03:37 | INFO | Created new scorecard: 93923420-f092-4741-bd69-ea3d72bd55cd
+2026-10-12 19:03:37 | INFO | Successfully loaded game class Cd82 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/cd82/fb555c5d/cd82.py
+2026-10-12 19:03:48 | INFO | Closed scorecard: 93923420-f092-4741-bd69-ea3d72bd55cd
+2026-10-12 19:03:48 | INFO | Created new scorecard: 8c76a076-b094-4a70-a8bd-a389c0fbaee7
+2026-10-12 19:03:48 | INFO | Successfully loaded game class Cn04 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/cn04/2fe56bfb/cn04.py
+2026-10-12 19:04:10 | INFO | Closed scorecard: 8c76a076-b094-4a70-a8bd-a389c0fbaee7
+2026-10-12 19:04:10 | INFO | Created new scorecard: 77809efa-89da-4c64-a095-237a6e37e53d
+2026-10-12 19:04:10 | INFO | Successfully loaded game class Dc22 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/dc22/fdcac232/dc22.py
+2026-10-12 19:04:48 | INFO | Closed scorecard: 77809efa-89da-4c64-a095-237a6e37e53d
+2026-10-12 19:04:48 | INFO | Created new scorecard: 67b4099d-a960-4c72-b71b-46cc4ceee828
+2026-10-12 19:04:48 | INFO | Successfully loaded game class Ft09 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/ft09/0d8bbf25/ft09.py
+2026-10-12 19:05:11 | INFO | Closed scorecard: 67b4099d-a960-4c72-b71b-46cc4ceee828
+2026-10-12 19:05:11 | INFO | Created new scorecard: bb6fd974-adb7-4f40-9d79-5553e424d759
+2026-10-12 19:05:11 | INFO | Successfully loaded game class G50t from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/g50t/5849a774/g50t.py
+2026-10-12 19:05:21 | INFO | Closed scorecard: bb6fd974-adb7-4f40-9d79-5553e424d759
+2026-10-12 19:05:21 | INFO | Created new scorecard: 6c00d5ba-c992-44ce-bd65-ea4c705e98a7
+2026-10-12 19:05:21 | INFO | Successfully loaded game class Ka59 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/ka59/38d34dbb/ka59.py
+2026-10-12 19:05:34 | INFO | Closed scorecard: 6c00d5ba-c992-44ce-bd65-ea4c705e98a7
+2026-10-12 19:05:34 | INFO | Created new scorecard: cabc4fa7-0a42-4b9d-aab8-036da479030f
+2026-10-12 19:05:34 | INFO | Successfully loaded game class Lf52 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/lf52/271a04aa/lf52.py
+2026-10-12 19:05:53 | INFO | Closed scorecard: cabc4fa7-0a42-4b9d-aab8-036da479030f
+2026-10-12 19:05:53 | INFO | Created new scorecard: 3dc72ba5-e9fc-42a8-b31a-5b14feb20493
+2026-10-12 19:05:53 | INFO | Successfully loaded game class Lp85 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/lp85/305b61c3/lp85.py
+2026-10-12 19:06:05 | INFO | Closed scorecard: 3dc72ba5-e9fc-42a8-b31a-5b14feb20493
+2026-10-12 19:06:05 | INFO | Created new scorecard: 8d7ab9b4-fa6d-473a-a902-b2d08ca277a2
+2026-10-12 19:06:05 | INFO | Successfully loaded game class Ls20 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/ls20/9607627b/ls20.py
+2026-10-12 19:06:16 | INFO | Closed scorecard: 8d7ab9b4-fa6d-473a-a902-b2d08ca277a2
+2026-10-12 19:06:16 | INFO | Created new scorecard: 0291a3a7-6877-4bde-af2f-2777be147738
+2026-10-12 19:06:16 | INFO | Successfully loaded game class M0r0 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/m0r0/492f87ba/m0r0.py
+2026-10-12 19:06:54 | INFO | Closed scorecard: 0291a3a7-6877-4bde-af2f-2777be147738
+2026-10-12 19:06:54 | INFO | Created new scorecard: 5c546576-15a7-4f1c-bba7-59144e739b06
+2026-10-12 19:06:54 | INFO | Successfully loaded game class R11l from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/r11l/495a7899/r11l.py
+2026-10-12 19:07:35 | INFO | Closed scorecard: 5c546576-15a7-4f1c-bba7-59144e739b06
+2026-10-12 19:07:35 | INFO | Created new scorecard: dee0b55b-2601-4e2e-bda4-a2df6493988c
+2026-10-12 19:07:35 | INFO | Successfully loaded game class Re86 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/re86/8af5384d/re86.py
+2026-10-12 19:07:42 | INFO | Closed scorecard: dee0b55b-2601-4e2e-bda4-a2df6493988c
+2026-10-12 19:07:42 | INFO | Created new scorecard: d0fe6c71-2d72-4954-893d-7a52b6da2070
+2026-10-12 19:07:42 | INFO | Successfully loaded game class S5i5 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/s5i5/18d95033/s5i5.py
+2026-10-12 19:07:57 | INFO | Closed scorecard: d0fe6c71-2d72-4954-893d-7a52b6da2070
+2026-10-12 19:07:57 | INFO | Created new scorecard: 1ec6eef3-1777-41a9-b925-06bc08487d2b
+2026-10-12 19:07:57 | INFO | Successfully loaded game class Sb26 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sb26/7fbdac44/sb26.py
+2026-10-12 19:08:10 | INFO | Closed scorecard: 1ec6eef3-1777-41a9-b925-06bc08487d2b
+2026-10-12 19:08:10 | INFO | Created new scorecard: 542dbaab-01a0-46a7-ae91-4018d0227647
+2026-10-12 19:08:10 | INFO | Successfully loaded game class Sc25 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sc25/635fd71a/sc25.py
+2026-10-12 19:08:20 | INFO | Closed scorecard: 542dbaab-01a0-46a7-ae91-4018d0227647
+2026-10-12 19:08:20 | INFO | Created new scorecard: 53402497-a183-4846-9267-4b9a04ab40a1
+2026-10-12 19:08:20 | INFO | Successfully loaded game class Sk48 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sk48/d8078629/sk48.py
+2026-10-12 19:08:41 | INFO | Closed scorecard: 53402497-a183-4846-9267-4b9a04ab40a1
+2026-10-12 19:08:41 | INFO | Created new scorecard: 87203027-fde5-4e81-861c-91178ae46310
+2026-10-12 19:08:41 | INFO | Successfully loaded game class Sp80 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/sp80/589a99af/sp80.py
+2026-10-12 19:09:01 | INFO | Closed scorecard: 87203027-fde5-4e81-861c-91178ae46310
+2026-10-12 19:09:01 | INFO | Created new scorecard: e92201c7-4d75-4106-ad6e-5a6dbbe4ab2d
+2026-10-12 19:09:01 | INFO | Successfully loaded game class Su15 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/su15/1944f8ab/su15.py
+2026-10-12 19:09:09 | INFO | Closed scorecard: e92201c7-4d75-4106-ad6e-5a6dbbe4ab2d
+2026-10-12 19:09:09 | INFO | Created new scorecard: 82371760-762b-4c94-a550-baf61df8da77
+2026-10-12 19:09:09 | INFO | Successfully loaded game class Tn36 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/tn36/ef4dde99/tn36.py
+2026-10-12 19:09:31 | INFO | Closed scorecard: 82371760-762b-4c94-a550-baf61df8da77
+2026-10-12 19:09:31 | INFO | Created new scorecard: 38f872a0-93e1-4d7a-8c03-33f414453189
+2026-10-12 19:09:31 | INFO | Successfully loaded game class Tr87 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/tr87/cd924810/tr87.py
+2026-10-12 19:09:58 | INFO | Closed scorecard: 38f872a0-93e1-4d7a-8c03-33f414453189
+2026-10-12 19:09:58 | INFO | Created new scorecard: ca65a22b-33b8-44fa-8a1d-8b77c1ee6256
+2026-10-12 19:09:58 | INFO | Successfully loaded game class Tu93 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/tu93/0768757b/tu93.py
+2026-10-12 19:10:04 | INFO | Closed scorecard: ca65a22b-33b8-44fa-8a1d-8b77c1ee6256
+2026-10-12 19:10:04 | INFO | Created new scorecard: 2e5b0286-6285-4b31-8411-9490354f6e5e
+2026-10-12 19:10:04 | INFO | Successfully loaded game class Vc33 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/vc33/5430563c/vc33.py
+2026-10-12 19:10:12 | INFO | Closed scorecard: 2e5b0286-6285-4b31-8411-9490354f6e5e
+2026-10-12 19:10:12 | INFO | Created new scorecard: 968b114e-8105-4377-9088-6489cb64450f
+2026-10-12 19:10:12 | INFO | Successfully loaded game class Wa30 from /Users/carson/Projects/arc_prize_2026/data/kaggle/arc-prize-2026-arc-agi-3/environment_files/wa30/ee6fef47/wa30.py
+2026-10-12 19:10:17 | INFO | Closed scorecard: 968b114e-8105-4377-9088-6489cb64450f
+ModelBasedAgent seed=2 max_actions=2000: score=0.2763 levels=13/183 won=0/25 wall=985.4s
+game              lv/tot   score   acts  rst frames level_actions
+ar25-0c556536      0/8     0.000   2000   21    835 []
+bp35-0a0ad940      1/9     0.002   2000   75   7168 [646]
+cd82-fb555c5d      1/6     0.034   2000   20   3249 [653]
+cn04-2fe56bfb      0/6     0.000   2000   27   1542 []
+dc22-fdcac232      0/6     0.000   2000   20   1042 []
+ft09-0d8bbf25      0/6     0.000   2000    8    399 []
+g50t-5849a774      0/7     0.000   2000   16   6066 []
+ka59-38d34dbb      0/7     0.000   2000   20   1394 []
+lf52-271a04aa      1/10    0.298   2000    2   2385 [79]
+lp85-305b61c3      1/8     2.778   2000   27   1407 [15]
+ls20-9607627b      1/7     0.014   2000    9    670 [353]
+m0r0-492f87ba      1/6     0.001   2000   13   1568 [1725]
+r11l-495a7899      0/6     0.000   2000   33   1056 []
+re86-8af5384d      0/8     0.000   2000   20   1711 []
+s5i5-18d95033      1/8     0.006   2000   19   1072 [435]
+sb26-7fbdac44      0/8     0.000   2000   10   5583 []
+sc25-635fd71a      0/6     0.000   2000   31   1252 []
+sk48-d8078629      0/8     0.000   2000    9   2565 []
+sp80-589a99af      0/6     0.000   2000   65    965 []
+su15-1944f8ab      1/9     0.014   2000   39   4774 [279]
+tn36-ef4dde99      1/7     2.404   2000   32   6116 [39]
+tr87-cd924810      0/6     0.000   2000   16   1964 []
+tu93-0768757b      2/9     0.213   2000   56   3976 [193, 77]
+vc33-5430563c      2/7     1.142   2000   26   1689 [43, 47]
+wa30-ee6fef47      0/9     0.000   2000   10   1692 []
+results -> /Users/carson/Projects/arc_prize_2026/experiments/arc3_E20_control_stub_greedy_a2000_s2/results.json
