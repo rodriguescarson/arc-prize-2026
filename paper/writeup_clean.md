@@ -30,12 +30,12 @@ Kaggle entries fall into three families: LLM-in-REPL harnesses (Tufa Labs' Duck,
 where a 27–75B model writes Python against the frames on a 96 GB GPU; a "will the frame change" CNN
 (Stochastic Goose) that re-initialises at every level; and white-box search that imports the public games'
 source and cannot run on hidden games. Research papers (Twin, Tycho, PRO-LONG) build executable world
-models with frontier APIs and report 88–100% on the 25 public games only, a set AERA shows null strategies
+models with frontier APIs and report 88–100% on the 25 public games only, which AERA shows null strategies
 partly solve. No public agent learns a non-LLM model of action effects, plans in it, keeps it across
 levels and is evaluated on the hidden set.
 
 ## 3. Method
-3.1 State: objects (colour, bbox, mask), terrain colours (≥20% coverage) kept for collision but not identity,
+3.1 State: objects (colour, bbox, mask), terrain colours (≥20% coverage) kept for collision, not identity;
 HUD rows masked by two measured detectors. 3.2 Effect model: rigid groups, modal displacement, swept-path
 blocking/passable colour statistics, per-key reliability window. 3.3 Planner: BFS in the model; targets =
 untried (state, action), rarely-contacted object classes, or goal predicates. 3.4 Goal inference: templates
@@ -45,9 +45,8 @@ Gone/Count/Touch/Overlap/Appeared, positive = model-predicted post-action state 
 ## 4. Why it should work (theory)
 **Assumption A1 (determinism).** ARC-AGI-3 games are deterministic given a correct state representation.
 Measured: with memoised transitions, next-state prediction is ≥ 0.95 accurate on 14 of 25 games and
-exactly 1.0 on 9; the remaining games expose hidden counters
-(progress bars that advance on a hidden modulo) or animation-length state, which is where A1 fails and
-where our two detectors recover it.
+exactly 1.0 on 9; the rest expose hidden counters (progress bars
+on a hidden modulo) or animation-length state, where A1 fails and our two detectors recover it.
 **Assumption A2 (factored, rigid dynamics).** Simple actions displace a rigid group of objects by a fixed
 vector unless blocked by a colour in the swept path. Measured: the generative model is ≥ 0.9 accurate on
 sp80 and su15 and ≥ 0.6 on dc22, g50t, m0r0, ls20; it fails on click-driven games where
@@ -59,12 +58,15 @@ level inside the budget; the planner resolves only the pairs it chooses, and con
 that further.
 **Transfer.** Levels share dynamics and goal by design and the score weights level k by k, so learning
 pays on later levels: memory ON vs OFF leaves level-1 cost identical (same code path) and lowers
-later-level cost. Where A2 fails or the goal
-lies outside the template class, the agent degrades to memoised exploration, which we report.
+later-level cost. How often a transferable goal exists at
+all is measurable in the 340 released human replays: a template-class predicate consistent across levels
+exists on 6 of 25 games and in 27.9% of multi-level sessions, which bounds the
+transfer term. Where A2 fails or the goal lies outside the template class, the agent degrades to
+memoised exploration, which we report.
 
 ## 5. Experiments
-Protocol: 25 public games, 2000 actions per game, fixed seeds, toolkit-exact scorer, paired per game. Public
-numbers are development; the hidden set is evaluation.
+Protocol: 25 public games, 2000 actions per game, fixed seeds, toolkit-exact scorer, paired per game;
+public numbers are development, the hidden set is evaluation.
 
 | agent | score (0–100) | levels | games ≥1 level | games ≥2 levels | median L1 actions/human | levels ≤ human | wall s |
 |---|---|---|---|---|---|---|---|
