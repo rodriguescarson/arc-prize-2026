@@ -15,7 +15,7 @@ from .base import ACTION_BY_ID, BaseAgent
 class ModelBasedAgent(BaseAgent):
     def __init__(self, game_id: str, seed: int = 0, memory: bool = True, max_depth: int = 12, max_nodes: int = 1500,
                  click_lattice: int = 8, contact: bool = True, goals: bool = True, click_model: bool = False,
-                 llm_goals: str | None = None, llm_every: int = 300, llm_patience: int = 50, **kwargs):
+                 llm_goals: str | None = None, llm_every: int = 300, llm_patience: int = 50, greedy: bool = False, **kwargs):
         super().__init__(game_id, seed)
         self.memory = memory
         self.contact = contact
@@ -44,7 +44,10 @@ class ModelBasedAgent(BaseAgent):
         self.llm_goal_reached_at = None  # level-action index when it first held
         self.llm_excluded: set = set()   # goals reached without a transition on this level
         self.llm_asks = 0; self.llm_accepted = 0; self.llm_rejected = 0; self.llm_log: list = []
+        self.llm_last_ask_n = None      # level-action index of the last ask on this level
+        self._plan_is_goal = False      # the current plan reaches a goal predicate (vs a curiosity target)
         self.level_actions_n = 0        # actions taken on the current level
+        self.greedy = greedy; self.n_greedy = 0   # E20: step toward a touch-goal target when no plan exists
         self.transition_note = None     # text describing what the last transition changed
         self.plan: list = []
         self.predicted_next: int | None = None
@@ -179,7 +182,7 @@ class ModelBasedAgent(BaseAgent):
             if self.proposer is not None:
                 surv = sorted(map(str, self.goal_memory.surviving)) if self.goal_memory.surviving else []
                 self.transition_note = ("predicates true at the transition and false at the level start: " + ", ".join(surv[:6])) if surv else "nothing in the template class survived"
-                self.llm_goal = None; self.llm_goal_reached_at = None; self.llm_excluded = set(); self.level_actions_n = 0
+                self.llm_goal = None; self.llm_goal_reached_at = None; self.llm_excluded = set(); self.level_actions_n = 0; self.llm_last_ask_n = None
             self.level_init_objs = objs; self.level_init_grid = grid
             self.levels_seen = latest.levels_completed
             self.tried = {}; self.plan = []; self.predicted_next = None; self.contacted = {}
@@ -248,10 +251,17 @@ class ModelBasedAgent(BaseAgent):
             if path is not None:
                 if final is None:
                     self.n_goal_plans += 1
+                self._plan_is_goal = final is None
                 self.plan = list(path) + ([final[:1] + (final[2], final[3])] if final else [])
                 # normalise entries to (key, action, data)
                 self.plan = [(e[0], e[-2], e[-1]) for e in self.plan]
                 self.n_plans += 1
+            if self.greedy and not self._plan_is_goal:
+                cands = keys_for(objs)
+                safe = [c for c in cands if not self.model.is_deadly(sk, c[0])] or cands
+                g = self._greedy_step(objs, grid, sk, mover_idents, safe)
+                if g is not None:  # a touch goal is active and one learned move brings the mover closer: take it
+                    self.plan = [(g[0], g[2], g[3])]; self.n_greedy += 1
         if self.plan:
             key, action, data = self.plan.pop(0)
             self.n_plan_steps += 1
@@ -287,6 +297,46 @@ class ModelBasedAgent(BaseAgent):
                     self.level_clicks.append(cls)
         return action
 
+    def _greedy_step(self, objs, grid, sk, mover_idents, cands):
+        """E20. With an active touch(c) goal and no plan, pick the candidate whose learned mover displacement most
+        reduces the gap between the mover group and the nearest object of class c; None if no goal, no mover,
+        no improving move, or the model predicts a block (so the curiosity fallback runs as before)."""
+        goal = self.llm_goal
+        if goal is None and self.goals:
+            act = [p for p in self.goal_memory.active(objs) if p.kind == "touch"]
+            goal = act[0] if act else None
+        if goal is None or goal.kind != "touch" or not mover_idents:
+            return None
+        members = [o for o in objs if ident(o) in mover_idents]
+        targets = [o for o in objs if ident(o) == goal.a]
+        if not members or not targets:
+            return None
+        def gap(ms):
+            best = None
+            for m in ms:
+                for t in targets:
+                    dy = max(0, t.y0 - m.y1, m.y0 - t.y1); dx = max(0, t.x0 - m.x1, m.x0 - t.x1)
+                    d = dy + dx
+                    best = d if best is None or d < best else best
+            return best
+        now = gap(members)
+        best = None
+        for c in cands:
+            key, ckey = c[0], c[1]
+            if self.model.is_known_noop(ckey) or isinstance(key, tuple):
+                continue  # clicks have no displacement semantics here
+            grp = self.model.modal_group(ckey)
+            if not grp or not (grp[0] & mover_idents):
+                continue
+            pred, src = self.model.predict(objs, grid, ckey)
+            if pred is None or state_key(pred) == sk:
+                continue  # unknown or predicted blocked
+            moved = [o for o in pred if ident(o) in mover_idents]
+            d = gap(moved)
+            if d is not None and d < now and (best is None or d < best[0]):
+                best = (d, c)
+        return best[1] if best else None
+
     def _maybe_ask_proposer(self, objs, grid, mover_idents) -> None:
         """E19. Ask at a level start and every `llm_every` actions while this level has no goal from memory; drop a
         chosen goal that held for `llm_patience` actions without a level transition and ask again, excluding it."""
@@ -303,10 +353,14 @@ class ModelBasedAgent(BaseAgent):
                     self.llm_goal = None; self.llm_goal_reached_at = None
             if self.llm_goal is not None:
                 return
-        if self.level_actions_n % self.llm_every != 0 and self.llm_goal_reached_at is None and self.llm_log and self.llm_log[-1].get("level") == self.levels_seen and "rejected" not in self.llm_log[-1]:
-            return  # asked recently on this level and the answer was "explore": wait for the next window
-        if self.level_actions_n % self.llm_every != 0 and not (self.llm_log and self.llm_log[-1].get("rejected")):
+        n = self.level_actions_n
+        just_rejected = bool(self.llm_log) and self.llm_log[-1].get("level") == self.levels_seen and "rejected" in self.llm_log[-1] and self.llm_log[-1]["n"] == n
+        if self.llm_last_ask_n is None:
+            if not mover_idents and n < 100:
+                return  # wait until the agent knows what it controls (touch goals need a mover), at most 100 actions
+        elif n - self.llm_last_ask_n < self.llm_every and not just_rejected:
             return
+        self.llm_last_ask_n = n
         menu = goal_menu(objs, mover_idents, self.llm_excluded)
         if not menu:
             return
@@ -323,7 +377,8 @@ class ModelBasedAgent(BaseAgent):
     def stats(self) -> dict:
         return {"memory": self.memory, "contact": self.contact, "goals": self.goals, "click_model": self.click_model, "sequences": self.sequences, "seq_steps": self.n_seq_steps,
                 "llm": (None if self.proposer is None else {"model": self.proposer.name, "asks": self.llm_asks, "accepted": self.llm_accepted, "rejected": self.llm_rejected,
-                                                            "calls": getattr(self.proposer, "calls", 0), "cache_hits": getattr(self.proposer, "cache_hits", 0), "cost_usd": round(getattr(self.proposer, "cost_usd", 0.0), 5), "log": self.llm_log[-12:]}), "learned_seq": [str(c) for c in (self.learned_seq or [])], "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
+                                                            "calls": getattr(self.proposer, "calls", 0), "cache_hits": getattr(self.proposer, "cache_hits", 0), "cost_usd": round(getattr(self.proposer, "cost_usd", 0.0), 5), "log": self.llm_log[-12:]}),
+                "greedy_steps": self.n_greedy, "learned_seq": [str(c) for c in (self.learned_seq or [])], "plans": self.n_plans, "goal_plans": self.n_goal_plans, "deaths": self.n_deaths,
                 "surviving_goals": sorted(map(str, self.goal_memory.surviving)) if self.goal_memory.surviving else None, "plan_steps": self.n_plan_steps,
                 "replans_on_error": self.n_replans_on_error, "fallback_steps": self.n_fallback,
                 "pred_total": self.model.n_pred, "pred_acc": None if self.model.accuracy is None else round(self.model.accuracy, 3),

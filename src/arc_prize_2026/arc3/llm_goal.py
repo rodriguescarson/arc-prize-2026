@@ -26,7 +26,10 @@ import numpy as np
 from .goals import Predicate, goal_participants
 from .perception import Obj, ident
 
-ROOT = Path(__file__).resolve().parents[3]
+try:
+    ROOT = Path(__file__).resolve().parents[3]
+except IndexError:  # single-file kernel bundle: no repo above it; the cache is never used there
+    ROOT = Path.cwd()
 CACHE_DIR = ROOT / "experiments" / "llm_cache"
 COLOUR_NAMES = ["black", "blue", "red", "green", "yellow", "grey", "magenta", "orange", "cyan", "brown",
                 "white", "light-grey", "dark-red", "dark-green", "dark-blue", "pink"]  # ARC-AGI-3 palette, approximate
@@ -125,6 +128,9 @@ class StubProposer:
         self.calls += 1
         if self.answer == "explore":
             return None, {"stub": "explore"}
+        if self.answer == "touch":  # first "move the player onto" option, if any
+            i = next((k for k, o in enumerate(options[:-1]) if o.startswith("move the player")), None)
+            return i, {"stub": "touch"}
         i = int(self.answer)
         return (i - 1 if 1 <= i <= len(options) - 1 else None), {"stub": i}
 
@@ -146,7 +152,7 @@ def _api_key() -> str:
 class ChatProposer:
     """OpenRouter chat/completions proposer: asks for the option number at temperature 0; cached."""
 
-    def __init__(self, model: str, max_tokens: int = 16, timeout: float = 90.0):
+    def __init__(self, model: str, max_tokens: int = 400, timeout: float = 90.0):
         import requests  # local import: not needed on Kaggle
         self._requests = requests
         self.model = model; self.max_tokens = max_tokens; self.timeout = timeout
@@ -176,11 +182,15 @@ class ChatProposer:
                 self.failures += 1
                 return None, {"error": (data or {}).get("error")}
             cp.write_text(json.dumps(data))
-        text = (data["choices"][0]["message"].get("content") or "").strip()
+        msg = data["choices"][0]["message"]
+        text = (msg.get("content") or "").strip()
+        if not text:  # reasoning models may leave the answer in the hidden reasoning field
+            text = (msg.get("reasoning") or "").strip()[-200:]
         usage = data.get("usage") or {}
         self.cost_usd += float(usage.get("cost", 0) or 0)
-        digits = "".join(ch for ch in text.split("\n")[0] if ch.isdigit() or ch == " ").split()
-        idx = int(digits[0]) - 1 if digits else None
+        import re as _re
+        nums = _re.findall(r"\b(\d{1,2})\b", text)
+        idx = int(nums[-1]) - 1 if nums else None
         if idx is None or not (0 <= idx < len(options) - 1):
             return None, {"text": text}
         return idx, {"text": text, "usage": usage}

@@ -43,3 +43,12 @@ for gid in ["ls20", "tu93"]:
     assert len(prompt.split()) < 900 and options[-1].startswith("explore"), len(prompt.split())
     print(f"{gid}: control identical over {len(p_seq)} actions; stub:1 accepted {st['accepted']} goal(s), e.g. {st['log'][0].get('chosen')}; prompt {len(prompt.split())} words, {len(options)} options")
 print("llm_goal ok")
+
+# E20: greedy steps only fire with an active touch goal; the stub-explore control with greedy=True stays identical.
+for gid in ["ls20", "tu93"]:
+    plain = ModelBasedAgent(game_id=gid, seed=0); p_seq, _ = play(plain, gid, 350)
+    ctrl = ModelBasedAgent(game_id=gid, seed=0, llm_goals="stub", greedy=True); c_seq, _ = play(ctrl, gid, 350)
+    assert p_seq == c_seq and ctrl.n_greedy == 0, f"{gid}: greedy control diverges ({ctrl.n_greedy} greedy steps)"
+    touch = ModelBasedAgent(game_id=gid, seed=0, llm_goals="stub:touch", greedy=True); t_seq, _ = play(touch, gid, 350)
+    print(f"{gid}: greedy control identical; stub:touch took {touch.n_greedy} greedy steps toward {touch.stats()['llm']['log'][0].get('chosen')}")
+print("e20 ok")
