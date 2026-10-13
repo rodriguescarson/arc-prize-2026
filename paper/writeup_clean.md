@@ -8,21 +8,22 @@ carry what it learned across a game's levels. The agent segments each frame into
 diffs, plans by breadth-first search in that model toward unexplored interactions, and after the first level
 transition infers a goal predicate from a template class and plans toward it on later levels. On the 25 public games it clears 15 levels versus 5 for a novelty-seeking explorer and
 3 for a random agent, one of them under the human action count and one within
-1.25× of it. Where the goal is inferred, level 2 costs 0.4× level 1. We release the agent, an offline harness with the competition's scoring formula, a non-determinism test
+1.25× of it. Where the goal is inferred, level 2 costs 0.4× level 1. On the hidden set it
+scores 0.08, at the leaderboard floor: the metric counts near-human first levels, and ours came from three
+public games. We release the agent, an offline harness with the competition's scoring formula, a non-determinism test
 for state representations and a hidden-counter detector.
 
 ## 1. Problem and question
 ARC-AGI-3 is interactive: the agent sees a 64×64 frame, chooses among up to seven actions, and must discover
 rules, controls and goal from scratch across levels. A completed level earns 100·(human actions / agent
-actions)², capped at 115, and level k weighs k, so later levels dominate. The organisers' failure taxonomy names false world models and "solved the level, didn't learn the game";
-the strongest public-set paper concludes that "goal inference is the hard part". An agent must learn what the *state* is, what each *action does*, and what counts as *done*; we ask how far
+actions)², capped at 115, and level k weighs k, so later levels dominate. The strongest public-set paper concludes that "goal inference is the hard part". An agent must learn what the *state* is, what each *action does*, and what counts as *done*; we ask how far
 one that learns all three online, with no language model and no training set, gets on the hidden set.
 
 ## 2. Prior work and gap
 Kaggle entries come in three families: LLM-in-REPL harnesses (Tufa Labs' Duck, Franzen's Milestone-2), a
 27–75B model writing Python against the frames on a 96 GB GPU; a "will the frame change" CNN (Stochastic
 Goose) re-initialised at every level; and white-box search over the public games' source, impossible on hidden
-games. Papers (Twin, Tycho, PRO-LONG) build executable world models with frontier APIs and report 88–100% on the 25
+games. Papers (Twin, Tycho, PRO-LONG) build executable world models with frontier APIs and report 88–100% on the
 public games only, which AERA shows null strategies partly solve. No public agent learns a non-LLM model of action effects, plans in it, keeps it across
 levels and is evaluated on the hidden set.
 
@@ -32,9 +33,9 @@ HUD rows masked by two measured detectors. 3.2 Effect model: rigid groups, modal
 blocking/passable colour statistics, per-key reliability window. 3.3 Planner: BFS in the model; targets =
 untried (state, action), rarely-contacted object classes, or goal predicates. 3.4 Goal inference: templates
 Gone/Count/Touch/Overlap/Appeared, positive = model-predicted post-action state at the transition, negative
-= level start, intersection across transitions. 3.5 Memory: model and goals persist across levels. 3.6 Goal proposer (development only): a decision model
-reads a ~350-word summary of the level (object classes with colour, size, count, positions; the mover and its
-learned displacements) and picks one currently-false goal from the template menu or "explore"; with no plan to it, the agent walks toward a touch target along learned displacements, dropping a goal after
+= level start, intersection across transitions. 3.5 Memory: model and goals persist across levels. 3.6 Goal proposer (development only): a decision model reads a ~350-word summary of the level (object
+classes, the mover and its learned displacements) and picks one currently-false goal from the template menu
+or "explore"; with no plan to it, the agent walks toward a touch target along learned displacements, dropping a goal after
 50 actions held without a transition or 80 steps without reaching it.
 
 ## 4. Why it should work (theory)
@@ -44,16 +45,14 @@ recover it.
 **A2 (rigid dynamics).** Simple actions displace a rigid group by a fixed vector unless a colour in the
 swept path blocks it. Measured: the generative model is ≥ 0.9 accurate on sp80 and su15 and ≥ 0.6 on dc22,
 g50t, m0r0, ls20; click-driven games (ft09, r11l, s5i5, tn36, vc33) rely on memoisation.
-**Bound.** Under A1 a model-free explorer pays again for every revisited transition; a planner pays at most
-once per unknown (state, action) pair. The explorer reaches a median 983 abstract states in 2000 actions with
-|A| = 5, so a blind sweep cannot cover a level in budget; the planner resolves only the pairs
-it chooses.
+**Bound.** Under A1 a planner pays at most once per unknown (state, action) pair, a model-free explorer
+again on every revisit; with a median 983 abstract states in 2000 actions and |A| = 5, a
+blind sweep cannot cover a level in budget.
 **Transfer.** Levels share dynamics and goal by design, so learning pays on later levels: memory ON vs OFF
 leaves level-1 cost identical and lowers later-level cost. In the 340 released human replays, a
 template-class predicate consistent across levels exists on 6 of 25 games and in 27.9% of multi-level
 sessions; seven further predicate families lift this only to 34% against a 10%
-null, so the bound on the transfer term is the object vocabulary, not the template list. Where A2 fails or the goal lies outside the template class, the agent degrades to
-memoised exploration, which we report.
+null, so the bound on the transfer term is the object vocabulary, not the template list. Otherwise the agent degrades to memoised exploration.
 
 ## 5. Experiments
 Protocol: 25 public games, 2000 actions per game, fixed seeds, toolkit-exact scorer, paired per game;
@@ -63,7 +62,6 @@ public numbers are development; hidden is evaluation.
 |---|---|---|---|---|---|---|---|
 | random | 0.192 | 3/183 | 3 | 0 | 10.3× | 1 | 34 |
 | explorer | 0.038 | 5/183 | 5 | 0 | 6.4× | 0 | 113 |
-| explorer_human_prior | 0.013 | 5/183 | 4 | 1 | 14.7× | 0 | 552 |
 | v4_contact_on | 0.284 | 15/183 | 11 | 3 | 8.6× | 1 | 1293 |
 | v4_contact_off | 0.204 | 13/183 | 10 | 2 | 21.2× | 0 | 1811 |
 | v5_memory_on | 0.277 | 13/183 | 11 | 2 | 10.4× | 1 | 2172 |
@@ -74,42 +72,41 @@ public numbers are development; hidden is evaluation.
 | + Nemotron-3 Super proposer, open-weight | 0.295 | 16/183 | 13 | 2 | 7.1× | 1 | 1011 |
 
 
-Explorer and model-based agent share perception, so the table isolates the learned model and planning.
+Shared perception isolates the learned model and planning.
 Contact curiosity raises coverage and efficiency (11 vs 10 games; median level-1 cost 8.6× vs 21.2× human).
 Memory alone reaches a second level, at falling per-level cost (per-game prediction accuracy: fig. 3). Three seeds score 0.280, 0.276 and 0.278 and differ on 4 of 25 games;
 differences under 2 games or 0.02 points are noise. The proposer is the one addition that passes its pre-registered gate: +0.015 to +0.016 over the greedy-only
-control on all three seeds with no game lost, g50t's first level in 240 actions instead of 1,159, r11l's first
-level reached; with an open-weight model (Nemotron-3 Super) and a
-guard that makes a goal a target only until first reached, the same +0.015 holds on three seeds. Chat models without that guard (Phi-4, Gemma 4 31B, Qwen3 32B) lose games, and further
-bounding hurt (E20d), so the design is frozen there. Our first hidden-set submission scored **0.15**; its bundle later proved to
-raise an exception in the movement-prediction path and fall back to cyclic actions, so it measures a crippled
-agent. Fixed-bundle submissions follow; the leading LLM harness scores 62.96.
+control on three seeds, no game lost, g50t's first level in 240 actions instead of 1,159; the open-weight Nemotron-3 Super, with a goal used as a target only until first reached,
+repeats it on three seeds; other chat models lose games. **On the hidden public half (55 unseen games) the agent scores 0.08**,
+inside the (0.05, 0.23] band that holds 26% of 4,233 teams; an earlier submission whose bundle crashed in the
+prediction path and played cyclic actions scored 0.15. The score explains why: a first
+level at or under the human action count is worth 1.8–4.8 game points, one at 10× human cost under 0.05, so the
+total counts near-human first levels. Three games (lp85, tn36, vc33) supply 90% of the public 0.280; the hidden
+0.08 is about one such level in 55 games. Coverage of 15 levels is nearly invisible to this metric.
 
 ## 6. Failure analysis
 Per game: no game dies in a loop (resets
 ≤ 4.3% of actions) or cycles through a few states (≥ 16% distinct frames): exploration itself is not what stalls. Five games are *model-blind* (generative accuracy < 0.3: bp35, cd82, ka59, sk48, tn36); the other 20 are
 *no-progress*: the planner keeps finding untried transitions (median 1,973 of 2,000 steps planned) without
 crossing a level boundary: a goal problem, not a search problem. A reached first level costs 0.9× (lp85) to
-58× (m0r0) the human count. A published 100-trajectory audit of the 75B-parameter
-Franzen harness lists sk48 as never clearing level 1 and bp35 and lf52 as stopping after one level; our
-agent matches all three.
+58× (m0r0) the human count. The repeat failures of the 75B Franzen harness in a published audit (sk48, bp35, lf52) stall here too.
 
 ## 7. Limitations, reproducibility, conclusion
-**Limitations.** The generative model only expresses rigid displacements, so click and recolour
-mechanics are memorised, not planned toward; exploration still pays hundreds of actions on most first
-levels, which the squared-efficiency metric turns into near-zero credit; where the small goal template
-class misses the true goal, cross-level transfer gives nothing; absolute scores are far below the LLM-harness leaders; the proposer needs a decision model at
-inference time, which the offline rerun does not have, so the submitted agent runs without it. Two pre-registered extensions failed their gates: a human-habit exploration prior (paired level-1 ratio 1.0)
-and class-level click-effect prediction (≥ 0.6 accuracy on 6 of 13 click games, coverage unchanged): click
-effects are learnable, but those games' goals are click sequences outside our template class.
+**Limitations.** The generative model only expresses rigid displacements, so click and recolour mechanics are
+memorised, not planned toward; most first levels still cost hundreds of actions, which the squared-efficiency
+metric turns into near-zero credit, so the hidden score sits at the leaderboard floor; where the goal lies
+outside the template class, transfer gives nothing; the proposer needs a decision model at inference time,
+which the offline rerun lacks, so the submitted agent runs without it. Two pre-registered extensions failed: a human-habit exploration prior (paired level-1 ratio 1.0) and
+click-effect prediction (accurate on 6 of 13 click games, coverage unchanged).
 **Reproducibility.** CPU only, no training set, no per-game code. One command (`uv run arc3 --agent
 model_based --max-actions 2000`) reproduces every public-25 number and the public notebook replays them inside
 Kaggle's runtime; every
 `EXPERIMENT_LOG.csv` row carries its commit.
-**Conclusion.** Learning what actions do, planning in that model and keeping it across levels turns a blind
-explorer into an agent that clears first levels on 12 of 25 public games and plays later levels several
-times more efficiently, with no language model; a decision model proposing targets adds a measured, replicated
-step more. The measured failures name what the next representation must express.
+**Conclusion.** Learning what actions do, planning in it and keeping it across levels turns a blind explorer
+into an agent that clears first levels on 12 of 25 public games, with no language model, and a decision model
+proposing targets adds a replicated step. None of it moves the hidden score, because the metric pays for
+near-human first levels and coverage at ten times human cost earns almost nothing; that, not search, is what
+the next agent has to buy.
 
 *Disclosure.* The code, experiments and this text were produced by the author working with an AI
 coding assistant; every reported number was generated by the released code on the public games and
