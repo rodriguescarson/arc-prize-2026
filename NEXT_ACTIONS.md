@@ -1,4 +1,4 @@
-# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-13 14:13 IST)
+# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-13 18:12 IST)
 
 ## Verified deadlines (all Kaggle times 23:59 UTC = 05:29 IST next day)
 | Event | Date | IST | Note |
@@ -15,8 +15,9 @@ Internal plan: code freeze **30 Oct**, first real Kaggle submission by **20 Oct*
 2. **First competition submission MADE** (non-final): ID 57095368, kernel arc3-model-based-explorer-mem1-c1 v3, **COMPLETE, public score 0.15** (hidden public half). Eligibility locked. Daily quota used for 10-12. Carson's decisions remain: which two submissions to mark final before Nov 2, and whether to submit the memory-OFF twin on a later day for the paired comparison.
 3. **Disk**: 9.6 GB free. Not blocking the current CPU-only track.
 4. **Paid compute**: none spent, none planned for H1.
-5. **Direction (asked 10-12 12:40, open):** keep the paper line only; add a fork of the Franzen plateau notebook on free Kaggle GPU quota (scheduling patch + object-level tools; one 4×25 A/B per week); or the LoRA route (needs paid multi-GPU, advised against: no transferable data, no measurable validation).
+5. **Direction: RESOLVED by the sibling workspace.** `~/Projects/arc-agi-3` (another session, repo rodriguescarson/arc-agi-3) already runs the Franzen/Duck-harness fork with automated daily submissions from 2026-10-17 00:01 UTC (GitHub Actions + Mac LaunchAgent + claude.ai routine; handover in its `docs/STATUS.md`). Slot plan (verified by its scheduler's dry-run 10-13): this workspace owns 10-14, 10-15, 10-16 (E16 at 00:07 UTC); the bot owns every day from 10-17. **Never push `arc3-duck-*` kernels or submit by hand after 10-16.** GPU quota from 10-17 is reserved for that pipeline; this workspace uses CPU kernels only.
 6. **Publishing at filing (Carson's call):** the Paper Track needs a public notebook; `carsonrodrigues/arc3-paper-reproduce-public25` v1 (reproduces 0.2797 / 15 levels on Kaggle CPU) is built and private. Making it and the repo public happens only on Carson's say-so.
+7. **Rules checked 10-13 on arcprize.org:** the paper must be "linked to a Kaggle code submission ... that demonstrates the approach detailed in the paper" (score not a gate; the page does not say it must be a selected final), so the writeup links to an explorer submission (57123503), never to a Duck-fork run. Code must be open-sourced under a permissive public-domain licence (CC0 / MIT-0) before private scores are released; the earlier CC-BY note applied to the Kaggle writeup text, not the code. **Finals recommendation (Carson's call):** final 1 = best Duck-fork draw from ~/Projects/arc-agi-3; final 2 = the explorer submission the paper cites, which removes any doubt about paper eligibility at no practical cost.
 
 ## Current status (ARC-AGI-3, public 25 games, 2000 actions, seed 0, toolkit-exact 0–100 score)
 | Agent | Score | Levels | Games with level 1 |

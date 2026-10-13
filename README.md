@@ -57,5 +57,5 @@ the shim's exception fallback; nothing that only tests through the fallback can 
 (`carsonrodrigues/arc3-paper-reproduce-public25`), which replays the public-25 table inside Kaggle's runtime.
 
 ## Licence
-Code: CC-BY 4.0 on submission per the competition rules (to be confirmed at release). Game environments,
+Code: to be released under a permissive public-domain licence (MIT-0 or CC0), which arcprize.org requires for prize eligibility ("all code and methods authored by the submitter must be made open source under a permissive public domain license", read 2026-10-13), before official private evaluation scores are released. Third-party code keeps its own open-source licence. Game environments,
 wheels and human replays belong to the ARC Prize Foundation and are not redistributed here (`data/` is gitignored).
