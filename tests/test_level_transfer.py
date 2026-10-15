@@ -4,7 +4,7 @@ import importlib.util
 from pathlib import Path
 from types import SimpleNamespace as NS
 
-from arc_prize_2026.arc3.level_transfer import hit_rate, lev, modal_model, sim, winning_sequences
+from arc_prize_2026.arc3.level_transfer import action_id, hit_rate, lev, modal_model, parse, sim, winning_sequences
 
 SIBLING = Path.home() / "Projects/arc-agi-3/harness/ARC3-Inference/inference/utils/level_memory.py"
 
@@ -31,6 +31,22 @@ def test_matches_sibling_solved_levels():
     theirs = {d["level"]: [s for s in d["winning_actions"]] for d in mod.compute_solved_levels(hist)}
     ours = {k: [names[a] for a, _ in v[2]] for k, v in winning_sequences(ACTS, LEVELS).items()}
     assert theirs == ours, (theirs, ours)
+
+
+def test_action_id_both_forms():
+    """The released replays write ids numerically AND by name (8% of events, 23 of 340 sessions)."""
+    assert action_id("6") == 6 and action_id(6) == 6
+    assert action_id("ACTION6") == 6 and action_id("action6") == 6
+    assert action_id("RESET") == 0 and action_id("0") == 0
+    assert action_id("") == -1 and action_id(None) == -1 and action_id("ACTION9") == -1
+    assert action_id("8") == -1 and action_id("-1") == -1
+
+
+def test_parse_reads_named_ids():
+    import json
+    ev = lambda i: {"data": {"frame": [[[1]]], "levels_completed": 0, "action_input": {"id": i, "data": {}}}}
+    row = {"trajectory": json.dumps([ev("RESET"), ev("ACTION3"), ev("4"), ev("nonsense")])}
+    assert [a for a, _ in parse(row)["acts"]] == [0, 3, 4, -1]
 
 
 def test_similarity():

@@ -54,6 +54,20 @@ def _arc():
     return _ARC
 
 
+#: the released replays write the action id in two forms, numeric ("6") and named ("ACTION6", "RESET");
+#: the named form is 8% of all events and appears in 23 of the 340 sessions (checked 2026-10-15 over the
+#: full population). Anything else is unknown and makes the rest of its session unusable.
+NAMED = {"RESET": 0, **{f"ACTION{i}": i for i in range(1, 8)}}
+
+
+def action_id(v) -> int:
+    """Action id from either form, or -1 when it is neither."""
+    s = str(v if v is not None else "").strip()
+    if s.isdigit() and 0 <= int(s) <= 7:
+        return int(s)
+    return NAMED.get(s.upper(), -1)
+
+
 def parse(row) -> dict:
     """Recorded events -> parallel lists. Event i holds the action that produced frame i (event 0 = RESET)."""
     acts, frames, levels, states, avail = [], [], [], [], None
@@ -63,7 +77,7 @@ def parse(row) -> dict:
         if not fr:
             continue
         ai = d.get("action_input") or {}
-        aid = int(ai["id"]) if str(ai.get("id", "")).lstrip("-").isdigit() else -1
+        aid = action_id(ai.get("id"))
         dat = ai.get("data") or {}
         xy = (int(dat["x"]), int(dat["y"])) if aid == 6 and dat.get("x") is not None and dat.get("y") is not None else None
         acts.append((aid, xy))
@@ -169,6 +183,10 @@ def analyse(row) -> dict:
     env = _arc().make(row["game_id"], seed=0)
     first_mismatch, snaps = None, {}
     for i, a in enumerate(acts):
+        if a[0] < 0:                 # an id in neither form: the rest of this session cannot be replayed
+            first_mismatch = i
+            res["unknown_action_at"] = i
+            break
         r = _step(env, a)
         if r is None or not np.array_equal(np.asarray(r.frame[-1], dtype=np.uint8), frames[i]):
             first_mismatch = i
