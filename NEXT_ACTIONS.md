@@ -7,6 +7,9 @@ Session-only timers do not survive. Run by hand from `~/Projects/arc_prize_2026`
   `~/Projects/gemma-swe-agent/.venv/bin/kaggle competitions submit -c arc-prize-2026-arc-agi-3 -k carsonrodrigues/arc3-model-based-explorer-mem1-c0 -v 4 -f submission.parquet -m "E16 noise draw: v7 agent contact curiosity OFF (kernel c0 v4), cap 3000, 700 s/game thread-CPU"`
   Then record the ID in `submission/SUBMISSIONS.md`, `RESEARCH_LOG.md`, `EXPERIMENT_LOG.csv`; read the score ~9 h later.
 - **From 2026-10-17 this workspace never submits again.** The bot in `~/Projects/arc-agi-3` owns every slot.
+- **Record a scored draw** (one command, local, safe to re-run; writes SUBMISSIONS.md + RESEARCH_LOG.md + EXPERIMENT_LOG.csv):
+  `uv run python -m arc_prize_2026.arc3.record_scores --dry-run` to see it, `--commit` to write and push.
+  Run it whenever a draw has been scored (the bot submits daily from 10-17; each score lands ~9 h later).
 - **E21 (unfinished):** `uv run python -m arc_prize_2026.arc3.level_transfer data/human_replays --workers 4`
   (~20 min, needs the session to stay open; killed three times so far by session end or memory pressure).
 
