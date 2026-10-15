@@ -5,7 +5,8 @@ from pathlib import Path
 from types import SimpleNamespace as NS
 
 from arc_prize_2026.arc3.level_transfer import (
-    action_id, hit_rate, lev, modal_model, parse, resume, sim, winning_sequences,
+    PACKED, action_id, hit_rate, iter_events, lev, load_packed, modal_model, pack_path, parse,
+    resume, sim, winning_sequences,
 )
 
 SIBLING = Path.home() / "Projects/arc-agi-3/harness/ARC3-Inference/inference/utils/level_memory.py"
@@ -64,6 +65,50 @@ def test_resume_reads_back_finished_sessions(tmp=None):
     done = resume(shard, {"a", "b", "c"})
     assert set(done) == {"a", "b"} and done["b"]["n"] == 2   # the torn line is dropped, not trusted
     assert set(resume(shard, {"b"})) == {"b"}                # a smaller --max-sessions run ignores the rest
+
+
+def test_iter_events_streams_without_materialising():
+    """One 116 MB session peaked at 7.3 GB under json.loads; the events must come out one at a time."""
+    import json
+    evs = [{"data": {"frame": [[[i]]], "levels_completed": 0}} for i in range(5)]
+    blob = json.dumps(evs)
+    assert list(iter_events(blob)) == evs
+    assert list(iter_events(json.dumps(evs, indent=2))) == evs      # whitespace between elements
+    assert list(iter_events("[]")) == [] and list(iter_events("")) == []
+    assert list(iter_events(evs)) == evs                            # already decoded
+    assert list(iter_events(None)) == []
+    import types
+    assert isinstance(iter_events(blob), types.GeneratorType)       # not a list built up front
+
+
+def test_packed_store_matches_the_raw_parse():
+    """The packed store is a 106x cheaper path to the same data, so it must be the same data.
+
+    Reading one session from the released parquet costs 6.2 GB, because each file holds 50 sessions in a
+    single row group; the packed form costs 0.06 GB. That is only safe if it is byte-identical to parsing
+    the file, so this compares the two on the largest session and on one carrying the named action ids.
+    """
+    import numpy as np, pyarrow.parquet as pq
+    raw = Path.home() / "Projects/arc_prize_2026/data/human_replays"
+    if not PACKED.exists() or not raw.exists():
+        print("skip: replay data not present")
+        return
+    checked = 0
+    for f in sorted(raw.glob("*.parquet")):
+        for b in pq.ParquetFile(f).iter_batches(batch_size=1, columns=["env", "guid", "game_id", "trajectory", "won"]):
+            r = b.to_pylist()[0]
+            big = len(r["trajectory"]) > 1e8
+            if not (big or (r["env"] == "m0r0" and checked < 2)) or not pack_path(r["guid"]).exists():
+                continue
+            a, c = parse(r), load_packed(r["guid"])
+            assert a["acts"] == c["acts"], r["guid"]
+            assert a["levels"] == c["levels"] and a["states"] == c["states"] and a["avail"] == c["avail"]
+            assert len(a["frames"]) == len(c["frames"])
+            assert all(np.array_equal(x, y) for x, y in zip(a["frames"], c["frames"])), ("frames", r["guid"])
+            checked += 1
+            if checked >= 3:
+                return
+    assert checked, "no session compared"
 
 
 def test_similarity():

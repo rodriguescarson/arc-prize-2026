@@ -16,7 +16,8 @@ M3  mechanics transfer on recorded data, actions 1-5: each action's modal displa
     scored on level k+1 steps where something moved (hit = prediction among the step's displacements).
     Ceiling: scored on level k itself. Null: exact mean over all non-identity permutations of the labels.
 
-Usage: uv run python -m arc_prize_2026.arc3.level_transfer data/human_replays [--max-sessions N] [--workers 6]
+Usage: uv run python -m arc_prize_2026.arc3.level_transfer data/human_replays --pack   (once, ~3 min)
+       uv run python -m arc_prize_2026.arc3.level_transfer data/human_replays [--max-sessions N] [--workers 6]
 Each finished session is appended to E21_level_transfer.jsonl, so a run that is killed resumes where it
 stopped when the same command is given again; --restart throws that away and starts from zero.
 """
@@ -30,7 +31,7 @@ import sys
 import time
 import zlib
 from collections import Counter, defaultdict
-from multiprocessing import Pool
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 import numpy as np
@@ -70,10 +71,35 @@ def action_id(v) -> int:
     return NAMED.get(s.upper(), -1)
 
 
+def iter_events(traj):
+    """Yield a session's recorded events one at a time.
+
+    The released sessions run from 0.02 MB to 116 MB of trajectory JSON. `json.loads` on the largest one
+    builds about 7.3 GB of Python objects, although the loop below keeps only a single 64x64 uint8 frame
+    per event: three workers each holding one of those is what exhausted memory and wedged the run. Decoding
+    the top-level array element by element holds the string plus one event instead.
+    """
+    if not isinstance(traj, str):
+        yield from (traj or [])
+        return
+    dec = json.JSONDecoder()
+    i, n = traj.find("["), len(traj)
+    if i < 0:
+        return
+    i += 1
+    while i < n:
+        while i < n and traj[i] in ", \t\r\n":
+            i += 1
+        if i >= n or traj[i] == "]":
+            return
+        ev, i = dec.raw_decode(traj, i)
+        yield ev
+
+
 def parse(row) -> dict:
     """Recorded events -> parallel lists. Event i holds the action that produced frame i (event 0 = RESET)."""
     acts, frames, levels, states, avail = [], [], [], [], None
-    for ev in json.loads(row["trajectory"]):
+    for ev in iter_events(row["trajectory"]):
         d = ev.get("data") or {}
         fr = d.get("frame")
         if not fr:
@@ -90,6 +116,55 @@ def parse(row) -> dict:
             aa = d["available_actions"]
             avail = [int(a) for a in (json.loads(aa) if isinstance(aa, str) else aa)]
     return {"acts": acts, "frames": frames, "levels": levels, "states": states, "avail": avail or [1, 2, 3, 4]}
+
+
+PACKED = ROOT / "data" / "human_replays_packed"
+
+
+def pack_path(guid: str) -> Path:
+    return PACKED / f"{guid}.npz"
+
+
+def pack(d: Path) -> int:
+    """Convert the released parquet files into one compact file per session, once.
+
+    The replays are stored as 7 parquet files of 50 sessions, one row group each, so reading any single
+    session decompresses every session in its file: 6.2 GB for one `read_table`, 2.6 GB streaming a single
+    row. That cost was paid once per session per run and is what exhausted a 16 GB machine. Each session's
+    parsed arrays are a few MB, so they are written out once and read directly afterwards. The packed form
+    is exactly what `parse()` returns, so nothing about the measurement changes.
+    """
+    PACKED.mkdir(parents=True, exist_ok=True)
+    cols = ["env", "guid", "game_id", "trajectory", "won"]
+    n = 0
+    for f in sorted(d.glob("*.parquet")):
+        for batch in pq.ParquetFile(f).iter_batches(batch_size=1, columns=cols):
+            row = batch.to_pylist()[0]
+            out = pack_path(row["guid"])
+            if out.exists():
+                continue
+            s = parse(row)
+            np.savez_compressed(
+                out,
+                frames=np.stack(s["frames"]) if s["frames"] else np.zeros((0, 0, 0), np.uint8),
+                act_ids=np.array([a for a, _ in s["acts"]], np.int16),
+                act_xy=np.array([xy if xy else (-1, -1) for _, xy in s["acts"]], np.int16),
+                levels=np.array(s["levels"], np.int32),
+                states=np.array(s["states"], dtype=object),
+                avail=np.array(s["avail"], np.int16),
+                env=row["env"], game_id=row["game_id"], guid=row["guid"],
+            )
+            n += 1
+            del s, row, batch
+    return n
+
+
+def load_packed(guid: str) -> dict:
+    z = np.load(pack_path(guid), allow_pickle=True)
+    xy = z["act_xy"]
+    acts = [(int(a), None if xy[i][0] < 0 else (int(xy[i][0]), int(xy[i][1]))) for i, a in enumerate(z["act_ids"])]
+    return {"acts": acts, "frames": list(z["frames"]), "levels": [int(v) for v in z["levels"]],
+            "states": [str(v) for v in z["states"]], "avail": [int(v) for v in z["avail"]]}
 
 
 def winning_sequences(acts, levels) -> dict[int, tuple[int, int, list]]:
@@ -177,7 +252,7 @@ def hit_rate(model, steps, relabel=None) -> tuple[float, int]:
 
 def analyse(row) -> dict:
     rng = np.random.default_rng(zlib.crc32(row["guid"].encode()))
-    s = parse(row)
+    s = load_packed(row["guid"]) if row.get("trajectory") is None else parse(row)
     acts, frames, levels = s["acts"], s["frames"], s["levels"]
     game = row["env"]
     res = {"env": game, "guid": row["guid"], "n": len(acts), "max_level": max(levels) if levels else 0}
@@ -334,10 +409,20 @@ def main(argv: list[str]) -> None:
     d = Path(argv[0]) if argv else ROOT / "data" / "human_replays"
     max_s = int(argv[argv.index("--max-sessions") + 1]) if "--max-sessions" in argv else None
     workers = int(argv[argv.index("--workers") + 1]) if "--workers" in argv else 4
+    if "--pack" in argv:
+        print(f"packed {pack(d)} new sessions into {PACKED}")
+        return
+    # the index carries no trajectory: the parent never holds a session, workers read the packed file
     rows = []
     for f in sorted(d.glob("*.parquet")):
-        rows += pq.read_table(f, columns=["env", "guid", "game_id", "trajectory", "won"]).to_pylist()
+        t = pq.read_table(f, columns=["env", "guid", "game_id", "won"])
+        rows += [{**r, "trajectory": None} for r in t.to_pylist()]
+        del t
     rows = rows[:max_s] if max_s else rows
+    missing = [r for r in rows if not pack_path(r["guid"]).exists()]
+    if missing:
+        print(f"{len(missing)} sessions are not packed yet; run with --pack first", flush=True)
+        return
     out = ROOT / "experiments" / "human_replays" / ("E21_level_transfer.json" if not max_s else f"E21_level_transfer_n{max_s}.json")
     shard = out.with_suffix(".jsonl")
     if "--restart" in argv and shard.exists():
@@ -348,8 +433,11 @@ def main(argv: list[str]) -> None:
     print(f"{len(rows)} sessions: {len(done)} already in {shard.name}, {len(todo)} to run on {workers} workers", flush=True)
     t0 = time.time()
     if todo:
-        with shard.open("a") as f, Pool(workers, maxtasksperchild=8) as pool:   # recycle workers so no leak accumulates
-            for i, r in enumerate(pool.imap_unordered(analyse, todo, chunksize=1), 1):
+        # ProcessPoolExecutor, not multiprocessing.Pool: when the OS kills a worker, Pool waits for a result
+        # that will never arrive (this run hung for 63 minutes that way), while this raises BrokenProcessPool.
+        # One task per child returns each session's memory instead of keeping the high-water mark.
+        with shard.open("a") as f, ProcessPoolExecutor(workers, max_tasks_per_child=1) as pool:
+            for i, r in enumerate(pool.map(analyse, todo, chunksize=1), 1):
                 f.write(json.dumps(r, default=jsonable) + "\n")
                 f.flush()
                 results.append(r)
