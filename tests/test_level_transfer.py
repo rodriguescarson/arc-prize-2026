@@ -4,7 +4,9 @@ import importlib.util
 from pathlib import Path
 from types import SimpleNamespace as NS
 
-from arc_prize_2026.arc3.level_transfer import action_id, hit_rate, lev, modal_model, parse, sim, winning_sequences
+from arc_prize_2026.arc3.level_transfer import (
+    action_id, hit_rate, lev, modal_model, parse, resume, sim, winning_sequences,
+)
 
 SIBLING = Path.home() / "Projects/arc-agi-3/harness/ARC3-Inference/inference/utils/level_memory.py"
 
@@ -47,6 +49,21 @@ def test_parse_reads_named_ids():
     ev = lambda i: {"data": {"frame": [[[1]]], "levels_completed": 0, "action_input": {"id": i, "data": {}}}}
     row = {"trajectory": json.dumps([ev("RESET"), ev("ACTION3"), ev("4"), ev("nonsense")])}
     assert [a for a, _ in parse(row)["acts"]] == [0, 3, 4, -1]
+
+
+def test_resume_reads_back_finished_sessions(tmp=None):
+    """The run has been killed four times; a rerun must cost only what was in flight."""
+    import json, tempfile
+    d = Path(tempfile.mkdtemp())
+    shard = d / "E21_level_transfer.jsonl"
+    assert resume(shard, {"a"}) == {}                       # nothing written yet
+    with shard.open("w") as f:
+        f.write(json.dumps({"guid": "a", "n": 1}) + "\n")
+        f.write(json.dumps({"guid": "b", "n": 2}) + "\n")
+        f.write(json.dumps({"guid": "c", "n": 3})[:12])      # killed mid-write: not valid JSON
+    done = resume(shard, {"a", "b", "c"})
+    assert set(done) == {"a", "b"} and done["b"]["n"] == 2   # the torn line is dropped, not trusted
+    assert set(resume(shard, {"b"})) == {"b"}                # a smaller --max-sessions run ignores the rest
 
 
 def test_similarity():

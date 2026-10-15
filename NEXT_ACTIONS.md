@@ -1,4 +1,4 @@
-# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-15 19:20 IST)
+# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-15 22:05 IST)
 
 ## IF THE SESSION DIED, START HERE
 Session-only timers do not survive. Run by hand from `~/Projects/arc_prize_2026`:
@@ -10,8 +10,11 @@ Session-only timers do not survive. Run by hand from `~/Projects/arc_prize_2026`
 - **Record a scored draw** (one command, local, safe to re-run; writes SUBMISSIONS.md + RESEARCH_LOG.md + EXPERIMENT_LOG.csv):
   `uv run python -m arc_prize_2026.arc3.record_scores --dry-run` to see it, `--commit` to write and push.
   Run it whenever a draw has been scored (the bot submits daily from 10-17; each score lands ~9 h later).
-- **E21 (unfinished):** `uv run python -m arc_prize_2026.arc3.level_transfer data/human_replays --workers 4`
-  (~20 min, needs the session to stay open; killed three times so far by session end or memory pressure).
+- **E21 (unfinished):** `uv run python -m arc_prize_2026.arc3.level_transfer data/human_replays --workers 3`
+  (~25 min, needs the session to stay open). Killed five times so far by session end or system memory pressure, so
+  the run now **resumes**: every finished session is appended to `experiments/human_replays/E21_level_transfer.jsonl`
+  and the same command re-run skips what is already there. Give `--restart` only to throw that away and begin again.
+  Close Chrome and the iOS simulators first; the two kills for memory both happened with those resident.
 
 ## Hidden-set results so far (all on the same 55 unseen games)
 | submission | agent | score |

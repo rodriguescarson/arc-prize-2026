@@ -17,6 +17,8 @@ M3  mechanics transfer on recorded data, actions 1-5: each action's modal displa
     Ceiling: scored on level k itself. Null: exact mean over all non-identity permutations of the labels.
 
 Usage: uv run python -m arc_prize_2026.arc3.level_transfer data/human_replays [--max-sessions N] [--workers 6]
+Each finished session is appended to E21_level_transfer.jsonl, so a run that is killed resumes where it
+stopped when the same command is given again; --restart throws that away and starts from zero.
 """
 from __future__ import annotations
 
@@ -301,6 +303,33 @@ def summarise(results: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def jsonable(o):
+    return o.item() if isinstance(o, (np.integer, np.floating, np.bool_)) else o
+
+
+def resume(shard: Path, wanted: set[str]) -> dict[str, dict]:
+    """Sessions already finished, read back from the shard file.
+
+    The full population takes ~25 min and the run has been killed four times (twice by the session
+    closing, twice by system memory pressure), each time losing everything. One JSON line per finished
+    session means a rerun costs only what was in flight. A line half-written when the process died is
+    not valid JSON, so it is dropped rather than trusted.
+    """
+    done = {}
+    if not shard.exists():
+        return done
+    for line in shard.read_text().splitlines():
+        if not line.strip():
+            continue
+        try:
+            r = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if r.get("guid") in wanted:
+            done[r["guid"]] = r
+    return done
+
+
 def main(argv: list[str]) -> None:
     d = Path(argv[0]) if argv else ROOT / "data" / "human_replays"
     max_s = int(argv[argv.index("--max-sessions") + 1]) if "--max-sessions" in argv else None
@@ -309,15 +338,26 @@ def main(argv: list[str]) -> None:
     for f in sorted(d.glob("*.parquet")):
         rows += pq.read_table(f, columns=["env", "guid", "game_id", "trajectory", "won"]).to_pylist()
     rows = rows[:max_s] if max_s else rows
-    t0 = time.time()
-    results = []
-    with Pool(workers, maxtasksperchild=8) as pool:      # recycle workers so no leak accumulates
-        for r in pool.imap_unordered(analyse, rows, chunksize=1):
-            results.append(r)
     out = ROOT / "experiments" / "human_replays" / ("E21_level_transfer.json" if not max_s else f"E21_level_transfer_n{max_s}.json")
-    out.write_text(json.dumps(results, default=lambda o: o if not isinstance(o, (np.integer, np.floating, np.bool_)) else o.item(), indent=1))
+    shard = out.with_suffix(".jsonl")
+    if "--restart" in argv and shard.exists():
+        shard.unlink()
+    done = resume(shard, {r["guid"] for r in rows})
+    todo = [r for r in rows if r["guid"] not in done]
+    results = list(done.values())
+    print(f"{len(rows)} sessions: {len(done)} already in {shard.name}, {len(todo)} to run on {workers} workers", flush=True)
+    t0 = time.time()
+    if todo:
+        with shard.open("a") as f, Pool(workers, maxtasksperchild=8) as pool:   # recycle workers so no leak accumulates
+            for i, r in enumerate(pool.imap_unordered(analyse, todo, chunksize=1), 1):
+                f.write(json.dumps(r, default=jsonable) + "\n")
+                f.flush()
+                results.append(r)
+                if i % 10 == 0 or i == len(todo):
+                    print(f"  {i}/{len(todo)} done, {time.time() - t0:.0f} s", flush=True)
+    out.write_text(json.dumps(results, default=jsonable, indent=1))
     print(summarise(results))
-    print(f"-> {out}  ({time.time() - t0:.0f} s)")
+    print(f"-> {out}  ({len(results)} sessions, {time.time() - t0:.0f} s this run)")
 
 
 if __name__ == "__main__":
