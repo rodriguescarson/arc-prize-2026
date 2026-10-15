@@ -1,4 +1,14 @@
-# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-13 18:12 IST)
+# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-13 19:50 IST)
+
+## DECISION 2026-10-13 19:28 IST (Carson): the paper covers cross-level memory in BOTH agents and links the best level-memory LLM draw
+Why: Accuracy (1 of 6 averaged criteria) = leaderboard score of the linked submission. Explorer 0.08 → Accuracy ≈ 1 → average ≤ (1+25)/6 = 4.33 < 4.5, the Outstanding Papers pool bar (arcprize.org/competitions/2026/paper: Top 3 $50K/$20K/$5K guaranteed; $375K pool for papers scoring above 4.5).
+Plan:
+- The bot in `~/Projects/arc-agi-3` submits v2-level-memory and v6-swift-level-memory from 10-17 (order v3 → v1 → v2 → v4 → v6). No extra slots needed. That repo is the other session's; read-only from here.
+- Paper question: *what should an agent carry from one level to the next?* Explorer = mechanics memory (E3 ablation, controlled); LLM harness = plan memory (`solved_levels()` = winning action sequences). E21 (human replays, full population, pre-registered 19:28) measures which content transfers.
+- Hidden-set rule (pre-registered): identical Franzen copies SD 3.9 → a memory effect is claimed only if a v2−v1 or v6−v3 gap exceeds 11 points. Draws are reported as harness performance, not as evidence for memory.
+- Link: the best level-memory draw (v2 or v6). Explorer submission 57123503 stays cited as the controlled agent's hidden result.
+- Open (Carson + other session): whether to add a "mechanics memory" variant to the bot's queue if E21 favours mechanics over plans; it would need a GPU commit from the shared 30 h week quota.
+
 
 ## Verified deadlines (all Kaggle times 23:59 UTC = 05:29 IST next day)
 | Event | Date | IST | Note |

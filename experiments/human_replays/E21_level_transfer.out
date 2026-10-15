@@ -1,0 +1,5 @@
+/Users/carson/Projects/arc_prize_2026/src/arc_prize_2026/arc3/level_transfer.py:225: RuntimeWarning: Mean of empty slice
+  p["m3_null"] = float(np.nanmean(nulls)) if nulls else float("nan")
+/Users/carson/Projects/arc_prize_2026/src/arc_prize_2026/arc3/level_transfer.py:225: RuntimeWarning: Mean of empty slice
+  p["m3_null"] = float(np.nanmean(nulls)) if nulls else float("nan")
+/Users/carson/Projects/arc_prize_2026/src/arc_prize_2026/arc3/level_transfer.py:225: RuntimeWarning: Mean of empty slice
