@@ -1,0 +1,56 @@
+name: record-scores
+
+# Writes each newly scored Kaggle draw into the paper's records. The LLM-harness draws run daily
+# from 2026-10-17 (paired level-memory variants and their no-memory twins) and each is scored about
+# nine hours after submission, so this runs after that and commits what it finds. It never edits an
+# existing row, so a run that finds nothing is a no-op and a hand-corrected row stays corrected.
+#
+# Needs repository secrets KAGGLE_USERNAME and KAGGLE_KEY (same values as the arc-agi-3 repo).
+# Submits nothing: it only reads the submission list.
+
+on:
+  schedule:
+    - cron: "52 8 * * *"      # 08:52 UTC = 14:22 IST; GitHub's scheduler often runs late, which is fine here
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: record-scores
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the Kaggle CLI
+        run: pip install --quiet kaggle==1.6.17
+
+      - name: Check the credentials are present
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then
+            echo "::error::KAGGLE_USERNAME / KAGGLE_KEY are not set on this repository."
+            echo "Set them with: gh secret set KAGGLE_USERNAME --repo rodriguescarson/arc-prize-2026"
+            exit 1
+          fi
+
+      - name: Record any newly scored draws
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          git config user.name "arc3-score-recorder"
+          git config user.email "admin@carsonrodrigues.com"
+          PYTHONPATH=src python -m arc_prize_2026.arc3.record_scores --commit | tee "$GITHUB_STEP_SUMMARY"
