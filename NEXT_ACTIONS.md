@@ -1,13 +1,24 @@
-# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-13 19:50 IST)
+# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-15 19:20 IST)
 
-## DECISION 2026-10-13 19:28 IST (Carson): the paper covers cross-level memory in BOTH agents and links the best level-memory LLM draw
-Why: Accuracy (1 of 6 averaged criteria) = leaderboard score of the linked submission. Explorer 0.08 → Accuracy ≈ 1 → average ≤ (1+25)/6 = 4.33 < 4.5, the Outstanding Papers pool bar (arcprize.org/competitions/2026/paper: Top 3 $50K/$20K/$5K guaranteed; $375K pool for papers scoring above 4.5).
-Plan:
-- The bot in `~/Projects/arc-agi-3` submits v2-level-memory and v6-swift-level-memory from 10-17 (order v3 → v1 → v2 → v4 → v6). No extra slots needed. That repo is the other session's; read-only from here.
-- Paper question: *what should an agent carry from one level to the next?* Explorer = mechanics memory (E3 ablation, controlled); LLM harness = plan memory (`solved_levels()` = winning action sequences). E21 (human replays, full population, pre-registered 19:28) measures which content transfers.
-- Hidden-set rule (pre-registered): identical Franzen copies SD 3.9 → a memory effect is claimed only if a v2−v1 or v6−v3 gap exceeds 11 points. Draws are reported as harness performance, not as evidence for memory.
-- Link: the best level-memory draw (v2 or v6). Explorer submission 57123503 stays cited as the controlled agent's hidden result.
-- Open (Carson + other session): whether to add a "mechanics memory" variant to the bot's queue if E21 favours mechanics over plans; it would need a GPU commit from the shared 30 h week quota.
+## IF THE SESSION DIED, START HERE
+Session-only timers do not survive. Run by hand from `~/Projects/arc_prize_2026`:
+- **2026-10-16 05:37 IST, last submission from this workspace** (check the slot is free for the UTC day first with
+  `~/Projects/gemma-swe-agent/.venv/bin/kaggle competitions submissions -c arc-prize-2026-arc-agi-3 | head -4`):
+  `~/Projects/gemma-swe-agent/.venv/bin/kaggle competitions submit -c arc-prize-2026-arc-agi-3 -k carsonrodrigues/arc3-model-based-explorer-mem1-c0 -v 4 -f submission.parquet -m "E16 noise draw: v7 agent contact curiosity OFF (kernel c0 v4), cap 3000, 700 s/game thread-CPU"`
+  Then record the ID in `submission/SUBMISSIONS.md`, `RESEARCH_LOG.md`, `EXPERIMENT_LOG.csv`; read the score ~9 h later.
+- **From 2026-10-17 this workspace never submits again.** The bot in `~/Projects/arc-agi-3` owns every slot.
+- **E21 (unfinished):** `uv run python -m arc_prize_2026.arc3.level_transfer data/human_replays --workers 4`
+  (~20 min, needs the session to stay open; killed three times so far by session end or memory pressure).
+
+## Hidden-set results so far (all on the same 55 unseen games)
+| submission | agent | score |
+|---|---|---|
+| 57095368 | explorer v7, defective bundle (near-random fallback) | 0.15 |
+| 57170721 | random solver, 60 actions/game (sibling bot's pipeline test) | 0.12 |
+| 57123503 | explorer v7, memory ON | 0.08 |
+| 57199354 | explorer v7, **memory OFF** | **0.08** |
+Memory is worth +0.050 on the public 25 (E3) and 0.000 here. The hidden metric does not separate these agents,
+and a random agent outscores all of them. E16's reframe (pre-registered 10-13 14:13) is now measured, not argued.
 
 
 ## Verified deadlines (all Kaggle times 23:59 UTC = 05:29 IST next day)
