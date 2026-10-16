@@ -5,8 +5,8 @@ from pathlib import Path
 from types import SimpleNamespace as NS
 
 from arc_prize_2026.arc3.level_transfer import (
-    PACKED, action_id, hit_rate, iter_events, lev, load_packed, modal_model, pack_path, parse,
-    resume, sim, winning_sequences,
+    BUDGET_S, PACKED, action_id, hit_rate, iter_events, lev, load_packed, modal_model, pack_path,
+    parse, resume, run_seq, sim, winning_sequences,
 )
 
 SIBLING = Path.home() / "Projects/arc-agi-3/harness/ARC3-Inference/inference/utils/level_memory.py"
@@ -109,6 +109,31 @@ def test_packed_store_matches_the_raw_parse():
             if checked >= 3:
                 return
     assert checked, "no session compared"
+
+
+def test_run_seq_budget_is_unevaluable_not_failure():
+    """A random control can drive lf52 into steps costing 40 s each; that must not read as a clean failure."""
+    import time
+    from types import SimpleNamespace as NS
+
+    class SlowEnv:
+        """Each step costs a tenth of a second, as the pathological states do, only smaller."""
+        def __init__(self): self.n = 0
+        def action(self, *a, **k):
+            time.sleep(0.1); self.n += 1
+            return NS(levels_completed=0, state="NOT_FINISHED", frame=[[[0]]])
+
+    import arc_prize_2026.arc3.level_transfer as M
+    real_step, M._step = M._step, lambda e, a: e.action()
+    try:
+        r = M.run_seq(SlowEnv(), [(1, None)] * 100, 1, budget_s=0.3)
+        assert r["end"] == "budget" and r["ok"] is False, r
+        assert 1 <= r["n"] < 100 and r["of"] == 100, r      # says how far it got, and of how many
+        fast = M.run_seq(SlowEnv(), [(1, None)] * 2, 1, budget_s=60)
+        assert fast["end"] == "exhausted", fast             # a short run is unaffected
+    finally:
+        M._step = real_step
+    assert BUDGET_S >= 60, "the budget must stay far above the ~0.3 s a normal control replay takes"
 
 
 def test_similarity():

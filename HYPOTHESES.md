@@ -210,3 +210,22 @@ The rubric averages six 0–5 criteria and Accuracy is the leaderboard score of 
 ## Hidden-set pre-registration for the LLM-harness draws (19:28, before any of them run)
 Identical copies of Franzen's notebook score mean 25.8, SD 3.9 (sibling `docs/STATUS.md`). The difference of two single draws then has SD ≈ 5.5, so a hidden-set effect of level memory (v2 − v1, v6 − v3) is claimed only if it exceeds 11 points. Prediction: no such difference (|Δ| < 11 for both pairs). The paper reports the draws as performance of the harness with memory, not as evidence for memory; the memory effect is argued from E3 (explorer ablation) and E21.
 - E21 definitions fixed before the run (19:40): "movement games" = the 12 games not in `CLICK_GAMES` of `human_sequences.py`; a game "exceeds its shuffle control" in M2 when the mean over its pairs of (similarity − mean shuffled similarity) is > 0; M3's permuted null is the exact mean over all non-identity permutations of the learned action labels.
+
+### E21 deviation, recorded 2026-10-16 15:05 IST (before the affected sessions were scored)
+
+The C3 control is pre-registered as five uniform-random sequences of the same length as W_k. On three games
+(lf52, ar25, re86) a random sequence drives the environment into states whose per-step cost explodes. Measured
+on one lf52 pair: step 47 took 0.7 s, step 64 10.1 s, step 77 40.0 s, with the worker process reaching 8.5 GB.
+Human action sequences never do this; the same session's nine winning sequences are 11 to 157 actions and
+replay in milliseconds. Six workers each holding one such replay exhausted a 16 GB machine and the run made
+no progress for 70 minutes.
+
+A 60-second wall-clock budget per control replay is therefore applied, which is about 200x a normal replay.
+A run that exceeds it is recorded as **unevaluable** (`end="budget"`, with the actions executed and the
+sequence length), is **excluded from the C1 and C3 rates**, and is **never counted as a failure to complete
+the level**. Counting it as a failure would push the control rates toward zero, which is the direction that
+favours P21a, so the conservative choice is to exclude and report. The number of unevaluable runs, and the
+median point at which they were cut, are printed in the result summary and will be stated in the paper.
+
+Re-running three already-scored sessions under the budget reproduces their stored results exactly, with zero
+unevaluable runs, so the 327 sessions scored before this change are unaffected.

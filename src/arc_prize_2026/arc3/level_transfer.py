@@ -43,6 +43,13 @@ from .perception import diff
 
 ROOT = Path(__file__).resolve().parents[3]
 N_SHUFFLE = 5
+#: Wall-clock budget for one control replay. On lf52, ar25 and re86 a uniform-random sequence drives the
+#: environment into states whose per-step cost explodes (measured on one lf52 pair: step 47 took 0.7 s,
+#: step 64 10.1 s, step 77 40.0 s, with the process reaching 8.5 GB). Human action sequences never do this:
+#: the same session's nine winning sequences are 11 to 157 actions and replay in milliseconds. A run that
+#: exceeds the budget is recorded as UNEVALUABLE, never as a failure to complete the level, so it cannot
+#: flatter the pre-registered prediction that the controls do not transfer.
+BUDGET_S = 60
 _ARC = None
 
 
@@ -191,9 +198,14 @@ def _step(env, a):
     return env.step(act, data=data)
 
 
-def run_seq(env, seq, target_level: int) -> dict:
-    """Execute seq on a copy of env; success when levels_completed reaches target_level."""
+def run_seq(env, seq, target_level: int, budget_s: float = BUDGET_S) -> dict:
+    """Execute seq on a copy of env; success when levels_completed reaches target_level.
+
+    `end` is "level", "game_over", "exhausted", "none", or "budget" when the environment did not return
+    within `budget_s`. A "budget" run is unevaluable, not a failure: see BUDGET_S.
+    """
     e = copy.deepcopy(env)
+    t0 = time.time()
     for n, a in enumerate(seq, 1):
         r = _step(e, a)
         if r is None:
@@ -202,6 +214,8 @@ def run_seq(env, seq, target_level: int) -> dict:
             return {"ok": True, "n": n, "end": "level"}
         if str(r.state).endswith("GAME_OVER"):
             return {"ok": False, "n": n, "end": "game_over"}
+        if time.time() - t0 > budget_s:
+            return {"ok": False, "n": n, "end": "budget", "of": len(seq)}
     return {"ok": False, "n": len(seq), "end": "exhausted"}
 
 
@@ -333,7 +347,9 @@ def analyse(row) -> dict:
             env0 = None
         if env0 is not None:
             p["m1"] = run_seq(env0, wk, k + 1)
-            p["c1"] = [run_seq(env0, [wk[j] for j in rng.permutation(len(wk))], k + 1)["ok"] for _ in range(N_SHUFFLE)]
+            c1 = [run_seq(env0, [wk[j] for j in rng.permutation(len(wk))], k + 1) for _ in range(N_SHUFFLE)]
+            p["c1"] = [r["ok"] for r in c1 if r["end"] != "budget"]
+            p["c1_unevaluable"] = sum(r["end"] == "budget" for r in c1)
             p["c2"] = run_seq(env0, wk1, k + 1)
             av = s["avail"]
             def rnd():
@@ -342,7 +358,10 @@ def analyse(row) -> dict:
                     aid = int(rng.choice(av))
                     out.append((aid, (int(rng.integers(0, 64)), int(rng.integers(0, 64))) if aid == 6 else None))
                 return out
-            p["c3"] = [run_seq(env0, rnd(), k + 1)["ok"] for _ in range(N_SHUFFLE)]
+            c3 = [run_seq(env0, rnd(), k + 1) for _ in range(N_SHUFFLE)]
+            p["c3"] = [r["ok"] for r in c3 if r["end"] != "budget"]
+            p["c3_unevaluable"] = sum(r["end"] == "budget" for r in c3)
+            p["c3_cut"] = [[r["n"], r["of"]] for r in c3 if r["end"] == "budget"]
         # M3 (recorded data): level k = [start of level k .. its completion]; level k+1 likewise
         lk_lo = (wins[k - 1][1] + 1) if (k - 1) in wins else 1
         steps_k = step_displacements(frames, acts, lk_lo, ik)
@@ -377,11 +396,23 @@ def summarise(results: list[dict]) -> str:
                  f"consecutive completed level pairs {n_pairs}; reproducible pairs {len(rep)} "
                  f"({len(rep) / max(n_pairs, 1):.1%})")
     if rep:
-        m1 = np.mean([p["m1"]["ok"] for _, p in rep]); c1 = np.mean([np.mean(p["c1"]) for _, p in rep])
-        c2 = np.mean([p["c2"]["ok"] for _, p in rep]); c3 = np.mean([np.mean(p["c3"]) for _, p in rep])
+        m1 = np.mean([p["m1"]["ok"] for _, p in rep]); c2 = np.mean([p["c2"]["ok"] for _, p in rep])
+        c1 = np.mean([np.mean(p["c1"]) for _, p in rep if p.get("c1")])
+        c3 = np.mean([np.mean(p["c3"]) for _, p in rep if p.get("c3")])
         lines.append(f"M1 W_k completes k+1: {m1:.1%}   C1 shuffled {c1:.1%}   C2 own W_k+1 {c2:.1%}   C3 random {c3:.1%}")
         ends = Counter(p["m1"]["end"] for _, p in rep)
         lines.append(f"M1 endings: {dict(ends)}")
+        # runs the environment could not finish inside BUDGET_S, reported rather than scored as failures
+        u1 = sum(p.get("c1_unevaluable", 0) for _, p in rep)
+        u3 = sum(p.get("c3_unevaluable", 0) for _, p in rep)
+        if u1 or u3:
+            tot = len(rep) * N_SHUFFLE
+            cut = [c for _, p in rep for c in p.get("c3_cut", [])]
+            med = int(np.median([n for n, _ in cut])) if cut else 0
+            of = int(np.median([o for _, o in cut])) if cut else 0
+            lines.append(f"unevaluable control runs (environment exceeded {BUDGET_S}s): C1 {u1}/{tot}, C3 {u3}/{tot}"
+                         f"{f'; C3 cut at a median {med} of {of} actions' if cut else ''}. "
+                         f"Excluded from the rates above, not counted as non-completions.")
     lines.append("")
     lines.append("game  click pairs rep  M1    C1    C2    C3   | M2 sim  shuf  | M3 transfer ceiling null  n_steps")
     by = defaultdict(list)
@@ -404,7 +435,8 @@ def summarise(results: list[dict]) -> str:
             m3_rows.append((g, m3))
         lines.append(
             f"{g:5s} {'C' if g in CLICK_GAMES else 'M'}     {len(ps):4d} {len(rp):3d}  {f(m1)}  "
-            f"{f([np.mean(p['c1']) for p in rp])}  {f([p['c2']['ok'] for p in rp])}  {f([np.mean(p['c3']) for p in rp])} | "
+            f"{f([np.mean(p['c1']) for p in rp if p.get('c1')])}  {f([p['c2']['ok'] for p in rp])}  "
+            f"{f([np.mean(p['c3']) for p in rp if p.get('c3')])} | "
             f"{f([p['m2_sim'] for p in ps])}  {f([p['m2_shuffle'] for p in ps])} | "
             f"{f([p['m3_transfer'] for p in m3])}  {f([p['m3_ceiling'] for p in m3])}  "
             f"{f([p['m3_null'] for p in m3 if not np.isnan(p['m3_null'])])}  {sum(p['m3_n'] for p in m3)}"
