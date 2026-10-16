@@ -31,7 +31,7 @@ import sys
 import time
 import zlib
 from collections import Counter, defaultdict
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 import numpy as np
@@ -250,7 +250,35 @@ def hit_rate(model, steps, relabel=None) -> tuple[float, int]:
     return hits / len(scored), len(scored)
 
 
+class Walker:
+    """One environment walked forward through the recorded actions, in place of a snapshot per level.
+
+    Keeping `copy.deepcopy(env)` for every level transition is what made the longest sessions reach a
+    9-11 GB footprint: an environment copy is roughly half a gigabyte and these sessions clear many
+    levels, so six workers thrashed a 16 GB machine into swap and stopped finishing anything. The pairs
+    are visited in increasing k and their snapshot indices increase with k, so a single environment
+    walked forward reaches each one in turn, and `run_seq` takes its own copy before touching it.
+    """
+
+    def __init__(self, game_id, acts):
+        self.env = _arc().make(game_id, seed=0)
+        self.acts = acts
+        self.i = -1
+
+    def at(self, target: int):
+        """The environment as it stood right after action `target`, or None if a step failed."""
+        while self.i < target:
+            self.i += 1
+            if _step(self.env, self.acts[self.i]) is None:
+                return None
+        return self.env
+
+    def close(self):
+        self.env = None
+
+
 def analyse(row) -> dict:
+    t_start = time.time()
     rng = np.random.default_rng(zlib.crc32(row["guid"].encode()))
     s = load_packed(row["guid"]) if row.get("trajectory") is None else parse(row)
     acts, frames, levels = s["acts"], s["frames"], s["levels"]
@@ -258,7 +286,7 @@ def analyse(row) -> dict:
     res = {"env": game, "guid": row["guid"], "n": len(acts), "max_level": max(levels) if levels else 0}
     # F: fidelity replay
     env = _arc().make(row["game_id"], seed=0)
-    first_mismatch, snaps = None, {}
+    first_mismatch = None
     for i, a in enumerate(acts):
         if a[0] < 0:                 # an id in neither form: the rest of this session cannot be replayed
             first_mismatch = i
@@ -268,8 +296,15 @@ def analyse(row) -> dict:
         if r is None or not np.array_equal(np.asarray(r.frame[-1], dtype=np.uint8), frames[i]):
             first_mismatch = i
             break
-        if i > 0 and levels[i] > levels[i - 1] and levels[i] not in snaps:
-            snaps[levels[i]] = copy.deepcopy(env)      # start of level levels[i] + 1
+    del env
+    # where a snapshot would have been taken: the first index at each new level, reached before any
+    # mismatch. Same set of pairs as the old per-level deepcopies, without holding them all at once.
+    snap_at = {}
+    for i in range(1, len(levels)):
+        if levels[i] > levels[i - 1] and levels[i] not in snap_at:
+            if first_mismatch is None or i < first_mismatch:
+                snap_at[levels[i]] = i
+    walker = None
     res["first_mismatch"] = first_mismatch
     res["fidelity_full"] = first_mismatch is None
     wins = winning_sequences(acts, levels)
@@ -290,8 +325,13 @@ def analyse(row) -> dict:
         p["m2_sim"] = sim(tk, tk1)
         p["m2_shuffle"] = float(np.mean([sim(x, tk1) for x in shuf]))
         # M1 (only on reproducible pairs, from the snapshot at the start of level k+1)
-        if p["reproducible"] and k in snaps:
-            env0 = snaps.pop(k)        # freed as soon as this pair is done
+        if p["reproducible"] and k in snap_at:
+            if walker is None:
+                walker = Walker(row["game_id"], acts)
+            env0 = walker.at(snap_at[k])
+        else:
+            env0 = None
+        if env0 is not None:
             p["m1"] = run_seq(env0, wk, k + 1)
             p["c1"] = [run_seq(env0, [wk[j] for j in rng.permutation(len(wk))], k + 1)["ok"] for _ in range(N_SHUFFLE)]
             p["c2"] = run_seq(env0, wk1, k + 1)
@@ -321,7 +361,10 @@ def analyse(row) -> dict:
             p["m3_n_actions"] = len(labels)
         pairs.append(p)
     res["pairs"] = pairs
-    snaps.clear(); del frames, env
+    res["secs"] = round(time.time() - t_start, 2)
+    if walker is not None:
+        walker.close()
+    del frames
     return res
 
 
@@ -436,13 +479,19 @@ def main(argv: list[str]) -> None:
         # ProcessPoolExecutor, not multiprocessing.Pool: when the OS kills a worker, Pool waits for a result
         # that will never arrive (this run hung for 63 minutes that way), while this raises BrokenProcessPool.
         # One task per child returns each session's memory instead of keeping the high-water mark.
+        # as_completed, not map: map yields in submission order, so one session that takes an hour (some do,
+        # 12 environment replays per level pair) holds back every finished session behind it and a kill
+        # loses them all. Cheapest sessions first, by packed size, so progress banks early.
+        todo.sort(key=lambda r: pack_path(r["guid"]).stat().st_size)
         with shard.open("a") as f, ProcessPoolExecutor(workers, max_tasks_per_child=1) as pool:
-            for i, r in enumerate(pool.map(analyse, todo, chunksize=1), 1):
+            futures = {pool.submit(analyse, r): r for r in todo}
+            for i, fut in enumerate(as_completed(futures), 1):
+                r = fut.result()
                 f.write(json.dumps(r, default=jsonable) + "\n")
                 f.flush()
                 results.append(r)
-                if i % 10 == 0 or i == len(todo):
-                    print(f"  {i}/{len(todo)} done, {time.time() - t0:.0f} s", flush=True)
+                print(f"  {i}/{len(todo)} {r['env']} {r['guid'][:8]} "
+                      f"{r.get('secs', 0):.1f}s  (elapsed {time.time() - t0:.0f} s)", flush=True)
     out.write_text(json.dumps(results, default=jsonable, indent=1))
     print(summarise(results))
     print(f"-> {out}  ({len(results)} sessions, {time.time() - t0:.0f} s this run)")
