@@ -10,7 +10,11 @@ wheels/
 .venv
 
 # datasets are cloned, not committed
-data/
+data/*
+# the packed replay store is derived, 14 MB, and is what E21 actually reads: keeping it in the
+# repo means the experiment runs from a bare clone instead of a 453 MB download plus a repack.
+# (data/* not data/, because git does not descend into an excluded directory to find a negation.)
+!data/human_replays_packed/
 # secrets
 .env
 .env.*
