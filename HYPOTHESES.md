@@ -229,3 +229,38 @@ median point at which they were cut, are printed in the result summary and will 
 
 Re-running three already-scored sessions under the budget reproduces their stored results exactly, with zero
 unevaluable runs, so the 327 sessions scored before this change are unaffected.
+
+### E21 outcome, 2026-10-16 16:02 IST (full population, 340 of 340 sessions)
+
+Run: `uv run python -m arc_prize_2026.arc3.level_transfer data/human_replays`, results in
+`experiments/human_replays/E21_level_transfer.{json,out}`. 340 sessions, 309 fully reproducible frame by
+frame, 1,314 consecutive completed level pairs of which 1,237 (94.1%) are reproducible and therefore
+testable in the environment.
+
+**P21a MET.** W_k completed level k+1 in **0 of 1,237 pairs** and on **0 of 25 games** (predicted zero on at
+least 20 of 25, and at most 10% overall). Every M1 run ended either exhausted (1,108) or in game over (129);
+none reached the level. The positive control C2, the level's own W_k+1, completed **95.6%**, above its 90%
+bar, so the apparatus works. Shuffled plans (C1) and random actions (C3) also completed 0%.
+
+**P21b FAILED on both halves.** On movement games the pair-mean M3 transfer is **0.740**, under the 0.8 bar,
+at **2.5x** its permuted null of 0.301, under the 3x bar (843 movement pairs, in-sample ceiling 0.906). The
+direction is right and the margin over the null is large, but the pre-registered thresholds were not met and
+the claim filed before the run does not stand as written.
+
+**P21c FAILED, in the opposite direction to the prediction.** M2 plan similarity exceeds its shuffle control
+on **19 of 25 games**, where the prediction was fewer than 13. Successive winning sequences are measurably
+more alike than chance on most games, even though replaying one never completes the next level.
+
+**Reading.** The operational claim is settled as strongly as this design allows: a plan that solved level k
+does not solve level k+1, anywhere, with a working positive control. The mechanics claim is supported in
+direction but misses its thresholds. The similarity result contradicts its prediction and has to be reported
+as such: plans carry real shared structure that is nonetheless not executable on the next level.
+
+**Caveats that must travel with these numbers.**
+- C2 fails on **tn36 (all 51 pairs)**, plus 3 pairs on lf52 and 1 on sc25. On tn36 the level's own winning
+  sequence does not complete it from the snapshot, so that game's M1 result is uninformative rather than
+  negative, and tn36 must be excluded or flagged wherever M1 is quoted.
+- **s5i5** contributes 43 pairs with no reproducible pair at all, so it has no M1 evidence.
+- **188 of 6,185 C3 runs (3.0%), all on lf52**, exceeded the 60 s budget and are excluded as unevaluable,
+  cut at a median 72 of 126 actions. See the deviation note above.
+- Six games (ft09, lp85, r11l, su15, tn36, vc33) record no movement steps, so M3 is silent on them.
