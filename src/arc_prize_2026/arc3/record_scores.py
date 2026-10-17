@@ -62,6 +62,44 @@ def recorded_ids(text: str) -> set[str]:
     return set(re.findall(r"\b(\d{8})\b", text))
 
 
+def pending_ids(text: str) -> set[str]:
+    """Ids whose row was written before the score existed: status PENDING and an empty score cell.
+
+    A submission made by the scheduler is recorded the moment it is accepted, hours before Kaggle scores
+    it. Treating any id already in the file as finished meant those rows kept their PENDING status for
+    good (57248168 sat at PENDING with a blank score until this was fixed). Completing such a row is not
+    editing a result, so a row that already carries a score is still never touched.
+    """
+    out = set()
+    for line in text.splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.split("|")]
+        ids = [c for c in cells if re.fullmatch(r"\d{8}", c)]
+        if ids and "PENDING" in line and any(c == "" for c in cells[-3:]):
+            out.add(ids[0])
+    return out
+
+
+def fill_pending(text: str, ref: str, score: float, status: str = "COMPLETE") -> tuple[str, bool]:
+    """Put the score into that submission's PENDING row. Returns the new text and whether it changed."""
+    lines = text.splitlines()
+    for i, line in enumerate(lines):
+        if line.startswith("|") and ref in line and "PENDING" in line:
+            cells = line.split("|")
+            for j, c in enumerate(cells):
+                if c.strip() == "PENDING":
+                    cells[j] = f" {status} "
+                    for k in range(j + 1, len(cells)):
+                        if cells[k].strip() == "":
+                            cells[k] = f" **{score:g}** "
+                            break
+                    break
+            lines[i] = "|".join(cells)
+            return "\n".join(lines) + ("\n" if text.endswith("\n") else ""), True
+    return text, False
+
+
 def describe(row: dict) -> dict:
     d = row.get("description", "") or ""
     variant = (VARIANT_RE.search(d) or {}).group("variant") if VARIANT_RE.search(d) else None
@@ -81,11 +119,14 @@ def score_of(row: dict) -> float | None:
 
 
 def new_rows(rows: list[dict]) -> list[tuple[dict, dict, float]]:
-    known = recorded_ids(SUBMISSIONS.read_text())
+    text = SUBMISSIONS.read_text()
+    known, pending = recorded_ids(text), pending_ids(text)
     out = []
     for r in rows:
         score = score_of(r)
-        if r["ref"] in known or score is None or "COMPLETE" not in (r.get("status") or ""):
+        if score is None or "COMPLETE" not in (r.get("status") or ""):
+            continue
+        if r["ref"] in known and r["ref"] not in pending:
             continue
         out.append((r, describe(r), score))
     return sorted(out, key=lambda t: t[0].get("date", ""))
@@ -121,8 +162,16 @@ def apply(items: list[tuple[dict, dict, float]]) -> list[str]:
     lines, idx = [], next_index()
     md = SUBMISSIONS.read_text()
     log_add, csv_add = [], []
+    pending = pending_ids(md)
     for row, info, score in items:
         r = render(row, info, score, idx)
+        if row["ref"] in pending:                       # complete the row the scheduler left PENDING
+            md, done = fill_pending(md, row["ref"], score)
+            if done:
+                log_add.append(r["log"])
+                csv_add.append(r["csv"])
+                lines.append(f"filled PENDING row for {row['ref']} with {score:g}")
+                continue
         anchor = "\nRules: 1 submission per day"
         md = md.replace(anchor, "\n" + r["md"] + anchor, 1) if anchor in md else md + "\n" + r["md"] + "\n"
         log_add.append(r["log"])

@@ -1,7 +1,6 @@
 # What should an agent carry from one level to the next?
 
-*Draft v2, restructured per `paper/OUTLINE_v2.md`. Sections marked PENDING hold a placeholder until the
-file named beside them exists. Nothing is written into this draft before its number has been produced.*
+*Draft v2. Sections marked PENDING hold a placeholder until the file named beside them exists.*
 
 ## Abstract
 
@@ -12,11 +11,16 @@ bet. The LLM-in-REPL harnesses carry the plan, replaying the previous level's wi
 the model's context. Our symbolic explorer carries the mechanics, keeping per-action displacements, blocking
 colours and an inferred goal predicate. We measure which one transfers, three ways. In the 340 released human
 replay sessions, with no agent involved. In a controlled ablation of our own agent on the 25 public games.
-And in paired hidden-set draws of the LLM harness with its level memory switched on and off. We also report a
-result that constrains all three: on the 55 hidden games our agent scores 0.08 with memory on and 0.08 with
-it off, while a random 60-action agent scores 0.12 and a defective build of our own agent scores 0.15. At
-this score level the hidden metric does not separate these agents, so we take the memory evidence from the
-controlled experiments and report the hidden draws as evidence about the metric.
+And in paired hidden-set draws of the LLM harness with its level memory switched on and off. In the human record the answer is
+unambiguous and not what either bet assumed: a winning sequence re-solves the next level in **0 of 1,237**
+testable pairs across **0 of 25** games, with a positive control at 95.6 percent, yet successive winning
+sequences are more alike than chance on 19 of 25 games. The plan carries real structure and is not
+executable. A mechanics model learned on one level predicts the next level's movement at 0.740 against a
+0.301 permuted null. We also report a result that constrains all three arms: on the 55 hidden games our agent
+scores 0.08 with memory on and 0.08 with it off, while a random 60-action agent scores 0.12 and a defective
+build of our own scores 0.15. At that level the hidden metric does not separate these agents, so the memory
+evidence comes from the controlled experiments and the hidden draws are reported as evidence about the
+metric.
 
 ## 1. The question, and why the metric makes it the paying one
 
@@ -32,11 +36,11 @@ whether to carry state across levels. It is **what** to carry.
 
 ## 2. Prior work: both families choose, neither measures
 
-Kaggle entries fall into three families. LLM-in-REPL harnesses (Tufa Labs' Duck, Franzen's Milestone-2) run a
-27B to 75B model writing Python against the frames. A "will the frame change" CNN (Stochastic Goose) restarts
-at every level. White-box search reads the public games' source, which the hidden games do not expose. The
-published papers (Twin, Tycho, PRO-LONG) report 88 to 100 percent on the public games only, a set AERA shows
-null strategies partly solve.
+Kaggle entries fall into three families: LLM-in-REPL harnesses (Tufa Labs' Duck, Franzen's Milestone-2)
+running a 27B to 75B model that writes Python against the frames; a "will the frame change" CNN (Stochastic
+Goose) that restarts at every level; and white-box search, which reads the public games' source that hidden
+games do not expose. The published papers (Twin, Tycho, PRO-LONG) report 88 to 100 percent on the public
+games only, a set AERA shows null strategies partly solve.
 
 The LLM harnesses carry level memory in a function that returns, for each solved level, the action sequence
 that completed it, and inject it into the model's context at level-up. Our explorer carries a learned effect
@@ -72,27 +76,58 @@ Pre-registered in `HYPOTHESES.md` at 2026-10-13 19:28, before any code ran.
 - **M1**, plan transfer: from a snapshot taken the moment the human completed level k, execute W_k and ask
   whether level k+1 completes within |W_k| actions. Controls: C1 W_k shuffled, five times; C2 the level's own
   W_{k+1} as a positive control; C3 uniform random actions of the same length, five times.
-- **M2**, plan similarity on the recorded data: 1 − Levenshtein(W_k, W_{k+1}) / max length, against shuffled
-  W_k.
+- **M2**, plan similarity on the recorded data: 1 − Levenshtein(W_k, W_{k+1}) / max length, against shuffled W_k.
 - **M3**, mechanics transfer: each action's modal displacement learned on level k, scored on level k+1 steps
-  where something moved. Ceiling is the same model scored on level k itself. The null is the exact mean over
-  all non-identity permutations of the action labels.
+  where something moved. Ceiling is that model scored on level k itself; the null is the exact mean over all
+  non-identity permutations of the action labels.
 
 Predictions, filed before the run: **P21a** W_k completes at most 10 percent of pairs and zero pairs on at
 least 20 of 25 games, while C2 completes at least 90 percent. **P21b** on movement games M3 is at least 0.8
 and at least three times its null. **P21c** M2 beats shuffle on fewer than 13 games.
 
-**Full-population result: PENDING** (`experiments/human_replays/E21_level_transfer.json`). A 12-session smoke
-sample reproduced 65 of 65 pairs frame-exactly, with C2 at 100 percent, M1, C1 and C3 all at zero, and M3
-transfer 0.87 against a 0.30 null. Those are 12 sessions, reported here only to show the measurement
-runs. The filed claim is the 340-session figure, whichever way it falls.
+**Result, all 340 sessions** (`experiments/human_replays/E21_level_transfer.json`). 309 sessions replay
+frame-exactly end to end. Of 1,314 consecutive completed level pairs, 1,237 (94.1 percent) are reproducible
+and therefore testable in the environment. One prediction of the three was met.
 
-**A data defect the full population exposed.** The released replays write the action id in two forms, numeric
-("6") and named ("ACTION6", "RESET"). The named form is 14,625 of 171,859 events, 8.5 percent, across 23 of
-the 340 sessions. Our first parser accepted digits only, so those actions silently became id −1. The 12-session
-smoke contained none of them, and the defect surfaced only when the full set ran. An unknown id now ends that
-session's usable prefix explicitly. Had the sample been trusted,
-every rate in this section would have been computed over a quietly truncated population.
+**P21a met, and not marginally.** W_k completed level k+1 in **0 of 1,237 pairs, on 0 of 25 games**. Every
+run ended exhausted (1,108) or in game over (129); none reached the level. The positive control holds the
+result up: the level's own W_{k+1} completes **95.6 percent** of the time from the same snapshot, above its
+90 percent bar. Shuffled plans and random actions also complete 0 percent. A plan that solved one level does
+not solve the next, anywhere in the released human record.
+
+**P21b failed.** On movement games the pair-mean mechanics transfer is **0.740** against a filed bar of 0.8,
+at **2.5 times** its permuted null of 0.301 against a filed bar of 3 (843 movement pairs, in-sample ceiling
+0.906). A model of what the actions do, learned on one level, predicts most of the next level's movement and
+beats label-permutation comfortably. It does not clear the thresholds we wrote down, and the prediction as
+filed does not stand.
+
+**P21c failed, in the direction opposite to the prediction.** Plan similarity exceeds its shuffle control on
+**19 of 25 games**, where we predicted fewer than 13. Successive winning sequences are measurably more alike
+than chance on most games.
+
+**What the three together say.** The plan is not empty and it is not executable. It carries real shared
+structure across levels, which is why P21c failed, and replaying it completes nothing, which is why P21a
+succeeded so completely. That is a sharper statement than either prediction anticipated, and it is the exact
+position an LLM harness is placed in: `solved_levels()` hands the model a sequence that genuinely resembles
+what will work next and cannot be run. The mechanics model, meanwhile, transfers at 0.740 against a 0.301
+null, short of our bar but far from nothing.
+
+**Caveats that travel with these numbers.** The positive control fails on **tn36 for all 51 of its pairs**
+(and on 3 lf52 pairs and 1 sc25 pair): there the level's own winning sequence does not complete it from the
+snapshot, so tn36's M1 is uninformative rather than negative and is excluded wherever M1 is quoted. **s5i5**
+contributes 43 pairs with no reproducible pair at all. Six games record no movement steps, so M3 is silent on
+them. And **188 of 6,185 random-control runs (3.0 percent), all on lf52**, exceeded a 60-second budget and
+are reported as unevaluable rather than as failures: on that game a random sequence drives the environment
+into states whose per-step cost grows without bound (0.7 s at step 47, 10.1 s at step 64, 40.0 s at step 77),
+while the same session's winning sequences replay in milliseconds. Counting those runs as failures would push
+the control rate toward zero, the direction that flatters P21a, so they are excluded and counted instead. The
+budget and its rationale were written into `HYPOTHESES.md` before any affected session was scored.
+
+**A data defect only the full population exposed.** The released replays write the action id in two forms,
+numeric ("6") and named ("ACTION6", "RESET"). The named form is 14,625 of 171,859 events, 8.5 percent, across
+23 of the 340 sessions, and our first parser accepted digits only, so those actions silently became id −1. A
+12-session pilot contained none of them. Had that sample been trusted, every rate above would have been
+computed over a quietly truncated population.
 
 ## 5. The same question asked of two agents
 

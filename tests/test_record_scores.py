@@ -38,6 +38,20 @@ def test_new_rows_filters(monkeypatch=None):
     assert [r["ref"] for r, _, _ in out] == ["57300001"], out
 
 
+def test_pending_rows_get_their_score():
+    """A row written by the scheduler at submit time must receive its score later, not stay PENDING."""
+    text = rs.SUBMISSIONS.read_text()
+    row = "| 9 | 57300009 | k | d | h | c | 2026-10-20 05:38 | PENDING |  |"
+    filled, ok = rs.fill_pending(text + "\n" + row + "\n", "57300009", 0.31)
+    assert ok and "57300009" in filled
+    line = [l for l in filled.splitlines() if "57300009" in l][0]
+    assert "PENDING" not in line and "COMPLETE" in line and "**0.31**" in line, line
+    assert "57300009" in rs.pending_ids(text + "\n" + row + "\n")
+    assert "57300009" not in rs.pending_ids(filled)       # once filled it is finished
+    again, ok2 = rs.fill_pending(filled, "57300009", 0.99)
+    assert not ok2 and again == filled                    # a scored row is never rewritten
+
+
 def test_render_is_a_complete_table_row():
     r = rs.render(row("57300001", BOT), rs.describe(row("57300001", BOT)), 26.4, 9)
     assert r["md"].startswith("| 9 | 57300001 |") and r["md"].endswith("|")
