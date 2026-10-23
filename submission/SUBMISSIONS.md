@@ -10,4 +10,8 @@
 | 5 | 57248168 | carsonrodrigues/arc3-model-based-explorer-mem1-c0 v4 | v7 agent + E15 speed-up, memory ON, **contact curiosity OFF**, goals ON, cap 3,000 actions/game, global 8.25 h, 700 s thread-CPU/game | 39f6711dfe75618f2a0a1eadc46e5bb2c5e36f8f97f4d6f740e57c44f03d5d9d | 5414dd8 | 2026-10-16 05:38 | COMPLETE | **0.01** |
 | 6 | 57347548 | carsonrodrigues/arc3-duck-v6-swift-1-5-level-memory v2 | v6-swift-level-memory, level memory ON | — | — | 2026-10-18 14:27 | COMPLETE | **4.92** | recorded automatically from the Kaggle submission list |
 | 7 | 57372857 | carsonrodrigues/arc3-duck-v1-franzen-faithful v2 | v1-franzen-faithful, level memory OFF | — | — | 2026-10-19 05:30 | COMPLETE | **29.93** | recorded automatically from the Kaggle submission list |
+| 8 | 57451908 | carsonrodrigues/arc3-duck-v8i-intel-d-prime-priority v1 | v8i-intel-dprime | — | — | 2026-10-21 01:39 | COMPLETE | **24.95** | recorded automatically from the Kaggle submission list |
+| 9 | 57477157 | carsonrodrigues/arc3-duck-v2-level-memory-budget-bar v2 | v2-level-memory, level memory ON | — | — | 2026-10-21 15:45 | COMPLETE | **29.54** | recorded automatically from the Kaggle submission list |
+| 10 | 57501083 | carsonrodrigues/arc3-duck-v2-level-memory-budget-bar v2 | v2-level-memory, level memory ON | — | — | 2026-10-22 05:31 | COMPLETE | **0** | recorded automatically from the Kaggle submission list |
+| 11 | 57541643 | carsonrodrigues/arc3-duck-v1-franzen-faithful v2 | v1-franzen-faithful, level memory OFF | — | — | 2026-10-23 05:31 | COMPLETE | **0** | recorded automatically from the Kaggle submission list |
 Rules: 1 submission per day; 2 final submissions selected before 2026-11-02 23:59 UTC. The paper cites submission IDs from this table only.
