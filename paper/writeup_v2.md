@@ -1,7 +1,5 @@
 # What should an agent carry from one level to the next?
 
-*Draft v2. Sections marked PENDING hold a placeholder until the file named beside them exists.*
-
 ## Abstract
 
 ARC-AGI-3 games keep their mechanics across levels and change their layout, so an agent that has solved
@@ -112,9 +110,29 @@ carried into the first level, and a second level is reached only with memory on.
 games and in 27.9 percent of multi-level human sessions; seven further predicate families lift this to 34
 percent against a 10 percent null. The object vocabulary bounds the transfer term, not the template list.
 
-**5c. Plan memory, controlled (LLM harness, hidden set). PENDING.** Each level-memory variant is paired with
-its own no-memory twin on the shared daily submission slot: v6-swift-level-memory against v3-swift, then
-v2-level-memory against v1-franzen-faithful, two draws each from 2026-10-17.
+**5c. Plan memory, controlled (LLM harness, hidden set).** Each level-memory variant was paired with its
+own no-memory twin on the same base model, two draws each, on the 55 hidden games:
+
+| variant | plan memory | draw 1 | draw 2 |
+|---|---|---|---|
+| v2-level-memory | on | 29.54 | 0.00 |
+| v1-franzen-faithful | off | 29.93 | 0.00 |
+
+The healthy draws differ by **0.39 points**, and the two-draw means by 0.20. The pre-registered rule claims an
+effect only above 11 points, so **no effect is claimed**: giving the model the previous level's winning
+sequence did not change what it scored. That is the same answer E21 gives from human play, reached on the
+hidden set by a different agent family.
+
+The two zeros are the stronger finding. Each is the **same kernel version** that scored ~29.7 the day
+before, resubmitted and rerun by the competition, returning COMPLETE with 0.00. Run-to-run variation on the
+hidden rerun therefore spans the entire range of the score, which makes the 11-point rule generous rather
+than strict and makes any single-draw hidden comparison in this competition unsafe. We report it rather than
+discarding it: our conclusion does not depend on which way the zeros are treated, since the gap is 0.39 with
+them excluded and 0.20 with them included.
+
+A Swift-based pair was started first and abandoned: v6 (Swift + level memory) drew 4.92 against Intel's
+29.93, and every Swift smoke run cleared 2 to 4 levels where Intel cleared 5 to 9, so the comparison moved to
+the Intel base before its control was drawn.
 
 **5d. The claim rule, pre-registered.** Identical copies of the reference notebook score mean 25.77 with
 standard deviation 3.93. A memory effect is therefore claimed only if a pair differs by more than 11 points.
