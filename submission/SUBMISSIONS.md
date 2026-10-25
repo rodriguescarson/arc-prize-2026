@@ -14,4 +14,6 @@
 | 9 | 57477157 | carsonrodrigues/arc3-duck-v2-level-memory-budget-bar v2 | v2-level-memory, level memory ON | — | — | 2026-10-21 15:45 | COMPLETE | **29.54** | recorded automatically from the Kaggle submission list |
 | 10 | 57501083 | carsonrodrigues/arc3-duck-v2-level-memory-budget-bar v2 | v2-level-memory, level memory ON | — | — | 2026-10-22 05:31 | COMPLETE | **0** | recorded automatically from the Kaggle submission list |
 | 11 | 57541643 | carsonrodrigues/arc3-duck-v1-franzen-faithful v2 | v1-franzen-faithful, level memory OFF | — | — | 2026-10-23 05:31 | COMPLETE | **0** | recorded automatically from the Kaggle submission list |
+| 12 | 57575322 | carsonrodrigues/arc3-duck-v2-level-memory-budget-bar v4 | v2-level-memory, level memory ON | — | — | 2026-10-24 05:31 | COMPLETE | **19.75** | recorded automatically from the Kaggle submission list |
+| 13 | 57610021 | carsonrodrigues/arc3-duck-v1-franzen-faithful v5 | v1-franzen-faithful, level memory OFF | — | — | 2026-10-25 05:31 | COMPLETE | **25.85** | recorded automatically from the Kaggle submission list |
 Rules: 1 submission per day; 2 final submissions selected before 2026-11-02 23:59 UTC. The paper cites submission IDs from this table only.
