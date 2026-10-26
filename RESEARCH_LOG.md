@@ -161,3 +161,6 @@ All times IST. Newest at the bottom.
 ## 2026-10-25
 - 05:31 **Draw scored: 57575322 (v2-level-memory, level memory ON) = 19.75** on the 55 hidden games. Recorded automatically; the paired comparison is read only when both arms of a pair have their draws (see NEXT_ACTIONS and the pre-registered 11-point rule).
 - 05:31 **Draw scored: 57610021 (v1-franzen-faithful, level memory OFF) = 25.85** on the 55 hidden games. Recorded automatically; the paired comparison is read only when both arms of a pair have their draws (see NEXT_ACTIONS and the pre-registered 11-point rule).
+
+## 2026-10-26
+- 05:31 **Draw scored: 57645812 (v8i-intel-dprime) = 26.47** on the 55 hidden games. Recorded automatically; the paired comparison is read only when both arms of a pair have their draws (see NEXT_ACTIONS and the pre-registered 11-point rule).
