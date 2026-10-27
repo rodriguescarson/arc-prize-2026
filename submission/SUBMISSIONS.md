@@ -17,4 +17,5 @@
 | 12 | 57575322 | carsonrodrigues/arc3-duck-v2-level-memory-budget-bar v4 | v2-level-memory, level memory ON | — | — | 2026-10-24 05:31 | COMPLETE | **19.75** | recorded automatically from the Kaggle submission list |
 | 13 | 57610021 | carsonrodrigues/arc3-duck-v1-franzen-faithful v5 | v1-franzen-faithful, level memory OFF | — | — | 2026-10-25 05:31 | COMPLETE | **25.85** | recorded automatically from the Kaggle submission list |
 | 14 | 57645812 | carsonrodrigues/arc3-duck-v8i-intel-d-prime-priority v3 | v8i-intel-dprime | — | — | 2026-10-26 05:31 | COMPLETE | **26.47** | recorded automatically from the Kaggle submission list |
+| 15 | 57681795 | carsonrodrigues/arc3-duck-v1f-franzen-multithread-load v1 | v1f-multithread-load | — | — | 2026-10-27 05:31 | COMPLETE | **29.44** | recorded automatically from the Kaggle submission list |
 Rules: 1 submission per day; 2 final submissions selected before 2026-11-02 23:59 UTC. The paper cites submission IDs from this table only.
