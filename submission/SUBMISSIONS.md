@@ -19,4 +19,5 @@
 | 14 | 57645812 | carsonrodrigues/arc3-duck-v8i-intel-d-prime-priority v3 | v8i-intel-dprime | — | — | 2026-10-26 05:31 | COMPLETE | **26.47** | recorded automatically from the Kaggle submission list |
 | 15 | 57681795 | carsonrodrigues/arc3-duck-v1f-franzen-multithread-load v1 | v1f-multithread-load | — | — | 2026-10-27 05:31 | COMPLETE | **29.44** | recorded automatically from the Kaggle submission list |
 | 16 | 57716262 | carsonrodrigues/arc3-duck-v1f-franzen-multithread-load v1 | v1f-multithread-load | — | — | 2026-10-28 05:31 | COMPLETE | **21.86** | recorded automatically from the Kaggle submission list |
+| 17 | 57751837 | carsonrodrigues/arc3-duck-v1f-franzen-multithread-load v1 | v1f-multithread-load | — | — | 2026-10-29 05:31 | COMPLETE | **28.19** | recorded automatically from the Kaggle submission list |
 Rules: 1 submission per day; 2 final submissions selected before 2026-11-02 23:59 UTC. The paper cites submission IDs from this table only.
