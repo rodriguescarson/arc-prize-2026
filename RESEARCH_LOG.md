@@ -181,3 +181,6 @@ All times IST. Newest at the bottom.
 
 ## 2026-10-30
 - 05:31 **Draw scored: 57785596 (v10-harness-fixes) = 24.51** on the 55 hidden games. Recorded automatically; the paired comparison is read only when both arms of a pair have their draws (see NEXT_ACTIONS and the pre-registered 11-point rule).
+
+## 2026-10-31
+- 05:31 **Draw scored: 57820036 (v10-harness-fixes) = 29.78** on the 55 hidden games. Recorded automatically; the paired comparison is read only when both arms of a pair have their draws (see NEXT_ACTIONS and the pre-registered 11-point rule).

@@ -21,4 +21,5 @@
 | 16 | 57716262 | carsonrodrigues/arc3-duck-v1f-franzen-multithread-load v1 | v1f-multithread-load | — | — | 2026-10-28 05:31 | COMPLETE | **21.86** | recorded automatically from the Kaggle submission list |
 | 17 | 57751837 | carsonrodrigues/arc3-duck-v1f-franzen-multithread-load v1 | v1f-multithread-load | — | — | 2026-10-29 05:31 | COMPLETE | **28.19** | recorded automatically from the Kaggle submission list |
 | 18 | 57785596 | carsonrodrigues/arc3-duck-v10-v1f-harness-fixes v1 | v10-harness-fixes | — | — | 2026-10-30 05:31 | COMPLETE | **24.51** | recorded automatically from the Kaggle submission list |
+| 19 | 57820036 | carsonrodrigues/arc3-duck-v10-v1f-harness-fixes v1 | v10-harness-fixes | — | — | 2026-10-31 05:31 | COMPLETE | **29.78** | recorded automatically from the Kaggle submission list |
 Rules: 1 submission per day; 2 final submissions selected before 2026-11-02 23:59 UTC. The paper cites submission IDs from this table only.
