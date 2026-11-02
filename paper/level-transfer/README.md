@@ -25,6 +25,9 @@ on 15 Oct 2026 03:05 UTC (commit `ec242a3` in this repository).
 - `HYPOTHESES.md`: every filed prediction, each outcome recorded against it.
 - `experiments/E21_level_transfer.{json,out}`: the full-population E21 result and its run log.
 - `experiments/level1_cost_check.{py,out}`: re-derives the level-1 cost medians quoted in section 6.
+- `experiments/budget_check.{py,out}`: how often M1's budget |W_k| covers the next human solution (452 of the
+  1,186 pairs) and that replay completes none of those; descriptive, computed after the E21 outcome.
+- `paper/pdf_header.tex`: the LaTeX header used to build the PDF.
 
 ## Code the paper refers to
 
@@ -43,6 +46,12 @@ From the repository root, with the environment from `pyproject.toml` (`uv sync`)
 
     uv run python paper/level-transfer/paper/make_fig_e21.py paper/level-transfer/experiments/E21_level_transfer.json paper/level-transfer/paper/figures
     python3 -I paper/level-transfer/experiments/level1_cost_check.py | diff - paper/level-transfer/experiments/level1_cost_check.out
+    python3 -I paper/level-transfer/experiments/budget_check.py | diff - paper/level-transfer/experiments/budget_check.out
+
+The PDF is built with pandoc 3.9 and tectonic 0.15, from `paper/level-transfer/paper/`:
+
+    pandoc paper_full.md -o paper_full.pdf --pdf-engine=tectonic --resource-path=. -H pdf_header.tex \
+      -V geometry:margin=1in -V fontsize=11pt -V colorlinks=true -V urlcolor=blue -V linkcolor=black
 
 ## Licence
 

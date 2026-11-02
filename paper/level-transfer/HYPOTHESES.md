@@ -290,3 +290,17 @@ as such: plans carry real shared structure that is nonetheless not executable on
 
 *Wording of item 3 corrected and item 6 added 2026-10-30 01:07 IST, after a verification pass; no entry above the
 erratum heading was edited.*
+
+### Post-hoc figures added to the paper, recorded 2026-11-02 IST (descriptive, not filed; the entries above are not edited)
+
+These were computed after the E21 outcome and after the hidden-set draws, for the paper's 2 November revision. None
+is a filed prediction and none changes a verdict above.
+
+1. **M1 budget.** The next human solution is no longer than |W_k| in 469 of the 1,237 testable pairs (37.9%) and
+   in 452 of the 1,186 without tn36 (38.1%); W_k completes the next level in 0 of those
+   (`experiments/budget_check.py`, output in `experiments/budget_check.out`).
+2. **Per-game M3.** 0.99 on dc22, 0.97 on g50t, 0.90 on re86, 0.89 on ls20 and tu93, 0.75 on sp80 and wa30, 0.36 on
+   tr87, 0.30 on m0r0 and 0.00 on cd82 (one transition, 10 pairs), from `experiments/E21_level_transfer.json`; the
+   three low games are not diagnosed.
+3. **Hidden-set draws.** As of 2 November, the thirteen valid Intel draws across five variants (v1, v1f, v2, v8i,
+   v10) average 26.35 (SD 3.18); the linked 57477157 (29.54) is one SD above that mean.
