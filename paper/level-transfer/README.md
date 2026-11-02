@@ -27,7 +27,15 @@ on 15 Oct 2026 03:05 UTC (commit `ec242a3` in this repository).
 - `experiments/level1_cost_check.{py,out}`: re-derives the level-1 cost medians quoted in section 6.
 - `experiments/budget_check.{py,out}`: how often M1's budget |W_k| covers the next human solution (452 of the
   1,186 pairs) and that replay completes none of those; descriptive, computed after the E21 outcome.
+- `experiments/e21_numbers.{py,out}`: every E21 number quoted in section 4 and the abstract, with the
+  session-cluster intervals, from `experiments/E21_level_transfer.json` (needs numpy).
+- `experiments/hidden_draws.{py,csv,out}`: Table 2 and the draw statistics of section 5b; the CSV holds rows 6 to 21
+  of `submission/SUBMISSIONS.md` (13 valid draws, 3 excluded with their reason), state of 2 November 2026.
+- `CLAIM-MAP.md`: the script and raw file behind each number of our own in the paper.
 - `paper/pdf_header.tex`: the LaTeX header used to build the PDF.
+
+The figure was re-rendered on 2 November with larger tick and bar labels for the arXiv version; the Paper Track
+PDF carries the earlier rendering of the same data.
 
 ## Code the paper refers to
 
@@ -47,6 +55,8 @@ From the repository root, with the environment from `pyproject.toml` (`uv sync`)
     uv run python paper/level-transfer/paper/make_fig_e21.py paper/level-transfer/experiments/E21_level_transfer.json paper/level-transfer/paper/figures
     python3 -I paper/level-transfer/experiments/level1_cost_check.py | diff - paper/level-transfer/experiments/level1_cost_check.out
     python3 -I paper/level-transfer/experiments/budget_check.py | diff - paper/level-transfer/experiments/budget_check.out
+    uv run python paper/level-transfer/experiments/e21_numbers.py | diff - paper/level-transfer/experiments/e21_numbers.out
+    python3 -I paper/level-transfer/experiments/hidden_draws.py | diff - paper/level-transfer/experiments/hidden_draws.out
 
 The PDF is built with pandoc 3.9 and tectonic 0.15, from `paper/level-transfer/paper/`:
 
