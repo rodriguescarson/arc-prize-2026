@@ -2,7 +2,7 @@
 title: "What should an agent carry from one level to the next?"
 subtitle: "ARC Prize 2026 Paper Track entry"
 author: "Carson Rodrigues"
-date: "30 October 2026"
+date: "2 November 2026"
 ---
 
 ## Abstract
@@ -18,7 +18,7 @@ bound of 2.5 percent; control 99.7 percent), and successive winning sequences ar
 a shuffle (0.446 against 0.431). A mechanics model predicts the next level's movement at 0.740 (pair mean over
 10 movement games) against a 0.301 null, short of our 0.8 bar. The harness comparison is too coarse to confirm
 or refute anything: two hidden draws per arm average 24.65 with the helper and 27.89 without, a 3.2-point gap
-inside the 11 points the design resolves. We also find evidence, from one draw per arm, that the hidden metric
+inside the 11 points the design resolves. One draw per arm is consistent with a hidden metric that
 rewards first-level efficiency and barely registers later-level coverage.
 
 ## 1. The question
@@ -42,7 +42,7 @@ Memento 3 [12], Kepler [13]), a set that the study introducing AERA, the Adaptiv
 finds reachable by non-intelligent strategies. The memory ablations we found are on public games: PRO-LONG gains
 18.0 points on average across frontier models over a baseline agent without its log, NVIDIA's Object-Oriented
 Agents (NOOA) [15] 11.8 over plain markdown files, and Tracing [16] finds that scripts an agent writes for one
-task are almost never called on a later one (33 of 630 references cross a task boundary). We found no paired
+task are almost never called on a later one (33 of 630 references cross a task boundary; a task there is a level). We found no paired
 hidden-set comparison of what to carry across levels.
 
 This paper is a measurement study whose predictions were filed in `HYPOTHESES.md`. The track has placed empirical
@@ -59,8 +59,7 @@ object groups, the colours that block a swept path, per-key reliability windows,
 from the template class Gone / Count / Touch / Overlap / Appeared. Layout is discarded and the object
 vocabulary is kept.
 
-A plan transfers only if the next solution is nearly the same sequence; a mechanics model transfers if the next
-level obeys the same rules, whatever its layout.
+A plan is a trajectory through one layout, so it transfers only if the next solution is nearly the same sequence; a mechanics model transfers if the next level obeys the same rules, whatever its layout. Tracing [16] fits this: most of its scripts embed the state of the current level.
 
 ## 4. Human replays (E21)
 
@@ -73,8 +72,7 @@ completed on 16 October.
 - **F** fidelity gate: every recorded action is replayed and every frame compared; a session is testable up to
   its first mismatch.
 - **M1** plan transfer: from a snapshot at the moment level $k$ completed, execute $W_k$ and ask whether level
-  $k{+}1$ completes within $|W_k|$ actions (a budget at least as long as the next human solution in only 469 of
-  the 1,237 testable pairs). Controls: C1 $W_k$ shuffled $\times 5$, C2 the level's own $W_{k+1}$ as a positive
+  $k{+}1$ completes within $|W_k|$ actions (a budget at least as long as the next human solution in only 469 of the 1,237 testable pairs, 452 of the 1,186 without tn36; replay completes none of them). Controls: C1 $W_k$ shuffled $\times 5$, C2 the level's own $W_{k+1}$ as a positive
   control, C3 uniform random actions of the same length $\times 5$.
 - **M2** plan similarity: $1 - \text{Levenshtein}(W_k, W_{k+1}) / \text{max length}$, computed over action ids,
   against shuffled $W_k$.
@@ -107,7 +105,7 @@ are far below the 10 percent bar. Successive winning sequences are only slightly
 (0.446 against 0.431, pooled over all 1,314 pairs) and are above it on 17 of the 20 games where a shuffle can
 differ; on five games (lp85, r11l, s5i5, tn36, vc33) a shuffle leaves the score unchanged in every pair, and on
 three (ls20, m0r0, tu93) similarity sits below it. The plan has structure but cannot be replayed. That is what
-our harness fork's `solved_levels()` hands its model. Shuffled plans and random actions also complete 0 percent.
+our harness fork's `solved_levels()` hands its model. Shuffled plans and random actions also complete 0 percent. Replay fails alike in the 12 click-driven and the 11 movement-driven games of the 23.
 
 **Caveats.** The positive control fails on all 51 tn36 pairs (and 3 lf52, 1 sc25), so M1 is quoted without tn36
 (with it: 0 of 1,237, control 95.6 percent, the filed run); s5i5 has no testable pair; six other games
@@ -115,8 +113,7 @@ record no movement, so M3 is silent there. 188 of 6,185 random-control runs (3.0
 60-second budget, filed before any affected session was scored: random sequences drive lf52 into states whose
 step cost grows without bound. They are reported as unevaluable, because counting them as failures would
 flatter P21a. M3 has data on 10 of the 12 movement games; three of them (tu93, wa30, re86) hold 48 percent
-of its 431 pairs, which rest on 56 distinct transitions, and its per-game values run from 0.99 (dc22) to 0.00
-(cd82).
+of its 431 pairs, which rest on 56 distinct transitions. Per game, M3 is 0.99 on dc22, 0.97 on g50t, 0.90 on re86, 0.89 on ls20 and tu93, and 0.75 on sp80 and wa30, but 0.36 on tr87, 0.30 on m0r0 and 0.00 on cd82 (one transition, 10 pairs); we have not diagnosed the three low games.
 
 ## 5. Two agents
 
@@ -152,10 +149,7 @@ rule filed before any pair ran claims an effect only above 11 points, twice that
 of the v2 and v1 arms differ by 3.2 (0.8 SD, where 3.93 is the SD of a difference between two-draw means), the
 helper arm lower. No effect is claimed; two draws per arm resolve only 11 points (the 95 percent interval for
 off minus on runs from $-4.5$ to $+10.9$), so the data leave an effect of either sign open. Pooling the three
-v1f draws with v1 gives five draws without the helper: mean 27.05, SD 3.30, 2.4 points above the helper arm. As of
-29 October, all nine of our Intel draws, across four variants (v1, v1f, v2 and v8i, which is v1 plus a
-slot-priority rule called D' in our logs), average 26.22 (SD 3.57), indistinguishable from an unmodified copy of
-the notebook we forked.
+v1f draws with v1 gives five draws without the helper: mean 27.05, SD 3.30, 2.4 points above the helper arm. As of 2 November, all thirteen valid Intel draws, across five variants (v1, v1f, v2, v8i, which is v1 plus a slot-priority rule called D' in our logs, and v10, which is v1f plus start-up hardening and three harness fixes: a guarded RESET, a notice after cut-off replies, and attempt-loss stops), average 26.35 (SD 3.18), indistinguishable from an unmodified copy of the notebook we forked. The draws not in Table 2 are 24.95 and 26.47 (v8i, kernel versions 1 and 3) and 24.51, 29.78, 27.60 and 24.72 (v10, version 1).
 
 Two earlier draws, one per arm (22 and 23 October), returned 0.00 and are excluded from every count and mean.
 We attribute them to the platform ending a rerun after 15 minutes without a game move, together with slower
@@ -195,7 +189,7 @@ teams sat in the (0.05, 0.23] band that contains our 0.08.
 ## 7. Limitations and scope
 
 Scope: one benchmark (ARC-AGI-3), human replays on the public 25 games only, one LLM base model (a second pair
-was dropped); nothing here tests transfer outside ARC-AGI-3.
+was dropped); nothing here tests transfer outside ARC-AGI-3. The replay test (M1) needs only recorded multi-level sessions, a deterministic replayable build and a level-completion signal, so it could be repeated on other game suites whose levels reuse mechanics; we ran it on one.
 
 The effect model expresses only rigid displacements, so the explorer memorises click and recolour mechanics and
 cannot plan toward them; outside the template class, mechanics memory gives nothing. The LLM arm has two draws
@@ -214,14 +208,13 @@ proposer, E20c with another). E20c with the first proposer lost a game, and E20d
 ## 8. Conclusion
 
 Replaying a winning plan completes no next level in human play, and a helper that returns plans moved our
-harness's hidden score by less than its draw noise. Mechanics predict next-level movement at 0.740, short of the
-bar we filed. Next entrants should log that a feature is used before crediting it, and report several draws
+harness's hidden score by less than its draw noise. Mechanics predict next-level movement at 0.740, short of the bar we filed, though predicting a move is not solving a level. For anyone aiming at 85 percent, later levels must be cheap, and verbatim replay did not supply them; a replay that adapts the plan is untested. Next entrants should log that a feature is used before crediting it, and report several draws
 against the copy spread.
 
 ## Linked submission
 
 57477157 (`v2-level-memory`, kernel version 2): Franzen's Milestone-2 harness plus `solved_levels()` and a
-reworded budget-bar line; 29.54 hidden, the better of two draws, so expect a private score nearer 26.
+reworded budget-bar line; 29.54 hidden, the better of two draws and one SD above our 13-draw Intel mean, so expect a private score nearer 26.
 
 ## Code and data
 
