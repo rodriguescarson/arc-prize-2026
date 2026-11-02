@@ -1,0 +1,17 @@
+row,submission_id,submitted_ist,kernel,version,variant,config,helper,score,status,reason
+6,57347548,2026-10-18 14:27,arc3-duck-v6-swift-1-5-level-memory,2,v6-swift,"v6-swift-level-memory, level memory ON",on,4.92,excluded,Swift base; pair dropped after this first draw
+7,57372857,2026-10-19 05:30,arc3-duck-v1-franzen-faithful,2,v1,"v1-franzen-faithful, level memory OFF",off,29.93,kept,
+8,57451908,2026-10-21 01:39,arc3-duck-v8i-intel-d-prime-priority,1,v8i,v8i-intel-dprime,off,24.95,kept,
+9,57477157,2026-10-21 15:45,arc3-duck-v2-level-memory-budget-bar,2,v2,"v2-level-memory, level memory ON",on,29.54,kept,
+10,57501083,2026-10-22 05:31,arc3-duck-v2-level-memory-budget-bar,2,v2,"v2-level-memory, level memory ON",on,0,excluded,scored 0; attributed to a platform kill; redrawn after the keepalive fix
+11,57541643,2026-10-23 05:31,arc3-duck-v1-franzen-faithful,2,v1,"v1-franzen-faithful, level memory OFF",off,0,excluded,scored 0; attributed to a platform kill; redrawn after the keepalive fix
+12,57575322,2026-10-24 05:31,arc3-duck-v2-level-memory-budget-bar,4,v2,"v2-level-memory, level memory ON",on,19.75,kept,
+13,57610021,2026-10-25 05:31,arc3-duck-v1-franzen-faithful,5,v1,"v1-franzen-faithful, level memory OFF",off,25.85,kept,
+14,57645812,2026-10-26 05:31,arc3-duck-v8i-intel-d-prime-priority,3,v8i,v8i-intel-dprime,off,26.47,kept,
+15,57681795,2026-10-27 05:31,arc3-duck-v1f-franzen-multithread-load,1,v1f,v1f-multithread-load,off,29.44,kept,
+16,57716262,2026-10-28 05:31,arc3-duck-v1f-franzen-multithread-load,1,v1f,v1f-multithread-load,off,21.86,kept,
+17,57751837,2026-10-29 05:31,arc3-duck-v1f-franzen-multithread-load,1,v1f,v1f-multithread-load,off,28.19,kept,
+18,57785596,2026-10-30 05:31,arc3-duck-v10-v1f-harness-fixes,1,v10,v10-harness-fixes,off,24.51,kept,
+19,57820036,2026-10-31 05:31,arc3-duck-v10-v1f-harness-fixes,1,v10,v10-harness-fixes,off,29.78,kept,
+20,57853897,2026-11-01 05:31,arc3-duck-v10-v1f-harness-fixes,1,v10,v10-harness-fixes,off,27.6,kept,
+21,57887381,2026-11-02 05:31,arc3-duck-v10-v1f-harness-fixes,1,v10,v10-harness-fixes,off,24.72,kept,

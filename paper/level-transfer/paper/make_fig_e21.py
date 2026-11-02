@@ -63,24 +63,28 @@ def main(src: Path, out: Path) -> None:
     ax[0].set_ylim(0, 108)
     ax[0].set_ylabel("level $k{+}1$ completed (% of pairs)")
     ax[0].set_title(f"A. The plan does not transfer\n{len(rep):,} testable pairs, {n_games} games", fontsize=10.5)
-    ax[0].tick_params(axis="x", labelsize=8.5)
+    ax[0].tick_params(axis="x", labelsize=10)
 
     # B: mechanics transfer against its permuted null
     labels2 = ["permuted\nnull", "learned on $k$,\nscored on $k{+}1$", "in-sample\nceiling"]
     vals2 = [null, t, ceil]
     bars2 = ax[1].bar(labels2, vals2, color=[C3, C1, C2], width=0.58)
     for b, v in zip(bars2, vals2):
-        ax[1].text(b.get_x() + b.get_width() / 2, v + 0.025, f"{v:.3f}", ha="center", fontsize=10)
+        # a label just under the 0.8 line would sit on it, so that one goes inside the bar
+        inside = 0.72 < v < 0.8
+        ax[1].text(b.get_x() + b.get_width() / 2, v - 0.025 if inside else v + 0.025, f"{v:.3f}",
+                   ha="center", va="top" if inside else "baseline", fontsize=10,
+                   color="white" if inside else "black")
     ax[1].axhline(0.8, color=ACC, ls="--", lw=1.3)
     # above the line on the left, over the short null bar, so it cannot collide with a value label
-    ax[1].text(-0.42, 0.815, "filed bar 0.8 (not cleared)", color=ACC, fontsize=8.5,
+    ax[1].text(-0.36, 0.815, "filed bar 0.8 (not cleared)", color=ACC, fontsize=10,
                ha="left", va="bottom")
     ax[1].set_ylim(0, 1.08)
     ax[1].set_ylabel("action-effect prediction accuracy")
     n_mv_games = len({r["env"] for r in res for p in r["pairs"]
                       if r["env"] not in CLICK_GAMES and "m3_transfer" in p and not np.isnan(p["m3_transfer"])})
     ax[1].set_title(f"B. The mechanics partly do\n{len(mv):,} movement pairs, {n_mv_games} games", fontsize=10.5)
-    ax[1].tick_params(axis="x", labelsize=8.5)
+    ax[1].tick_params(axis="x", labelsize=10)
 
     for a in ax:
         a.spines[["top", "right"]].set_visible(False)

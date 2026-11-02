@@ -1,0 +1,26 @@
+LLM-harness submissions on the hidden 55 in rows 6 to 21 of submission/SUBMISSIONS.md: 16 | kept 13 | excluded 3
+  excluded row 6 57347548 v6-swift score 4.92 (2026-10-18 14:27 IST): Swift base; pair dropped after this first draw
+  excluded row 10 57501083 v2 score 0 (2026-10-22 05:31 IST): scored 0; attributed to a platform kill; redrawn after the keepalive fix
+  excluded row 11 57541643 v1 score 0 (2026-10-23 05:31 IST): scored 0; attributed to a platform kill; redrawn after the keepalive fix
+cross-check: all 16 rows of hidden_draws.csv equal rows 6 to 21 of submission/SUBMISSIONS.md (id, kernel, version, time, COMPLETE, score)
+days: 16 submissions; IST dates shared by more than one: {'2026-10-21': ['57451908', '57477157']}; UTC dates shared by more than one: none
+
+variant  helper  n  mean   SD     draws (kernel version), kept draws only
+v2       on      2  24.65  6.92   29.54 (v2), 19.75 (v4)  [2026-10-21 to 2026-10-24]
+v1       off     2  27.89  2.88   29.93 (v2), 25.85 (v5)  [2026-10-19 to 2026-10-25]
+v1f      off     3  26.50  4.06   29.44 (v1), 21.86 (v1), 28.19 (v1)  [2026-10-27 to 2026-10-29]
+v8i      off     2  25.71  1.07   24.95 (v1), 26.47 (v3)  [2026-10-21 to 2026-10-26]
+v10      off     4  26.65  2.52   24.51 (v1), 29.78 (v1), 27.60 (v1), 24.72 (v1)  [2026-10-30 to 2026-11-02]
+
+v1 (helper off) minus v2 (helper on), two draws each: 27.89 - 24.65 = 3.245 points (rounds to 3.2)
+copy SD 3.93 (reference [19]); SD of a two-draw mean 2.78; SD of a difference of two two-draw means 3.93; the gap is 0.83 of it
+95% interval for off minus on at that SD: -4.5 to 10.9 (-4.458 to 10.948)
+SD of a difference of two single draws at the copy SD 3.93: 5.56; twice that: 11.12
+SD of a difference of two single draws at the filed copy SD 3.9: 5.52; twice that: 11.03
+rule filed before any pair ran (HYPOTHESES.md line 211, at the filed copy SD): an effect is claimed only above 11 points
+
+no-helper pool, v1 + v1f (5 draws): mean 27.05 SD 3.30; helper arm v2 (2 draws) mean 24.65; pool minus helper arm 2.409 (rounds to 2.4)
+all kept draws (13 draws, 5 variants v2, v1, v1f, v8i, v10): mean 26.35 SD 3.18
+copy mean 25.77 SD 3.93 (reference [19]): 13-draw mean minus copy mean 0.58; standard error of a 13-draw mean at the copy SD 1.09
+linked submission 57477157 (v2, kernel version 2): 29.54, the better of its 2 draws 29.54 and 19.75; 3.19 above the 13-draw mean = 1.00 SD of the draws
+draws not in Table 2: v8i: 24.95 (v1), 26.47 (v3); v10: 24.51 (v1), 29.78 (v1), 27.60 (v1), 24.72 (v1)

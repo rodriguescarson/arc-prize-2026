@@ -1,0 +1,51 @@
+sha256 03a90fa3f6e85ef777894c6589ad7bb84e87d1e9483e39b8a6949bf8e91a9a94
+sessions 340 fully reproducible 309
+pairs 1314 testable 1237 (94.1%)
+M1 endings {'exhausted': 1108, 'game_over': 129}
+M1 successes (all) 0
+C2 all 1182/1237 = 95.55%
+C2 failures by game {'lf52': 3, 'sc25': 1, 'tn36': 51}
+without tn36: pairs 1186, games 23, M1 successes 0, C2 1182/1186 = 99.66%
+distinct (game, k) transitions: without tn36 144 with tn36 150
+Clopper-Pearson 95% upper bound, pairs as units (n=1186): 0.31%
+Clopper-Pearson 95% upper bound, transitions as units (n=144): 2.53%
+sessions contributing a testable pair (without tn36) 243
+C1 runs 5930 completions 0 | C3 runs scored 5742 completions 0
+C3 runs absent (excluded as unevaluable) among testable pairs 188
+budget |W_k| >= next human solution length: 469 of 1237 ; |W_k| > 60: 330
+budget shorter than next human solution: 768 of 1237
+budget-sufficient pairs without tn36: 452, games 23, distinct transitions 113, M1 successes 0
+  Clopper-Pearson 95% upper bound, pairs (n=452): 0.81%; transitions (n=113): 3.21%
+  endings {'exhausted': 365, 'game_over': 87}
+
+M2 pairs 1314 pooled sim 0.4461 shuffle 0.4307
+games above shuffle (filed rule, >0): 19 of 25
+games above by more than 1e-9: 17 ; tied (|d|<=1e-9): ['lp85', 'r11l', 's5i5', 'tn36', 'vc33'] ; below: ['ls20', 'm0r0', 'tu93']
+pooled M2 difference 0.0154 session-cluster 95% CI [0.0121 0.0191]
+per-game direction: {'above': ['ar25', 'bp35', 'cd82', 'dc22', 'g50t', 'lf52', 're86', 'sb26', 'sc25', 'sk48', 'sp80', 'wa30'], 'below': ['tu93']}
+games whose session-clustered 95% CI for (similarity - shuffle) excludes 0: 13 of 25
+
+M3 movement pairs 431 games 10 transfer 0.740 ceiling 0.906
+pairs with a null 421 null 0.301 transfer on those 0.757 ratio 2.52
+distinct (game,k) transitions behind the M3 pairs 56
+per game (pairs, mean): {'cd82': (10, 0.0), 'dc22': (39, 0.99), 'g50t': (20, 0.97), 'ls20': (45, 0.89), 'm0r0': (42, 0.3), 're86': (53, 0.9), 'sp80': (22, 0.75), 'tr87': (47, 0.36), 'tu93': (82, 0.89), 'wa30': (71, 0.75)}
+game-weighted (macro) mean over 10 games: 0.682
+largest three games ['tu93', 'wa30', 're86'] hold 48% of pairs
+M3 without those three: 0.641 over 225 pairs
+leave-one-game-out M3 (pair mean): {'cd82': 0.757, 'dc22': 0.714, 'g50t': 0.728, 'ls20': 0.722, 'm0r0': 0.787, 're86': 0.716, 'sp80': 0.739, 'tr87': 0.786, 'tu93': 0.704, 'wa30': 0.737}
+M3 pair mean, session-cluster 95% CI [0.687 0.791] (99 sessions)
+M3 game-weighted mean, game-cluster 95% CI [0.462 0.864] (10 games)
+M3 per-pair share below 0.8: 37%
+
+hand-checked asserts passed
+
+Added 2 Nov 2026: counts quoted in the text
+games in the release 25 | click-driven (CLICK_GAMES) 13 | movement (the other) 12
+games with no testable pair: ['s5i5']
+the 23 games with a working positive control: click-driven 12 | movement 11 | M1 successes in click-driven 0 | in movement 0
+mean pairs per distinct transition (without tn36): 8.2
+C3 random-control runs expected (5 per testable pair) 6185 | absent 188 = 3.0% | absent by game {'lf52': 188}
+games with no M3 value in any pair: 7 ['ft09', 'lp85', 'r11l', 's5i5', 'su15', 'tn36', 'vc33'] | without the game that has no testable pair: 6
+movement games with an M3 value: 10 of 12 | movement games without: ['su15', 'tn36']
+M3 per game (pairs, distinct transitions): {'cd82': (10, 1), 'dc22': (39, 5), 'g50t': (20, 6), 'ls20': (45, 6), 'm0r0': (42, 5), 're86': (53, 7), 'sp80': (22, 5), 'tr87': (47, 5), 'tu93': (82, 8), 'wa30': (71, 8)}
+added block asserts passed
