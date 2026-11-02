@@ -32,6 +32,8 @@ on 15 Oct 2026 03:05 UTC (commit `ec242a3` in this repository).
 - `experiments/hidden_draws.{py,csv,out}`: Table 2 and the draw statistics of section 5b; the CSV holds rows 6 to 21
   of `submission/SUBMISSIONS.md` (13 valid draws, 3 excluded with their reason), state of 2 November 2026.
 - `CLAIM-MAP.md`: the script and raw file behind each number of our own in the paper.
+- `arxiv/`: the arXiv version (text, LaTeX source, built PDF); its README lists how it differs from the Paper Track
+  text.
 - `paper/pdf_header.tex`: the LaTeX header used to build the PDF.
 
 The figure was re-rendered on 2 November with larger tick and bar labels for the arXiv version; the Paper Track
