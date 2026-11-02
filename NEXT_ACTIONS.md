@@ -1,4 +1,12 @@
-# NEXT_ACTIONS — status, blockers, next steps (updated 2026-10-15 22:05 IST)
+# NEXT_ACTIONS
+
+> **The paper moved on 2026-10-23.** All research artifacts now live in
+> `~/research/22-arc-agi3-level-transfer/` (Carson: "all research work should go in ~/research").
+> That folder holds `paper/`, `HYPOTHESES.md`, `RUBRIC_SCORECARD.md` and the E21 result, and its
+> README explains the split. This repo keeps the competition entry: agent code, tests, data, the
+> Kaggle kernels, and the three files the daily recorder writes (`RESEARCH_LOG.md`,
+> `EXPERIMENT_LOG.csv`, `submission/SUBMISSIONS.md`). Consolidate those after the 2 Nov freeze.
+ — status, blockers, next steps (updated 2026-10-15 22:05 IST)
 
 ## IF THE SESSION DIED, START HERE
 Session-only timers do not survive. Run by hand from `~/Projects/arc_prize_2026`:

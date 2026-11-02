@@ -200,8 +200,11 @@ def main(argv: list[str]) -> int:
     print("\n".join(written))
     if "--commit" in argv:
         refs = ", ".join(r["ref"] for r, _, _ in items)
-        subprocess.run(["git", "add", "-A"], cwd=ROOT, check=True)
-        subprocess.run(["git", "commit", "-m", f"Daily draw scores recorded: {refs}"], cwd=ROOT, check=True)
+        # Only the three record files: `git add -A` once swept two stray untracked files into a record commit.
+        paths = [str(p.relative_to(ROOT)) for p in (SUBMISSIONS, LOG, CSV_LOG)]
+        subprocess.run(["git", "add", "--", *paths], cwd=ROOT, check=True)
+        message = f"Daily draw scores recorded: {refs}"
+        subprocess.run(["git", "commit", "-m", message, "--", *paths], cwd=ROOT, check=True)
         subprocess.run(["git", "push", "origin", "HEAD"], cwd=ROOT, check=True)
     return 0
 
