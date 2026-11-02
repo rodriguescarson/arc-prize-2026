@@ -3,6 +3,10 @@
 State of 2 November 2026. Paths are relative to `paper/level-transfer/` unless they start with `repo:` (the root of this
 repository) or `arc-agi-3:` (the root of <https://github.com/rodriguescarson/arc-agi-3>).
 
+Reference numbers follow the arXiv text (22 references). The Paper Track text (20 references) numbers the Kaggle
+thread, the independent study and the release post [19], [20] and [18]; in the arXiv text they are [21], [22] and
+[20]. References [1] to [16] are the same in both.
+
 Regenerate the logs. Each command prints to the terminal; `diff` against the committed `.out` shows nothing.
 
     # from the repository root
@@ -46,7 +50,7 @@ file `experiments/E21_level_transfer.json` (full run log: `experiments/E21_level
 | one submission per day: the 16 draws fall on 16 distinct UTC days (two share the IST date 21 October) | section 5b | same | same |
 | v2 differs from v1 in two settings, `ARC3_LEVEL_MEMORY=1` and `ARC3_BAR_GUIDANCE=budget` | section 5b | none (a diff of two files) | `arc-agi-3:kaggle/variants/v1-franzen-faithful.json`, `arc-agi-3:kaggle/variants/v2-level-memory.json` |
 | the helper itself | section 3 | none | `arc-agi-3:harness/ARC3-Inference/inference/utils/level_memory.py` |
-| copies of the unmodified notebook: mean 25.77, SD 3.93; an independent study: SD 3.99 | section 5b | none | external, references [19] and [20]; not re-fetched here, the Kaggle thread is JavaScript-rendered |
+| copies of the unmodified notebook: mean 25.77, SD 3.93; an independent study: SD 3.99 | section 5b | none | external, references [21] and [22]; not re-fetched here, the Kaggle thread is JavaScript-rendered |
 
 ## Our explorer, sections 5a and 6
 
@@ -66,7 +70,7 @@ file `experiments/E21_level_transfer.json` (full run log: `experiments/E21_level
 
 The RHAE formula (reference [1]); RHAE of 93 to 100 on the public 25 games (references [7] to [13]); PRO-LONG +18.0
 points (reference [9]); NOOA +11.8 points (reference [15]); 33 of 630 references cross a task boundary (reference [16]);
-SD 3.99 over ten evaluations (reference [20]); 342 sessions in the release post (reference [18]). They are cited, not
+SD 3.99 over ten evaluations (reference [22]); 342 sessions in the release post (reference [20]). They are cited, not
 measured here, and are not reproduced by any file in this repository.
 
 ## Every experiment attempted
