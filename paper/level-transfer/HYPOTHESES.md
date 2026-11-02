@@ -264,3 +264,29 @@ as such: plans carry real shared structure that is nonetheless not executable on
 - **188 of 6,185 C3 runs (3.0%), all on lf52**, exceeded the 60 s budget and are excluded as unevaluable,
   cut at a median 72 of 126 actions. See the deviation note above.
 - Six games (ft09, lp85, r11l, su15, tn36, vc33) record no movement steps, so M3 is silent on them.
+
+### E21 erratum, recorded 2026-10-30 00:41 IST (found by the 2026-10-29 pre-submission screen; the entries above are not edited)
+
+1. **"843 movement pairs" should read 431.** The outcome entry above says "(843 movement pairs, in-sample
+   ceiling 0.906)". 843 is all games with M3 data (transfer 0.716, permuted null 0.247, ceiling 0.892). The 0.740,
+   0.301, 2.5x and 0.906 quoted there are the 431-pair movement subset, as the paper and
+   `E21_level_transfer.out` state.
+2. **Time label.** The deviation note is headed 15:05 IST, which is the log label. The commit (0e3754d) was
+   pushed at 08:34:07 UTC, which is 14:04 IST.
+3. **"Pre-registered before any code ran" is not supported.** The first independent record is the push of
+   commit ec242a3 (the hypotheses, `level_transfer.py` and a 12-session smoke JSON that already showed M1 = 0 of
+   65) at 2026-10-15 03:05:13 UTC, before any full result and before the first paired LLM-harness draw
+   (57372857, 19 Oct). The paper says so and describes the bars as filed in advance.
+4. **M1 is now quoted without tn36.** The caveat above says tn36 "must be excluded or flagged wherever M1 is
+   quoted". The paper quotes 0 of 1,186 pairs on 23 games, positive control 99.7%, 144 distinct (game, level)
+   transitions, Clopper-Pearson 95% upper bound 0.31% at pair level and 2.5% at transition level. The filed 0 of
+   1,237 pairs, 0 of 25 games and 95.6% stand as the filed run (24 games have a pair; s5i5 has none).
+5. **P21c count.** 19 of 25 games reproduces under the filed rule, but two of the 19 are floating-point ties
+   (s5i5, tn36) and five games (lp85, r11l, s5i5, tn36, vc33) cannot differ from their shuffle. 17 of the 20
+   games where a shuffle can differ are above it. P21c fails under any count.
+6. **H2's "342 released human replays" (line 77).** 342 is the count in the ARC Prize release post
+   (arcprize.org/blog/arc-agi-3-human-dataset, 14 April 2026). The public mirror that E21 replays holds 340
+   sessions, which is the population quoted for E21.
+
+*Wording of item 3 corrected and item 6 added 2026-10-30 01:07 IST, after a verification pass; no entry above the
+erratum heading was edited.*

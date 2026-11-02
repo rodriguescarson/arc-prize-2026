@@ -1,0 +1,20 @@
+sha256 contact on  9085c57b6f539a178d29e5f9e32ebc003c64f0f2e2d169cd5488228355d4b6b4 arc3_E2_v4_hud_contact1_a2000_s0
+sha256 contact off 1bc2f8cd7b26ed76026797ab7491f467d4076331368c71c9ec6ad57c8866acba arc3_E2_v4_hud_contact0_a2000_s0
+
+game   contact_on  contact_off   (agent level-1 actions / human baseline actions)
+bp35            -        20.52
+cd82         8.18        24.09   shared
+lf52         2.41         1.25   shared
+lp85         0.88            -
+ls20        25.73        21.95   shared
+m0r0        40.13        40.13   shared
+s5i5        30.50        52.60   shared
+sk48        18.70            -
+su15         8.59         8.59   shared
+tn36         1.16         1.16   shared
+tu93        34.26        24.05   shared
+vc33         6.14         6.14   shared
+
+contact ON  11 games, median 8.59
+contact OFF 10 games, median 21.24
+shared 9 games: ON 8.59 OFF 21.95
