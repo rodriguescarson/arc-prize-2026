@@ -35,7 +35,7 @@ the Kaggle hidden set (110 games) is the only evaluation.
 | `src/arc_prize_2026/arc3/` | `perception.py` (objects, state key), `effects.py` (online effect model), `planner.py` (BFS in the model), `goals.py` (goal inference), `agents/` (random, explorer, model_based), `runner.py` + `cli.py` (offline harness), `atlas.py`, `volatility.py`, `failure_table.py`, `figures.py`, `human_replays.py`, `swarm_sim.py` (rerun concurrency simulator), `kaggle/build_notebook.py` (competition kernel), `kaggle/build_repro.py` (public reproduction notebook) |
 | `src/arc_prize_2026/{data,score,submission,runner,solvers}` | ARC-AGI-2 pipeline (fallback track; pass@2 scorer, Kaggle layout validator, DSL-search floor) |
 | `submission/kaggle/` | generated single-file agent + notebook + `BUILD.json` (sha256, commit) |
-| `paper/` | draft and figures |
+| `paper/level-transfer/` | the Paper Track entry: main paper (PDF), writeup, figures, filed predictions, E21 result |
 
 ## Diagnostics others can reuse
 - **State non-determinism test**: run the agent with memoised transitions and read `pred_by_source.memo`
@@ -57,5 +57,4 @@ the shim's exception fallback; nothing that only tests through the fallback can 
 (`carsonrodrigues/arc3-paper-reproduce-public25`), which replays the public-25 table inside Kaggle's runtime.
 
 ## Licence
-Code: to be released under a permissive public-domain licence (MIT-0 or CC0), which arcprize.org requires for prize eligibility ("all code and methods authored by the submitter must be made open source under a permissive public domain license", read 2026-10-13), before official private evaluation scores are released. Third-party code keeps its own open-source licence. Game environments,
-wheels and human replays belong to the ARC Prize Foundation and are not redistributed here (`data/` is gitignored).
+Code and text authored by Carson Rodrigues: MIT-0 (`LICENSE`), the permissive public-domain licence arcprize.org requires for prize eligibility. Third-party code keeps its own open-source licence. Game environments and wheels belong to the ARC Prize Foundation and are not redistributed here. `data/human_replays_packed/` is a packed derivative of the ARC Prize human replay release; it keeps the terms of that release, not MIT-0 (see its `NOTICE`).

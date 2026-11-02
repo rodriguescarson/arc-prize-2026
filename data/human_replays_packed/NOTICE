@@ -1,0 +1,6 @@
+These 340 .npz files are a packed derivative of the ARC-AGI-3 human replay release published by ARC Prize
+(https://arcprize.org/blog/arc-agi-3-human-dataset, 14 Apr 2026; the public mirror holds 340 sessions, the post
+counts 342). Each file holds the frames, actions, levels and states of one released session, renamed by the
+session's own file name. The source names no licence for the replays, so these files are not covered by this
+repository's MIT-0 licence; they keep the terms of the original release. Re-pack them from the mirror with
+pack() in src/arc_prize_2026/arc3/level_transfer.py if you prefer to start from the source.

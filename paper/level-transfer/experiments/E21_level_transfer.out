@@ -1,0 +1,50 @@
+340 sessions: 327 already in E21_level_transfer.jsonl, 13 to run on 4 workers
+  1/13 lf52 da243e77 1234.3s  (elapsed 1234 s)
+  2/13 lf52 c492c65f 1936.4s  (elapsed 1936 s)
+  3/13 lf52 d55d768c 2933.8s  (elapsed 2934 s)
+  4/13 ar25 00589449 8.6s  (elapsed 2945 s)
+  5/13 lf52 549e2635 2405.0s  (elapsed 3640 s)
+  6/13 re86 79ae6a3a 15.6s  (elapsed 3656 s)
+  7/13 lf52 09ed6d45 3759.6s  (elapsed 3760 s)
+  8/13 ar25 2ef9c7c0 20.8s  (elapsed 3782 s)
+  9/13 re86 dca94d28 15.2s  (elapsed 3798 s)
+  10/13 ar25 2a854897 24.3s  (elapsed 3822 s)
+  11/13 lf52 be7ef956 712.8s  (elapsed 4369 s)
+  12/13 lf52 40bd319e 3750.2s  (elapsed 5689 s)
+  13/13 lf52 2adcd0b8 4149.2s  (elapsed 7094 s)
+sessions 340; fully reproducible 309; consecutive completed level pairs 1314; reproducible pairs 1237 (94.1%)
+M1 W_k completes k+1: 0.0%   C1 shuffled 0.0%   C2 own W_k+1 95.6%   C3 random 0.0%
+M1 endings: {'exhausted': 1108, 'game_over': 129}
+unevaluable control runs (environment exceeded 60s): C1 0/6185, C3 188/6185; C3 cut at a median 72 of 126 actions. Excluded from the rates above, not counted as non-completions.
+
+game  click pairs rep  M1    C1    C2    C3   | M2 sim  shuf  | M3 transfer ceiling null  n_steps
+ar25  C       55  55  0.00  0.00  1.00  0.00 | 0.30  0.28 | 0.76  0.95  0.20  5114
+bp35  C       71  69  0.00  0.00  1.00  0.00 | 0.51  0.45 | 0.75  0.74  0.04  2457
+cd82  M       42  42  0.00  0.00  1.00  0.00 | 0.34  0.29 | 0.00  1.00    —   10
+cn04  C       35  33  0.00  0.00  1.00  0.00 | 0.26  0.25 | 0.79  0.89  0.18  4543
+dc22  M       39  39  0.00  0.00  1.00  0.00 | 0.33  0.30 | 0.99  0.98  0.21  3642
+ft09  C       24  24  0.00  0.00  1.00  0.00 | 0.58  0.57 |   —     —     —   0
+g50t  M       20  20  0.00  0.00  1.00  0.00 | 0.33  0.30 | 0.97  0.97  0.25  2158
+ka59  C       27  27  0.00  0.00  1.00  0.00 | 0.33  0.31 | 0.89  0.90  0.20  2285
+lf52  C       68  64  0.00  0.00  0.95  0.00 | 0.37  0.34 | 0.71  0.93  0.29  4118
+lp85  C      164 158  0.00  0.00  1.00  0.00 | 0.59  0.59 |   —     —     —   0
+ls20  M       45  45  0.00  0.00  1.00  0.00 | 0.35  0.35 | 0.89  0.94  0.29  5252
+m0r0  M       42  40  0.00  0.00  1.00  0.00 | 0.28  0.28 | 0.30  0.97  0.10  6775
+r11l  C       50  46  0.00  0.00  1.00  0.00 | 0.65  0.65 |   —     —     —   0
+re86  M       53  53  0.00  0.00  1.00  0.00 | 0.35  0.32 | 0.90  0.97  0.20  9179
+s5i5  C       43   0    —     —     —     —  | 0.61  0.61 |   —     —     —   0
+sb26  C       55  55  0.00  0.00  1.00  0.00 | 0.65  0.62 | 0.40  1.00    —   50
+sc25  C       60  58  0.00  0.00  0.98  0.00 | 0.28  0.25 | 0.36  0.70  0.07  1552
+sk48  C       67  67  0.00  0.00  1.00  0.00 | 0.39  0.36 | 0.88  0.94  0.30  7063
+sp80  M       22  22  0.00  0.00  1.00  0.00 | 0.32  0.28 | 0.75  1.00  0.13  1336
+su15  M       37  37  0.00  0.00  1.00  0.00 | 0.69  0.69 |   —     —     —   0
+tn36  M       51  51  0.00  0.00  0.00  0.00 | 0.64  0.64 |   —     —     —   0
+tr87  M       47  47  0.00  0.00  1.00  0.00 | 0.48  0.48 | 0.36  0.65  0.07  1731
+tu93  M       82  76  0.00  0.00  1.00  0.00 | 0.35  0.37 | 0.89  0.96  0.66  4048
+vc33  C       44  39  0.00  0.00  1.00  0.00 | 0.46  0.46 |   —     —     —   0
+wa30  M       71  70  0.00  0.00  1.00  0.00 | 0.37  0.34 | 0.75  0.82  0.35  13612
+
+P21a: games with 0 successful W_k replays 25/25 (prediction: >= 20; overall <= 10%)
+P21c: games where M2 similarity exceeds its shuffle control 19/25 (prediction: < 13)
+P21b: movement games, pair-mean M3 transfer 0.740 (ceiling 0.906, permuted null 0.301, ratio 2.5x; n pairs 431) (prediction: >= 0.8 and >= 3x)
+-> /Users/carson/Projects/arc_prize_2026/experiments/human_replays/E21_level_transfer.json  (340 sessions, 7096 s this run)
