@@ -111,7 +111,8 @@ spread.
 
 *Linked submission.* 57477157 (`v2-level-memory`, kernel version 2): Franzen's Milestone-2 harness plus
 `solved_levels()` and a reworded budget-bar line; 29.54 hidden, the better of two draws, so expect a private score
-nearer 26. Code, data and every experiment log are released with the paper.
+nearer 26. Code, data and every experiment log are released with the paper:
+[arc-prize-2026](https://github.com/rodriguescarson/arc-prize-2026) and [arc-agi-3](https://github.com/rodriguescarson/arc-agi-3).
 
 *Disclosure.* Claude Code (Anthropic) wrote most of the code, ran the experiments and drafted this text under the
 author's direction. The author set the hypotheses and the filed predictions, reviewed every change and approved each

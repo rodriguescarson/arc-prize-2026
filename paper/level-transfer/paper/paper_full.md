@@ -2,7 +2,7 @@
 title: "What should an agent carry from one level to the next?"
 subtitle: "ARC Prize 2026 Paper Track entry"
 author: "Carson Rodrigues"
-date: "2 November 2026"
+date: "3 November 2026"
 ---
 
 ## Abstract
@@ -218,7 +218,20 @@ reworded budget-bar line; 29.54 hidden, the better of two draws and one SD above
 
 ## Code and data
 
+\begingroup\raggedright
+
 Code, data and every experiment log are released with the paper.
+
+- <https://github.com/rodriguescarson/arc-prize-2026> holds the explorer
+  (`src/arc_prize_2026/arc3/agents/model_based.py`), the replay code (`src/arc_prize_2026/arc3/level_transfer.py`),
+  the 340 replay sessions in packed form (`data/human_replays_packed`, terms in its `NOTICE`), `EXPERIMENT_LOG.csv`
+  and `submission/SUBMISSIONS.md`. Its folder `paper/level-transfer` holds `HYPOTHESES.md`, the figure, the
+  experiment outputs and the scripts that regenerate the quoted numbers.
+- <https://github.com/rodriguescarson/arc-agi-3> holds the harness fork
+  (`harness/ARC3-Inference/inference/utils/level_memory.py`), the notebook builder and its cells
+  (`kaggle/build_notebook.py`, `kaggle/cells/`) and its submission log (`docs/SUBMISSIONS.md`).
+
+\par\endgroup
 
 ## Disclosure
 
