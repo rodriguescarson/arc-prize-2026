@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+type: software
+title: "arc-prize-2026: code and data for 'What should an agent carry from one level to the next?'"
+authors:
+  - family-names: Rodrigues
+    given-names: Carson
+repository-code: "https://github.com/rodriguescarson/arc-prize-2026"
+url: "https://github.com/rodriguescarson/arc-prize-2026/blob/main/paper/level-transfer/paper/paper_full.pdf"
+license: MIT-0
+date-released: 2026-11-03
+keywords:
+  - ARC-AGI-3
+  - ARC Prize 2026
+  - LLM agents
+  - agent memory
+  - human replays
+  - interactive reasoning
+  - Kaggle
+abstract: >-
+  Code and experiment logs for an ARC Prize 2026 Paper Track entry that asks what an ARC-AGI-3 agent should carry
+  from one level to the next: the plan it used or the mechanics it learned. Includes the human-replay experiment
+  (340 sessions), the model-based explorer and its ablation, and the hidden-set draw records. The 340 packed human
+  replay sessions under data/human_replays_packed are not covered by this licence; they keep the terms of the
+  original ARC Prize release (see their NOTICE).
+preferred-citation:
+  type: generic
+  title: "What should an agent carry from one level to the next?"
+  authors:
+    - family-names: Rodrigues
+      given-names: Carson
+  year: 2026
+  url: "https://github.com/rodriguescarson/arc-prize-2026/blob/main/paper/level-transfer/paper/paper_full.pdf"
+  publisher:
+    name: "Kaggle"
+  collection-title: "ARC Prize 2026 Paper Track"
+  abstract: >-
+    An ARC-AGI-3 agent that has solved level k can reuse on level k+1 either the plan it used or the mechanics it
+    learned. The paper tests both on 340 human replay sessions, in an ablation of a model-based agent, and on paired
+    hidden-set draws of an LLM harness.

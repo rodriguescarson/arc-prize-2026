@@ -18,11 +18,8 @@ Written 2026-10-12 (IST) from a recursive read of `~/research`, `~/Projects/*`, 
    submission." Recorded deadlines: code submissions **Nov 2**, paper **Nov 8 (arcprize.org) /
    Nov 9 23:59 UTC (Kaggle)**. These are being re-verified against the live pages (see
    `NEXT_ACTIONS.md`).
-4. **Compute on hand**: MacBook Pro M4, 16 GB, **9.6 GB disk free (98% full)**; system Python 3.9
-   has torch 2.8 + MPS. Kaggle: `~/.kaggle/kaggle.json` present; CLI 1.7 default, 2.2.4 in
-   `gemma-swe-agent/.venv`; 30 GPU-h/week quota (4×L4 kernels used before). RunPod account with
-   prior 2×H100 usage ($6.98/h, ~$136 spent in Sept against a $500 cap). College lab RTX A6000
-   48 GB (RDP only, WSL2, no SSH). A paid run needs Carson's approval (MISSION §10).
+4. **Compute on hand**: a laptop for CPU work, the Kaggle notebook GPU quota, and paid cloud GPUs only with
+   Carson's approval (MISSION §10).
 
 ## 1. Assets worth reusing (exact paths)
 
@@ -112,7 +109,7 @@ the structure, not the code.
 | A non-trivial local baseline (DSL search on CPU) | next | 0.5 day |
 | A GPU baseline (small-LM TTT or TRM-style) reproducing a public number | needs Kaggle GPU quota or RunPod (Carson approves spend) | 2–4 days + compute |
 | Kaggle notebook that runs offline within the compute limit and produces `submission.json` | adapt gemma-swe-agent scripts | 1–2 days |
-| Disk: 9.6 GB free | **blocker for any local model** (`~/.cache/g4` is 34 GB live Gemma data, do not touch) | Carson's call |
+| Local disk space | limits any local model run | Carson's call |
 
 ## 4. Relevant prior work and competing approaches
 See `LITERATURE_MAP.md` (in progress).
