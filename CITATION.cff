@@ -5,6 +5,8 @@ title: "arc-prize-2026: code and data for 'What should an agent carry from one l
 authors:
   - family-names: Rodrigues
     given-names: Carson
+    orcid: "https://orcid.org/0009-0001-7195-6742"
+    website: "https://carsonrodrigues.com"
 repository-code: "https://github.com/rodriguescarson/arc-prize-2026"
 url: "https://github.com/rodriguescarson/arc-prize-2026/blob/main/paper/level-transfer/paper/paper_full.pdf"
 license: MIT-0
@@ -29,6 +31,8 @@ preferred-citation:
   authors:
     - family-names: Rodrigues
       given-names: Carson
+      orcid: "https://orcid.org/0009-0001-7195-6742"
+      website: "https://carsonrodrigues.com"
   year: 2026
   url: "https://github.com/rodriguescarson/arc-prize-2026/blob/main/paper/level-transfer/paper/paper_full.pdf"
   publisher:

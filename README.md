@@ -9,6 +9,8 @@ predicts level k+1's movement at 0.740 (431 pairs, 10 movement games, short of t
 previous level's plan differed by 3.2 points (24.65 against 27.89), inside the 11 points the design resolves, so no
 effect is claimed.
 
+By [Carson Rodrigues](https://carsonrodrigues.com) ([Kaggle](https://www.kaggle.com/carsonrodrigues), [ORCID](https://orcid.org/0009-0001-7195-6742)), sole author of the paper, the analysis and the code here. The paper and its public parts are listed at [carsonrodrigues.com/research](https://carsonrodrigues.com/research#paper-22).
+
 - Paper: [`paper/level-transfer/paper/paper_full.pdf`](paper/level-transfer/paper/paper_full.pdf), also filed as a
   writeup in the [ARC Prize 2026 Paper Track](https://www.kaggle.com/competitions/arc-prize-2026-paper-track)
 - Every number in the paper, with the scripts that regenerate it: [`paper/level-transfer/`](paper/level-transfer/)
@@ -73,6 +75,20 @@ sequence is bit-identical to the repo agent (a dropped import alias once crashed
 the shim's exception fallback; nothing that only tests through the fallback can see that).
 `uv run python -m arc_prize_2026.arc3.kaggle.build_repro` builds the Paper-Track reproduction notebook
 (`carsonrodrigues/arc3-paper-reproduce-public25`), which replays the public-25 table inside Kaggle's runtime.
+
+## Author and citation
+
+[Carson Rodrigues](https://carsonrodrigues.com). GitHub's "Cite this repository" button reads `CITATION.cff`; in BibTeX:
+
+```bibtex
+@misc{rodrigues2026carry,
+  author       = {Rodrigues, Carson},
+  title        = {What should an agent carry from one level to the next?},
+  year         = {2026},
+  howpublished = {ARC Prize 2026 Paper Track entry, Kaggle},
+  url          = {https://github.com/rodriguescarson/arc-prize-2026/blob/main/paper/level-transfer/paper/paper_full.pdf}
+}
+```
 
 ## Licence
 Code and text authored by Carson Rodrigues: MIT-0 (`LICENSE`), the permissive public-domain licence arcprize.org requires for prize eligibility. Third-party code keeps its own open-source licence. Game environments and wheels belong to the ARC Prize Foundation and are not redistributed here. `data/human_replays_packed/` is a packed derivative of the ARC Prize human replay release; it keeps the terms of that release, not MIT-0 (see its `NOTICE`).

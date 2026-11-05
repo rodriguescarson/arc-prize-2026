@@ -19,6 +19,11 @@ dependencies = [
 arc = "arc_prize_2026.cli:main"
 arc3 = "arc_prize_2026.arc3.cli:main"
 
+[project.urls]
+Homepage = "https://carsonrodrigues.com/research#paper-22"
+Repository = "https://github.com/rodriguescarson/arc-prize-2026"
+Paper = "https://github.com/rodriguescarson/arc-prize-2026/blob/main/paper/level-transfer/paper/paper_full.pdf"
+
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
