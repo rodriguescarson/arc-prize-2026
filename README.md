@@ -1,4 +1,22 @@
-# ARC Prize 2026 — ARC-AGI-3 model-based explorer (Paper Track workspace)
+# What should an agent carry from one level to the next? ARC-AGI-3, ARC Prize 2026 Paper Track
+
+Paper, code and data for Carson Rodrigues' ARC Prize 2026 Paper Track entry on agent memory in ARC-AGI-3. An agent
+that has solved level k of a game can reuse on level k+1 either the plan it used or the mechanics it learned. In the
+340 released human replay sessions, a winning plan replayed verbatim completes the next level in 0 of 1,186 testable
+pairs (23 games, 144 distinct transitions; positive control 99.7 percent), while a mechanics model learned on level k
+predicts level k+1's movement at 0.740 (431 pairs, 10 movement games, short of the 0.8 bar filed in advance) against a
+0.301 permuted null. Two hidden-set draws per arm of an LLM harness with and without a helper that returns the
+previous level's plan differed by 3.2 points (24.65 against 27.89), inside the 11 points the design resolves, so no
+effect is claimed.
+
+- Paper: [`paper/level-transfer/paper/paper_full.pdf`](paper/level-transfer/paper/paper_full.pdf), also filed as a
+  writeup in the [ARC Prize 2026 Paper Track](https://www.kaggle.com/competitions/arc-prize-2026-paper-track)
+- Every number in the paper, with the scripts that regenerate it: [`paper/level-transfer/`](paper/level-transfer/)
+- The LLM harness and the Kaggle notebooks: [rodriguescarson/arc-agi-3](https://github.com/rodriguescarson/arc-agi-3)
+- How to cite: [`CITATION.cff`](CITATION.cff). The code is MIT-0; the packed human replays in
+  `data/human_replays_packed/` keep the terms of the ARC Prize release (see its `NOTICE`).
+
+## The model-based explorer
 
 A training-free, CPU-only ARC-AGI-3 agent that learns an object-level model of what its actions do while
 playing, plans in that model, and carries the model plus an inferred goal across the levels of a game.
