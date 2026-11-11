@@ -12,7 +12,7 @@ effect is claimed.
 By [Carson Rodrigues](https://carsonrodrigues.com) ([Kaggle](https://www.kaggle.com/carsonrodrigues), [ORCID](https://orcid.org/0009-0001-7195-6742)), sole author of the paper, the analysis and the code here. The paper and its public parts are listed at [carsonrodrigues.com/research](https://carsonrodrigues.com/research#paper-22).
 
 - Paper: [`paper/level-transfer/paper/paper_full.pdf`](paper/level-transfer/paper/paper_full.pdf), also filed as a
-  writeup in the [ARC Prize 2026 Paper Track](https://www.kaggle.com/competitions/arc-prize-2026-paper-track)
+  [writeup](https://www.kaggle.com/competitions/arc-prize-2026-paper-track/writeups/what-should-an-agent-carry-from-one-level-to-the-n) in the [ARC Prize 2026 Paper Track](https://www.kaggle.com/competitions/arc-prize-2026-paper-track)
 - Every number in the paper, with the scripts that regenerate it: [`paper/level-transfer/`](paper/level-transfer/)
 - The LLM harness and the Kaggle notebooks: [rodriguescarson/arc-agi-3](https://github.com/rodriguescarson/arc-agi-3)
 - How to cite: [`CITATION.cff`](CITATION.cff). The code is MIT-0; the packed human replays in
